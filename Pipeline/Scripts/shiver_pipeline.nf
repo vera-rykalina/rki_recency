@@ -16,7 +16,7 @@ if (!params.outdir) {
 
 process RENAME_FASTQ {
   conda "/home/beast2/anaconda3/envs/python3"
-  publishDir "${params.outdir}/1_renamed_fastq", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/0_renamed_fastq", mode: "copy", overwrite: true
 
   input:
    path file
@@ -32,7 +32,7 @@ process RENAME_FASTQ {
 
 process INITIALISATION {
   conda "/home/beast2/anaconda3/envs/shiver"
-  publishDir "${projectDir}/${params.outdir}/2_init_dir", mode: "copy", overwrite: true
+  publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
 
   input:
      
@@ -50,13 +50,14 @@ process INITIALISATION {
 process IVA_CONTIGS {
   //errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
-  publishDir "${params.outdir}/3_iva_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
 
   input:
     tuple val(id), path(reads)
 
   output:
     path "${id}"
+    path "${id}/${id}_contigs.fasta", emit: fasta_contig
 
   script:
     """
@@ -65,12 +66,36 @@ process IVA_CONTIGS {
     """
 }
 
+process ALIGN_CONTIGS {
+  //errorStrategy "ignore"
+  conda "/home/beast2/anaconda3/envs/shiver"
+  publishDir "${params.outdir}/3_alignments", mode: "copy", overwrite: true
+
+  input:
+    path initdir
+    path contigs
+
+  output:
+    path "${contigs.getBaseName().split('_')[2]}"
+
+  script:
+    """
+    shiver_align_contigs.sh ${initdir} ${params.config} ${contigs} ${contigs.getBaseName().split('_')[2]}
+    """
+}
+
 workflow {
-  fastq = channel.fromPath("${projectDir}/RawData/*.fastq.gz").collect()
-  renamed_fastq = RENAME_FASTQ(fastq.flatten())
-  id_fastq = channel.fromFilePairs("${projectDir}/${params.outdir}/1_renamed_fastq/*_R{1,2}.fastq.gz")
+  //fastq = channel.fromPath("${projectDir}/RawData/*.fastq.gz").collect()
+  //renamed_fastq = RENAME_FASTQ(fastq.flatten())
+  //id_fastq = channel.fromFilePairs("${projectDir}/${params.outdir}/1_renamed_fastq/*_R{1,2}.fastq.gz")
+  fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
   initdir = INITIALISATION()
-  iva_contigs = IVA_CONTIGS(id_fastq)
+  //initdir_from_path = channel.fromPath("${projectDir}/${params.outdir}/2_iva_contigs/InitDIr")
+  iva_contigs = IVA_CONTIGS(fastq_pairs)
+  contigs_collected = iva_contigs.fasta_contig.collect()
+  contigs_collected.view()
+  //iva_contigs_from_path = channel.fromPath("${projectDir}/${params.outdir}/3_iva_contigs/*/*.fasta").collect()
+  ALIGN_CONTIGS(initdir, contigs_collected.flatten())
 
 }
 
