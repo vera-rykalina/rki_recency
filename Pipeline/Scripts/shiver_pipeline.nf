@@ -1,7 +1,7 @@
 nextflow.enable.dsl = 2
 
 projectDir = "/home/beast2/rki_shiver/Pipeline"
-params.trimmomatic = "${projectDir}/bin/trimmomatic-0.36.jar"
+params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
@@ -47,24 +47,21 @@ process INITIALISATION {
 }
 
 
-
-
-process contigs {
-  errorStrategy 'ignore'
+process IVA_CONTIGS {
+  //errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
-  publishDir "${params.outdir}/1_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/3_iva_contigs", mode: "copy", overwrite: true
 
   input:
     tuple val(id), path(reads)
 
   output:
-    path "$id"
-
+    path "${id}"
 
   script:
     """
-    iva -f ${reads[0]} -r ${reads[1]} --pcr_primers --adapters --trimmomatic ${id}
-
+    iva -f ${reads[0]} -r ${reads[1]} --pcr_primers ${params.gal_primers} --adapters ${params.illumina_adapters} --trimmomatic ${params.trimmomatic} ${id}
+    mv ${id}/contigs.fasta ${id}/${id}_contigs.fasta
     """
 }
 
@@ -73,5 +70,7 @@ workflow {
   renamed_fastq = RENAME_FASTQ(fastq.flatten())
   id_fastq = channel.fromFilePairs("${projectDir}/${params.outdir}/1_renamed_fastq/*_R{1,2}.fastq.gz")
   initdir = INITIALISATION()
+  iva_contigs = IVA_CONTIGS(id_fastq)
+
 }
 
