@@ -1,0 +1,64 @@
+Apr-26 01:34:40.777 [main] DEBUG nextflow.cli.Launcher - $> nextflow Scripts/shiver_pipeline.nf --outdir Results -with-conda true
+Apr-26 01:34:40.819 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.10.6
+Apr-26 01:34:40.828 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/beast2/.nextflow/plugins; core-plugins: nf-amazon@1.11.3,nf-azure@0.14.2,nf-codecommit@0.1.2,nf-console@1.0.4,nf-ga4gh@1.0.4,nf-google@1.4.5,nf-tower@1.5.6,nf-wave@0.5.3
+Apr-26 01:34:40.832 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-26 01:34:40.833 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-26 01:34:40.834 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Apr-26 01:34:40.839 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-26 01:34:40.870 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Apr-26 01:34:40.879 [main] INFO  nextflow.cli.CmdRun - Launching `Scripts/shiver_pipeline.nf` [loving_hodgkin] DSL2 - revision: 94eb6e5f5a
+Apr-26 01:34:40.879 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-26 01:34:40.879 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Apr-26 01:34:40.883 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /home/beast2/.nextflow/secrets/store.json
+Apr-26 01:34:40.886 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@4905c46b] - activable => nextflow.secret.LocalSecretsProvider@4905c46b
+Apr-26 01:34:40.923 [main] DEBUG nextflow.Session - Session UUID: 274e4e5a-c1d5-4cfd-925d-36a4b71ad157
+Apr-26 01:34:40.923 [main] DEBUG nextflow.Session - Run name: loving_hodgkin
+Apr-26 01:34:40.923 [main] DEBUG nextflow.Session - Executor pool size: 16
+Apr-26 01:34:40.928 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-26 01:34:40.943 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.10.6 build 5843
+  Created: 23-01-2023 23:20 UTC (24-01-2023 00:20 CEST)
+  System: Linux 5.15.0-69-generic
+  Runtime: Groovy 3.0.13 on OpenJDK 64-Bit Server VM 17.0.3-internal+0-adhoc..src
+  Encoding: UTF-8 (UTF-8)
+  Process: 47907@Beast2 [127.0.1.1]
+  CPUs: 16 - Mem: 62 GB (49.7 GB) - Swap: 2 GB (2 GB)
+Apr-26 01:34:40.953 [main] DEBUG nextflow.Session - Work-dir: /home/beast2/rki_shiver_pipeline/Pipeline/work [ext2/ext3]
+Apr-26 01:34:40.953 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/beast2/rki_shiver_pipeline/Pipeline/Scripts/bin
+Apr-26 01:34:40.957 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-26 01:34:40.961 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Apr-26 01:34:40.971 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-26 01:34:40.975 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+Apr-26 01:34:41.017 [main] DEBUG nextflow.Session - Session start
+Apr-26 01:34:41.392 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Apr-26 01:34:41.460 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-26 01:34:41.460 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-26 01:34:41.463 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Apr-26 01:34:41.465 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=16; memory=62 GB; capacity=16; pollInterval=100ms; dumpInterval=5m
+Apr-26 01:34:41.507 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: contigs, RENAME_FASTQ
+Apr-26 01:34:41.507 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Apr-26 01:34:41.510 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RENAME_FASTQ
+Apr-26 01:34:41.510 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Apr-26 01:34:41.510 [main] DEBUG nextflow.Session - Session await
+Apr-26 01:34:41.511 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/beast2/rki_shiver_pipeline/Pipeline/RawData/; pattern: *.fastq.gz; options: [:]
+Apr-26 01:34:41.545 [Actor Thread 17] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/beast2/anaconda3/envs/python3; path=/home/beast2/anaconda3/envs/python3
+Apr-26 01:34:41.571 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-26 01:34:41.572 [Task submitter] INFO  nextflow.Session - [44/2779ab] Submitted process > RENAME_FASTQ (2)
+Apr-26 01:34:41.577 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-26 01:34:41.577 [Task submitter] INFO  nextflow.Session - [49/fb26ed] Submitted process > RENAME_FASTQ (4)
+Apr-26 01:34:41.580 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-26 01:34:41.580 [Task submitter] INFO  nextflow.Session - [d9/6f70eb] Submitted process > RENAME_FASTQ (3)
+Apr-26 01:34:41.583 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-26 01:34:41.583 [Task submitter] INFO  nextflow.Session - [43/c3efaa] Submitted process > RENAME_FASTQ (1)
+Apr-26 01:34:42.217 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: RENAME_FASTQ (2); status: COMPLETED; exit: 0; error: -; workDir: /home/beast2/rki_shiver_pipeline/Pipeline/work/44/2779ab1cad61f42647c01fe1a2cf37]
+Apr-26 01:34:42.230 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-26 01:34:42.231 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: RENAME_FASTQ (4); status: COMPLETED; exit: 0; error: -; workDir: /home/beast2/rki_shiver_pipeline/Pipeline/work/49/fb26edd0cce8ac176ccc96e93e7726]
+Apr-26 01:34:42.233 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: RENAME_FASTQ (3); status: COMPLETED; exit: 0; error: -; workDir: /home/beast2/rki_shiver_pipeline/Pipeline/work/d9/6f70eb56c8d1de626d2192ac85ce6b]
+Apr-26 01:34:42.235 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: RENAME_FASTQ (1); status: COMPLETED; exit: 0; error: -; workDir: /home/beast2/rki_shiver_pipeline/Pipeline/work/43/c3efaac0ab811733322b4023c7e5c1]
+Apr-26 01:34:42.237 [main] DEBUG nextflow.Session - Session await > all processes finished
+Apr-26 01:34:42.317 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Apr-26 01:34:42.322 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Apr-26 01:34:42.332 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=2.2s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=4; peakCpus=4; peakMemory=0; ]
+Apr-26 01:34:42.449 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Apr-26 01:34:42.468 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Apr-26 01:34:42.469 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
