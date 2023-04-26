@@ -48,9 +48,10 @@ process INITIALISATION {
 
 
 process IVA_CONTIGS {
-  //errorStrategy 'ignore'
+  errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
+  tag "iva on sample ${id}"
 
   input:
     tuple val(id), path(reads)
@@ -76,11 +77,14 @@ process ALIGN_CONTIGS {
     path contigs
 
   output:
-    path "${contigs.getBaseName().split('_')[2]}"
+    path "*"
 
   script:
     """
-    shiver_align_contigs.sh ${initdir} ${params.config} ${contigs} ${contigs.getBaseName().split('_')[2]}
+    mkdir ${contigs.getBaseName().split('_')[2]}
+    cd ${contigs.getBaseName().split('_')[2]}
+    shiver_align_contigs.sh ../${initdir} ${params.config} ../${contigs} ${contigs.getBaseName().split('_')[2]}
+    rm temp_*
     """
 }
 
