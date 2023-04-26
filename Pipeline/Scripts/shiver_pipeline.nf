@@ -11,7 +11,7 @@ nextflow.enable.dsl = 2
 */
 
 
-projectDir = "/home/beast2/rki_shiver_pipeline/Pipeline"
+projectDir = "/home/beast2/rki_shiver/Pipeline"
 params.trimmomatic = "${projectDir}/bin/trimmomatic-0.36.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
@@ -35,12 +35,10 @@ process RENAME_FASTQ {
   output:
     path "*.fastq.gz"
 
-  script: 
-
-    """
-    regex-rename '\\d{6}_\\d{2}-\\d{5}_(HIV\\d{2}-\\d{5})_\\d{2}_\\d{3}_\\w{3}_\\w{4}_(R\\d)_\\d{3}.(\\w{5}.\\w{2})' '\\1_\\2.\\3' --rename
-    
-    """
+  script:
+   """
+   regex-rename '\\d{6}_\\d{2}-\\d{5}_HIV(\\d{2}-\\d{5})_\\w{2,}_?\\d{2,}?_\\w{3}_\\w{4}_(R\\d)_\\d{3}.(\\w{5}.\\w{2})' '\\1_\\2.\\3' --rename
+   """
 }
 
 process contigs {
@@ -64,10 +62,8 @@ process contigs {
 
 workflow {
   fastq = channel.fromPath("${projectDir}/RawData/*.fastq.gz").collect()
-  fastq.flatten().view()
   renamed_fastq = RENAME_FASTQ(fastq.flatten())
-
-  //inputfastaq = channel.fromFilePairs("${projectDir}/Fastq/*.R{1,2}*.fastq.gz")
-  //inputfastaq.view()
+  id_fastq = channel.fromFilePairs("${projectDir}/${params.outdir}/1_renamed_fastq/*_R{1,2}.fastq.gz")
+  id_fastq.view()
 }
 
