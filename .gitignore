@@ -1,5 +1,4 @@
 GitShiver/*
-Pipeline/bin/
 Pipeline/.nextflow
 Pipeline/Results/
 Pipeline/RawData/*
