@@ -51,7 +51,7 @@ process IVA_CONTIGS {
   errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
-  tag "iva on sample ${id}"
+  
 
   input:
     tuple val(id), path(reads)
@@ -91,7 +91,7 @@ process ALIGN_CONTIGS {
 
 process ID_BLAST {
   conda "/home/beast2/anaconda3/envs/shiver"
-  publishDir "${params.outdir}/4_cut_alignments", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/4_id_blast", mode: "copy", overwrite: true
 
   input:
     path blast
@@ -106,6 +106,24 @@ process ID_BLAST {
     """
 }
 
+process ID_CONTIGS {
+  conda "/home/beast2/anaconda3/envs/shiver"
+  publishDir "${params.outdir}/5_id_contigs", mode: "copy", overwrite: true
+
+  input:
+    path contigs
+  
+  output:
+    tuple val("${contigs.getBaseName().split("_contigs")[0]}"), path("${contigs}")
+    
+    
+  script:
+    """
+    echo "Contigs with IDs channel is ready"
+    """
+}
+
+
 workflow {
   //fastq = channel.fromPath("${projectDir}/RawData/*.fastq.gz").collect()
   //renamed_fastq = RENAME_FASTQ(fastq.flatten())
@@ -115,11 +133,11 @@ workflow {
   //initdir_from_path = channel.fromPath("${projectDir}/${params.outdir}/2_iva_contigs/InitDIr")
   iva_contigs = IVA_CONTIGS(fastq_pairs)
   contigs_collected = iva_contigs.fasta_contig.collect()
-  //contigs_collected.view()
+  contigs_collected.view()
   //iva_contigs_from_path = channel.fromPath("${projectDir}/${params.outdir}/3_iva_contigs/*/*.fasta").collect()
   refs = ALIGN_CONTIGS(initdir, contigs_collected.flatten())
-  refs.blast.view()
-  ID_BLAST(refs.blast).view()
+  ID_BLAST(refs.blast)
+  ID_CONTIGS(contigs_collected.flatten()).view()
 
 
 
