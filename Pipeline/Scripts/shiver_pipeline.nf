@@ -78,13 +78,31 @@ process ALIGN_CONTIGS {
 
   output:
     path "*"
-
+    path "*.fasta", emit: fasta
+    path "*.blast", emit: blast
+    
   script:
     """
-    mkdir ${contigs.getBaseName().split('_')[2]}
-    cd ${contigs.getBaseName().split('_')[2]}
-    shiver_align_contigs.sh ../${initdir} ${params.config} ../${contigs} ${contigs.getBaseName().split('_')[2]}
+    shiver_align_contigs.sh ${initdir} ${params.config} ${contigs} ${contigs.getBaseName().split("_contigs")[0]}
     rm temp_*
+    rm *_MergedHits.blast*
+    """
+}
+
+process ID_BLAST {
+  conda "/home/beast2/anaconda3/envs/shiver"
+  publishDir "${params.outdir}/4_cut_alignments", mode: "copy", overwrite: true
+
+  input:
+    path blast
+  
+  output:
+    tuple val("${blast.getBaseName()}"), path("${blast}")
+    
+    
+  script:
+    """
+    echo "${blast.getBaseName()} ${blast}"
     """
 }
 
@@ -97,9 +115,13 @@ workflow {
   //initdir_from_path = channel.fromPath("${projectDir}/${params.outdir}/2_iva_contigs/InitDIr")
   iva_contigs = IVA_CONTIGS(fastq_pairs)
   contigs_collected = iva_contigs.fasta_contig.collect()
-  contigs_collected.view()
+  //contigs_collected.view()
   //iva_contigs_from_path = channel.fromPath("${projectDir}/${params.outdir}/3_iva_contigs/*/*.fasta").collect()
-  ALIGN_CONTIGS(initdir, contigs_collected.flatten())
+  refs = ALIGN_CONTIGS(initdir, contigs_collected.flatten())
+  refs.blast.view()
+  ID_BLAST(refs.blast).view()
+
+
 
 }
 
