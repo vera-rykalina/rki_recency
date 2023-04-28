@@ -78,7 +78,9 @@ process ALIGN_CONTIGS {
 
   output:
     path "*"
-    path "*.fasta", emit: fasta
+    //path "*.fasta", emit: fasta
+    path "*cut*.fasta", emit: cut
+    path "*raw*.fasta", emit: raw
     path "*.blast", emit: blast
     
   script:
@@ -119,8 +121,50 @@ process ID_CONTIGS {
     
   script:
     """
-    echo "Contigs with IDs channel is ready"
+    echo "${contigs.getBaseName()} ${contigs}"
     """
+}
+
+process ID_REF {
+  conda "/home/beast2/anaconda3/envs/shiver"
+  publishDir "${params.outdir}/6_id_ref", mode: "copy", overwrite: true
+
+  input:
+    path refs
+  
+  output:
+    tuple val("${refs.getBaseName().split("_cut")[0].split("_raw")[0]}"), path("${refs}")
+    
+  script:
+   
+    """
+    echo "${refs}"
+    """ 
+   
+}
+
+
+process MAP {
+  conda "/home/beast2/anaconda3/envs/shiver"
+  publishDir "${params.outdir}/7_mapped", mode: "copy", overwrite: true
+
+  input:
+    path InitDir
+    tuple val(id_contigs), path(contigs)
+    tuple val(id_blast), path(blast)
+    tuple val(id_cut_alignment), path(cut_alignment)
+    tuple val(id_reads), path(reads)
+
+  
+  output:
+    path "${contigs[0]}"
+    
+  script:
+    if (id_contigs==id_blast && id_contigs== id_cut_alignment && id_contigs==id_reads) {
+    """
+    shiver_map_reads.sh ${InitDir} ${params.config} ${contigs[1]} ${contigs[0]} ${blast[1]} ${cut_alignment} ${reads[1]} ${reads[2]}
+    """ 
+    }
 }
 
 
@@ -133,13 +177,15 @@ workflow {
   //initdir_from_path = channel.fromPath("${projectDir}/${params.outdir}/2_iva_contigs/InitDIr")
   iva_contigs = IVA_CONTIGS(fastq_pairs)
   contigs_collected = iva_contigs.fasta_contig.collect()
-  contigs_collected.view()
   //iva_contigs_from_path = channel.fromPath("${projectDir}/${params.outdir}/3_iva_contigs/*/*.fasta").collect()
   refs = ALIGN_CONTIGS(initdir, contigs_collected.flatten())
-  ID_BLAST(refs.blast)
-  ID_CONTIGS(contigs_collected.flatten()).view()
-
-
-
+  id_blast = ID_BLAST(refs.blast)
+  id_contigs = ID_CONTIGS(contigs_collected.flatten())
+  //refs.cut.collect().view()
+  id_refs = ID_REF(refs.cut.collect().flatten())
+  formapping = id_contigs.combine(id_blast, by:0).combine(id_refs, by:0).combine(fastq_pairs, by:0).view()
+  //MAP(initdir,id_contigs, id_blast, id_refs, fastq_pairs)
+  //ch.full.map(id, contigs, blast, cut, reads)
 }
+
 
