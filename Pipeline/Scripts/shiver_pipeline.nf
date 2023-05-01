@@ -6,6 +6,7 @@ params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
 params.config = "${projectDir}/Scripts/bin/config.sh"
+params.remove_whitespace = "${projectDir}/Scripts/bin/tools/RemoveTrailingWhitespace.py"
 
 
 params.outdir = null
@@ -157,10 +158,17 @@ process ID_FASTQ {
   input:
     tuple val(id), path(fastq)
   output:
-    tuple val("${id}"), path("${fastq[0]}"), path("${fastq[1]}")
+    tuple val("${id}"), path("${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq"), path("${fastq[1].getBaseName().split("_R")[0]}_RWS_2.fastq")
+  
   script:
    """
-   echo "${id}"
+   zcat ${fastq[0]} | awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' | sed 's/:N:.*//' > ${fastq[0].getBaseName().split("_R")[0]}_1.fastq
+   rm ${fastq[0]}
+   python ${params.remove_whitespace} ${fastq[0].getBaseName().split("_R")[0]}_1.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq
+
+   zcat ${fastq[1]} | awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' | sed 's/:N:.*//' > ${fastq[1].getBaseName().split("_R")[0]}_2.fastq
+   rm ${fastq[1]}
+   python ${params.remove_whitespace} ${fastq[0].getBaseName().split("_R")[0]}_2.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_2.fastq
    """
 }
 
@@ -174,12 +182,14 @@ process MAP {
     path args_list
     
   output:
-    path "${args_list[1].getBaseName()}"
+    path "*"
+    //path "${args_list[1].getBaseName()}"
     
   script:
     if (args_list instanceof List) {
     """
     shiver_map_reads.sh ${initdir} ${params.config} ${args_list[0]} ${args_list[1].getBaseName()} ${args_list[1]} ${args_list[2]} ${args_list[3]} ${args_list[4]}
+    rm temp_*
     """ 
     }
 }
@@ -198,12 +208,14 @@ workflow {
   id_contigs = ID_CONTIGS(contigs_collected.flatten())
   //refs.cut.collect().view()
   id_refs = ID_REF(refs.cut.collect().flatten())
-  id_fastq = ID_FASTQ(fastq_pairs)
+  fastq_pairs.view()
+  id_fastq = ID_FASTQ(fastq_pairs).view()
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = id_contigs.combine(id_blast, by:0).combine(id_refs, by:0).combine(id_fastq, by:0)
   // Get rid off id
   no_id_args = map_args.map { id, contigs, blast, ref_cut, read1, read2 -> [contigs, blast, ref_cut, read1, read2]}
-  MAP(initdir,no_id_args)
+  
+MAP(initdir,no_id_args)
   
 }
 
