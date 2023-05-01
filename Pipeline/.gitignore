@@ -1,0 +1,9 @@
+.DS_Store/
+GitShiver/*
+Pipeline
+Pipeline/.nextflow
+Pipeline/Results/
+#Pipeline/RawData/*
+Pipeline/.nextflow.log*
+Pipeline/.nextflow
+Pipeline/work/
