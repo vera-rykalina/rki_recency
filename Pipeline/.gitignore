@@ -1,9 +1,0 @@
-.DS_Store/
-GitShiver/*
-Pipeline
-Pipeline/.nextflow
-Pipeline/Results/
-#Pipeline/RawData/*
-Pipeline/.nextflow.log*
-Pipeline/.nextflow
-Pipeline/work/Scripts/bin/tools/__pycache__/AuxiliaryFunctions.cpython-310.pyc
