@@ -6,5 +6,5 @@ Pipeline/.nextflow.log*
 Pipeline/.nextflow
 Pipeline/Test/
 Pipeline/work/
-.DS_Store/
+Pipeline/.DS_Store/
 Pipeline/work/Scripts/bin/tools/__pycache__/AuxiliaryFunctions.cpython-310.pyc
