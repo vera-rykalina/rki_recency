@@ -6,4 +6,4 @@ Pipeline/Results/
 #Pipeline/RawData/*
 Pipeline/.nextflow.log*
 Pipeline/.nextflow
-Pipeline/work/
+Pipeline/work/Scripts/bin/tools/__pycache__/AuxiliaryFunctions.cpython-310.pyc
