@@ -1,0 +1,19 @@
+name: shiver
+channels:
+  - defaults
+dependencies:
+  - pyfastaq=3.17
+  - python=3
+  - smalt
+  - picard==2.27.4
+  - biopython
+  - trimmomatic
+  - samtools
+  - pip
+  - mafft
+  - bwa
+  - bowtie2
+  - blast
+  - unzip
+  - gzip
+prefix: /usr/local/Caskroom/miniconda/base/envs/shiver
