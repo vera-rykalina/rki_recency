@@ -214,8 +214,7 @@ workflow {
   map_args = id_contigs.combine(id_blast, by:0).combine(id_refs, by:0).combine(id_fastq, by:0)
   // Get rid off id
   no_id_args = map_args.map { id, contigs, blast, ref_cut, read1, read2 -> [contigs, blast, ref_cut, read1, read2]}
-  
-MAP(initdir,no_id_args)
+  MAP(initdir,no_id_args)
   
 }
 
