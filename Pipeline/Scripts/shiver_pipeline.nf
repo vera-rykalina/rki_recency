@@ -48,20 +48,17 @@ process INITIALISATION {
 
 }
 
-
 process IVA_CONTIGS {
   //errorStrategy 'ignore'
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "/usr/local/Caskroom/miniconda/base/envs/iva"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
   
-
   input:
     tuple val(id), path(reads)
 
   output:
-    path "${id}"
-    path "${id}/${id}_contigs.fasta", emit: fasta_contig
+    tuple val("${id}"), path("${id}/${id}_contigs.fasta")
 
   script:
     """
@@ -79,81 +76,23 @@ process ALIGN_CONTIGS {
   
   input:
     path initdir
-    path contigs
+    tuple val(id), path(contigs)
 
   output:
-    path "*"
-    //path "*.fasta", emit: fasta
-    path "*cut*.fasta", emit: cut
-    path "*raw*.fasta", emit: raw
-    path "*.blast", emit: blast
-    
+    tuple val("${id}"), path("${id}*.fasta"), path("${id}.blast")
+
   script:
     """
-    shiver_align_contigs.sh ${initdir} ${params.config} ${contigs} ${contigs.getBaseName().split("_contigs")[0]}
+    shiver_align_contigs.sh ${initdir} ${params.config} ${contigs} ${id}
     rm temp_*
     rm *_MergedHits.blast*
     """
 }
 
-process ID_BLAST {
-  //conda "/home/beast2/anaconda3/envs/shiver"
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/4_id_blast", mode: "copy", overwrite: true
-
-  input:
-    path blast
-  
-  output:
-    tuple val("${blast.getBaseName()}"), path("${blast}")
-    
-    
-  script:
-    """
-    echo "${blast.getBaseName()} ${blast}"
-    """
-}
-
-process ID_CONTIGS {
-  //conda "/home/beast2/anaconda3/envs/shiver"
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/5_id_contigs", mode: "copy", overwrite: true
-
-  input:
-    path contigs
-  
-  output:
-    tuple val("${contigs.getBaseName().split("_contigs")[0]}"), path("${contigs}")
-    
-    
-  script:
-    """
-    echo "${contigs.getBaseName()} ${contigs}"
-    """
-}
-
-process ID_REF {
-  //conda "/home/beast2/anaconda3/envs/shiver"
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/6_id_ref", mode: "copy", overwrite: true
-
-  input:
-    path refs
-  
-  output:
-    tuple val("${refs.getBaseName().split("_cut")[0].split("_raw")[0]}"), path("${refs}")
-    
-  script:
-   
-    """
-    echo "${refs}"
-    """ 
-   
-}
 
 process ID_FASTQ {
   conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/7_id_fastq", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
 
   input:
     tuple val(id), path(fastq)
@@ -175,47 +114,51 @@ process ID_FASTQ {
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/8_mapped", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/5_mapped", mode: "copy", overwrite: true
+  debug true
 
   input:
     path initdir
-    path args_list
+    tuple val(id), path(contigs), path(refs), path(blast), path(read1), path(read2)
     
   output:
     path "*"
-    //path "${args_list[1].getBaseName()}"
     
   script:
-    if (args_list instanceof List) {
+    if (refs instanceof List) {
     """
-    shiver_map_reads.sh ${initdir} ${params.config} ${args_list[0]} ${args_list[1].getBaseName()} ${args_list[1]} ${args_list[2]} ${args_list[3]} ${args_list[4]}
-    rm temp_*
+    shiver_map_reads.sh ${initdir} ${params.config} ${contigs} ${id} ${blast} ${refs[0]} ${read1} ${read2}
+    rm temp_* 
+    
     """ 
+    } else {
+     """
+    shiver_map_reads.sh ${initdir} ${params.config} ${contigs} ${id} ${blast} ${refs} ${read1} ${read2}
+    rm temp_* 
+    
+     """
     }
 }
 
 
 workflow {
-  //fastq = channel.fromPath("${projectDir}/RawData/*.fastq.gz").collect()
-  //renamed_fastq = RENAME_FASTQ(fastq.flatten())
-  //id_fastq = channel.fromFilePairs("${projectDir}/${params.outdir}/1_renamed_fastq/*_R{1,2}.fastq.gz")
   fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
   initdir = INITIALISATION()
   iva_contigs = IVA_CONTIGS(fastq_pairs)
-  contigs_collected = iva_contigs.fasta_contig.collect()
-  refs = ALIGN_CONTIGS(initdir, contigs_collected.flatten())
-  id_blast = ID_BLAST(refs.blast)
-  id_contigs = ID_CONTIGS(contigs_collected.flatten())
-  //refs.cut.collect().view()
-  id_refs = ID_REF(refs.cut.collect().flatten())
-  fastq_pairs.view()
-  id_fastq = ID_FASTQ(fastq_pairs).view()
+  refs = ALIGN_CONTIGS(initdir, iva_contigs)
+  id_fastq = ID_FASTQ(fastq_pairs)
   // Combine according to a key that is the first value of every first element, which is a list
-  map_args = id_contigs.combine(id_blast, by:0).combine(id_refs, by:0).combine(id_fastq, by:0)
-  // Get rid off id
-  no_id_args = map_args.map { id, contigs, blast, ref_cut, read1, read2 -> [contigs, blast, ref_cut, read1, read2]}
-  MAP(initdir,no_id_args)
+  map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
+  map_out = MAP(initdir, map_args)
+  map_out.flatten().view()
   
 }
+
+  // Combine according to a key that is the first value of every first element, which is a list
+  //map_args = id_contigs.combine(id_blast, by:0).combine(id_refs, by:0).combine(id_fastq, by:0)
+  // Get rid off id
+  //no_id_args = map_args.map { id, contigs, blast, ref_cut, read1, read2 -> [contigs, blast, ref_cut, read1, read2]}
+  //MAP(initdir,no_id_args)
+  
 
 
