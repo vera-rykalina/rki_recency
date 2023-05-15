@@ -1,7 +1,7 @@
 GitShiver/*
 Pipeline/.nextflow
 Pipeline/Results/
-#Pipeline/RawData/*
+Pipeline/RawData/*
 Pipeline/.nextflow.log*
 Pipeline/.nextflow
 Pipeline/Test/
