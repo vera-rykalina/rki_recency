@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-
+#!/usr/bin/env python2
+from __future__ import print_function
 
 ## Author: Chris Wymant, chris.wymant@bdi.ox.ac.uk
 ## Acknowledgement: I wrote this while funded by ERC Advanced Grant PBDR-339251
@@ -78,5 +78,5 @@ if SeqDict == {}:
   exit(1)
 
 # Write the files.
-for FilenameSafeID, seq in list(SeqDict.items()):
+for FilenameSafeID, seq in SeqDict.items():
   SeqIO.write(seq, FilenameFromSeqID(FilenameSafeID), "fasta")

@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-
+#!/usr/bin/env python2
+from __future__ import print_function
 
 ## Author: Chris Wymant, chris.wymant@bdi.ox.ac.uk
 ## Acknowledgement: I wrote this while funded by ERC Advanced Grant PBDR-339251
@@ -44,11 +44,11 @@ OKbases = "ACGTNacgtn-?"
 
 BaseCountsByPos = []
 BaseCountTotalsByPos = []
-for pos in range(AlignmentLength):
+for pos in xrange(AlignmentLength):
 
   # Sort the OKbases here by how common they are. (Check there are some!)
   BaseCounts = collections.Counter(alignment[:, pos])
-  BasesObserved = list(BaseCounts.keys())
+  BasesObserved = BaseCounts.keys()
   for base in BasesObserved:
     if not base in OKbases:
       del BaseCounts[base]
@@ -64,10 +64,10 @@ for pos in range(AlignmentLength):
 MutableSeqList = [seq.seq.tomutable() for seq in alignment]
 IDs = [seq.id for seq in alignment]
 
-for row in range(len(MutableSeqList)):
+for row in xrange(len(MutableSeqList)):
   SeqAsStr = str(MutableSeqList[row])
   ID = IDs[row]
-  for pos in range(AlignmentLength):
+  for pos in xrange(AlignmentLength):
 
     # Check at this position whether ambiguity interpretation is needed.
     base = SeqAsStr[pos]
