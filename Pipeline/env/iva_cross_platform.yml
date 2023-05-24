@@ -1,8 +1,0 @@
-name: iva
-channels:
-  - defaults
-dependencies:
-  - python=3.7
-  - iva
-  - mummer4
-prefix: /usr/local/Caskroom/miniconda/base/envs/iva

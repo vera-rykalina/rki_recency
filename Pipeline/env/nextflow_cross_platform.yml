@@ -1,6 +1,0 @@
-name: nextflow
-channels:
-  - defaults
-dependencies:
-  - nextflow
-prefix: /usr/local/Caskroom/miniconda/base/envs/nextflow
