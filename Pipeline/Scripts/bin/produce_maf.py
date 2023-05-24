@@ -1,5 +1,8 @@
+#!/home/beast2/anaconda3/envs/nextflow/bin/python
+
 # Import libraries
 import pandas as pd
+import numpy as np
 import sys
 import re
 
@@ -14,7 +17,7 @@ f.close()
 
 
 name1 = infilename.rsplit("/")[-1] # gives a file name.csv
-name2 = name1.split("_BaseFreqs_")[0] # gives a sample ID
+name2 = name1.split("_BaseFreqs_")[0].split("_remap")[0] # gives a sample ID
 #name3 = name1.split("_Rega_")[-1].split(".")[-2] # {run_index}_{framgment}_20M
 
 
@@ -30,8 +33,9 @@ df["Sum"] = df[["A count", "C count", "G count", "T count"]].sum(axis=1)
 # Find Max (throughout columns A count: T count)
 df["MAF"] = 1 - df["Max"]/df["Sum"]
 
+# Replace NaNs by zeros 
+df["MAF"] = df["MAF"].replace(np.nan, 0)
+print(df.head())
 
 # Prepare a .csv file
-df.to_csv(name2 + ".csv", sep=",", index=False, encoding="utf-8")
-
-print(df.head())
+df.to_csv(name2 + "_MAF" + ".csv", sep=",", index=False, encoding="utf-8")
