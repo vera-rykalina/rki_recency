@@ -1,6 +1,6 @@
 nextflow.enable.dsl = 2
 
-projectDir = "/Users/vera/Projects/rki_shiver/Pipeline/"
+projectDir = "/home/beast2/rki_shiver/Pipeline"
 params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
@@ -32,8 +32,9 @@ process RENAME_FASTQ {
 }
 
 process INITIALISATION {
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "/home/beast2/anaconda3/envs/shiver"
+  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
+  conda "/home/beast2/anaconda3/envs/shiver2"
+  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
   publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
 
   input:
@@ -50,8 +51,9 @@ process INITIALISATION {
 
 process IVA_CONTIGS {
   //errorStrategy 'ignore'
-  //conda "/home/beast2/anaconda3/envs/iva"
-  conda "/usr/local/Caskroom/miniconda/base/envs/iva"
+  conda "/home/beast2/anaconda3/envs/iva"
+  //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
+  //conda "/home/beast2/rki_shiver/Pipeline/env/iva.yml"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
   
   input:
@@ -68,10 +70,11 @@ process IVA_CONTIGS {
 }
 
 process ALIGN_CONTIGS {
-  errorStrategy "ignore"
-  //conda "/home/beast2/anaconda3/envs/shiver"
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/3_alignments", mode: "copy", overwrite: true
+  //errorStrategy "ignore"
+  conda "/home/beast2/anaconda3/envs/shiver2"
+  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
+  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
+  publishDir "${params.outdir}/3_alignments/${id}", mode: "copy", overwrite: true
  
   
   input:
@@ -91,7 +94,9 @@ process ALIGN_CONTIGS {
 
 
 process ID_FASTQ {
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
+  conda "/home/beast2/anaconda3/envs/shiver2"
+  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
+  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
   publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
 
   input:
@@ -112,9 +117,10 @@ process ID_FASTQ {
 }
 
 process MAP {
-  //conda "/home/beast2/anaconda3/envs/shiver"
-  conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  publishDir "${params.outdir}/5_mapped", mode: "copy", overwrite: true
+  conda "/home/beast2/anaconda3/envs/shiver2"
+  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
+  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
+  publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -122,19 +128,21 @@ process MAP {
     tuple val(id), path(contigs), path(refs), path(blast), path(read1), path(read2)
     
   output:
-    path "*"
+    tuple val("${id}"), path("${id}_remap_ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
     if (refs instanceof List) {
     """
     shiver_map_reads.sh ${initdir} ${params.config} ${contigs} ${id} ${blast} ${refs[0]} ${read1} ${read2}
     rm temp_* 
+    rm *PreDedup.bam
     
     """ 
     } else {
      """
     shiver_map_reads.sh ${initdir} ${params.config} ${contigs} ${id} ${blast} ${refs} ${read1} ${read2}
     rm temp_* 
+    rm *PreDedup.bam
     
      """
     }
@@ -150,7 +158,9 @@ workflow {
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
   map_out = MAP(initdir, map_args)
-  map_out.flatten().view()
+  filtered = map_out.filter(~/.*[^D]\..*/).view()
+  
+
   
 }
 
