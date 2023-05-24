@@ -147,6 +147,32 @@ process MAP {
      """
     }
 }
+  process MAF {
+  conda "/home/beast2/anaconda3/envs/nextflow"
+  //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
+  //conda "/home/beast2/rki_shiver/Pipeline/env/iva_cross_platform.yml"
+  publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
+  debug true
+
+  input:
+    tuple val(id), path(ref), path(bam), path(bai), path(csv)
+    
+  output:
+    tuple val("${id}"), path("${id}_MAF.csv")
+    
+  script:
+    if (csv instanceof List) {
+    """
+    produce_maf.py ${csv[1]} ${id}_MAF.csv
+  
+    """ 
+    } else {
+     """
+    produce_maf.py ${csv} ${id}_MAF.csv
+     """
+    }
+  }
+
 
 
 workflow {
@@ -158,7 +184,8 @@ workflow {
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
   map_out = MAP(initdir, map_args)
-  filtered = map_out.filter(~/.*[^D]\..*/).view()
+  maf_out = MAF(map_out).view()
+ 
   
 
   
