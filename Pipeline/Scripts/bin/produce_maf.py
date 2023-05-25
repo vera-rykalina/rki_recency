@@ -39,9 +39,14 @@ df["MAF"] = df["MAF"].replace(np.nan, 0)
 # Select only what is needed
 df = df.loc[:,["Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455", "MAF"]]
 
-# Remove raw with "-" index
+# Remove raw with "-" at HXB2
 df = df[df["Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455"] != "-"]
 
+# Rename HBX2 column -> position
+df.rename({"Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455": "pos"}, axis=1, inplace=True)
+
+# Rename MAF column -> ID (sample ID)
+df.rename({"MAF": name2}, axis=1, inplace=True)
 print(df.head())
 
 # Prepare a .csv file
