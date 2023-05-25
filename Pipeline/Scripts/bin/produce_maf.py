@@ -21,8 +21,7 @@ name2 = name1.split("_BaseFreqs_")[0].split("_remap")[0] # gives a sample ID
 #name3 = name1.split("_Rega_")[-1].split(".")[-2] # {run_index}_{framgment}_20M
 
 
-# Select only what is needed
-#df = df.loc[:,["name", "assignment", "pure", "crf"]]
+
 
 # Find Max (throughout columns A count: T count)
 df["Max"] = df[["A count", "C count", "G count", "T count"]].max(axis=1)
@@ -35,6 +34,14 @@ df["MAF"] = 1 - df["Max"]/df["Sum"]
 
 # Replace NaNs by zeros 
 df["MAF"] = df["MAF"].replace(np.nan, 0)
+
+
+# Select only what is needed
+df = df.loc[:,["Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455", "MAF"]]
+
+# Remove raw with "-" index
+df = df[df["Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455"] != "-"]
+
 print(df.head())
 
 # Prepare a .csv file
