@@ -33,7 +33,7 @@ process RENAME_FASTQ {
 
 process INITIALISATION {
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  conda "/home/beast2/anaconda3/envs/shiver2"
+  conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
   publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
 
@@ -71,7 +71,7 @@ process IVA_CONTIGS {
 
 process ALIGN_CONTIGS {
   //errorStrategy "ignore"
-  conda "/home/beast2/anaconda3/envs/shiver2"
+  conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
   publishDir "${params.outdir}/3_alignments/${id}", mode: "copy", overwrite: true
@@ -94,7 +94,7 @@ process ALIGN_CONTIGS {
 
 
 process ID_FASTQ {
-  conda "/home/beast2/anaconda3/envs/shiver2"
+  conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
   publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
@@ -117,7 +117,7 @@ process ID_FASTQ {
 }
 
 process MAP {
-  conda "/home/beast2/anaconda3/envs/shiver2"
+  conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
   publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
