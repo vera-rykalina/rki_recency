@@ -50,6 +50,7 @@ process INITIALISATION {
 }
 
 process IVA_CONTIGS {
+  label "iva"
   //errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
   //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
