@@ -163,11 +163,11 @@ process MAP {
   script:
     if (csv instanceof List) {
     """
-    python params.maf ${csv[1]} ${id}_MAF.csv
+    python ${params.maf} ${csv[1]} ${id}_MAF.csv
     """ 
     } else {
      """
-    python params.maf ${csv} ${id}_MAF.csv
+    python ${params.maf} ${csv} ${id}_MAF.csv
      """
     }
   }
