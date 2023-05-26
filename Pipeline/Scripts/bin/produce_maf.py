@@ -1,5 +1,3 @@
-#!/home/beast2/anaconda3/envs/nextflow/bin/python
-
 # Import libraries
 import pandas as pd
 import numpy as np
