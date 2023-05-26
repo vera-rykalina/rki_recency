@@ -1,0 +1,11 @@
+name: python3
+channels:
+  - conda-forge
+  - bioconda
+  - pypi
+  - defaults
+dependencies:
+  - python=3.10
+  - regex
+  - pandas
+prefix: /home/beast2/anaconda3/envs/python3
