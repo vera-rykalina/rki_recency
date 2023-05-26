@@ -7,7 +7,7 @@ params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
 params.config = "${projectDir}/Scripts/bin/config.sh"
 params.remove_whitespace = "${projectDir}/Scripts/bin/tools/RemoveTrailingWhitespace.py"
-
+params.maf = "${projectDir}/Scripts/bin/produce_maf.py"
 
 params.outdir = null
 if (!params.outdir) {
@@ -148,7 +148,7 @@ process MAP {
     }
 }
   process MAF {
-  conda "/home/beast2/anaconda3/envs/nextflow"
+  conda "/home/beast2/anaconda3/envs/python3"
   //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
   //conda "/home/beast2/rki_shiver/Pipeline/env/iva_cross_platform.yml"
   publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
@@ -163,12 +163,11 @@ process MAP {
   script:
     if (csv instanceof List) {
     """
-    produce_maf.py ${csv[1]} ${id}_MAF.csv
-  
+    python params.maf ${csv[1]} ${id}_MAF.csv
     """ 
     } else {
      """
-    produce_maf.py ${csv} ${id}_MAF.csv
+    python params.maf ${csv} ${id}_MAF.csv
      """
     }
   }
