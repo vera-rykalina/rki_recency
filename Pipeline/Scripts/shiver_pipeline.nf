@@ -17,6 +17,7 @@ if (!params.outdir) {
 
 process RENAME_FASTQ {
   //conda "/home/beast2/anaconda3/envs/python3"
+  //conda "${projectDir}/Environments/env_linux_python3.yml"
   publishDir "${params.outdir}/0_renamed_fastq", mode: "copy", overwrite: true
 
   input:
@@ -34,7 +35,7 @@ process RENAME_FASTQ {
 process INITIALISATION {
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   conda "/home/beast2/anaconda3/envs/shiver"
-  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
+  //conda "${projectDir}/Environments/env_linux_shiver.yml"
   publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
 
   input:
@@ -54,7 +55,7 @@ process IVA_CONTIGS {
   //errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
   //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
-  //conda "/home/beast2/rki_shiver/Pipeline/env/iva.yml"
+  //conda "${projectDir}/Environments/env_linux_iva.yml"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
   
   input:
@@ -74,7 +75,7 @@ process ALIGN_CONTIGS {
   //errorStrategy "ignore"
   conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
+  //conda "${projectDir}/Environments/env_linux_shiver.yml"
   publishDir "${params.outdir}/3_alignments/${id}", mode: "copy", overwrite: true
  
   
@@ -97,7 +98,7 @@ process ALIGN_CONTIGS {
 process ID_FASTQ {
   conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
+  //conda "${projectDir}/Environments/env_linux_shiver.yml"
   publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
 
   input:
@@ -120,7 +121,7 @@ process ID_FASTQ {
 process MAP {
   conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "/home/beast2/rki_shiver/Pipeline/env/shiver_cross_platform.yml"
+  //conda "${projectDir}/Environments/env_linux_shiver.yml"
   publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
   debug true
 
@@ -150,8 +151,7 @@ process MAP {
 }
   process MAF {
   conda "/home/beast2/anaconda3/envs/python3"
-  //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
-  //conda "/home/beast2/rki_shiver/Pipeline/env/iva_cross_platform.yml"
+  //conda "${projectDir}/Environments/env_linux_python3.yml"
   publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
   debug true
 
