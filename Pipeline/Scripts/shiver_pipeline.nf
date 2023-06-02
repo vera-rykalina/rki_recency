@@ -121,7 +121,7 @@ process ID_FASTQ {
 process MAP {
   conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "${projectDir}/Environments/env_linux_shiver.yml"
+  //conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
   debug true
 
@@ -164,11 +164,11 @@ process MAP {
   script:
     if (csv instanceof List) {
     """
-    python ${params.maf} ${csv[1]} ${id}_MAF.csv
+    produce_maf.py ${csv} ${id}_MAF.csv
     """ 
     } else {
      """
-    python ${params.maf} ${csv} ${id}_MAF.csv
+    produce_maf.py ${csv} ${id}_MAF.csv
      """
     }
   }
