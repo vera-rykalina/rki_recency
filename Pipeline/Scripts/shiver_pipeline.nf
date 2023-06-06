@@ -17,7 +17,7 @@ if (!params.outdir) {
 
 process RENAME_FASTQ {
   //conda "/home/beast2/anaconda3/envs/python3"
-  //conda "${projectDir}/Environments/env_linux_python3.yml"
+  //conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/0_renamed_fastq", mode: "copy", overwrite: true
 
   input:
@@ -35,7 +35,7 @@ process RENAME_FASTQ {
 process INITIALISATION {
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   conda "/home/beast2/anaconda3/envs/shiver"
-  //conda "${projectDir}/Environments/env_linux_shiver.yml"
+  //conda "${projectDir}/Environments/shiver.yml"
   publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
 
   input:
@@ -55,7 +55,7 @@ process IVA_CONTIGS {
   //errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
   //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
-  //conda "${projectDir}/Environments/env_linux_iva.yml"
+  //conda "${projectDir}/Environments/iva.yml"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
   
   input:
@@ -75,7 +75,7 @@ process ALIGN_CONTIGS {
   //errorStrategy "ignore"
   conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "${projectDir}/Environments/env_linux_shiver.yml"
+  //conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/3_alignments/${id}", mode: "copy", overwrite: true
  
   
@@ -98,7 +98,7 @@ process ALIGN_CONTIGS {
 process ID_FASTQ {
   conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "${projectDir}/Environments/env_linux_shiver.yml"
+  //conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
 
   input:
@@ -151,7 +151,7 @@ process MAP {
 }
   process MAF {
   conda "/home/beast2/anaconda3/envs/python3"
-  //conda "${projectDir}/Environments/env_linux_python3.yml"
+  //conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
   debug true
 
@@ -186,9 +186,7 @@ workflow {
   map_out = MAP(initdir, map_args)
   maf_out = MAF(map_out).view()
  
-  
-
-  
+ 
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
