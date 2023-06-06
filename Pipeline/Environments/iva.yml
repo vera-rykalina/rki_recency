@@ -1,4 +1,3 @@
-name: iva
 channels:
   - conda-forge
   - bioconda
@@ -7,4 +6,3 @@ channels:
 dependencies:
   - iva
   - python=3.7
-prefix: /home/beast2/anaconda3/envs/iva
