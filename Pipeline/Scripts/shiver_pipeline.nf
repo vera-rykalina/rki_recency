@@ -1,5 +1,6 @@
 nextflow.enable.dsl = 2
 
+//projectDir = "/home/rykalinav/scratch/rki_shiver/Pipeline"
 projectDir = "/home/beast2/rki_shiver/Pipeline"
 params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
