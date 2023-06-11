@@ -1,0 +1,19 @@
+channels:
+  - bioconda
+  - pypi
+dependencies:
+  - python
+  - bzip2
+  - mafft
+  - smalt
+  - picard
+  - trimmomatic=0.39
+  - bwa
+  - picard
+  - biopython
+  - bowtie2
+  - samtools
+  - blast
+  - pip
+  - pip:
+    - pyfastaq
