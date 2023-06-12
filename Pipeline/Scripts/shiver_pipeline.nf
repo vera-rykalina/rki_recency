@@ -35,8 +35,8 @@ process RENAME_FASTQ {
 
 process INITIALISATION {
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  conda "/home/beast2/anaconda3/envs/shiver"
-  //conda "${projectDir}/Environments/shiver.yml"
+  //conda "/home/beast2/anaconda3/envs/shiver"
+  conda "${projectDir}/Environments/shiver.yml"
   publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
 
   input:
@@ -56,7 +56,7 @@ process IVA_CONTIGS {
   //errorStrategy 'ignore'
   conda "/home/beast2/anaconda3/envs/iva"
   //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
-  //conda "${projectDir}/Environments/iva.yml"
+  conda "${projectDir}/Environments/iva.yml"
   publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
   
   input:
@@ -74,9 +74,9 @@ process IVA_CONTIGS {
 
 process ALIGN_CONTIGS {
   //errorStrategy "ignore"
-  conda "/home/beast2/anaconda3/envs/shiver"
+  //conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "${projectDir}/Environments/shiver.yml"
+  conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/3_alignments/${id}", mode: "copy", overwrite: true
  
   
@@ -97,9 +97,9 @@ process ALIGN_CONTIGS {
 
 
 process ID_FASTQ {
-  conda "/home/beast2/anaconda3/envs/shiver"
+  //conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "${projectDir}/Environments/shiver.yml"
+  conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
 
   input:
@@ -120,9 +120,9 @@ process ID_FASTQ {
 }
 
 process MAP {
-  conda "/home/beast2/anaconda3/envs/shiver"
+  //conda "/home/beast2/anaconda3/envs/shiver"
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  //conda "${projectDir}/Environments/shiver.yml"
+  conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
   debug true
 
@@ -151,8 +151,8 @@ process MAP {
     }
 }
   process MAF {
-  conda "/home/beast2/anaconda3/envs/python3"
-  //conda "${projectDir}/Environments/python3.yml"
+  //conda "/home/beast2/anaconda3/envs/python3"
+  conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
   debug true
 
@@ -160,7 +160,7 @@ process MAP {
     tuple val(id), path(ref), path(bam), path(bai), path(csv)
     
   output:
-    tuple val("${id}"), path("${id}_MAF.csv")
+    path "${id}_MAF.csv"
     
   script:
     if (csv instanceof List) {
@@ -177,6 +177,7 @@ process MAP {
 
 
 workflow {
+  ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
   fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
   initdir = INITIALISATION()
   iva_contigs = IVA_CONTIGS(fastq_pairs)
@@ -185,7 +186,8 @@ workflow {
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
   map_out = MAP(initdir, map_args)
-  maf_out = MAF(map_out).view()
+  maf_out = MAF(map_out)
+  maf_all = ch_ref.combine(maf_out.collect()).view()
  
  
 }
