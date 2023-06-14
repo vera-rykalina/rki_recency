@@ -6,10 +6,6 @@ Pipeline/.nextflow.log*
 Pipeline/.nextflow
 Pipeline/work/
 Pipeline/.DS_Store
-Pipeline/work/Scripts/bin/tools/__pycache__/AuxiliaryFunctions.cpython-310.Pipeline/Scripts/bin/tools/__pycache__/ShiverFuncs.cpython-35.pyc
-Pipeline/Scripts/bin/tools/__pycache__/AuxiliaryFunctions.cpython-35.pyc
-Scripts/bin/tools/AuxiliaryFunctions.pyc
-Pipeline/Scripts/bin/tools/ShiverFuncs.pyc
 Pipeline/conda/
-Pipeline/Scripts/bin/tools/__pycache__
+
 
