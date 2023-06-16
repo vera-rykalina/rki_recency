@@ -42,7 +42,7 @@ df = df[df["Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455"] != "-"]
 df.rename({"Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455": "pos"}, axis=1, inplace=True)
 
 # Rename MAF column -> ID (sample ID)
-df.rename({"MAF": name2 + "_MAF"}, axis=1, inplace=True)
+df.rename({"MAF": name2}, axis=1, inplace=True)
 
 # Prepare a .csv file
 df.to_csv(name2 + "_MAF" + ".csv", sep=",", index=False, encoding="utf-8")
