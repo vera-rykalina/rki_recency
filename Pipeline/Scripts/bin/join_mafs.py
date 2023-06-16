@@ -34,8 +34,10 @@ dfs[0]=ref
 
 df=dfs[0]
 print(len(dfs))
+print(dfs)
+
 for df_ in dfs[1:]:
-    df = df.merge(df_, on="pos")
+    df = df.merge(df_, on="pos", how="right")
 
 
 df.to_csv("joined" + "_MAF" + ".csv", sep=",", index=False, encoding="utf-8")
