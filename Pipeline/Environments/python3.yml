@@ -6,5 +6,7 @@ channels:
   - defaults
 dependencies:
   - python=3.10
-  - regex-rename
   - pandas
+  - pip
+  - pip:
+    - regex-rename
