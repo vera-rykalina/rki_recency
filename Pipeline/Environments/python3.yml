@@ -1,9 +1,10 @@
 channels:
+  - anaconda
   - conda-forge
   - bioconda
   - pypi
   - defaults
 dependencies:
   - python=3.10
-  - regex
+  - regex-rename
   - pandas
