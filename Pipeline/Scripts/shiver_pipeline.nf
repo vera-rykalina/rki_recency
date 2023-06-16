@@ -174,6 +174,24 @@ process MAP {
     }
   }
 
+process JOIN_MAFS {
+  //conda "/home/beast2/anaconda3/envs/python3"
+  conda "${projectDir}/Environments/python3.yml"
+  publishDir "${params.outdir}/7_joined_maf", mode: "copy", overwrite: true
+  debug true
+
+  input:
+    path csvfiles
+    
+  output:
+    path "*.csv"
+    
+  script:
+    """
+    join_mafs.py ${csvfiles}
+    """ 
+  }
+
 
 
 workflow {
@@ -187,9 +205,9 @@ workflow {
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
   map_out = MAP(initdir, map_args)
   maf_out = MAF(map_out)
-  maf_all = ch_ref.combine(maf_out.collect()).view()
- 
- 
+  ref_maf = ch_ref.combine(maf_out.collect()).view()
+  ref_maf.flatten().view()
+  joined_maf = JOIN_MAFS(ref_maf)
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
