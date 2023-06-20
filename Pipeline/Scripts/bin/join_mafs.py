@@ -20,10 +20,11 @@ for df_ in dfs[1:]:
 df.drop(["HXB2 base"], axis=1, inplace=True)
 
 
-df = df.set_index("pos")
+#df = df.set_index("HXB2 base")
+print(df)
 # Transpose df
-df = df.T
-
+#df = df.T
+df = df.T.reset_index()
 # Reset index
 #df = df.reset_index()
 print(df)
@@ -31,10 +32,10 @@ print(df)
 # Make pos to be a header
 #headers = df.iloc[0]
 
-
-
 #df  = pd.DataFrame(df.values[1:], columns=headers)
-#print(df)
+df = df.rename_axis(None, axis = 1)
+print(df)
+
 
 # Create a clean csv file
-df.to_csv("joined" + "_MAF" + ".csv", sep=",", index = True, encoding="utf-8")
+df.to_csv("joined" + "_MAF" + ".csv", sep=",", index = False, header = False, encoding="utf-8")
