@@ -194,8 +194,6 @@ process JOIN_MAFS {
 
 
 process BAM_REF_CSV {
-  //conda "/home/beast2/anaconda3/envs/python3"
-  conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/8_ref_bam", mode: "copy", overwrite: true
   debug true
 
