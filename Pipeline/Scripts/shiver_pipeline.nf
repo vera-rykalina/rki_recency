@@ -193,6 +193,36 @@ process JOIN_MAFS {
   }
 
 
+process BAM_REF_CSV {
+  //conda "/home/beast2/anaconda3/envs/python3"
+  conda "${projectDir}/Environments/python3.yml"
+  publishDir "${params.outdir}/8_ref_bam", mode: "copy", overwrite: true
+  debug true
+
+  input:
+    tuple val(id), path(ref), path(bam), path(bai), path(csv)
+    
+  output:
+    path "*_bam_ref.csv"
+  
+  script:
+    if (bam instanceof List) {
+    """
+    for bamfile in *_remap.bam; do
+      echo ${id}_remap.bam,${id}_remap_ref.fasta,${id}
+    done > ${id}_bam_ref.csv
+    """ 
+    } else {
+     """
+    for bamfile in *.bam; do
+      echo ${id}.bam,${id}_ref.fasta,${id}  
+    done > ${id}_bam_ref.csv
+     """
+    }
+  
+  }
+
+
 
 workflow {
   ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
@@ -203,11 +233,11 @@ workflow {
   id_fastq = ID_FASTQ(fastq_pairs)
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
-  map_out = MAP(initdir, map_args)
+  map_out = MAP(initdir, map_args).view()
   maf_out = MAF(map_out)
-  ref_maf = ch_ref.combine(maf_out.collect()).view()
-  ref_maf.flatten().view()
+  ref_maf = ch_ref.combine(maf_out.collect())
   joined_maf = JOIN_MAFS(ref_maf)
+  phyloscanner_csv = BAM_REF_CSV(map_out)
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
