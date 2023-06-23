@@ -235,8 +235,6 @@ process BAM_REF_CSV {
     """ 
   }
 
-
-
 workflow {
   ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
   fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
@@ -252,6 +250,7 @@ workflow {
   joined_maf = JOIN_MAFS(ref_maf)
   phyloscanner_csvfiles = BAM_REF_CSV(map_out)
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
+  phyloscanner_input.concat(map_out).flatten().view()
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
