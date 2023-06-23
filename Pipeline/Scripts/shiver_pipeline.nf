@@ -217,7 +217,22 @@ process BAM_REF_CSV {
     done > ${id}_bam_ref.csv
      """
     }
+ }
+
+  process PHYLOSCANNER_CSV {
+  publishDir "${params.outdir}/9_phyloscanner_input", mode: "copy", overwrite: true
+  debug true
+
+  input:
+    path csv
+    
+  output:
+    path "phyloscanner_input.csv"
   
+  script:
+    """
+    cat *_bam_ref.csv > phyloscanner_input.csv
+    """ 
   }
 
 
@@ -235,7 +250,8 @@ workflow {
   maf_out = MAF(map_out)
   ref_maf = ch_ref.combine(maf_out.collect())
   joined_maf = JOIN_MAFS(ref_maf)
-  phyloscanner_csv = BAM_REF_CSV(map_out)
+  phyloscanner_csvfiles = BAM_REF_CSV(map_out)
+  phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
