@@ -136,7 +136,7 @@ process MAP {
     tuple val(id), path(contigs), path(refs), path(blast), path(read1), path(read2)
     
   output:
-    tuple val("${id}"), path("${id}_remap_ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
+    tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
     if (refs instanceof List) {
@@ -274,7 +274,7 @@ workflow {
   phyloscanner_csvfiles = BAM_REF_CSV(map_out)
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
   phyloscanner_input.concat(map_out).flatten().view()
-  aligned_reads = MAKE_TREES(phyloscanner_input, phyloscanner_input.concat(map_out).flatten())
+  //aligned_reads = MAKE_TREES(phyloscanner_input, phyloscanner_input.concat(map_out).flatten())
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
