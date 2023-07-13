@@ -240,19 +240,27 @@ process BAM_REF_CSV {
     """ 
   }
 
+
 process MAKE_TREES {
-//conda "/home/beast2/anaconda3/envs/shiver"
 //conda "/home/beast2/anaconda3/envs/phyloscanner"
 conda "${projectDir}/Environments/phyloscanner.yml"
-publishDir "${params.outdir}/10_made_trees", mode: "copy", overwrite: true debug true
+publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
+debug true
+
 input:
-path bam_ref_csv, name: "phyloscanner_output.csv"
-//tuple val("${id}"), path("${id}_remap_ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv") //tuple val(id), path(ref), path(bam), path(bai), path(csv)
+  path bam_ref_csv, name: "phyloscanner_input.csv"
+  path phylo_files
+
 output:
-path "*"
+  path "AlignedReads", emit: AlignedReads
+  path "Consensuses", emit: Consensuses
+  path "ReadNames", emit: ReadsNames
+  path "*.csv", emit: WindowCoordinateCorrespondence
+
 script:
+// remove 9470,9720,9480,9730,9490,9740 from windows
 """
-phyloscanner_make_trees.py ${bam_ref_csv} ${params.extra_args} -P -D --no-trees --read-names-only --merging-threshold-a 0 --min-read-count 1 -W \$(cat ${params.windows_oneline}) --x-raxml "${params.raxmlargs}"
+  phyloscanner_make_trees.py ${bam_ref_csv} ${params.extra_args} -P -D --no-trees --read-names-only --merging-threshold-a 0 --min-read-count 1 -W \$(cat ${params.windows_oneline}) --x-raxml "${params.raxmlargs}"
 """ 
 }
 
@@ -267,14 +275,15 @@ workflow {
   id_fastq = ID_FASTQ(fastq_pairs)
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
-  map_out = MAP(initdir, map_args).view()
+  map_out = MAP(initdir, map_args)
   maf_out = MAF(map_out)
   ref_maf = ch_ref.combine(maf_out.collect())
   joined_maf = JOIN_MAFS(ref_maf)
   phyloscanner_csvfiles = BAM_REF_CSV(map_out)
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
-  phyloscanner_input.concat(map_out).flatten().view()
-  //aligned_reads = MAKE_TREES(phyloscanner_input, phyloscanner_input.concat(map_out).flatten())
+  mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}.view()
+  aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
+  
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
