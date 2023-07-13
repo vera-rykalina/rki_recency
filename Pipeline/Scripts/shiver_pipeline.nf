@@ -129,7 +129,7 @@ process MAP {
   //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
-  debug true
+  //debug true
 
   input:
     path initdir
@@ -245,16 +245,16 @@ process MAKE_TREES {
 //conda "/home/beast2/anaconda3/envs/phyloscanner"
 conda "${projectDir}/Environments/phyloscanner.yml"
 publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
-debug true
+//debug true
 
 input:
   path bam_ref_csv, name: "phyloscanner_input.csv"
   path phylo_files
 
 output:
-  path "AlignedReads", emit: AlignedReads
-  path "Consensuses", emit: Consensuses
-  path "ReadNames", emit: ReadsNames
+  path "AlignedReads/*.fasta", emit: AlignedReads
+  path "Consensuses/*.fasta", emit: Consensuses
+  path "ReadNames/*.csv.gz", emit: ReadsNames
   path "*.csv", emit: WindowCoordinateCorrespondence
 
 script:
@@ -281,9 +281,10 @@ workflow {
   joined_maf = JOIN_MAFS(ref_maf)
   phyloscanner_csvfiles = BAM_REF_CSV(map_out)
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
-  mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}.view()
+  mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
   aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
-  
+  ch_aligned_reads_positions_excised = aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/).view()
+
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
