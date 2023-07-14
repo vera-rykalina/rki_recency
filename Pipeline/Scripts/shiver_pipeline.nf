@@ -259,12 +259,31 @@ output:
 
 script:
 // remove 9470,9720,9480,9730,9490,9740 from windows
+// --read-names-2 (Does not exists! - not used by me in the command)
 """
   phyloscanner_make_trees.py ${bam_ref_csv} ${params.extra_args} -P -D --no-trees --read-names-only --merging-threshold-a 0 --min-read-count 1 -W \$(cat ${params.windows_oneline}) --x-raxml "${params.raxmlargs}"
 """ 
 }
 
+process IQTREE {
+label "iqtree"
+conda "${projectDir}/Environments/iqtree.yml"
+publishDir "${params.outdir}/11_iqtree_trees", mode: "copy", overwrite: true
+//debug true
 
+input:
+  path fasta
+
+output:
+  path "*.treefile", emit: treefile
+  path "*.iqtree", emit: iqtree
+  path "*.log", emit: iqtreelog
+
+script:
+"""
+  iqtree -s ${fasta} -pre IQTREE_bestTree.InWindow_${fasta.getSimpleName().split("Excised_")[1]} -m GTR+F+R6 -nt 16
+""" 
+}
 
 workflow {
   ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
@@ -283,8 +302,8 @@ workflow {
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
   mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
   aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
-  ch_aligned_reads_positions_excised = aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/).view()
-
+  ch_aligned_reads_positions_excised = aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/)
+  ch_iqtree = IQTREE(ch_aligned_reads_positions_excised)
 }
 
   // Combine according to a key that is the first value of every first element, which is a list
