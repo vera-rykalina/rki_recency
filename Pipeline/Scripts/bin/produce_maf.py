@@ -45,4 +45,4 @@ df.rename({"Position in B.FR.83.HXB2_LAI_IIIB_BRU.K03455": "pos"}, axis=1, inpla
 df.rename({"MAF": name2}, axis=1, inplace=True)
 
 # Prepare a .csv file
-df.to_csv(name2 + "_MAF" + ".csv", sep=",", index=False, encoding="utf-8")
+df.to_csv(name2 + ".csv", sep=",", index=False, encoding="utf-8")
