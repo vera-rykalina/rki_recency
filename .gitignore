@@ -7,5 +7,6 @@ Pipeline/.nextflow
 Pipeline/work/
 Pipeline/.DS_Store
 Pipeline/conda/
+Pipeline/Test
 
 
