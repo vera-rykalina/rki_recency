@@ -169,16 +169,16 @@ process MAP {
     tuple val(id), path(ref), path(bam), path(bai), path(csv)
     
   output:
-    path "${id}_MAF.csv"
+    path "${id}.csv"
     
   script:
     if (csv instanceof List) {
     """
-    produce_maf.py ${csv} ${id}_MAF.csv
+    produce_maf.py ${csv} ${id}.csv
     """ 
     } else {
      """
-    produce_maf.py ${csv} ${id}_MAF.csv
+    produce_maf.py ${csv} ${id}.csv
      """
     }
   }
