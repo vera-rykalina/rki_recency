@@ -43,7 +43,6 @@ process RENAME_FASTQ {
 }
 
 process INITIALISATION {
-  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
   publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
@@ -55,18 +54,56 @@ process INITIALISATION {
   script:
   
   """
-  shiver_init.sh InitDir ${params.config} ${params.alignment} ${params.illumina_adapters} ${params.gal_primers}
+  shiver_init.sh \
+    InitDir \
+    ${params.config} \
+    ${params.alignment} \
+    ${params.illumina_adapters} \
+    ${params.gal_primers}
   """
 
 }
 
+process ID_FASTQ {
+  //conda "/home/beast2/anaconda3/envs/shiver"
+  conda "${projectDir}/Environments/shiver.yml"
+  publishDir "${params.outdir}/2_id_fastq", mode: "copy", overwrite: true
+
+  input:
+    tuple val(id), path(fastq)
+  output:
+    // RWS - removed white space
+    tuple val("${id}"), path("${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq"), path("${fastq[1].getBaseName().split("_R")[0]}_RWS_2.fastq")
+  
+  script:
+   """
+   zcat ${fastq[0]} |\
+      awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' |\
+      sed 's/:N:.*//' > ${fastq[0].getBaseName().split("_R")[0]}_1.fastq
+   rm ${fastq[0]}
+
+   python \
+     ${params.remove_whitespace} \
+     ${fastq[0].getBaseName().split("_R")[0]}_1.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq
+
+   zcat ${fastq[1]} |\
+      awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' |\
+      sed 's/:N:.*//' > ${fastq[1].getBaseName().split("_R")[0]}_2.fastq
+   rm ${fastq[1]}
+   
+   python \
+     ${params.remove_whitespace} \
+     ${fastq[0].getBaseName().split("_R")[0]}_2.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_2.fastq
+   """
+}
+
+
 process IVA_CONTIGS {
   label "iva"
   //errorStrategy 'ignore'
-  conda "/home/beast2/anaconda3/envs/iva"
-  //conda "/usr/local/Caskroom/miniconda/base/envs/iva"
+  //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
-  publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/3_iva_contigs", mode: "copy", overwrite: true
   
   input:
     tuple val(id), path(reads)
@@ -76,18 +113,27 @@ process IVA_CONTIGS {
 
   script:
     """
-    iva -f ${reads[0]} -r ${reads[1]} --pcr_primers ${params.gal_primers} --adapters ${params.illumina_adapters} --trimmomatic ${params.trimmomatic} ${id}
+    iva \
+      -f ${reads[0]} \
+      -r ${reads[1]} \
+      --threads 16 \
+      --pcr_primers ${params.gal_primers} \
+      --adapters ${params.illumina_adapters} \
+      --trimmomatic ${params.trimmomatic} \
+      ${id}
+
+
     mv ${id}/contigs.fasta ${id}/${id}_contigs.fasta
     """
 }
 
 process ALIGN_CONTIGS {
-  //errorStrategy "ignore"
   //conda "/home/beast2/anaconda3/envs/shiver"
-  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/3_alignments/${id}", mode: "copy", overwrite: true
- 
+  publishDir "${params.outdir}/4_alignments/${id}", mode: "copy", overwrite: true
+  //errorStrategy "retry" maxRetries 5
+  //errorStrategy "ignore"
+  //debug true
   
   input:
     path initdir
@@ -98,39 +144,20 @@ process ALIGN_CONTIGS {
 
   script:
     """
-    shiver_align_contigs.sh ${initdir} ${params.config} ${contigs} ${id}
+    shiver_align_contigs.sh \
+      ${initdir} \
+      ${params.config} \
+      ${contigs} \
+      ${id}
+
     rm temp_*
     rm *_MergedHits.blast*
     """
 }
 
 
-process ID_FASTQ {
-  //conda "/home/beast2/anaconda3/envs/shiver"
-  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
-  conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/4_id_fastq", mode: "copy", overwrite: true
-
-  input:
-    tuple val(id), path(fastq)
-  output:
-    tuple val("${id}"), path("${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq"), path("${fastq[1].getBaseName().split("_R")[0]}_RWS_2.fastq")
-  
-  script:
-   """
-   zcat ${fastq[0]} | awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' | sed 's/:N:.*//' > ${fastq[0].getBaseName().split("_R")[0]}_1.fastq
-   rm ${fastq[0]}
-   python ${params.remove_whitespace} ${fastq[0].getBaseName().split("_R")[0]}_1.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq
-
-   zcat ${fastq[1]} | awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' | sed 's/:N:.*//' > ${fastq[1].getBaseName().split("_R")[0]}_2.fastq
-   rm ${fastq[1]}
-   python ${params.remove_whitespace} ${fastq[0].getBaseName().split("_R")[0]}_2.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_2.fastq
-   """
-}
-
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
-  //conda "/usr/local/Caskroom/miniconda/base/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
   //debug true
@@ -145,14 +172,29 @@ process MAP {
   script:
     if (refs instanceof List) {
     """
-    shiver_map_reads.sh ${initdir} ${params.config} ${contigs} ${id} ${blast} ${refs[0]} ${read1} ${read2}
+    shiver_map_reads.sh \
+        ${initdir} \
+        ${params.config} \
+        ${contigs} \
+        ${id} ${blast} \
+        ${refs[0]} \
+        ${read1} \
+        ${read2}
     rm temp_* 
     rm *PreDedup.bam
     
     """ 
     } else {
      """
-    shiver_map_reads.sh ${initdir} ${params.config} ${contigs} ${id} ${blast} ${refs} ${read1} ${read2}
+    shiver_map_reads.sh \
+        ${initdir} \
+        ${params.config} \
+        ${contigs} \
+        ${id} \
+        ${blast} \
+        ${refs} \
+        ${read1} \
+        ${read2}
     rm temp_* 
     rm *PreDedup.bam
     
@@ -163,7 +205,7 @@ process MAP {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
-  debug true
+  //debug true
 
   input:
     tuple val(id), path(ref), path(bam), path(bai), path(csv)
@@ -187,7 +229,7 @@ process JOIN_MAFS {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/7_joined_maf", mode: "copy", overwrite: true
-  debug true
+  //debug true
 
   input:
     path csvfiles
@@ -246,6 +288,7 @@ process BAM_REF_CSV {
 
 
 process MAKE_TREES {
+label "phyloscanner_make_trees"
 //conda "/home/beast2/anaconda3/envs/phyloscanner"
 conda "${projectDir}/Environments/phyloscanner.yml"
 publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
@@ -265,7 +308,17 @@ script:
 // remove 9470,9720,9480,9730,9490,9740 from windows
 // --read-names-2 (Does not exists! - not used by me in the command)
 """
-  phyloscanner_make_trees.py ${bam_ref_csv} ${params.extra_args} -P -D --no-trees --read-names-only --merging-threshold-a 0 --min-read-count 1 -W \$(cat ${params.windows_oneline}) --x-raxml "${params.raxmlargs}"
+  phyloscanner_make_trees.py \
+       ${bam_ref_csv} \
+       ${params.extra_args} \
+       -P \
+       -D \
+       --no-trees \
+       --read-names-only \
+       --merging-threshold-a 0 \
+       --min-read-count 1 \
+       --windows \$(cat ${params.windows_oneline}) \
+       --x-raxml "${params.raxmlargs}"
 """ 
 }
 
@@ -285,7 +338,11 @@ output:
 
 script:
 """
-  iqtree -s ${fasta} -pre IQTREE_bestTree.InWindow_${fasta.getSimpleName().split("Excised_")[1]} -m GTR+F+R6 -nt 16
+  iqtree \
+     -s ${fasta} \
+     -pre IQTREE_bestTree.InWindow_${fasta.getSimpleName().split("Excised_")[1]} \
+     -m GTR+F+R6 \
+     -nt 16
 """ 
 }
 
@@ -353,9 +410,9 @@ workflow {
   ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
   fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
   initdir = INITIALISATION()
+  id_fastq = ID_FASTQ(fastq_pairs)
   iva_contigs = IVA_CONTIGS(fastq_pairs)
   refs = ALIGN_CONTIGS(initdir, iva_contigs)
-  id_fastq = ID_FASTQ(fastq_pairs)
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
   map_out = MAP(initdir, map_args)
@@ -372,8 +429,3 @@ workflow {
   ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, joined_maf)
 }
 
-  // Combine according to a key that is the first value of every first element, which is a list
-  //map_args = id_contigs.combine(id_blast, by:0).combine(id_refs, by:0).combine(id_fastq, by:0)
-  // Get rid off id
-  //no_id_args = map_args.map { id, contigs, blast, ref_cut, read1, read2 -> [contigs, blast, ref_cut, read1, read2]}
-  //MAP(initdir,no_id_args)
