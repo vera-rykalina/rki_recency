@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 from __future__ import print_function
 
-## Author: Chris Wymant, c.wymant@imperial.ac.uk
+## Author: Chris Wymant, chris.wymant@bdi.ox.ac.uk
 ## Acknowledgement: I wrote this while funded by ERC Advanced Grant PBDR-339251
 ##
 ## Overview:
 ExplanatoryMessage = '''This script retrieves searched-for sequences from a
-fasta file. Output is printed to stdout in fasta format.'''
+fasta file. Output is printed to stdout in fasta format, with options to invert
+the search, extract a window of alignment, and strip gaps (call with --help for
+details). Use EITHER the --seq-names option to specify the names of the
+sequences you're looking for at the command line, OR the --seq-name-file option
+to specify a file that contains the names of the sequences you're looking for.
+'''
 
 import argparse
 import os
@@ -43,7 +48,10 @@ def CoordPair(MyCoordPair):
 ExplanatoryMessage = ExplanatoryMessage.replace('\n', ' ').replace('  ', ' ')
 parser = argparse.ArgumentParser(description=ExplanatoryMessage)
 parser.add_argument('FastaFile', type=File)
-parser.add_argument('SequenceName', nargs='+')
+parser.add_argument('-N', '--seq-names', nargs='+', help='''Used to specify the
+names of the sequences you're looking for, separated by whitespace.''')
+parser.add_argument('-F', '--seq-name-file', type=File, help="""A file in which
+each line contains the name of sequence you're looking for.""")
 parser.add_argument('-v', '--invert-search', action='store_true', \
 help='return all sequences except those searched for')
 parser.add_argument('-W', '--window', type=CoordPair,\
@@ -60,18 +68,47 @@ help='Remove all gap characters ("-" and "?") before printing. NB if '+\
 parser.add_argument('-S', '--match-start', action='store_true', \
 help='Sequences whose names begin with one of the strings-to-be-searched for '+\
 'are returned.')
-parser.add_argument('-B', '--skip-blanks', action='store_true', \
-help='Sequences consisting entirely of gap characters ("-" and "?") are '+\
-'ignored. (By default they are included.)')
-parser.add_argument('--max-gap-frac', type=float, \
-help='Sequences whose fraction of gap characters ("-" and "?") exceeds the '
-'threshold specified with this option will be ignored. (By default they are '
-'included.)')
+parser.add_argument('-M', '--ignore-missing', action='store_true', help='''
+By default, if any named sequences are not found we stop with an error (unless
+--match-start is used). With this option, we ignore such missing sequences and
+simply print those that were found. Warning: if none of the desired sequences
+were found, the ouput will be blank.''')
+parser.add_argument('-L', '--min-length', type=int, help='''Exclude from the
+results any sequence whose length (after removing any "-" or "?" characters) is
+less than this value. Note that if this length criterion is the only search
+criterion you require, i.e. you don't want to search by sequence name, you can
+set the compulsory SequenceName argument to the empty string "" and use the
+--match-start option.''')
+parser.add_argument('-D', '--allow-duplicates', action='store_true', help='''
+Used to specify that there may be duplicate names in the input sequences; for
+each named searched for, return all matches.''')
 
 args = parser.parse_args()
 
+# Check sequence names were specified properly
+if args.seq_name_file and args.seq_names:
+  print('You must use either the --seq-names option or the --seq-name-file',
+  'option, not both. Exiting.', file=sys.stderr)
+  exit(1)
+if (not args.seq_name_file) and (not args.seq_names):
+  print('You must use exactly one the --seq-names option or the --seq-name-file',
+  'option. Exiting.', file=sys.stderr)
+  exit(1)
+
+if args.seq_name_file:
+  SeqNames = []
+  with open(args.seq_name_file, 'r') as f:
+    for line in f:
+      SeqNames += line.split()
+  if not SeqNames:
+    print('Nothing but whitespace found in', args.seq_name_file + '.Exiting.',
+    file=sys.stderr)
+    exit(1)
+else:
+  SeqNames = args.seq_names
+
 # Check all sequences to be searched for are unique
-CounterObject = collections.Counter(args.SequenceName)
+CounterObject = collections.Counter(SeqNames)
 DuplicatedArgs = [i for i in CounterObject if CounterObject[i]>1]
 if len(DuplicatedArgs) != 0:
   for DuplicatedArg in DuplicatedArgs:
@@ -80,14 +117,7 @@ if len(DuplicatedArgs) != 0:
   print('All sequence names should be unique. Exiting.', file=sys.stderr)
   exit(1)
 
-# Sanity check of max gap frac
-HaveMaxGapFrac = args.max_gap_frac != None
-if HaveMaxGapFrac and not (0 <= args.max_gap_frac < 1):
-  print('The value specified with --max-grap-frac should be equal to or greater'
-  ' than 0 and less than 1. Quitting.', file=sys.stderr)
-  exit(0)
-
-NumSeqsToSearchFor = len(args.SequenceName)
+NumSeqsToSearchFor = len(SeqNames)
 
 # Find the seqs
 AllSeqNamesEncountered = []
@@ -97,23 +127,24 @@ for seq in SeqIO.parse(open(args.FastaFile),'fasta'):
   AllSeqNamesEncountered.append(seq.id)
   if args.match_start:
     ThisSeqWasSearchedFor = False
-    for beginning in args.SequenceName:
+    for beginning in SeqNames:
       if seq.id[0:len(beginning)] == beginning:
         ThisSeqWasSearchedFor = True
         break
   else:
-    ThisSeqWasSearchedFor = seq.id in args.SequenceName
+    ThisSeqWasSearchedFor = seq.id in SeqNames
   if ThisSeqWasSearchedFor and (not args.invert_search):
-    if seq.id in SeqsWeWant_names:
+    if seq.id in SeqsWeWant_names and not args.allow_duplicates:
       print('Sequence', seq.id, 'occurs multiple times in', args.FastaFile+\
       '\nQuitting.', file=sys.stderr)
       exit(1)
     SeqsWeWant.append(seq)
     SeqsWeWant_names.append(seq.id)
-    if not args.match_start and len(SeqsWeWant) == NumSeqsToSearchFor:
+    if not args.match_start and not args.allow_duplicates and \
+    len(SeqsWeWant) == NumSeqsToSearchFor:
       break
   elif args.invert_search and (not ThisSeqWasSearchedFor):
-    if seq.id in SeqsWeWant_names:
+    if seq.id in SeqsWeWant_names and not args.allow_duplicates:
       print('Sequence', seq.id, 'occurs multiple times in', args.FastaFile+\
       '\nQuitting.', file=sys.stderr)
       exit(1)
@@ -121,14 +152,21 @@ for seq in SeqIO.parse(open(args.FastaFile),'fasta'):
     SeqsWeWant_names.append(seq.id)
 
 # Check we found some sequences for printing!
-if SeqsWeWant == []:
-  print('Found no sequences to print. Quitting.', file=sys.stderr)
+if (not args.ignore_missing) and SeqsWeWant == []:
+  ErrorMsg = 'Searched in ' + args.FastaFile + ' for ' + \
+  ' '.join(SeqNames)
+  if args.invert_search:
+    ErrorMsg += ' with the --invert-search option'
+  if args.match_start:
+    ErrorMsg += ' with the --match-start option'
+  ErrorMsg += '; found nothing.'
+  print(ErrorMsg, file=sys.stderr)
   exit(1)
 
 # Check all specified seqs were encountered (unless only the beginnings of names
 # were specified).
-if not args.match_start:
-  SeqsNotFound = [seq for seq in args.SequenceName \
+if not (args.match_start or args.ignore_missing):
+  SeqsNotFound = [seq for seq in SeqNames \
   if not seq in AllSeqNamesEncountered]
   if len(SeqsNotFound) != 0:
     print('The following sequences were not found in', args.FastaFile+':', \
@@ -136,32 +174,22 @@ if not args.match_start:
     exit(1)
 
 # Trim to the specified window and/or gap strip, if desired
-if args.window != None:
-  LeftCoord, RightCoord = args.window
-  for seq in SeqsWeWant:
+for seq in SeqsWeWant:
+  if args.window != None:
+    LeftCoord, RightCoord = args.window
     if RightCoord > len(seq.seq):
       print('A window', LeftCoord, '-', RightCoord, 'was specified but', \
       seq.id, 'is only', len(seq.seq), 'bases long. Quitting.', file=sys.stderr)
       exit(1)
     seq.seq = seq.seq[LeftCoord-1:RightCoord]
-    if args.gap_strip:
-      seq.seq = seq.seq.ungap("-").ungap("?")
+  if args.gap_strip:
+    seq.seq = seq.seq.ungap("-").ungap("?")
 
-# Skip blank sequences if desired
-if args.skip_blanks:
+# Skip too-short sequences if desired
+if args.min_length:
   NewSeqsWeWant = []
   for seq in SeqsWeWant:
-    if len(seq.seq.ungap("-").ungap("?")) != 0:
-      NewSeqsWeWant.append(seq)
-  SeqsWeWant = NewSeqsWeWant
-
-# Skip overly gappy seqs if desired
-if HaveMaxGapFrac:
-  NewSeqsWeWant = []
-  for seq in SeqsWeWant:
-    SeqAsStr = str(seq.seq)
-    if float(SeqAsStr.count("-") + SeqAsStr.count("?")) / len(SeqAsStr) <= \
-    args.max_gap_frac:
+    if len(seq.seq.ungap("-").ungap("?")) >= args.min_length:
       NewSeqsWeWant.append(seq)
   SeqsWeWant = NewSeqsWeWant
 
