@@ -394,7 +394,7 @@ script:
 process PHYLO_TSI {
   conda "${projectDir}/Environments/phylo_tsi.yml"
   publishDir "${params.outdir}/14_phylo_tsi", mode: "copy", overwrite: true
-  //debug true
+  debug true
 
   input:
     path patstat
