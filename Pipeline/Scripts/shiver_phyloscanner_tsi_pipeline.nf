@@ -2,12 +2,15 @@ nextflow.enable.dsl = 2
 
 projectDir = "/home/rykalinav/scratch/rki_shiver/Pipeline"
 //projectDir = "/home/beast2/rki_shiver/Pipeline"
+
+// Parameters for shiver
 params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
 params.config = "${projectDir}/Scripts/bin/config.sh"
 params.remove_whitespace = "${projectDir}/Scripts/bin/tools/RemoveTrailingWhitespace.py"
+params.existingrefsungapped = "${projectDir}/DataShiverInit/ExistingRefsUngapped.fasta"
 
 // Parameters for phyloscanner
 params.raxmlargs = "raxmlHPC-SSE3 -m GTRCAT -p 1 --no-seq-check"
@@ -25,23 +28,7 @@ if (!params.outdir) {
   error "Missing output directory!"
 }
 
-process RENAME_FASTQ {
-  //conda "/home/beast2/anaconda3/envs/python3"
-  //conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/0_renamed_fastq", mode: "copy", overwrite: true
-
-  input:
-   path file
-
-  output:
-    path "*.fastq.gz"
-
-  script:
-   """
-   regex-rename '\\d{6}_\\d{2}-\\d{5}_HIV(\\d{2}-\\d{5})_\\w{2,}_?\\d{2,}?_\\w{3}_\\w{4}_(R\\d)_\\d{3}.(\\w{5}.\\w{2})' '\\1_\\2.\\3' --rename
-   """
-}
-
+// Shiver 
 process INITIALISATION {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
@@ -51,6 +38,7 @@ process INITIALISATION {
      
   output:
      path "InitDir"
+
   script:
   
   """
@@ -61,7 +49,7 @@ process INITIALISATION {
     ${params.illumina_adapters} \
     ${params.gal_primers}
   """
-
+ // cp InitDir/ExistingRefsUngapped.fasta ${projectDir}/DataShiverInit
 }
 
 process ID_FASTQ {
@@ -127,10 +115,29 @@ process IVA_CONTIGS {
     """
 }
 
+
+process KALLISTO_INDEX {
+  //conda "/home/beast2/anaconda3/envs/kalisto"
+  conda "${projectDir}/Environments/kallisto.yml"
+  publishDir "${projectDir}/${params.outdir}/4_kallisto_idx", mode: "copy", overwrite: true
+
+  input:
+     path fasta
+  output:
+     path "*"
+ 
+  script:
+  """
+  kallisto index --index ExistingRefsUngapped.idx ${fasta}
+  """
+
+}
+
+
 process ALIGN_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/4_alignments/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/5_alignments/${id}", mode: "copy", overwrite: true
   //errorStrategy "retry" maxRetries 5
   //errorStrategy "ignore"
   //debug true
@@ -159,7 +166,7 @@ process ALIGN_CONTIGS {
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/6_mapped/${id}", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -204,7 +211,7 @@ process MAP {
   process MAF {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/7_maf", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -228,7 +235,7 @@ process MAP {
 process JOIN_MAFS {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/7_joined_maf", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/8_joined_maf", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -245,7 +252,7 @@ process JOIN_MAFS {
 
 
 process BAM_REF_CSV {
-  publishDir "${params.outdir}/8_ref_bam", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/9_ref_bam", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -271,8 +278,8 @@ process BAM_REF_CSV {
  }
 
   process PHYLOSCANNER_CSV {
-  publishDir "${params.outdir}/9_phyloscanner_input", mode: "copy", overwrite: true
-  debug true
+  publishDir "${params.outdir}/10_phyloscanner_input", mode: "copy", overwrite: true
+  //debug true
 
   input:
     path csv
@@ -291,7 +298,7 @@ process MAKE_TREES {
 label "phyloscanner_make_trees"
 //conda "/home/beast2/anaconda3/envs/phyloscanner"
 conda "${projectDir}/Environments/phyloscanner.yml"
-publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
+publishDir "${params.outdir}/11_phylo_aligned_reads", mode: "copy", overwrite: true 
 //debug true
 
 input:
@@ -325,7 +332,7 @@ script:
 process IQTREE {
 label "iqtree"
 conda "${projectDir}/Environments/iqtree.yml"
-publishDir "${params.outdir}/11_iqtree_trees", mode: "copy", overwrite: true
+publishDir "${params.outdir}/12_iqtree_trees", mode: "copy", overwrite: true
 //debug true
 
 input:
@@ -348,8 +355,8 @@ script:
 
 process TREE_ANALYSIS {
 label "phyloscanner_tree_analysis"
-publishDir "${params.outdir}/12_analysed_trees", mode: "copy", overwrite: true
-debug true
+publishDir "${params.outdir}/13_analysed_trees", mode: "copy", overwrite: true
+//debug true
 
 input:
   path treefile
@@ -386,8 +393,8 @@ script:
 
 process PHYLO_TSI {
   conda "${projectDir}/Environments/phylo_tsi.yml"
-  publishDir "${params.outdir}/13_phylo_tsi", mode: "copy", overwrite: true
-  debug true
+  publishDir "${params.outdir}/14_phylo_tsi", mode: "copy", overwrite: true
+  //debug true
 
   input:
     path patstat
@@ -412,6 +419,7 @@ workflow {
   initdir = INITIALISATION()
   id_fastq = ID_FASTQ(fastq_pairs)
   iva_contigs = IVA_CONTIGS(fastq_pairs)
+  ch_kallisto_index = KALLISTO_INDEX(channel.fromPath(params.existingrefsungapped))
   refs = ALIGN_CONTIGS(initdir, iva_contigs)
   // Combine according to a key that is the first value of every first element, which is a list
   map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
@@ -429,3 +437,19 @@ workflow {
   ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, joined_maf)
 }
 
+
+// Can be useful later
+process RENAME_FASTQ {
+  //conda "/home/beast2/anaconda3/envs/python3"
+  conda "${projectDir}/Environments/python3.yml"
+  publishDir "${params.outdir}/0_renamed_fastq", mode: "copy", overwrite: true
+
+  input:
+   path file
+  output:
+    path "*.fastq.gz"
+  script:
+   """
+   regex-rename '\\d{6}_\\d{2}-\\d{5}_HIV(\\d{2}-\\d{5})_\\w{2,}_?\\d{2,}?_\\w{3}_\\w{4}_(R\\d)_\\d{3}.(\\w{5}.\\w{2})' '\\1_\\2.\\3' --rename
+   """
+}
