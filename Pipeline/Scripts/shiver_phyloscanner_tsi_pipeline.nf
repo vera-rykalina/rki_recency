@@ -428,6 +428,8 @@ workflow {
   ref_maf = ch_ref.combine(maf_out.collect())
   joined_maf = JOIN_MAFS(ref_maf)
   phyloscanner_csvfiles = BAM_REF_CSV(map_out)
+  // A shorter way to collect bam,ref,id csv files
+  ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv").view()
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
   mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
   aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
