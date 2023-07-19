@@ -28,7 +28,7 @@ if (!params.outdir) {
   error "Missing output directory!"
 }
 
-// Shiver 
+// SHIVER PART (including IVA and KALLISTO)
 process INITIALISATION {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
@@ -55,7 +55,7 @@ process INITIALISATION {
 process ID_FASTQ {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/2_id_fastq", mode: "copy", overwrite: true
+  //publishDir "${params.outdir}/0_id_fastq", mode: "copy", overwrite: true
 
   input:
     tuple val(id), path(fastq)
@@ -91,7 +91,7 @@ process IVA_CONTIGS {
   //errorStrategy 'ignore'
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
-  publishDir "${params.outdir}/3_iva_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
   
   input:
     tuple val(id), path(reads)
@@ -119,12 +119,12 @@ process IVA_CONTIGS {
 process KALLISTO_INDEX {
   //conda "/home/beast2/anaconda3/envs/kalisto"
   conda "${projectDir}/Environments/kallisto.yml"
-  publishDir "${projectDir}/${params.outdir}/4_kallisto_idx", mode: "copy", overwrite: true
+  publishDir "${projectDir}/${params.outdir}/3_kallisto_idx", mode: "copy", overwrite: true
 
   input:
      path fasta
   output:
-     path "*"
+     path "*.idx"
  
   script:
   """
@@ -137,7 +137,7 @@ process KALLISTO_INDEX {
 process ALIGN_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/5_alignments/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/4_alignments/${id}", mode: "copy", overwrite: true
   //errorStrategy "retry" maxRetries 5
   //errorStrategy "ignore"
   //debug true
@@ -166,7 +166,7 @@ process ALIGN_CONTIGS {
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/6_mapped/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -211,7 +211,7 @@ process MAP {
   process MAF {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/7_maf", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -235,7 +235,7 @@ process MAP {
 process JOIN_MAFS {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/8_joined_maf", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/7_joined_maf", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -250,9 +250,10 @@ process JOIN_MAFS {
     """ 
   }
 
+// PHYLOSCANNER PART (including )
 
 process BAM_REF_CSV {
-  publishDir "${params.outdir}/9_ref_bam", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/8_ref_bam_id", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -278,7 +279,7 @@ process BAM_REF_CSV {
  }
 
   process PHYLOSCANNER_CSV {
-  publishDir "${params.outdir}/10_phyloscanner_input", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/9_phyloscanner_input", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -298,7 +299,7 @@ process MAKE_TREES {
 label "phyloscanner_make_trees"
 //conda "/home/beast2/anaconda3/envs/phyloscanner"
 conda "${projectDir}/Environments/phyloscanner.yml"
-publishDir "${params.outdir}/11_phylo_aligned_reads", mode: "copy", overwrite: true 
+publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
 //debug true
 
 input:
@@ -332,7 +333,7 @@ script:
 process IQTREE {
 label "iqtree"
 conda "${projectDir}/Environments/iqtree.yml"
-publishDir "${params.outdir}/12_iqtree_trees", mode: "copy", overwrite: true
+publishDir "${params.outdir}/11_iqtree_trees", mode: "copy", overwrite: true
 //debug true
 
 input:
@@ -355,7 +356,7 @@ script:
 
 process TREE_ANALYSIS {
 label "phyloscanner_tree_analysis"
-publishDir "${params.outdir}/13_analysed_trees", mode: "copy", overwrite: true
+publishDir "${params.outdir}/12_analysed_trees", mode: "copy", overwrite: true
 //debug true
 
 input:
@@ -393,7 +394,7 @@ script:
 
 process PHYLO_TSI {
   conda "${projectDir}/Environments/phylo_tsi.yml"
-  publishDir "${params.outdir}/14_phylo_tsi", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/13_phylo_tsi", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -413,6 +414,23 @@ process PHYLO_TSI {
     """ 
 }
 
+process PRETTIFY_PLOT {
+  conda "${projectDir}/Environments/python3.yml"
+  publishDir "${params.outdir}/13_phylo_tsi", mode: "copy", overwrite: true
+  debug true
+
+  input:
+    path phylo_tsi_csv
+
+  output:
+    path "phylo_tsi_prettified.csv"
+    path "tsi_barplot.png"
+  
+  script:
+    """
+    prettify_plot_tsi.py ${phylo_tsi_csv} 
+    """ 
+}
 workflow {
   ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
   fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
@@ -428,8 +446,9 @@ workflow {
   ref_maf = ch_ref.combine(maf_out.collect())
   joined_maf = JOIN_MAFS(ref_maf)
   phyloscanner_csvfiles = BAM_REF_CSV(map_out)
-  // A shorter way to collect bam,ref,id csv files
-  ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv").view()
+  // A shorter way to collect bam,ref,id csv files (for optimisation)
+  ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv")
+
   phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
   mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
   aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
@@ -437,6 +456,7 @@ workflow {
   ch_iqtree = IQTREE(ch_aligned_reads_positions_excised)
   ch_analysided_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
   ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, joined_maf)
+  ch_prettified_tsi = PRETIFFY_PLOT(ch_phylo_tsi)
 }
 
 
