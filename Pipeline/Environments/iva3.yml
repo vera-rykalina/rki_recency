@@ -1,7 +1,0 @@
-channels:
-  - bioconda
-dependencies:
-  - iva
-  - mummer
-  - mummer4
-  - python
