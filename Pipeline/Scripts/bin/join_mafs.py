@@ -5,7 +5,7 @@ import pandas as pd
 import sys
 
 
-# Create a list of dfs except for HHXB2_refdata.csv
+# Create a list of dfs and assign HXB2_refdata.csv as a separate df
 dfs = []
 for infilename in sys.argv[1:]:
     name = infilename.rsplit("/")[-1] # gives a file name name.csv
@@ -16,7 +16,7 @@ for infilename in sys.argv[1:]:
         dfs.append(pd.read_csv(infilename, sep = ",", index_col=False))
 
 
-# Set a reference df as a df other columns should be joined
+# Join each df in dfs to the HXB2_refdata.csv df
 for df_ in dfs[0:]:
     df = df.merge(df_, on="pos", how="left")
 
