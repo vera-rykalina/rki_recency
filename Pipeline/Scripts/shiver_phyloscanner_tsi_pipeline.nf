@@ -10,7 +10,7 @@ params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
 params.config = "${projectDir}/Scripts/bin/config.sh"
 params.remove_whitespace = "${projectDir}/Scripts/bin/tools/RemoveTrailingWhitespace.py"
-params.existingrefsungapped = "${projectDir}/DataShiverInit/ExistingRefsUngapped.fasta"
+//params.existingrefsungapped = "${projectDir}/DataShiverInit/ExistingRefsUngapped.fasta"
 
 // Parameters for phyloscanner
 params.raxmlargs = "raxmlHPC-SSE3 -m GTRCAT -p 1 --no-seq-check"
@@ -28,17 +28,29 @@ if (!params.outdir) {
   error "Missing output directory!"
 }
 
+
+log.info """
+====================================================
+               PhyloTSI PIPELINE
+====================================================
+             Author: Vera Rykalina
+              Created: July 2023
+====================================================
+         """
+
+
 // SHIVER PART (including IVA and KALLISTO)
 process INITIALISATION {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${projectDir}/${params.outdir}/1_init_dir", mode: "copy", overwrite: true
+  publishDir "${projectDir}/${params.outdir}/01_init_dir", mode: "copy", overwrite: true
 
   input:
      
   output:
-     path "InitDir"
-
+     path "InitDir", emit: MyInitDir
+     path "InitDir/ExistingRefsUngapped.fasta", emit: ExistingRefsUngapped
+     path "InitDir/IndividualRefs/*.fasta", emit: IndividualRefs
   script:
   
   """
@@ -49,18 +61,19 @@ process INITIALISATION {
     ${params.illumina_adapters} \
     ${params.gal_primers}
   """
- // cp InitDir/ExistingRefsUngapped.fasta ${projectDir}/DataShiverInit
+//cp InitDir/ExistingRefsUngapped.fasta ${projectDir}/DataShiverInit
+  
 }
 
-process ID_FASTQ {
+process FASTQ_ID_HEADER {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  //publishDir "${params.outdir}/0_id_fastq", mode: "copy", overwrite: true
+  //publishDir "${params.outdir}/?_id_fastq", mode: "copy", overwrite: true
 
   input:
     tuple val(id), path(fastq)
   output:
-    // RWS - removed white space
+    // RWS - removed white space (change fastq header here as well)
     tuple val("${id}"), path("${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq"), path("${fastq[1].getBaseName().split("_R")[0]}_RWS_2.fastq")
   
   script:
@@ -85,13 +98,47 @@ process ID_FASTQ {
    """
 }
 
+process KALLISTO_INDEX {
+  //conda "/home/beast2/anaconda3/envs/kalisto"
+  conda "${projectDir}/Environments/kallisto.yml"
+  publishDir "${projectDir}/${params.outdir}/02_kallisto_idx", mode: "copy", overwrite: true
+
+  input:
+     path fasta
+  output:
+     path "*.idx"
+ 
+  script:
+  """
+  kallisto index --index ExistingRefsUngapped.idx ${fasta}
+  """
+}
+
+process KALLISTO_QUANT {
+  //conda "/home/beast2/anaconda3/envs/kalisto"
+  conda "${projectDir}/Environments/kallisto.yml"
+  publishDir "${projectDir}/${params.outdir}/03_kallisto_quant", mode: "copy", overwrite: true
+
+  input:
+     path index, name: "ExistingRefsUngapped.idx"
+     tuple val(id), path(fastq)
+
+  output:
+     path "abundance.tsv"
+ 
+  script:
+   """
+   kallisto quant \
+    -i ${index} \
+    --plaintext ${fastq[0]} ${fastq[1]}
+  """
+}
 
 process IVA_CONTIGS {
   label "iva"
-  //errorStrategy 'ignore'
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
-  publishDir "${params.outdir}/2_iva_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/03_iva_contigs", mode: "copy", overwrite: true
   
   input:
     tuple val(id), path(reads)
@@ -116,28 +163,11 @@ process IVA_CONTIGS {
 }
 
 
-process KALLISTO_INDEX {
-  //conda "/home/beast2/anaconda3/envs/kalisto"
-  conda "${projectDir}/Environments/kallisto.yml"
-  publishDir "${projectDir}/${params.outdir}/3_kallisto_idx", mode: "copy", overwrite: true
-
-  input:
-     path fasta
-  output:
-     path "*.idx"
- 
-  script:
-  """
-  kallisto index --index ExistingRefsUngapped.idx ${fasta}
-  """
-
-}
-
 
 process ALIGN_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/4_alignments/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/04_alignments/${id}", mode: "copy", overwrite: true
   //errorStrategy "retry" maxRetries 5
   //errorStrategy "ignore"
   //debug true
@@ -147,9 +177,11 @@ process ALIGN_CONTIGS {
     tuple val(id), path(contigs)
 
   output:
-    tuple val("${id}"), path("${id}*.fasta"), path("${id}.blast")
+    tuple val("${id}"), path("${id}_wRefs.fasta"), path("${id}.blast")
 
   script:
+    def ivacontig = contigs instanceof Path
+    if ( ivacontig ) {
     """
     shiver_align_contigs.sh \
       ${initdir} \
@@ -159,14 +191,19 @@ process ALIGN_CONTIGS {
 
     rm temp_*
     rm *_MergedHits.blast*
+    mv ${id}_cut_wRefs.fasta ${id}_wRefs.fasta || mv ${id}_raw_wRefs.fasta ${id}_wRefs.fasta 
     """
+  } else {
+    """
+     printf "There is no conting for sample with ID: ${id}"
+    """
+  }
 }
-
 
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/5_mapped/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/05_mapped/${id}", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -208,34 +245,35 @@ process MAP {
      """
     }
 }
-  process MAF {
-  //conda "/home/beast2/anaconda3/envs/python3"
-  conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/6_maf", mode: "copy", overwrite: true
-  //debug true
 
-  input:
-    tuple val(id), path(ref), path(bam), path(bai), path(csv)
+process MAF {
+ //conda "/home/beast2/anaconda3/envs/python3"
+ conda "${projectDir}/Environments/python3.yml"
+ publishDir "${params.outdir}/06_maf", mode: "copy", overwrite: true
+ //debug true
+
+ input:
+  tuple val(id), path(ref), path(bam), path(bai), path(csv)
     
-  output:
-    path "${id}.csv"
+ output:
+  path "${id}.csv"
     
-  script:
-    if (csv instanceof List) {
-    """
-    produce_maf.py ${csv} ${id}.csv
-    """ 
-    } else {
-     """
-    produce_maf.py ${csv} ${id}.csv
-     """
-    }
-  }
+ script:
+  if (csv instanceof List) {
+  """
+  produce_maf.py ${csv} ${id}.csv
+  """ 
+  } else {
+  """
+  produce_maf.py ${csv} ${id}.csv
+  """
+   }
+}
 
 process JOIN_MAFS {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/7_joined_maf", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/07_joined_maf", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -253,7 +291,7 @@ process JOIN_MAFS {
 // PHYLOSCANNER PART (including )
 
 process BAM_REF_CSV {
-  publishDir "${params.outdir}/8_ref_bam_id", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/08_ref_bam_id", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -278,8 +316,9 @@ process BAM_REF_CSV {
     }
  }
 
-  process PHYLOSCANNER_CSV {
-  publishDir "${params.outdir}/9_phyloscanner_input", mode: "copy", overwrite: true
+ 
+process PHYLOSCANNER_CSV {
+  publishDir "${params.outdir}/09_phyloscanner_input", mode: "copy", overwrite: true
   //debug true
 
   input:
@@ -296,26 +335,26 @@ process BAM_REF_CSV {
 
 
 process MAKE_TREES {
-label "phyloscanner_make_trees"
-//conda "/home/beast2/anaconda3/envs/phyloscanner"
-conda "${projectDir}/Environments/phyloscanner.yml"
-publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
-//debug true
+ label "phyloscanner_make_trees"
+ //conda "/home/beast2/anaconda3/envs/phyloscanner"
+ conda "${projectDir}/Environments/phyloscanner.yml"
+ publishDir "${params.outdir}/10_phylo_aligned_reads", mode: "copy", overwrite: true 
+ //debug true
 
-input:
+ input:
   path bam_ref_csv, name: "phyloscanner_input.csv"
   path phylo_files
 
-output:
+ output:
   path "AlignedReads/*.fasta", emit: AlignedReads
   path "Consensuses/*.fasta", emit: Consensuses
   path "ReadNames/*.csv.gz", emit: ReadsNames
   path "*.csv", emit: WindowCoordinateCorrespondence
 
-script:
-// remove 9470,9720,9480,9730,9490,9740 from windows
-// --read-names-2 (Does not exists! - not used by me in the command)
-"""
+ script:
+ // remove 9470,9720,9480,9730,9490,9740 from windows
+ // --read-names-2 (Does not exists! - not used by me in the command)
+ """
   phyloscanner_make_trees.py \
        ${bam_ref_csv} \
        ${params.extra_args} \
@@ -327,51 +366,51 @@ script:
        --min-read-count 1 \
        --windows \$(cat ${params.windows_oneline}) \
        --x-raxml "${params.raxmlargs}"
-""" 
+ """ 
 }
 
 process IQTREE {
-label "iqtree"
-conda "${projectDir}/Environments/iqtree.yml"
-publishDir "${params.outdir}/11_iqtree_trees", mode: "copy", overwrite: true
-//debug true
+  label "iqtree"
+  conda "${projectDir}/Environments/iqtree.yml"
+  publishDir "${params.outdir}/11_iqtree_trees", mode: "copy", overwrite: true
+  //debug true
 
-input:
+ input:
   path fasta
 
-output:
+ output:
   path "*.treefile", emit: treefile
   path "*.iqtree", emit: iqtree
   path "*.log", emit: iqtreelog
 
-script:
-"""
+ script:
+ """
   iqtree \
      -s ${fasta} \
      -pre IQTREE_bestTree.InWindow_${fasta.getSimpleName().split("Excised_")[1]} \
      -m GTR+F+R6 \
      -nt 16
-""" 
+ """ 
 }
 
 process TREE_ANALYSIS {
-label "phyloscanner_tree_analysis"
-publishDir "${params.outdir}/12_analysed_trees", mode: "copy", overwrite: true
-//debug true
+ label "phyloscanner_tree_analysis"
+ publishDir "${params.outdir}/12_analysed_trees", mode: "copy", overwrite: true
+ //debug true
 
-input:
+ input:
   path treefile
 
-output:
-  path "*patStats.csv", emit: patstat_csv
-  path "*blacklistReport.csv", emit: blacklist_csv
-  path "*patStats.pdf", emit: patstat_pdf
-  path "*.nex", emit: nex
-  path "*.rda", emit: rda
+ output:
+   path "*patStats.csv", emit: patstat_csv
+   path "*blacklistReport.csv", emit: blacklist_csv
+   path "*patStats.pdf", emit: patstat_pdf
+   path "*.nex", emit: nex
+   path "*.rda", emit: rda
 
-script:
-"""
- phyloscanner_analyse_trees.R \
+ script:
+ """
+  phyloscanner_analyse_trees.R \
     -sks \
     -ow \
     -rda \
@@ -389,7 +428,7 @@ script:
     -og B.FR.83.HXB2_LAI_IIIB_BRU.K03455 \
     -nr ${params.hiv_distance_normalisation} \
     -tfe .treefile IQTREE_bestTree.InWindow "k${params.k}" "s,${params.k}" 
-""" 
+ """ 
 }
 
 process PHYLO_TSI {
@@ -431,32 +470,34 @@ process PRETTIFY_PLOT {
     prettify_plot_tsi.py ${phylo_tsi_csv} 
     """ 
 }
-workflow {
-  ch_ref = channel.fromPath("${projectDir}/References/HXB2_refdata.csv")
-  fastq_pairs = channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz")
-  initdir = INITIALISATION()
-  id_fastq = ID_FASTQ(fastq_pairs)
-  iva_contigs = IVA_CONTIGS(fastq_pairs)
-  ch_kallisto_index = KALLISTO_INDEX(channel.fromPath(params.existingrefsungapped))
-  refs = ALIGN_CONTIGS(initdir, iva_contigs)
-  // Combine according to a key that is the first value of every first element, which is a list
-  map_args = iva_contigs.combine(refs, by:0).combine(id_fastq, by:0)
-  map_out = MAP(initdir, map_args)
-  maf_out = MAF(map_out)
-  ref_maf = ch_ref.combine(maf_out.collect())
-  joined_maf = JOIN_MAFS(ref_maf)
-  phyloscanner_csvfiles = BAM_REF_CSV(map_out)
-  // A shorter way to collect bam,ref,id csv files (for optimisation)
-  ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv")
 
-  phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
-  mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
-  aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
-  ch_aligned_reads_positions_excised = aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/)
-  ch_iqtree = IQTREE(ch_aligned_reads_positions_excised)
-  ch_analysided_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
-  ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, joined_maf)
-  ch_prettified_tsi = PRETIFFY_PLOT(ch_phylo_tsi)
+workflow {
+  ch_ref = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
+  ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
+  ch_initdir = INITIALISATION()
+  ch_kallisto_index = KALLISTO_INDEX(ch_initdir.ExistingRefsUngapped)
+  ch_fastq_id_header = FASTQ_ID_HEADER(ch_fastq_pairs)
+  ch_iva_contigs = IVA_CONTIGS(ch_fastq_pairs)
+  //ch_refs = ALIGN_CONTIGS(ch_initdir.MyInitDir, ch_iva_contigs)
+  // Combine according to a key that is the first value of every first element, which is a list
+  //map_args = iva_contigs.combine(refs, by:0).combine(ch_fastq_id_header, by:0)
+  //map_out = MAP(ch_initdir, map_args)
+  //maf_out = MAF(map_out)
+  //ref_maf = ch_ref.combine(maf_out.collect())
+  //joined_maf = JOIN_MAFS(ref_maf)
+  //phyloscanner_csvfiles = BAM_REF_CSV(map_out)
+  
+  // A shorter way to collect bam,ref,id csv files (for optimisation)
+  //ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv")
+
+  //phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
+  //mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
+  //aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
+  //ch_aligned_reads_positions_excised = aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/)
+  //ch_iqtree = IQTREE(ch_aligned_reads_positions_excised)
+  //ch_analysided_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
+  //ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, joined_maf)
+  //ch_prettified_tsi = PRETIFFY_PLOT(ch_phylo_tsi)
 }
 
 
