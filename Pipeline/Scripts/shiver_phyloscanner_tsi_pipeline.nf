@@ -34,7 +34,10 @@ log.info """
                PhyloTSI PIPELINE
 ====================================================
              Author: Vera Rykalina
-              Created: July 2023
+       Affiliation: Robert Koch Institute 
+        Acknowledgement: Tanay Golubchik
+              Created: 17 July 2023
+           Last Updated: 20 July 2023
 ====================================================
          """
 
@@ -48,7 +51,7 @@ process INITIALISATION {
   input:
      
   output:
-     path "InitDir", emit: MyInitDir
+     path "InitDir", emit: InitDir
      path "InitDir/ExistingRefsUngapped.fasta", emit: ExistingRefsUngapped
      path "InitDir/IndividualRefs/*.fasta", emit: IndividualRefs
   script:
@@ -60,41 +63,40 @@ process INITIALISATION {
     ${params.alignment} \
     ${params.illumina_adapters} \
     ${params.gal_primers}
-  """
-//cp InitDir/ExistingRefsUngapped.fasta ${projectDir}/DataShiverInit
-  
+  """  
 }
 
 process FASTQ_ID_HEADER {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  //publishDir "${params.outdir}/?_id_fastq", mode: "copy", overwrite: true
+  //publishDir "${params.outdir}/N_id_fastq", mode: "copy", overwrite: true
+  debug true
 
   input:
-    tuple val(id), path(fastq)
+    tuple val(id), path(reads)
   output:
     // RWS - removed white space (change fastq header here as well)
-    tuple val("${id}"), path("${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq"), path("${fastq[1].getBaseName().split("_R")[0]}_RWS_2.fastq")
+    tuple val("${id}"), path("${reads[0].getBaseName().split("_R")[0]}_RWS_1.fastq"), path("${reads[1].getBaseName().split("_R")[0]}_RWS_2.fastq")
   
   script:
    """
-   zcat ${fastq[0]} |\
+   zcat ${reads[0]} |\
       awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' |\
-      sed 's/:N:.*//' > ${fastq[0].getBaseName().split("_R")[0]}_1.fastq
-   rm ${fastq[0]}
+      sed 's/:N:.*//' > ${reads[0].getBaseName().split("_R")[0]}_1.fastq
+   rm ${reads[0]}
 
    python \
      ${params.remove_whitespace} \
-     ${fastq[0].getBaseName().split("_R")[0]}_1.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_1.fastq
+     ${reads[0].getBaseName().split("_R")[0]}_1.fastq > ${reads[0].getBaseName().split("_R")[0]}_RWS_1.fastq
 
-   zcat ${fastq[1]} |\
+   zcat ${reads[1]} |\
       awk '{if (NR%4 == 1) {print \$1 "/" \$2} else print}' |\
-      sed 's/:N:.*//' > ${fastq[1].getBaseName().split("_R")[0]}_2.fastq
-   rm ${fastq[1]}
+      sed 's/:N:.*//' > ${reads[1].getBaseName().split("_R")[0]}_2.fastq
+   rm ${reads[1]}
    
    python \
      ${params.remove_whitespace} \
-     ${fastq[0].getBaseName().split("_R")[0]}_2.fastq > ${fastq[0].getBaseName().split("_R")[0]}_RWS_2.fastq
+     ${reads[0].getBaseName().split("_R")[0]}_2.fastq > ${reads[0].getBaseName().split("_R")[0]}_RWS_2.fastq
    """
 }
 
@@ -105,6 +107,7 @@ process KALLISTO_INDEX {
 
   input:
      path fasta
+  
   output:
      path "*.idx"
  
@@ -118,27 +121,31 @@ process KALLISTO_QUANT {
   //conda "/home/beast2/anaconda3/envs/kalisto"
   conda "${projectDir}/Environments/kallisto.yml"
   publishDir "${projectDir}/${params.outdir}/03_kallisto_quant", mode: "copy", overwrite: true
+  debug true
 
   input:
-     path index, name: "ExistingRefsUngapped.idx"
-     tuple val(id), path(fastq)
+     tuple path(index), val(id), path(reads)
 
   output:
-     path "abundance.tsv"
- 
+     tuple val(id), path("${id}/${id}_abundance.tsv")
+   
   script:
    """
    kallisto quant \
     -i ${index} \
-    --plaintext ${fastq[0]} ${fastq[1]}
+    -o ${id} \
+    --plaintext ${reads[0]} ${reads[1]}
+
+    mv ${id}/abundance.tsv ${id}/${id}_abundance.tsv
   """
 }
+
 
 process IVA_CONTIGS {
   label "iva"
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
-  publishDir "${params.outdir}/03_iva_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/04_iva_contigs", mode: "copy", overwrite: true
   
   input:
     tuple val(id), path(reads)
@@ -167,7 +174,7 @@ process IVA_CONTIGS {
 process ALIGN_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/04_alignments/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/05_alignments/${id}", mode: "copy", overwrite: true
   //errorStrategy "retry" maxRetries 5
   //errorStrategy "ignore"
   //debug true
@@ -203,25 +210,28 @@ process ALIGN_CONTIGS {
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/05_mapped/${id}", mode: "copy", overwrite: true
-  //debug true
+  publishDir "${params.outdir}/06_mapped/${id}", mode: "copy", overwrite: true
+  debug true
 
   input:
     path initdir
-    tuple val(id), path(contigs), path(refs), path(blast), path(read1), path(read2)
+    tuple val(id), path(contigs), path(ref), path(blast), path(read1), path(read2)
+    // tuple val(id), path(bestalignment)
     
   output:
     tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
-    if (refs instanceof List) {
+    def wRef = ref instanceof Path
+    if ( wRef ) {
     """
     shiver_map_reads.sh \
         ${initdir} \
         ${params.config} \
         ${contigs} \
-        ${id} ${blast} \
-        ${refs[0]} \
+        ${id} \
+        ${blast} \
+        ${refs} \
         ${read1} \
         ${read2}
     rm temp_* 
@@ -230,13 +240,16 @@ process MAP {
     """ 
     } else {
      """
+    touch ${id}.blast
+    touch ${id}_contigs.fasta
+
     shiver_map_reads.sh \
         ${initdir} \
         ${params.config} \
-        ${contigs} \
+        ${id}_contigs.fasta \
         ${id} \
-        ${blast} \
-        ${refs} \
+        ${id}.blast\
+        ${bestalignment} \
         ${read1} \
         ${read2}
     rm temp_* 
@@ -472,19 +485,21 @@ process PRETTIFY_PLOT {
 }
 
 workflow {
-  ch_ref = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
+  ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
   ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
   ch_initdir = INITIALISATION()
   ch_kallisto_index = KALLISTO_INDEX(ch_initdir.ExistingRefsUngapped)
+  ch_kallisto_index_reads = ch_kallisto_index.combine(ch_fastq_pairs)
+  ch_kallisto_quant = KALLISTO_QUANT(ch_kallisto_index_reads)
   ch_fastq_id_header = FASTQ_ID_HEADER(ch_fastq_pairs)
   ch_iva_contigs = IVA_CONTIGS(ch_fastq_pairs)
-  //ch_refs = ALIGN_CONTIGS(ch_initdir.MyInitDir, ch_iva_contigs)
+  ch_wRef = ALIGN_CONTIGS(ch_initdir.InitDir, ch_iva_contigs)
   // Combine according to a key that is the first value of every first element, which is a list
-  //map_args = iva_contigs.combine(refs, by:0).combine(ch_fastq_id_header, by:0)
-  //map_out = MAP(ch_initdir, map_args)
-  //maf_out = MAF(map_out)
-  //ref_maf = ch_ref.combine(maf_out.collect())
-  //joined_maf = JOIN_MAFS(ref_maf)
+  ch_map_args = ch_iva_contigs.combine(ch_wRef, by:0).combine(ch_fastq_id_header, by:0)
+  //ch_map_out = MAP(ch_initdir.MyInitDir, ch_map_args)
+  //ch_maf_out = MAF(ch_map_out)
+  //ch_ref_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
+  //ch_joined_maf = JOIN_MAFS(ch_ref_maf)
   //phyloscanner_csvfiles = BAM_REF_CSV(map_out)
   
   // A shorter way to collect bam,ref,id csv files (for optimisation)
