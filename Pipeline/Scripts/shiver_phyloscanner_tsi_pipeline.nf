@@ -1,7 +1,26 @@
 nextflow.enable.dsl = 2
 
+// Change is required! Specify your projectDir here
 projectDir = "/home/rykalinav/scratch/rki_shiver/Pipeline"
 //projectDir = "/home/beast2/rki_shiver/Pipeline"
+
+
+// ********************** NEXTFLOW RUN **************************
+// Activate nextflow environment
+// cd to Pipeline folder and then type:
+// nextflow run /Scripts/shiver_phyloscanner_tsi_pipeline.nf \
+// -c Script/rki_profile.config \
+// -profile rki_slurm,rki_mamba \
+// --outdir Results \
+// -with-report logs/test.$(date +%T).report.html
+// # use this paramete to build a flowchart
+// -with-dag flowchart.png
+// # use this parameter for an empty test run
+// -stub
+
+
+// Parameters for kraken2
+params.krakendb = "/scratch/databases/kraken2_20230314/"
 
 // Parameters for shiver
 params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
@@ -42,6 +61,43 @@ log.info """
 ====================================================
          """
 
+// KRAKEN2
+process KRAKEN2_CLASSIFY {
+
+    label "kraken2"
+    conda "${projectDir}/Environments/kraken2.yml"
+    publishDir "${params.outdir}/00_kraken_report/${id}", pattern: "*.txt"
+
+    // SLURM cluster options
+    // cpus 10,  memory "150 GB", time "4h"
+    // clusterOptions "--job-name=classify_${sample}"
+    tag "${id}_kraken2_classify"
+
+    input:
+        tuple val(id), path(reads)
+
+    output:
+        tuple val(id), path("${id}.classified.R*.fastq"),     emit: fastq
+        tuple val(id), path("${id}.kraken.out.txt"),          emit: kraken_output
+        tuple val(id), path("${id}.kraken.report.txt"),       emit: kraken_report
+
+ script:
+        """
+            kraken2 \
+                --threads 10 \
+                --db ${params.krakendb} \
+                --paired \
+                --classified-out ${sample}.classified.R#.fastq \
+                --output ${sample}.kraken.out.txt \
+                --report ${sample}.kraken.report.txt \
+                ${reads[0]} ${reads[1]}
+        """
+
+    stub:
+        """
+            touch ${id}.classified.R_{1,2}.fastq ${id}.kraken.out.txt ${id}.kraken.report.txt
+        """
+}
 
 // SHIVER PART (including IVA and KALLISTO)
 process INITIALISATION {
@@ -489,6 +545,8 @@ ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", chec
 ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
 
 workflow {
+  // ****************************************KRAKEN2******************************************************
+  ch_kraken2_report = KRAKEN2_CLASSIFY(ch_fastq_pairs)
   // *************************************SHIVER PART*****************************************************
   ch_initdir = INITIALISATION()
   ch_kallisto_index = KALLISTO_INDEX(ch_initdir.ExistingRefsUngapped)
