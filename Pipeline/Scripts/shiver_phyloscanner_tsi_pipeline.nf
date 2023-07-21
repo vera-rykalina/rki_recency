@@ -140,12 +140,34 @@ process KALLISTO_QUANT {
   """
 }
 
+process BEST_ALIGNMENT {
+  //conda "/home/beast2/anaconda3/envs/kalisto"
+  conda "${projectDir}/Environments/kallisto.yml"
+  publishDir "${projectDir}/${params.outdir}/04_bets_ref", mode: "copy", overwrite: true
+  debug true
+
+  input:
+     path alignments
+     tuple val(id), path(abundancetsv)
+
+  output:
+     tuple val(id), path("${id}_bestRef.fasta")
+   
+  script:
+   """
+   BestRef=\$(sort -k5 -g ${abundancetsv} | tail -n1 | cut -f1)
+   echo "Sample ID: " ${id} "\nBest Kallisto Reference: " \${BestRef} 
+   mv \${BestRef}.fasta  ${id}_bestRef.fasta
+   """
+}
+
+
 
 process IVA_CONTIGS {
   label "iva"
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
-  publishDir "${params.outdir}/04_iva_contigs", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/05_iva_contigs", mode: "copy", overwrite: true
   
   input:
     tuple val(id), path(reads)
@@ -169,12 +191,10 @@ process IVA_CONTIGS {
     """
 }
 
-
-
 process ALIGN_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/05_alignments/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/06_alignments/${id}", mode: "copy", overwrite: true
   //errorStrategy "retry" maxRetries 5
   //errorStrategy "ignore"
   //debug true
@@ -210,7 +230,7 @@ process ALIGN_CONTIGS {
 process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
-  publishDir "${params.outdir}/06_mapped/${id}", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/07_mapped/${id}", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -491,6 +511,7 @@ workflow {
   ch_kallisto_index = KALLISTO_INDEX(ch_initdir.ExistingRefsUngapped)
   ch_kallisto_index_reads = ch_kallisto_index.combine(ch_fastq_pairs)
   ch_kallisto_quant = KALLISTO_QUANT(ch_kallisto_index_reads)
+  ch_bestRef = BEST_ALIGNMENT(ch_initdir.IndividualRefs, ch_kallisto_quant).view()
   ch_fastq_id_header = FASTQ_ID_HEADER(ch_fastq_pairs)
   ch_iva_contigs = IVA_CONTIGS(ch_fastq_pairs)
   ch_wRef = ALIGN_CONTIGS(ch_initdir.InitDir, ch_iva_contigs)
