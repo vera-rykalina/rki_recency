@@ -297,66 +297,49 @@ process MAF {
 process JOIN_MAFS {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/07_joined_maf", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/09_joined_maf", mode: "copy", overwrite: true
   //debug true
 
   input:
-    path csvfiles
+    path mafcsv
     
   output:
     path "*.csv"
     
   script:
     """
-    join_mafs.py ${csvfiles}
+    join_mafs.py ${mafcsv}
     """ 
   }
 
+
 // PHYLOSCANNER PART (including IQTREE)
 
-process BAM_REF_CSV {
-  publishDir "${params.outdir}/08_ref_bam_id", mode: "copy", overwrite: true
+process BAM_REF_ID_CSV {
+  publishDir "${params.outdir}/10_ref_bam_id", mode: "copy", overwrite: true
   debug true
 
   input:
-    tuple val(id), path(ref), path(bam), path(bai), path(csv)
+    tuple val(id), path(ref), path(bam), path(bai), path(basefreqs)
     
   output:
-    path "*_bam_ref.csv"
+    path "*_bam_ref_id.csv"
   
   script:
     if (bam instanceof List) {
     """
     for bamfile in *_remap.bam; do
       echo ${id}_remap.bam,${id}_remap_ref.fasta,${id}
-    done > ${id}_bam_ref.csv
+    done > ${id}_bam_ref_id.csv
     """ 
-    } else {
+  } else {
      """
     for bamfile in *.bam; do
       echo ${id}.bam,${id}_ref.fasta,${id}  
-    done > ${id}_bam_ref.csv
+    done > ${id}_bam_ref_id.csv
      """
-    }
- }
-
- 
-process PHYLOSCANNER_CSV {
-  publishDir "${params.outdir}/09_phyloscanner_input", mode: "copy", overwrite: true
-  //debug true
-
-  input:
-    path csv
-    
-  output:
-    path "phyloscanner_input.csv"
-  
-  script:
-    """
-    cat *_bam_ref.csv > phyloscanner_input.csv
-    """ 
   }
-
+}
 
 process MAKE_TREES {
  label "phyloscanner_make_trees"
@@ -510,16 +493,16 @@ workflow {
   ch_iva_contigs = IVA_CONTIGS(ch_fastq_pairs)
   ch_wRef = ALIGN_CONTIGS(ch_initdir.InitDir, ch_iva_contigs)
   // Combine according to a key that is the first value of every first element, which is a list
-  ch_map_args = ch_bestRef.combine(ch_fastq_id_header, by:0).combine(ch_iva_contigs, by:0).combine(ch_wRef, by:0).view()
+  ch_map_args = ch_bestRef.combine(ch_fastq_id_header, by:0).combine(ch_iva_contigs, by:0).combine(ch_wRef, by:0)
   ch_map_out = MAP(ch_initdir.InitDir, ch_map_args)
   // ********************************************MAF*****************************************************
   ch_maf_out = MAF(ch_map_out)
-  //ch_hxb2_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
-  //ch_joined_maf = JOIN_MAFS(ch_ref_maf)
+  ch_hxb2_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
+  ch_joined_maf = JOIN_MAFS(ch_hxb2_maf)
   // ****************************************PHYLOSCANNER PART*******************************************
-  //ch_phyloscanner_csvfiles = BAM_REF_CSV(ch_map_out)
-  // A shorter way to collect bam,ref,id csv files (for optimisation)
-  //ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv")
+  ch_phyloscanner_csv = BAM_REF_ID_CSV(ch_map_out)
+  //A shorter way to collect bam,ref,id csv files (for optimisation)
+  ch_bam_ref_id_all = ch_phyloscanner_csv.collectFile(name: "phloscanner_input.csv", storeDir: "${projectDir}/${params.outdir}/11_bam_ref_id_all")
   //phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
 
   //mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
@@ -532,12 +515,10 @@ workflow {
 }
 
 
-// This process be useful later
+// Extra process (can be used later)
 process RENAME_FASTQ {
-  //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/0_renamed_fastq", mode: "copy", overwrite: true
-
+  publishDir "${params.outdir}/A_renamed_fastq", mode: "copy", overwrite: true
   input:
    path file
   output:
@@ -546,4 +527,17 @@ process RENAME_FASTQ {
    """
    regex-rename '\\d{6}_\\d{2}-\\d{5}_HIV(\\d{2}-\\d{5})_\\w{2,}_?\\d{2,}?_\\w{3}_\\w{4}_(R\\d)_\\d{3}.(\\w{5}.\\w{2})' '\\1_\\2.\\3' --rename
    """
+}
+
+//phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
+process PHYLOSCANNER_CSV {
+  publishDir "${params.outdir}/B_phyloscanner_input", mode: "copy", overwrite: true
+  input:
+    path csv
+  output:
+    path "phyloscanner_input.csv"
+  script:
+    """
+    cat *_bam_ref.csv > phyloscanner_input.csv
+    """ 
 }
