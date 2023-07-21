@@ -273,23 +273,23 @@ process MAP {
 process MAF {
  //conda "/home/beast2/anaconda3/envs/python3"
  conda "${projectDir}/Environments/python3.yml"
- publishDir "${params.outdir}/06_maf", mode: "copy", overwrite: true
+ publishDir "${params.outdir}/08_maf", mode: "copy", overwrite: true
  //debug true
 
  input:
-  tuple val(id), path(ref), path(bam), path(bai), path(csv)
+  tuple val(id), path(ref), path(bam), path(bai), path(basefreqs)
     
  output:
   path "${id}.csv"
     
  script:
-  if (csv instanceof List) {
+  if (basefreqs instanceof List) {
   """
-  produce_maf.py ${csv} ${id}.csv
+  produce_maf.py ${basefreqs} ${id}.csv
   """ 
   } else {
   """
-  produce_maf.py ${csv} ${id}.csv
+  produce_maf.py ${basefrecs} ${id}.csv
   """
    }
 }
@@ -312,7 +312,7 @@ process JOIN_MAFS {
     """ 
   }
 
-// PHYLOSCANNER PART (including )
+// PHYLOSCANNER PART (including IQTREE)
 
 process BAM_REF_CSV {
   publishDir "${params.outdir}/08_ref_bam_id", mode: "copy", overwrite: true
@@ -495,7 +495,7 @@ process PRETTIFY_PLOT {
     """ 
 }
 
-// ************************************I**NPUT CHANNELS***************************************************
+// **************************************INPUT CHANNELS***************************************************
 ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
 ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
 
@@ -513,14 +513,15 @@ workflow {
   ch_map_args = ch_bestRef.combine(ch_fastq_id_header, by:0).combine(ch_iva_contigs, by:0).combine(ch_wRef, by:0).view()
   ch_map_out = MAP(ch_initdir.InitDir, ch_map_args)
   // ********************************************MAF*****************************************************
-  //ch_maf_out = MAF(ch_map_out)
-  //ch_ref_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
+  ch_maf_out = MAF(ch_map_out)
+  //ch_hxb2_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
   //ch_joined_maf = JOIN_MAFS(ch_ref_maf)
   // ****************************************PHYLOSCANNER PART*******************************************
-  //phyloscanner_csvfiles = BAM_REF_CSV(map_out)
+  //ch_phyloscanner_csvfiles = BAM_REF_CSV(ch_map_out)
   // A shorter way to collect bam,ref,id csv files (for optimisation)
   //ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv")
   //phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
+
   //mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
   //aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
   //ch_aligned_reads_positions_excised = aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/)
