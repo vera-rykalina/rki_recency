@@ -10,7 +10,6 @@ params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
 params.config = "${projectDir}/Scripts/bin/config.sh"
 params.remove_whitespace = "${projectDir}/Scripts/bin/tools/RemoveTrailingWhitespace.py"
-//params.existingrefsungapped = "${projectDir}/DataShiverInit/ExistingRefsUngapped.fasta"
 
 // Parameters for phyloscanner
 params.raxmlargs = "raxmlHPC-SSE3 -m GTRCAT -p 1 --no-seq-check"
@@ -141,8 +140,6 @@ process KALLISTO_QUANT {
 }
 
 process BEST_ALIGNMENT {
-  //conda "/home/beast2/anaconda3/envs/kalisto"
-  conda "${projectDir}/Environments/kallisto.yml"
   publishDir "${projectDir}/${params.outdir}/04_bets_ref", mode: "copy", overwrite: true
   debug true
 
@@ -160,8 +157,6 @@ process BEST_ALIGNMENT {
    mv \${BestRef}.fasta  ${id}_bestRef.fasta
    """
 }
-
-
 
 process IVA_CONTIGS {
   label "iva"
@@ -195,8 +190,6 @@ process ALIGN_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/06_alignments/${id}", mode: "copy", overwrite: true
-  //errorStrategy "retry" maxRetries 5
-  //errorStrategy "ignore"
   //debug true
   
   input:
@@ -231,18 +224,17 @@ process MAP {
   //conda "/home/beast2/anaconda3/envs/shiver"
   conda "${projectDir}/Environments/shiver.yml"
   publishDir "${params.outdir}/07_mapped/${id}", mode: "copy", overwrite: true
-  debug true
+  //debug true
 
   input:
     path initdir
-    tuple val(id), path(contigs), path(ref), path(blast), path(read1), path(read2)
-    // tuple val(id), path(bestalignment)
-    
+    tuple val(id), path(kallistoRef), path(read1), path(read2), path(contigs), path(shiverRef), path(blast)
+  
   output:
     tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
-    def wRef = ref instanceof Path
+    def wRef = shiverRef instanceof Path
     if ( wRef ) {
     """
     shiver_map_reads.sh \
@@ -251,7 +243,7 @@ process MAP {
         ${contigs} \
         ${id} \
         ${blast} \
-        ${refs} \
+        ${shiverRef} \
         ${read1} \
         ${read2}
     rm temp_* 
@@ -269,14 +261,13 @@ process MAP {
         ${id}_contigs.fasta \
         ${id} \
         ${id}.blast\
-        ${bestalignment} \
+        ${bestRef} \
         ${read1} \
         ${read2}
     rm temp_* 
     rm *PreDedup.bam
-    
      """
-    }
+  }
 }
 
 process MAF {
@@ -504,28 +495,31 @@ process PRETTIFY_PLOT {
     """ 
 }
 
+// ************************************I**NPUT CHANNELS***************************************************
+ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
+ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
+
 workflow {
-  ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
-  ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
+  // *************************************SHIVER PART*****************************************************
   ch_initdir = INITIALISATION()
   ch_kallisto_index = KALLISTO_INDEX(ch_initdir.ExistingRefsUngapped)
   ch_kallisto_index_reads = ch_kallisto_index.combine(ch_fastq_pairs)
   ch_kallisto_quant = KALLISTO_QUANT(ch_kallisto_index_reads)
-  ch_bestRef = BEST_ALIGNMENT(ch_initdir.IndividualRefs, ch_kallisto_quant).view()
+  ch_bestRef = BEST_ALIGNMENT(ch_initdir.IndividualRefs, ch_kallisto_quant)
   ch_fastq_id_header = FASTQ_ID_HEADER(ch_fastq_pairs)
   ch_iva_contigs = IVA_CONTIGS(ch_fastq_pairs)
   ch_wRef = ALIGN_CONTIGS(ch_initdir.InitDir, ch_iva_contigs)
   // Combine according to a key that is the first value of every first element, which is a list
-  ch_map_args = ch_iva_contigs.combine(ch_wRef, by:0).combine(ch_fastq_id_header, by:0)
-  //ch_map_out = MAP(ch_initdir.MyInitDir, ch_map_args)
+  ch_map_args = ch_bestRef.combine(ch_fastq_id_header, by:0).combine(ch_iva_contigs, by:0).combine(ch_wRef, by:0).view()
+  ch_map_out = MAP(ch_initdir.InitDir, ch_map_args)
+  // ********************************************MAF*****************************************************
   //ch_maf_out = MAF(ch_map_out)
   //ch_ref_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
   //ch_joined_maf = JOIN_MAFS(ch_ref_maf)
+  // ****************************************PHYLOSCANNER PART*******************************************
   //phyloscanner_csvfiles = BAM_REF_CSV(map_out)
-  
   // A shorter way to collect bam,ref,id csv files (for optimisation)
   //ch_bam_ref_id = phyloscanner_csvfiles.collectFile(name: "bam_ref_id.csv")
-
   //phyloscanner_input = PHYLOSCANNER_CSV(phyloscanner_csvfiles.collect())
   //mapped_out_no_id = map_out.map {id, fasta, bam, bai, csv -> [fasta, bam, bai]}
   //aligned_reads = MAKE_TREES(phyloscanner_input, mapped_out_no_id.flatten().collect())
@@ -537,7 +531,7 @@ workflow {
 }
 
 
-// Can be useful later
+// This process be useful later
 process RENAME_FASTQ {
   //conda "/home/beast2/anaconda3/envs/python3"
   conda "${projectDir}/Environments/python3.yml"
