@@ -1,5 +1,5 @@
 # Recency Pipeline (HIV-phyloTSI)
-This is a seamless pipeline developted to automate HIV-phyloTSI method meant to estimate time since infection (TSI) from HIV deep-sequencing data. The methid is described here, [preprint](https://www.medrxiv.org/content/10.1101/2022.05.15.22275117v1). Here is a link for the [HIV-phyloTSI GitHub page](https://github.com/BDI-pathogens/HIV-phyloTSI/tree/main)
+This is a seamless pipeline developted to automate HIV-phyloTSI method. The method (published here [preprint](https://www.medrxiv.org/content/10.1101/2022.05.15.22275117v1)) is meant to estimate time since infection (TSI) from HIV deep-sequencing data. Here is a link for the [HIV-phyloTSI GitHub page](https://github.com/BDI-pathogens/HIV-phyloTSI/tree/main)
 
 ## Tools
 The pipeline includes the following tools:
