@@ -197,7 +197,7 @@ process KALLISTO_QUANT {
 }
 
 process BEST_ALIGNMENT {
-  publishDir "${projectDir}/${params.outdir}/04_bets_ref", mode: "copy", overwrite: true
+  publishDir "${projectDir}/${params.outdir}/04_best_ref", mode: "copy", overwrite: true
   debug true
 
   input:
