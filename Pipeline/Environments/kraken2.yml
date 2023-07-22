@@ -1,8 +1,9 @@
 channels:
   - bioconda
+  - anaconda
   - conda-forge
   - pypi
   - defaults
 dependencies:
- - kraken2=2.1.2
+  - kraken2=2.1.2
 
