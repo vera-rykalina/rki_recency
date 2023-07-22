@@ -69,7 +69,7 @@ process KRAKEN2_CLASSIFY {
     // SLURM cluster options
     // cpus 10,  memory "150 GB", time "4h"
     // clusterOptions "--job-name=classify_${sample}"
-    tag "${id}_kraken2_classify"
+    //tag "${id}_kraken2_classify"
 
     input:
         tuple val(id), path(reads)
