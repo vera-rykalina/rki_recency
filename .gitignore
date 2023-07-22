@@ -8,5 +8,6 @@ Pipeline/Results/*
 Pipeline/HTML/*
 Pipeline/Test/
 Pipeline/conda
+Pipeline/RawData/*.gz
 
 
