@@ -1,1 +1,1 @@
-# Add your fasta.gz file to this folder
+# Add your fastq.gz file to this folder
