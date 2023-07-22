@@ -1,8 +1,7 @@
 nextflow.enable.dsl = 2
 
 // Change is required! Specify your projectDir here
-projectDir = "/home/rykalinav/scratch/rki_shiver/Pipeline"
-//projectDir = "/home/beast2/rki_shiver/Pipeline"
+projectDir = "/home/rykalinav/scratch/rki_recency/Pipeline"
 
 
 // ********************** NEXTFLOW RUN **************************
