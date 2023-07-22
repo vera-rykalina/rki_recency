@@ -12,9 +12,9 @@ projectDir = "/home/rykalinav/scratch/rki_shiver/Pipeline"
 // -c Script/rki_profile.config \
 // -profile rki_slurm,rki_mamba \
 // --outdir Results \
-// -with-report logs/test.$(date +%T).report.html
+// -with-report HTML/test.$(date +%T).report.html
 // # use this paramete to build a flowchart
-// -with-dag flowchart.png
+// -with-dag pipeline_flowchart.png (pipeline_flowchart.mmd)
 // # use this parameter for an empty test run
 // -stub
 
@@ -75,21 +75,22 @@ process KRAKEN2_CLASSIFY {
 
     input:
         tuple val(id), path(reads)
+        val (db)
 
     output:
         tuple val(id), path("${id}.classified.R*.fastq"),     emit: fastq
         tuple val(id), path("${id}.kraken.out.txt"),          emit: kraken_output
         tuple val(id), path("${id}.kraken.report.txt"),       emit: kraken_report
-
+  
  script:
         """
             kraken2 \
                 --threads 10 \
-                --db ${params.krakendb} \
+                --db ${db} \
                 --paired \
-                --classified-out ${sample}.classified.R#.fastq \
-                --output ${sample}.kraken.out.txt \
-                --report ${sample}.kraken.report.txt \
+                --classified-out ${id}.classified.R#.fastq \
+                --output ${id}.kraken.out.txt \
+                --report ${id}.kraken.report.txt \
                 ${reads[0]} ${reads[1]}
         """
 
@@ -441,7 +442,7 @@ process MAKE_TREES {
 process IQTREE {
   label "iqtree"
   conda "${projectDir}/Environments/iqtree.yml"
-  publishDir "${params.outdir}/11_iqtree_trees", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/13_iqtree_trees", mode: "copy", overwrite: true
   //debug true
 
  input:
@@ -458,13 +459,13 @@ process IQTREE {
      -s ${fasta} \
      -pre IQTREE_bestTree.InWindow_${fasta.getSimpleName().split("Excised_")[1]} \
      -m GTR+F+R6 \
-     -nt 16
+     -nt 4
  """ 
 }
 
 process TREE_ANALYSIS {
  label "phyloscanner_tree_analysis"
- publishDir "${params.outdir}/12_analysed_trees", mode: "copy", overwrite: true
+ publishDir "${params.outdir}/14_analysed_trees", mode: "copy", overwrite: true
  //debug true
 
  input:
@@ -488,7 +489,7 @@ process TREE_ANALYSIS {
     --windowThreshold 0.5 \
     --allowMultiTrans \
     --directionThreshold 0.33 \
-    --readCountsMatterOnZeroLenghBranches \
+    --readCountsMatterOnZeroLengthBranches \
     --blacklistReport \
     --parsimonyBlacklistK ${params.k} \
     --ratioBlacklistThreshold 0.005 \
@@ -502,7 +503,7 @@ process TREE_ANALYSIS {
 
 process PHYLO_TSI {
   conda "${projectDir}/Environments/phylo_tsi.yml"
-  publishDir "${params.outdir}/13_phylo_tsi", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/15_phylo_tsi", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -524,7 +525,7 @@ process PHYLO_TSI {
 
 process PRETTIFY_AND_PLOT {
   conda "${projectDir}/Environments/python3.yml"
-  publishDir "${params.outdir}/13_phylo_tsi", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/15_phylo_tsi", mode: "copy", overwrite: true
   debug true
 
   input:
@@ -546,7 +547,7 @@ ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz
 
 workflow {
   // ****************************************KRAKEN2******************************************************
-  ch_kraken2_report = KRAKEN2_CLASSIFY(ch_fastq_pairs)
+  ch_kraken2_report = KRAKEN2_CLASSIFY(ch_fastq_pairs, params.krakendb)
   // *************************************SHIVER PART*****************************************************
   ch_initdir = INITIALISATION()
   ch_kallisto_index = KALLISTO_INDEX(ch_initdir.ExistingRefsUngapped)
@@ -572,9 +573,9 @@ workflow {
   ch_aligned_reads = MAKE_TREES(ch_bam_ref_id_all, ch_mapped_out_no_id.flatten().collect())
   ch_aligned_reads_positions_excised = ch_aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/)
   ch_iqtree = IQTREE(ch_aligned_reads_positions_excised)
-  //ch_analysided_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
-  //ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, ch_joined_maf)
-  //ch_prettified_tsi = PRETIFFY_AND_PLOT(ch_phylo_tsi)
+  ch_analysided_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
+  ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, ch_joined_maf)
+  ch_prettified_tsi = PRETTIFY_AND_PLOT(ch_phylo_tsi)
 }
 
 // ***********************************************Extras*************************************************
