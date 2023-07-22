@@ -571,8 +571,8 @@ workflow {
   ch_aligned_reads = MAKE_TREES(ch_bam_ref_id_all, ch_mapped_out_no_id.flatten().collect())
   ch_aligned_reads_positions_excised = ch_aligned_reads.AlignedReads.flatten().filter(~/.*PositionsExcised.*/)
   ch_iqtree = IQTREE(ch_aligned_reads_positions_excised)
-  ch_analysided_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
-  ch_phylo_tsi = PHYLO_TSI(ch_analysided_trees.patstat_csv, ch_joined_maf)
+  ch_analysed_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
+  ch_phylo_tsi = PHYLO_TSI(ch_analysed_trees.patstat_csv, ch_joined_maf)
   ch_prettified_tsi = PRETTIFY_AND_PLOT(ch_phylo_tsi)
 }
 
