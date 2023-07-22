@@ -578,7 +578,7 @@ workflow {
 }
 
 // ***********************************************Extras*************************************************
-// Extra process (can be used later)
+// Extra processes (can be used later)
 process RENAME_FASTQ {
   conda "${projectDir}/Environments/python3.yml"
   publishDir "${params.outdir}/A_renamed_fastq", mode: "copy", overwrite: true
