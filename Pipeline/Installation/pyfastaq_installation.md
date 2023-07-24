@@ -1,5 +1,5 @@
 # Installation of pyfastaq pkg
-This package depends on Python 3 so install it, using pip3 within shiver environment:
+This package depends on Python 3 so install it, using pip3 either within shiver environment or globally:
 
 ```sh
 pip3 install --ignore-installed pyfastaq
