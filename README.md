@@ -19,7 +19,7 @@ Download Kraken2 database and change the path accordingly in the shiver_phylosca
 
 >params.krakendb = "/scratch/databases/kraken2_20230314/"
 
-The database used by the pipeline is PlusPFP (3 March, 2023) which is stored within HPC resources. 
+The [database](https://benlangmead.github.io/aws-indexes/k2) used by the pipeline is PlusPFP (3 March, 2023) which is stored within HPC resources. 
 
 Alternativelly, one can install all the tools manually, using .yml recipes (see Environments folder). If so, pyfastaq can be installed within a shiver's environment:
 
