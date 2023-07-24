@@ -4,8 +4,6 @@ Pipeline/RawData/*.gz
 Pipeline/.nextflow.log*
 Pipeline/.nextflow
 Pipeline/work/
-Pipeline/Results/*
-Pipeline/HTML/*
 Pipeline/Test/
 Pipeline/conda
 Pipeline/RawData/*.gz
