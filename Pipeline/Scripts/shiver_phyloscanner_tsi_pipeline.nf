@@ -55,7 +55,7 @@ log.info """
        Affiliation: Robert Koch Institute 
         Acknowledgement: Tanay Golubchik
               Created: 17 July 2023
-           Last Updated: 21 July 2023
+           Last Updated: 23 July 2023
 ====================================================
          """
 
