@@ -1,5 +1,4 @@
 Pipeline/.nextflow
-Pipeline/Results/
 Pipeline/RawData/*.gz
 Pipeline/.nextflow.log*
 Pipeline/.nextflow
@@ -7,5 +6,3 @@ Pipeline/work/
 Pipeline/Test/
 Pipeline/conda
 Pipeline/RawData/*.gz
-
-
