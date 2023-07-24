@@ -4,16 +4,16 @@ This is a seamless pipeline developted to automate HIV-phyloTSI method. The [met
 
 ## Tools
 The pipeline includes the following tools:
-- kraken2
-- shiver (C. Wymant)
-- kallisto
-- iva
-- phyloscanner (C. Wymant & M. Hall)
-- iqtree
+- KRAKEN2
+- SHIVER (C. Wymant)
+- KALLISTO
+- IVA
+- PHYLOSCANNER (C. Wymant & M. Hall)
+- IQTREE
 - HIV-phyloTSI (T. Golubchik)
 
 ## Installation
-Make sure that R with phyloscannerR package and pyfastaq installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
+Make sure that R with the phyloscannerR package and pyfastaq installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
 
 Download Kraken2 database and change the path accordingly in the shiver_phyloscanner_tsi_pipeline.nf if Kraken2 reports are desired.
 
@@ -21,7 +21,9 @@ Download Kraken2 database and change the path accordingly in the shiver_phylosca
 
 The database used by the pipeline is PlusPFP (3 March, 2023) which is stored within HPC resources. 
 
-Alternativelly, one can install all the tools manually, using .yml recipes (see Environment folder). If so, pyfastaq can be install within shiver's environment:
+Alternativelly, one can install all the tools manually, using .yml recipes (see Environment folder). 
+
+If so, pyfastaq can be installed within shiver's environment:
 
 ```sh
 conda activate shiver
