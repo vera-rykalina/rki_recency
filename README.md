@@ -21,9 +21,7 @@ Download Kraken2 database and change the path accordingly in the shiver_phylosca
 
 The database used by the pipeline is PlusPFP (3 March, 2023) which is stored within HPC resources. 
 
-Alternativelly, one can install all the tools manually, using .yml recipes (see Environment folder). 
-
-If so, pyfastaq can be installed within shiver's environment:
+Alternativelly, one can install all the tools manually, using .yml recipes (see Environments folder). If so, pyfastaq can be installed within a shiver's environment:
 
 ```sh
 conda activate shiver
@@ -34,9 +32,9 @@ pip3 install --ignore-installed pyfastaq
 ```
 
 ## Usage
-Populate RawData/ with *.fastq.gz files
+Populate RawData/ folder with *.fastq.gz files.
 
-Change directory to the "Pipeline": 
+Change directory to the Pipeline/: 
 ```sh
 cd Pipeline/
 ```
@@ -51,11 +49,7 @@ conda activate nextflow
 Run the pipeline: 
 
 ```sh
-cd Pipeline
-nextflow /Scripts/shiver_phyloscanner_tsi_pipeline.nf 
---outdir Results \
--c Script/rki_profile.config \
--profile rki_slurm,rki_mamba
+nextflow /Scripts/shiver_phyloscanner_tsi_pipeline.nf --outdir Results -c Script/rki_profile.config -profile rki_slurm,rki_mamba
 ```
 
 ## Flowchart
