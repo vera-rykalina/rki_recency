@@ -318,7 +318,7 @@ process MAP {
         ${id}_contigs.fasta \
         ${id} \
         ${id}.blast\
-        ${bestRef} \
+        ${kallistoRef} \
         ${read1} \
         ${read2}
     rm temp_* 
