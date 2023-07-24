@@ -272,7 +272,7 @@ process ALIGN_CONTIGS {
     """
   } else {
     """
-     printf "There is no conting for sample with ID: ${id}"
+     printf "There is no contig for sample with ID: ${id}"
     """
   }
 }
