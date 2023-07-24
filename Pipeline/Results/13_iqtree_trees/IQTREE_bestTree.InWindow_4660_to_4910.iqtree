@@ -1,0 +1,1091 @@
+IQ-TREE 2.2.2.7 COVID-edition built Jun  7 2023
+
+Input file name: AlignedReadsInWindow_PositionsExcised_4660_to_4910.fasta
+Type of analysis: tree reconstruction
+Random seed number: 101186
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 475 sequences with 274 nucleotide sites
+Number of constant sites: 77 (= 28.1022% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 77 (= 28.1022% of all sites)
+Number of parsimony informative sites: 119
+Number of distinct site patterns: 217
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: GTR+F+R6
+
+Rate parameter R:
+
+  A-C: 0.6149
+  A-G: 1.4882
+  A-T: 0.2592
+  C-G: 0.1003
+  C-T: 1.8639
+  G-T: 1.0000
+
+State frequencies: (empirical counts from alignment)
+
+  pi(A) = 0.45
+  pi(C) = 0.1344
+  pi(G) = 0.2118
+  pi(T) = 0.2038
+
+Rate matrix Q:
+
+  A   -0.7515    0.1378    0.5256    0.0881
+  C    0.4613     -1.13   0.03542    0.6335
+  G     1.116   0.02246    -1.479    0.3399
+  T    0.1945    0.4175    0.3532   -0.9652
+
+Model of rate heterogeneity: FreeRate with 6 categories
+Site proportion and rates:  (0.1346,0.4218) (0.2083,0.4324) (0.2253,0.6859) (0.3545,1.181) (0.07222,3.288) (0.00514,8.277)
+
+ Category  Relative_rate  Proportion
+  1         0.4218         0.1346
+  2         0.4324         0.2083
+  3         0.6859         0.2253
+  4         1.181          0.3545
+  5         3.288          0.07222
+  6         8.277          0.00514
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -4178.8249 (s.e. 237.6925)
+Unconstrained log-likelihood (without tree): -1392.8447
+Number of free parameters (#branches + #model parameters): 965
+Akaike information criterion (AIC) score: 10287.6497
+Corrected Akaike information criterion (AICc) score: 1874667.6497
+Bayesian information criterion (BIC) score: 13774.3184
+
+**************************** WARNING ****************************
+Number of parameters (K, model parameters and branch lengths): 965
+Sample size (n, alignment length): 274
+
+Given that K>=n, the parameter estimates might be inaccurate.
+Thus, phylogenetic estimates should be interpreted with caution.
+
+Ideally, it is desirable that n >> K. When selecting optimal models,
+1. use AIC or BIC if n > 40K;
+2. use AICc or BIC if 40K >= n > K;
+3. be extremely cautious if n <= K
+
+To improve the situation (3), consider the following options:
+  1. Increase the sample size (n)
+  2. Decrease the number of parameters (K) to be estimated. If
+     possible:
+     a. Remove the least important sequences from the alignment
+     b. Specify some of the parameter values for the substitution
+        model (e.g., the nucleotide or amino acid frequencies)
+     c. Specify some of the parameter values for the rates-across-
+        sites model (e.g., the shape parameter for the discrete
+        Gamma distribution, the proportion of invariable sites, or
+        the rates of change for different rate categories under
+        the FreeRate model)
+
+Reference:
+Burnham KR, Anderson DR (2002). Model Selection and Multimodel
+Inference: A Practical Information-Theoretic Approach. Springer,
+New York.
+************************ END OF WARNING ***********************
+
+Total tree length (sum of branch lengths): 2.4423
+Sum of internal branch lengths: 0.4935 (20.2054% of tree length)
+
+WARNING: 375 near-zero internal branches (<0.0036) should be treated with caution
+         Such branches are denoted by '**' in the figure below
+
+NOTE: Tree is UNROOTED although outgroup taxon '200724_20-08522_HIV11-02415_FL24_S18_L000_read_1_count_297' is drawn at root
+
++**200724_20-08522_HIV11-02415_FL24_S18_L000_read_1_count_297
+|
+|                                +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_2_count_30
+|                             +**|
+|                             |  |        +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_17_count_2
+|                             |  |     +**|
+|                             |  |     |  +---------200724_20-08522_HIV11-02415_FL24_S18_L000_read_58_count_1
+|                             |  |  +**|
+|                             |  |  |  |     +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_76_count_1
+|                             |  |  |  |  +**|
+|                             |  |  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_108_count_1
+|                             |  |  |  +**|
+|                             |  |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_103_count_1
+|                             |  +**|
+|                             |     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_29_count_2
+|                             |     |  +**|
+|                             |     |  |  +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_37_count_1
+|                             |     +**|
+|                             |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_120_count_1
+|                          +**|
+|                          |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_102_count_1
+|                          |  +**|
+|                          |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_130_count_1
+|                       +**|
+|                       |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_31_count_2
+|                       |  +**|
+|                       |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_38_count_1
+|                    +--|
+|                    |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_116_count_1
+|                 +**|
+|                 |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_105_count_1
+|              +**|
+|              |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_88_count_1
+|           +**|
+|           |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_20_count_2
+|        +**|
+|        |  |  +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_78_count_1
+|        |  +**|
+|        |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_85_count_1
+|     +**|
+|     |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_16_count_2
+|     |  |  +**|
+|     |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_89_count_1
+|     |  +**|
+|     |     |  +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_25_count_2
+|     |     +--|
+|     |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_66_count_1
+|  +**|
+|  |  |        +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_9_count_4
+|  |  |     +**|
+|  |  |     |  +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_63_count_1
+|  |  |  +--|
+|  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_57_count_1
+|  |  +**|
+|  |     |           +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_24_count_2
+|  |     |        +--|
+|  |     |        |  +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_87_count_1
+|  |     |     +--|
+|  |     |     |  +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_34_count_1
+|  |     |  +**|
+|  |     |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_73_count_1
+|  |     +**|
+|  |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_44_count_1
+|  |        +--|
+|  |           +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_121_count_1
++**|
+|  |        +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_6_count_5
+|  |     +--|
+|  |     |  |                                                                                                                                                         +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_1_count_431
+|  |     |  |                                                                                                                                                      +**|
+|  |     |  |                                                                                                                                                      |  |                                            +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_7_count_2
+|  |     |  |                                                                                                                                                      |  |                                         +**|
+|  |     |  |                                                                                                                                                      |  |                                         |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_26_count_1
+|  |     |  |                                                                                                                                                      |  |                                         |  +**|
+|  |     |  |                                                                                                                                                      |  |                                         |     +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_58_count_1
+|  |     |  |                                                                                                                                                      |  |                                      +**|
+|  |     |  |                                                                                                                                                      |  |                                      |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_75_count_1
+|  |     |  |                                                                                                                                                      |  |                                   +**|
+|  |     |  |                                                                                                                                                      |  |                                   |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_107_count_1
+|  |     |  |                                                                                                                                                      |  |                                +**|
+|  |     |  |                                                                                                                                                      |  |                                |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_89_count_1
+|  |     |  |                                                                                                                                                      |  |                             +**|
+|  |     |  |                                                                                                                                                      |  |                             |  |     +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_71_count_1
+|  |     |  |                                                                                                                                                      |  |                             |  |  +**|
+|  |     |  |                                                                                                                                                      |  |                             |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_94_count_1
+|  |     |  |                                                                                                                                                      |  |                             |  +--|
+|  |     |  |                                                                                                                                                      |  |                             |     +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_95_count_1
+|  |     |  |                                                                                                                                                      |  |                          +**|
+|  |     |  |                                                                                                                                                      |  |                          |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_70_count_1
+|  |     |  |                                                                                                                                                      |  |                       +**|
+|  |     |  |                                                                                                                                                      |  |                       |  +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_41_count_1
+|  |     |  |                                                                                                                                                      |  |                    +**|
+|  |     |  |                                                                                                                                                      |  |                    |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_50_count_1
+|  |     |  |                                                                                                                                                      |  |                 +**|
+|  |     |  |                                                                                                                                                      |  |                 |  +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_56_count_1
+|  |     |  |                                                                                                                                                      |  |              +**|
+|  |     |  |                                                                                                                                                      |  |              |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_104_count_1
+|  |     |  |                                                                                                                                                      |  |           +**|
+|  |     |  |                                                                                                                                                      |  |           |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_43_count_1
+|  |     |  |                                                                                                                                                      |  |        +**|
+|  |     |  |                                                                                                                                                      |  |        |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_49_count_1
+|  |     |  |                                                                                                                                                      |  |     +**|
+|  |     |  |                                                                                                                                                      |  |     |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_69_count_1
+|  |     |  |                                                                                                                                                      |  |  +**|
+|  |     |  |                                                                                                                                                      |  |  |  |     +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_16_count_1
+|  |     |  |                                                                                                                                                      |  |  |  |  +**|
+|  |     |  |                                                                                                                                                      |  |  |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_38_count_1
+|  |     |  |                                                                                                                                                      |  |  |  +--|
+|  |     |  |                                                                                                                                                      |  |  |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_33_count_1
+|  |     |  |                                                                                                                                                      |  +**|
+|  |     |  |                                                                                                                                                      |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_32_count_1
+|  |     |  |                                                                                                                                                   +**|
+|  |     |  |                                                                                                                                                   |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_4_count_3
+|  |     |  |                                                                                                                                                +**|
+|  |     |  |                                                                                                                                                |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_99_count_1
+|  |     |  |                                                                                                                                             +**|
+|  |     |  |                                                                                                                                             |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_62_count_1
+|  |     |  |                                                                                                                                          +**|
+|  |     |  |                                                                                                                                          |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_19_count_1
+|  |     |  |                                                                                                                                       +**|
+|  |     |  |                                                                                                                                       |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_109_count_1
+|  |     |  |                                                                                                                                    +**|
+|  |     |  |                                                                                                                                    |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_92_count_1
+|  |     |  |                                                                                                                                 +**|
+|  |     |  |                                                                                                                                 |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_37_count_1
+|  |     |  |                                                                                                                              +**|
+|  |     |  |                                                                                                                              |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_73_count_1
+|  |     |  |                                                                                                                           +**|
+|  |     |  |                                                                                                                           |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_63_count_1
+|  |     |  |                                                                                                                        +**|
+|  |     |  |                                                                                                                        |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_86_count_1
+|  |     |  |                                                                                                                     +**|
+|  |     |  |                                                                                                                     |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_39_count_1
+|  |     |  |                                                                                                                     |  +--|
+|  |     |  |                                                                                                                     |     |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_68_count_1
+|  |     |  |                                                                                                                     |     +**|
+|  |     |  |                                                                                                                     |        +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_81_count_1
+|  |     |  |                                                                                                                  +**|
+|  |     |  |                                                                                                                  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_35_count_1
+|  |     |  |                                                                                                               +**|
+|  |     |  |                                                                                                               |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_67_count_1
+|  |     |  |                                                                                                               |  +--|
+|  |     |  |                                                                                                               |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_85_count_1
+|  |     |  |                                                                                                            +**|
+|  |     |  |                                                                                                            |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_57_count_1
+|  |     |  |                                                                                                            |  +--|
+|  |     |  |                                                                                                            |     +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_66_count_1
+|  |     |  |                                                                                                         +**|
+|  |     |  |                                                                                                         |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_42_count_1
+|  |     |  |                                                                                                      +**|
+|  |     |  |                                                                                                      |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_44_count_1
+|  |     |  |                                                                                                      |  +--|
+|  |     |  |                                                                                                      |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_82_count_1
+|  |     |  |                                                                                                   +**|
+|  |     |  |                                                                                                   |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_25_count_1
+|  |     |  |                                                                                                +**|
+|  |     |  |                                                                                                |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_45_count_1
+|  |     |  |                                                                                             +**|
+|  |     |  |                                                                                             |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_101_count_1
+|  |     |  |                                                                                          +**|
+|  |     |  |                                                                                          |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_24_count_1
+|  |     |  |                                                                                       +**|
+|  |     |  |                                                                                       |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_47_count_1
+|  |     |  |                                                                                       |  +--|
+|  |     |  |                                                                                       |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_74_count_1
+|  |     |  |                                                                                    +**|
+|  |     |  |                                                                                    |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_108_count_1
+|  |     |  |                                                                                 +**|
+|  |     |  |                                                                                 |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_34_count_1
+|  |     |  |                                                                              +**|
+|  |     |  |                                                                              |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_76_count_1
+|  |     |  |                                                                           +**|
+|  |     |  |                                                                           |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_61_count_1
+|  |     |  |                                                                        +**|
+|  |     |  |                                                                        |  +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_48_count_1
+|  |     |  |                                                                     +**|
+|  |     |  |                                                                     |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_11_count_2
+|  |     |  |                                                                     |  +--|
+|  |     |  |                                                                     |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_12_count_1
+|  |     |  |                                                                  +**|
+|  |     |  |                                                                  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_53_count_1
+|  |     |  |                                                               +**|
+|  |     |  |                                                               |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_8_count_2
+|  |     |  |                                                               |  +--|
+|  |     |  |                                                               |     +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_23_count_1
+|  |     |  |                                                            +**|
+|  |     |  |                                                            |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_77_count_1
+|  |     |  |                                                         +**|
+|  |     |  |                                                         |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_97_count_1
+|  |     |  |                                                      +**|
+|  |     |  |                                                      |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_102_count_1
+|  |     |  |                                                   +**|
+|  |     |  |                                                   |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_78_count_1
+|  |     |  |                                                +**|
+|  |     |  |                                                |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_22_count_1
+|  |     |  |                                             +**|
+|  |     |  |                                             |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_87_count_1
+|  |     |  |                                          +**|
+|  |     |  |                                          |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_9_count_2
+|  |     |  |                                       +**|
+|  |     |  |                                       |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_5_count_2
+|  |     |  |                                    +**|
+|  |     |  |                                    |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_72_count_1
+|  |     |  |                                 +**|
+|  |     |  |                                 |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_110_count_1
+|  |     |  |                              +**|
+|  |     |  |                              |  |     +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_14_count_1
+|  |     |  |                              |  |  +**|
+|  |     |  |                              |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_79_count_1
+|  |     |  |                              |  +--|
+|  |     |  |                              |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_91_count_1
+|  |     |  |                           +**|
+|  |     |  |                           |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_88_count_1
+|  |     |  |                        +**|
+|  |     |  |                        |  |        +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_2_count_78
+|  |     |  |                        |  |     +**|
+|  |     |  |                        |  |     |  |        +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_21_count_1
+|  |     |  |                        |  |     |  |     +**|
+|  |     |  |                        |  |     |  |     |  |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_55_count_1
+|  |     |  |                        |  |     |  |     |  |  +**|
+|  |     |  |                        |  |     |  |     |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_90_count_1
+|  |     |  |                        |  |     |  |     |  +**|
+|  |     |  |                        |  |     |  |     |     |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_103_count_1
+|  |     |  |                        |  |     |  |     |     +**|
+|  |     |  |                        |  |     |  |     |        +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_105_count_1
+|  |     |  |                        |  |     |  |  +**|
+|  |     |  |                        |  |     |  |  |  |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_28_count_1
+|  |     |  |                        |  |     |  |  |  |  +**|
+|  |     |  |                        |  |     |  |  |  |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_52_count_1
+|  |     |  |                        |  |     |  |  |  |  |  +**|
+|  |     |  |                        |  |     |  |  |  |  |     +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_93_count_1
+|  |     |  |                        |  |     |  |  |  +**|
+|  |     |  |                        |  |     |  |  |     |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_40_count_1
+|  |     |  |                        |  |     |  |  |     +**|
+|  |     |  |                        |  |     |  |  |        |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_46_count_1
+|  |     |  |                        |  |     |  |  |        +**|
+|  |     |  |                        |  |     |  |  |           +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_83_count_1
+|  |     |  |                        |  |     |  +**|
+|  |     |  |                        |  |     |     |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_65_count_1
+|  |     |  |                        |  |     |     +**|
+|  |     |  |                        |  |     |        +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_106_count_1
+|  |     |  |                        |  |  +**|
+|  |     |  |                        |  |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_6_count_2
+|  |     |  |                        |  |  |  +**|
+|  |     |  |                        |  |  |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_80_count_1
+|  |     |  |                        |  +--|
+|  |     |  |                        |     |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_84_count_1
+|  |     |  |                        |     +**|
+|  |     |  |                        |        +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_96_count_1
+|  |     |  |                     +**|
+|  |     |  |                     |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_27_count_1
+|  |     |  |                     |  +--|
+|  |     |  |                     |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_60_count_1
+|  |     |  |                  +**|
+|  |     |  |                  |  |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_13_count_1
+|  |     |  |                  |  +--|
+|  |     |  |                  |     +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_18_count_1
+|  |     |  |               +**|
+|  |     |  |               |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_100_count_1
+|  |     |  |            +**|
+|  |     |  |            |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_54_count_1
+|  |     |  |         +**|
+|  |     |  |         |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_20_count_1
+|  |     |  |      +--|
+|  |     |  |      |  |                 +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_3_count_6
+|  |     |  |      |  |              +--|
+|  |     |  |      |  |              |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_17_count_1
+|  |     |  |      |  |              |  +--|
+|  |     |  |      |  |              |     +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_59_count_1
+|  |     |  |      |  |           +**|
+|  |     |  |      |  |           |  |     +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_10_count_2
+|  |     |  |      |  |           |  |  +--|
+|  |     |  |      |  |           |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_31_count_1
+|  |     |  |      |  |           |  +**|
+|  |     |  |      |  |           |     |  +----200709_20-07994_HIV07-01067_FL21_S1_L000_read_30_count_1
+|  |     |  |      |  |           |     +**|
+|  |     |  |      |  |           |        |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_98_count_1
+|  |     |  |      |  |           |        +--|
+|  |     |  |      |  |           |           |                                +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_1_count_360
+|  |     |  |      |  |           |           |                             +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                              +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_2_count_3
+|  |     |  |      |  |           |           |                             |  |                                                                                                           +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |              +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_7_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |           +--|
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |           |  +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_42_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |        +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |        |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_33_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |     +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |     |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_58_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |  +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  |  |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_56_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |  +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                           |     +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_54_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                        +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                        |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_57_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                     +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                     |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_20_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                  +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                  |  |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_10_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                                  |  +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                                  |     +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_16_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                               +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                               |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_32_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                            +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                            |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_46_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                         +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                         |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_48_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                      +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                      |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_39_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                   +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                   |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_44_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                                +**|
+|  |     |  |      |  |           |           |                             |  |                                                                                |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_30_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                             +**|
+|  |     |  |      |  |           |           |                             |  |                                                                             |  +---200703_20-07825_HIV09-00618_FL18_S6_L000_read_29_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                          +**|
+|  |     |  |      |  |           |           |                             |  |                                                                          |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_50_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                       +**|
+|  |     |  |      |  |           |           |                             |  |                                                                       |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_34_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                    +**|
+|  |     |  |      |  |           |           |                             |  |                                                                    |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_40_count_1
+|  |     |  |      |  |           |           |                             |  |                                                                 +**|
+|  |     |  |      |  |           |           |                             |  |                                                                 |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_28_count_1
+|  |     |  |      |  |           |           |                             |  |                                                              +**|
+|  |     |  |      |  |           |           |                             |  |                                                              |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_26_count_1
+|  |     |  |      |  |           |           |                             |  |                                                           +**|
+|  |     |  |      |  |           |           |                             |  |                                                           |  +---200703_20-07825_HIV09-00618_FL18_S6_L000_read_13_count_1
+|  |     |  |      |  |           |           |                             |  |                                                        +**|
+|  |     |  |      |  |           |           |                             |  |                                                        |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_19_count_1
+|  |     |  |      |  |           |           |                             |  |                                                     +**|
+|  |     |  |      |  |           |           |                             |  |                                                     |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_6_count_2
+|  |     |  |      |  |           |           |                             |  |                                                  +**|
+|  |     |  |      |  |           |           |                             |  |                                                  |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_12_count_1
+|  |     |  |      |  |           |           |                             |  |                                               +**|
+|  |     |  |      |  |           |           |                             |  |                                               |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_9_count_1
+|  |     |  |      |  |           |           |                             |  |                                            +**|
+|  |     |  |      |  |           |           |                             |  |                                            |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_17_count_1
+|  |     |  |      |  |           |           |                             |  |                                         +**|
+|  |     |  |      |  |           |           |                             |  |                                         |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_18_count_1
+|  |     |  |      |  |           |           |                             |  |                                      +**|
+|  |     |  |      |  |           |           |                             |  |                                      |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_15_count_1
+|  |     |  |      |  |           |           |                             |  |                                   +**|
+|  |     |  |      |  |           |           |                             |  |                                   |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_53_count_1
+|  |     |  |      |  |           |           |                             |  |                                +**|
+|  |     |  |      |  |           |           |                             |  |                                |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_11_count_1
+|  |     |  |      |  |           |           |                             |  |                             +**|
+|  |     |  |      |  |           |           |                             |  |                             |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_38_count_1
+|  |     |  |      |  |           |           |                             |  |                          +**|
+|  |     |  |      |  |           |           |                             |  |                          |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_24_count_1
+|  |     |  |      |  |           |           |                             |  |                       +**|
+|  |     |  |      |  |           |           |                             |  |                       |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_14_count_1
+|  |     |  |      |  |           |           |                             |  |                    +**|
+|  |     |  |      |  |           |           |                             |  |                    |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_4_count_2
+|  |     |  |      |  |           |           |                             |  |                 +**|
+|  |     |  |      |  |           |           |                             |  |                 |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_25_count_1
+|  |     |  |      |  |           |           |                             |  |              +**|
+|  |     |  |      |  |           |           |                             |  |              |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_35_count_1
+|  |     |  |      |  |           |           |                             |  |           +**|
+|  |     |  |      |  |           |           |                             |  |           |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_55_count_1
+|  |     |  |      |  |           |           |                             |  |        +**|
+|  |     |  |      |  |           |           |                             |  |        |  |  +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_5_count_2
+|  |     |  |      |  |           |           |                             |  |        |  +--|
+|  |     |  |      |  |           |           |                             |  |        |     +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_23_count_1
+|  |     |  |      |  |           |           |                             |  |     +**|
+|  |     |  |      |  |           |           |                             |  |     |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_45_count_1
+|  |     |  |      |  |           |           |                             |  |  +**|
+|  |     |  |      |  |           |           |                             |  |  |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_36_count_1
+|  |     |  |      |  |           |           |                             |  +**|
+|  |     |  |      |  |           |           |                             |     +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_21_count_1
+|  |     |  |      |  |           |           |                          +**|
+|  |     |  |      |  |           |           |                          |  |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_8_count_1
+|  |     |  |      |  |           |           |                          |  +**|
+|  |     |  |      |  |           |           |                          |     |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_31_count_1
+|  |     |  |      |  |           |           |                          |     +--|
+|  |     |  |      |  |           |           |                          |        +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_37_count_1
+|  |     |  |      |  |           |           |                       +**|
+|  |     |  |      |  |           |           |                       |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_41_count_1
+|  |     |  |      |  |           |           |                    +**|
+|  |     |  |      |  |           |           |                    |  |  +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_22_count_1
+|  |     |  |      |  |           |           |                    |  +--|
+|  |     |  |      |  |           |           |                    |     |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_27_count_1
+|  |     |  |      |  |           |           |                    |     +**|
+|  |     |  |      |  |           |           |                    |        +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_47_count_1
+|  |     |  |      |  |           |           |                 +**|
+|  |     |  |      |  |           |           |                 |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_51_count_1
+|  |     |  |      |  |           |           |              +**|
+|  |     |  |      |  |           |           |              |  |              +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_3_count_2
+|  |     |  |      |  |           |           |              |  +--------------|
+|  |     |  |      |  |           |           |              |                 +-------------------200814_20-09728_HIV09-02843_FL30_S2_L000_read_36_count_1
+|  |     |  |      |  |           |           |           +--|
+|  |     |  |      |  |           |           |           |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_43_count_1
+|  |     |  |      |  |           |           |        +**|
+|  |     |  |      |  |           |           |        |  +--200703_20-07825_HIV09-00618_FL18_S6_L000_read_52_count_1
+|  |     |  |      |  |           |           |     +--|
+|  |     |  |      |  |           |           |     |  +**200703_20-07825_HIV09-00618_FL18_S6_L000_read_49_count_1
+|  |     |  |      |  |           |           |  +**|
+|  |     |  |      |  |           |           |  |  |                            +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_1_count_185
+|  |     |  |      |  |           |           |  |  |                         +**|
+|  |     |  |      |  |           |           |  |  |                         |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_8_count_13
+|  |     |  |      |  |           |           |  |  |                         |  +**|
+|  |     |  |      |  |           |           |  |  |                         |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_20_count_2
+|  |     |  |      |  |           |           |  |  |                      +**|
+|  |     |  |      |  |           |           |  |  |                      |  |                    +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_2_count_28
+|  |     |  |      |  |           |           |  |  |                      |  |                 +**|
+|  |     |  |      |  |           |           |  |  |                      |  |                 |  |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_26_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |                 |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |                 |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_63_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |                 |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |                 |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_39_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |                 |     +**|
+|  |     |  |      |  |           |           |  |  |                      |  |                 |        +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_59_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |              +**|
+|  |     |  |      |  |           |           |  |  |                      |  |              |  +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_70_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |           +--|
+|  |     |  |      |  |           |           |  |  |                      |  |           |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_60_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |        +**|
+|  |     |  |      |  |           |           |  |  |                      |  |        |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_19_count_2
+|  |     |  |      |  |           |           |  |  |                      |  |     +**|
+|  |     |  |      |  |           |           |  |  |                      |  |     |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_65_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |     |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |     |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_71_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |                    +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_4_count_21
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |                 +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |                 |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_24_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |                 |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |                 |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_49_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |              +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |              |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_47_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |              |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |              |     +----200814_20-09728_HIV09-02843_FL30_S2_L000_read_74_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |           +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |           |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_77_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |        +--|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |        |  +----200814_20-09728_HIV09-02843_FL30_S2_L000_read_58_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |     +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_21_count_2
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_51_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |        +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_10_count_9
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |     +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_15_count_4
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |  |  |     +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_18_count_3
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |  |  |  +--|
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |  |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_38_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |     |  |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_33_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |     +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |        +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_11_count_9
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |     +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |     |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_30_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |     |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |     |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_34_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  +--|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |  |          +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_13_count_7
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |  |       +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |  |       |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_42_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |  |  +----|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |  |  |    +------200814_20-09728_HIV09-02843_FL30_S2_L000_read_37_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |        |  |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_67_count_1
+|  |     |  |      |  |           |           |  |  |                      |  |  |        +**|
+|  |     |  |      |  |           |           |  |  |                      |  |  |           +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_76_count_1
+|  |     |  |      |  |           |           |  |  |                      |  +**|
+|  |     |  |      |  |           |           |  |  |                      |     |           +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_3_count_24
+|  |     |  |      |  |           |           |  |  |                      |     |        +**|
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |           +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_7_count_15
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |        +**|
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |        |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_32_count_1
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |     +--|
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |     |  +------------200814_20-09728_HIV09-02843_FL30_S2_L000_read_78_count_1
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |     |        |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_72_count_1
+|  |     |  |      |  |           |           |  |  |                      |     |        |  +**|
+|  |     |  |      |  |           |           |  |  |                      |     |        |     |  +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_27_count_1
+|  |     |  |      |  |           |           |  |  |                      |     |        |     +--|
+|  |     |  |      |  |           |           |  |  |                      |     |        |        +----200814_20-09728_HIV09-02843_FL30_S2_L000_read_57_count_1
+|  |     |  |      |  |           |           |  |  |                      |     |     +--|
+|  |     |  |      |  |           |           |  |  |                      |     |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_31_count_1
+|  |     |  |      |  |           |           |  |  |                      |     |  +**|
+|  |     |  |      |  |           |           |  |  |                      |     |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_12_count_8
+|  |     |  |      |  |           |           |  |  |                      |     +**|
+|  |     |  |      |  |           |           |  |  |                      |        |        +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_16_count_4
+|  |     |  |      |  |           |           |  |  |                      |        |     +--|
+|  |     |  |      |  |           |           |  |  |                      |        |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_40_count_1
+|  |     |  |      |  |           |           |  |  |                      |        |  +**|
+|  |     |  |      |  |           |           |  |  |                      |        |  |  +------200814_20-09728_HIV09-02843_FL30_S2_L000_read_52_count_1
+|  |     |  |      |  |           |           |  |  |                      |        +**|
+|  |     |  |      |  |           |           |  |  |                      |           |     +---------200814_20-09728_HIV09-02843_FL30_S2_L000_read_56_count_1
+|  |     |  |      |  |           |           |  |  |                      |           |  +--|
+|  |     |  |      |  |           |           |  |  |                      |           |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_61_count_1
+|  |     |  |      |  |           |           |  |  |                      |           |  |  +**|
+|  |     |  |      |  |           |           |  |  |                      |           |  |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_62_count_1
+|  |     |  |      |  |           |           |  |  |                      |           +**|
+|  |     |  |      |  |           |           |  |  |                      |              +----200814_20-09728_HIV09-02843_FL30_S2_L000_read_64_count_1
+|  |     |  |      |  |           |           |  |  |                   +**|
+|  |     |  |      |  |           |           |  |  |                   |  |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_22_count_2
+|  |     |  |      |  |           |           |  |  |                   |  |  +**|
+|  |     |  |      |  |           |           |  |  |                   |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_25_count_1
+|  |     |  |      |  |           |           |  |  |                   |  +**|
+|  |     |  |      |  |           |           |  |  |                   |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_45_count_1
+|  |     |  |      |  |           |           |  |  |                   |     +**|
+|  |     |  |      |  |           |           |  |  |                   |        +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_54_count_1
+|  |     |  |      |  |           |           |  |  |                +**|
+|  |     |  |      |  |           |           |  |  |                |  |              +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_5_count_15
+|  |     |  |      |  |           |           |  |  |                |  |           +**|
+|  |     |  |      |  |           |           |  |  |                |  |           |  |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_29_count_1
+|  |     |  |      |  |           |           |  |  |                |  |           |  |  +**|
+|  |     |  |      |  |           |           |  |  |                |  |           |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_46_count_1
+|  |     |  |      |  |           |           |  |  |                |  |           |  +**|
+|  |     |  |      |  |           |           |  |  |                |  |           |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_48_count_1
+|  |     |  |      |  |           |           |  |  |                |  |           |     +**|
+|  |     |  |      |  |           |           |  |  |                |  |           |        +---200814_20-09728_HIV09-02843_FL30_S2_L000_read_69_count_1
+|  |     |  |      |  |           |           |  |  |                |  |        +--|
+|  |     |  |      |  |           |           |  |  |                |  |        |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_50_count_1
+|  |     |  |      |  |           |           |  |  |                |  |     +**|
+|  |     |  |      |  |           |           |  |  |                |  |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_23_count_1
+|  |     |  |      |  |           |           |  |  |                |  |  +**|
+|  |     |  |      |  |           |           |  |  |                |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_66_count_1
+|  |     |  |      |  |           |           |  |  |                |  +**|
+|  |     |  |      |  |           |           |  |  |                |     |        +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_14_count_5
+|  |     |  |      |  |           |           |  |  |                |     |     +--|
+|  |     |  |      |  |           |           |  |  |                |     |     |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_55_count_1
+|  |     |  |      |  |           |           |  |  |                |     |  +**|
+|  |     |  |      |  |           |           |  |  |                |     |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_75_count_1
+|  |     |  |      |  |           |           |  |  |                |     +**|
+|  |     |  |      |  |           |           |  |  |                |        +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_35_count_1
+|  |     |  |      |  |           |           |  |  |             +**|
+|  |     |  |      |  |           |           |  |  |             |  |           +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_6_count_15
+|  |     |  |      |  |           |           |  |  |             |  |        +**|
+|  |     |  |      |  |           |           |  |  |             |  |        |  |     +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_28_count_1
+|  |     |  |      |  |           |           |  |  |             |  |        |  |  +--|
+|  |     |  |      |  |           |           |  |  |             |  |        |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_43_count_1
+|  |     |  |      |  |           |           |  |  |             |  |        |  +**|
+|  |     |  |      |  |           |           |  |  |             |  |        |     +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_68_count_1
+|  |     |  |      |  |           |           |  |  |             |  |     +--|
+|  |     |  |      |  |           |           |  |  |             |  |     |  |     +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_17_count_4
+|  |     |  |      |  |           |           |  |  |             |  |     |  |  +--|
+|  |     |  |      |  |           |           |  |  |             |  |     |  |  |  +--200814_20-09728_HIV09-02843_FL30_S2_L000_read_73_count_1
+|  |     |  |      |  |           |           |  |  |             |  |     |  +**|
+|  |     |  |      |  |           |           |  |  |             |  |     |     +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_44_count_1
+|  |     |  |      |  |           |           |  |  |             |  |  +**|
+|  |     |  |      |  |           |           |  |  |             |  |  |  +----200814_20-09728_HIV09-02843_FL30_S2_L000_read_41_count_1
+|  |     |  |      |  |           |           |  |  |             |  +**|
+|  |     |  |      |  |           |           |  |  |             |     +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_53_count_1
+|  |     |  |      |  |           |           |  |  |          +--|
+|  |     |  |      |  |           |           |  |  |          |  +---200814_20-09728_HIV09-02843_FL30_S2_L000_read_79_count_1
+|  |     |  |      |  |           |           |  |  |       +**|
+|  |     |  |      |  |           |           |  |  |       |  +**200814_20-09728_HIV09-02843_FL30_S2_L000_read_9_count_11
+|  |     |  |      |  |           |           |  |  +-------|
+|  |     |  |      |  |           |           |  |          +-------------------------C.BW.00.00BW07621.AF443088
+|  |     |  |      |  |           |           +--|
+|  |     |  |      |  |           |              +**B.FR.83.HXB2_LAI_IIIB_BRU.K03455
+|  |     |  |      |  |        +**|
+|  |     |  |      |  |        |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_36_count_1
+|  |     |  |      |  |     +**|
+|  |     |  |      |  |     |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_64_count_1
+|  |     |  |      |  |  +**|
+|  |     |  |      |  |  |  +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_29_count_1
+|  |     |  |      |  +**|
+|  |     |  |      |     |  +**200709_20-07994_HIV07-01067_FL21_S1_L000_read_51_count_1
+|  |     |  |      |     +--|
+|  |     |  |      |        |                                      +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_1_count_108
+|  |     |  |      |        |                                   +**|
+|  |     |  |      |        |                                   |  |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_31_count_1
+|  |     |  |      |        |                                   |  |  +**|
+|  |     |  |      |        |                                   |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_53_count_1
+|  |     |  |      |        |                                   |  +**|
+|  |     |  |      |        |                                   |     |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_77_count_1
+|  |     |  |      |        |                                   |     +**|
+|  |     |  |      |        |                                   |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_92_count_1
+|  |     |  |      |        |                                +**|
+|  |     |  |      |        |                                |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_61_count_1
+|  |     |  |      |        |                                |  +**|
+|  |     |  |      |        |                                |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_81_count_1
+|  |     |  |      |        |                             +**|
+|  |     |  |      |        |                             |  |                       +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_5_count_7
+|  |     |  |      |        |                             |  |                    +**|
+|  |     |  |      |        |                             |  |                    |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_80_count_1
+|  |     |  |      |        |                             |  |                 +**|
+|  |     |  |      |        |                             |  |                 |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_13_count_3
+|  |     |  |      |        |                             |  |                 |  +**|
+|  |     |  |      |        |                             |  |                 |     |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_29_count_1
+|  |     |  |      |        |                             |  |                 |     |  +**|
+|  |     |  |      |        |                             |  |                 |     |  |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_36_count_1
+|  |     |  |      |        |                             |  |                 |     +--|
+|  |     |  |      |        |                             |  |                 |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_90_count_1
+|  |     |  |      |        |                             |  |              +--|
+|  |     |  |      |        |                             |  |              |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_14_count_3
+|  |     |  |      |        |                             |  |              |  +**|
+|  |     |  |      |        |                             |  |              |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_87_count_1
+|  |     |  |      |        |                             |  |           +--|
+|  |     |  |      |        |                             |  |           |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_49_count_1
+|  |     |  |      |        |                             |  |        +**|
+|  |     |  |      |        |                             |  |        |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_10_count_4
+|  |     |  |      |        |                             |  |     +--|
+|  |     |  |      |        |                             |  |     |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_6_count_6
+|  |     |  |      |        |                             |  |  +**|
+|  |     |  |      |        |                             |  |  |  |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_8_count_5
+|  |     |  |      |        |                             |  |  |  |  +**|
+|  |     |  |      |        |                             |  |  |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_40_count_1
+|  |     |  |      |        |                             |  |  |  +--|
+|  |     |  |      |        |                             |  |  |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_48_count_1
+|  |     |  |      |        |                             |  +**|
+|  |     |  |      |        |                             |     |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_15_count_2
+|  |     |  |      |        |                             |     |     +--|
+|  |     |  |      |        |                             |     |     |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_71_count_1
+|  |     |  |      |        |                             |     |  +**|
+|  |     |  |      |        |                             |     |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_75_count_1
+|  |     |  |      |        |                             |     +**|
+|  |     |  |      |        |                             |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_57_count_1
+|  |     |  |      |        |                          +**|
+|  |     |  |      |        |                          |  |                    +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_2_count_37
+|  |     |  |      |        |                          |  |                 +**|
+|  |     |  |      |        |                          |  |                 |  |              +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_7_count_5
+|  |     |  |      |        |                          |  |                 |  |           +--|
+|  |     |  |      |        |                          |  |                 |  |           |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_23_count_2
+|  |     |  |      |        |                          |  |                 |  |        +--|
+|  |     |  |      |        |                          |  |                 |  |        |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_91_count_1
+|  |     |  |      |        |                          |  |                 |  |     +**|
+|  |     |  |      |        |                          |  |                 |  |     |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_30_count_1
+|  |     |  |      |        |                          |  |                 |  |  +**|
+|  |     |  |      |        |                          |  |                 |  |  |  |        +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_21_count_2
+|  |     |  |      |        |                          |  |                 |  |  |  |     +**|
+|  |     |  |      |        |                          |  |                 |  |  |  |     |  |  +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_72_count_1
+|  |     |  |      |        |                          |  |                 |  |  |  |     |  +**|
+|  |     |  |      |        |                          |  |                 |  |  |  |     |     +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_84_count_1
+|  |     |  |      |        |                          |  |                 |  |  |  |  +--|
+|  |     |  |      |        |                          |  |                 |  |  |  |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_46_count_1
+|  |     |  |      |        |                          |  |                 |  |  |  |  |  +--|
+|  |     |  |      |        |                          |  |                 |  |  |  |  |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_88_count_1
+|  |     |  |      |        |                          |  |                 |  |  |  +**|
+|  |     |  |      |        |                          |  |                 |  |  |     +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_69_count_1
+|  |     |  |      |        |                          |  |                 |  +**|
+|  |     |  |      |        |                          |  |                 |     |                 +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_9_count_4
+|  |     |  |      |        |                          |  |                 |     |              +**|
+|  |     |  |      |        |                          |  |                 |     |              |  |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_22_count_2
+|  |     |  |      |        |                          |  |                 |     |              |  |  +--|
+|  |     |  |      |        |                          |  |                 |     |              |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_42_count_1
+|  |     |  |      |        |                          |  |                 |     |              |  +**|
+|  |     |  |      |        |                          |  |                 |     |              |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_68_count_1
+|  |     |  |      |        |                          |  |                 |     |           +**|
+|  |     |  |      |        |                          |  |                 |     |           |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_17_count_2
+|  |     |  |      |        |                          |  |                 |     |        +--|
+|  |     |  |      |        |                          |  |                 |     |        |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_45_count_1
+|  |     |  |      |        |                          |  |                 |     |     +--|
+|  |     |  |      |        |                          |  |                 |     |     |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_33_count_1
+|  |     |  |      |        |                          |  |                 |     |  +**|
+|  |     |  |      |        |                          |  |                 |     |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_12_count_4
+|  |     |  |      |        |                          |  |                 |     |  |  +--|
+|  |     |  |      |        |                          |  |                 |     |  |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_58_count_1
+|  |     |  |      |        |                          |  |                 |     +**|
+|  |     |  |      |        |                          |  |                 |        |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_20_count_2
+|  |     |  |      |        |                          |  |                 |        |  +--|
+|  |     |  |      |        |                          |  |                 |        |  |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_37_count_1
+|  |     |  |      |        |                          |  |                 |        +**|
+|  |     |  |      |        |                          |  |                 |           |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_27_count_1
+|  |     |  |      |        |                          |  |                 |           |     +--|
+|  |     |  |      |        |                          |  |                 |           |     |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_62_count_1
+|  |     |  |      |        |                          |  |                 |           |  +--|
+|  |     |  |      |        |                          |  |                 |           |  |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_63_count_1
+|  |     |  |      |        |                          |  |                 |           +**|
+|  |     |  |      |        |                          |  |                 |              +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_55_count_1
+|  |     |  |      |        |                          |  |              +**|
+|  |     |  |      |        |                          |  |              |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_65_count_1
+|  |     |  |      |        |                          |  |              |  +**|
+|  |     |  |      |        |                          |  |              |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_89_count_1
+|  |     |  |      |        |                          |  |           +**|
+|  |     |  |      |        |                          |  |           |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_73_count_1
+|  |     |  |      |        |                          |  |        +--|
+|  |     |  |      |        |                          |  |        |  |  +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_39_count_1
+|  |     |  |      |        |                          |  |        |  +--|
+|  |     |  |      |        |                          |  |        |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_79_count_1
+|  |     |  |      |        |                          |  |     +**|
+|  |     |  |      |        |                          |  |     |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_43_count_1
+|  |     |  |      |        |                          |  |  +**|
+|  |     |  |      |        |                          |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_66_count_1
+|  |     |  |      |        |                          |  +**|
+|  |     |  |      |        |                          |     |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_4_count_9
+|  |     |  |      |        |                          |     |  +--|
+|  |     |  |      |        |                          |     |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_38_count_1
+|  |     |  |      |        |                          |     |  |  +**|
+|  |     |  |      |        |                          |     |  |     |  +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_41_count_1
+|  |     |  |      |        |                          |     |  |     +**|
+|  |     |  |      |        |                          |     |  |        |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_64_count_1
+|  |     |  |      |        |                          |     |  |        +--|
+|  |     |  |      |        |                          |     |  |           +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_93_count_1
+|  |     |  |      |        |                          |     +**|
+|  |     |  |      |        |                          |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_44_count_1
+|  |     |  |      |        |                       +**|
+|  |     |  |      |        |                       |  |           +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_18_count_2
+|  |     |  |      |        |                       |  |        +**|
+|  |     |  |      |        |                       |  |        |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_28_count_1
+|  |     |  |      |        |                       |  |     +**|
+|  |     |  |      |        |                       |  |     |  |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_19_count_2
+|  |     |  |      |        |                       |  |     |  +--|
+|  |     |  |      |        |                       |  |     |     +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_70_count_1
+|  |     |  |      |        |                       |  |  +**|
+|  |     |  |      |        |                       |  |  |  |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_35_count_1
+|  |     |  |      |        |                       |  |  |  |  +--|
+|  |     |  |      |        |                       |  |  |  |  |  +----200724_20-08518_HIV10-02405_FL24_S14_L000_read_82_count_1
+|  |     |  |      |        |                       |  |  |  +**|
+|  |     |  |      |        |                       |  |  |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_94_count_1
+|  |     |  |      |        |                       |  +**|
+|  |     |  |      |        |                       |     |        +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_24_count_2
+|  |     |  |      |        |                       |     |     +--|
+|  |     |  |      |        |                       |     |     |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_51_count_1
+|  |     |  |      |        |                       |     |     |  +**|
+|  |     |  |      |        |                       |     |     |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_52_count_1
+|  |     |  |      |        |                       |     |  +**|
+|  |     |  |      |        |                       |     |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_47_count_1
+|  |     |  |      |        |                       |     |  |  +**|
+|  |     |  |      |        |                       |     |  |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_76_count_1
+|  |     |  |      |        |                       |     +**|
+|  |     |  |      |        |                       |        |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_59_count_1
+|  |     |  |      |        |                       |        +**|
+|  |     |  |      |        |                       |           |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_74_count_1
+|  |     |  |      |        |                       |           +**|
+|  |     |  |      |        |                       |              +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_86_count_1
+|  |     |  |      |        |                    +**|
+|  |     |  |      |        |                    |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_34_count_1
+|  |     |  |      |        |                 +--|
+|  |     |  |      |        |                 |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_26_count_1
+|  |     |  |      |        |              +--|
+|  |     |  |      |        |              |  |        +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_3_count_19
+|  |     |  |      |        |              |  |     +**|
+|  |     |  |      |        |              |  |     |  |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_11_count_4
+|  |     |  |      |        |              |  |     |  |     +**|
+|  |     |  |      |        |              |  |     |  |     |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_25_count_1
+|  |     |  |      |        |              |  |     |  |  +**|
+|  |     |  |      |        |              |  |     |  |  |  |     +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_54_count_1
+|  |     |  |      |        |              |  |     |  |  |  |  +--|
+|  |     |  |      |        |              |  |     |  |  |  |  |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_56_count_1
+|  |     |  |      |        |              |  |     |  |  |  +**|
+|  |     |  |      |        |              |  |     |  |  |     +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_85_count_1
+|  |     |  |      |        |              |  |     |  +**|
+|  |     |  |      |        |              |  |     |     |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_32_count_1
+|  |     |  |      |        |              |  |     |     +**|
+|  |     |  |      |        |              |  |     |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_50_count_1
+|  |     |  |      |        |              |  |  +**|
+|  |     |  |      |        |              |  |  |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_60_count_1
+|  |     |  |      |        |              |  +**|
+|  |     |  |      |        |              |     |  +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_67_count_1
+|  |     |  |      |        |              |     +**|
+|  |     |  |      |        |              |        +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_83_count_1
+|  |     |  |      |        +--------------|
+|  |     |  |      |                       |  +**200724_20-08518_HIV10-02405_FL24_S14_L000_read_16_count_2
+|  |     |  |      |                       +**|
+|  |     |  |      |                          +--200724_20-08518_HIV10-02405_FL24_S14_L000_read_78_count_1
+|  |     |  +------|
+|  |     |         +--200709_20-07994_HIV07-01067_FL21_S1_L000_read_15_count_1
+|  |  +**|
+|  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_49_count_1
+|  +**|
+|     +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_111_count_1
+|
+|                             +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_3_count_22
+|                          +**|
+|                          |  |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_42_count_1
+|                          |  |     +**|
+|                          |  |     |  +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_113_count_1
+|                          |  |  +**|
+|                          |  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_54_count_1
+|                          |  |  |  +**|
+|                          |  |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_95_count_1
+|                          |  +**|
+|                          |     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_64_count_1
+|                          |     |  +**|
+|                          |     |  |  |  +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_65_count_1
+|                          |     |  |  +**|
+|                          |     |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_115_count_1
+|                          |     +**|
+|                          |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_97_count_1
+|                          |        +**|
+|                          |           +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_129_count_1
+|                       +--|
+|                       |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_32_count_1
+|                       |  |  +**|
+|                       |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_84_count_1
+|                       |  +--|
+|                       |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_125_count_1
+|                    +**|
+|                    |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_69_count_1
+|                 +**|
+|                 |  |     +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_10_count_4
+|                 |  |  +--|
+|                 |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_81_count_1
+|                 |  +**|
+|                 |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_15_count_3
+|              +**|
+|              |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_39_count_1
+|              |  |  +--|
+|              |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_99_count_1
+|              |  +**|
+|              |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_98_count_1
+|           +**|
+|           |  |                 +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_4_count_15
+|           |  |              +**|
+|           |  |              |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_33_count_1
+|           |  |              |  +**|
+|           |  |              |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_96_count_1
+|           |  |           +**|
+|           |  |           |  |     +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_21_count_2
+|           |  |           |  |  +--|
+|           |  |           |  |  |  +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_45_count_1
+|           |  |           |  +**|
+|           |  |           |     +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_60_count_1
+|           |  |        +--|
+|           |  |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_86_count_1
+|           |  |     +**|
+|           |  |     |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_27_count_2
+|           |  |  +**|
+|           |  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_56_count_1
+|           |  |  |  +**|
+|           |  |  |     |  +---------200724_20-08522_HIV11-02415_FL24_S18_L000_read_94_count_1
+|           |  |  |     +--|
+|           |  |  |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_112_count_1
+|           |  +**|
+|           |     |        +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_7_count_5
+|           |     |     +--|
+|           |     |     |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_83_count_1
+|           |     |  +**|
+|           |     |  |  |     +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_13_count_3
+|           |     |  |  |  +--|
+|           |     |  |  |  |  +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_75_count_1
+|           |     |  |  +--|
+|           |     |  |     |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_117_count_1
+|           |     |  |     +**|
+|           |     |  |        +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_127_count_1
+|           |     +**|
+|           |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_30_count_2
+|           |        +**|
+|           |           +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_68_count_1
+|        +**|
+|        |  |              +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_12_count_3
+|        |  |           +--|
+|        |  |           |  +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_74_count_1
+|        |  |        +**|
+|        |  |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_71_count_1
+|        |  |     +**|
+|        |  |     |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_55_count_1
+|        |  |     |  +**|
+|        |  |     |     +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_107_count_1
+|        |  |  +**|
+|        |  |  |  |        +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_23_count_2
+|        |  |  |  |     +**|
+|        |  |  |  |     |  +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_114_count_1
+|        |  |  |  |  +**|
+|        |  |  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_93_count_1
+|        |  |  |  +**|
+|        |  |  |     |        +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_67_count_1
+|        |  |  |     |     +--|
+|        |  |  |     |     |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_100_count_1
+|        |  |  |     |  +**|
+|        |  |  |     |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_109_count_1
+|        |  |  |     +**|
+|        |  |  |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_79_count_1
+|        |  +**|
+|        |     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_19_count_2
+|        |     |  +**|
+|        |     |  |  +------200724_20-08522_HIV11-02415_FL24_S18_L000_read_70_count_1
+|        |     +**|
+|        |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_59_count_1
+|        |        +**|
+|        |           |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_123_count_1
+|        |           +--|
+|        |              +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_128_count_1
+|     +**|
+|     |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_35_count_1
+|     |  +**|
+|     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_53_count_1
+|  +**|
+|  |  |              +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_5_count_6
+|  |  |           +--|
+|  |  |           |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_28_count_2
+|  |  |           |  +**|
+|  |  |           |     +------200724_20-08522_HIV11-02415_FL24_S18_L000_read_40_count_1
+|  |  |        +**|
+|  |  |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_77_count_1
+|  |  |     +**|
+|  |  |     |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_14_count_3
+|  |  |     |  |  +**|
+|  |  |     |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_124_count_1
+|  |  |     |  +**|
+|  |  |     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_62_count_1
+|  |  |  +**|
+|  |  |  |  |           +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_8_count_4
+|  |  |  |  |        +--|
+|  |  |  |  |        |  +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_36_count_1
+|  |  |  |  |     +**|
+|  |  |  |  |     |  |  +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_18_count_2
+|  |  |  |  |     |  +--|
+|  |  |  |  |     |     |  +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_47_count_1
+|  |  |  |  |     |     +**|
+|  |  |  |  |     |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_122_count_1
+|  |  |  |  |  +**|
+|  |  |  |  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_48_count_1
+|  |  |  |  |  |  +**|
+|  |  |  |  |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_61_count_1
+|  |  |  |  +**|
+|  |  |  |     |  +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_26_count_2
+|  |  |  |     +--|
+|  |  |  |        +------200724_20-08522_HIV11-02415_FL24_S18_L000_read_80_count_1
+|  |  +**|
+|  |     +**200724_20-08522_HIV11-02415_FL24_S18_L000_read_72_count_1
++**|
+   |           +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_11_count_3
+   |        +**|
+   |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_106_count_1
+   |     +**|
+   |     |  |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_22_count_2
+   |     |  |     +**|
+   |     |  |     |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_41_count_1
+   |     |  |  +**|
+   |     |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_92_count_1
+   |     |  +**|
+   |     |     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_50_count_1
+   |     |     |  +**|
+   |     |     |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_110_count_1
+   |     |     +**|
+   |     |        +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_119_count_1
+   |  +**|
+   |  |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_43_count_1
+   |  |  |  +**|
+   |  |  |  |  |     +----200724_20-08522_HIV11-02415_FL24_S18_L000_read_82_count_1
+   |  |  |  |  |  +**|
+   |  |  |  |  |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_126_count_1
+   |  |  |  |  +**|
+   |  |  |  |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_104_count_1
+   |  |  +**|
+   |  |     |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_46_count_1
+   |  |     |  +**|
+   |  |     |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_51_count_1
+   |  |     +**|
+   |  |        |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_131_count_1
+   |  |        +**|
+   |  |           +---200724_20-08522_HIV11-02415_FL24_S18_L000_read_132_count_1
+   +**|
+      |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_52_count_1
+      |  +**|
+      |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_101_count_1
+      +**|
+         |     +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_90_count_1
+         |  +**|
+         |  |  +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_118_count_1
+         +**|
+            +--200724_20-08522_HIV11-02415_FL24_S18_L000_read_91_count_1
+
+Tree in newick format:
+
+(200724_20-08522_HIV11-02415_FL24_S18_L000_read_1_count_297:0.0000025482,(((((((((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_2_count_30:0.0000025482,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_17_count_2:0.0000025482,200724_20-08522_HIV11-02415_FL24_S18_L000_read_58_count_1:0.0180187274):0.0000019448,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_76_count_1:0.0087345607,200724_20-08522_HIV11-02415_FL24_S18_L000_read_108_count_1:0.0043477247):0.0000026027,200724_20-08522_HIV11-02415_FL24_S18_L000_read_103_count_1:0.0043974139):0.0000025352):0.0000019283,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_29_count_2:0.0043434300,200724_20-08522_HIV11-02415_FL24_S18_L000_read_37_count_1:0.0087422899):0.0000026570,200724_20-08522_HIV11-02415_FL24_S18_L000_read_120_count_1:0.0043448240):0.0000023161):0.0000018504):0.0000022674,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_102_count_1:0.0043501685,200724_20-08522_HIV11-02415_FL24_S18_L000_read_130_count_1:0.0043960113):0.0000021931):0.0000029864,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_31_count_2:0.0043477110,200724_20-08522_HIV11-02415_FL24_S18_L000_read_38_count_1:0.0047389804):0.0000023315):0.0000022980,200724_20-08522_HIV11-02415_FL24_S18_L000_read_116_count_1:0.0043561350):0.0043467422,200724_20-08522_HIV11-02415_FL24_S18_L000_read_105_count_1:0.0042889535):0.0000020798,200724_20-08522_HIV11-02415_FL24_S18_L000_read_88_count_1:0.0042896367):0.0000021489,200724_20-08522_HIV11-02415_FL24_S18_L000_read_20_count_2:0.0043250270):0.0000020576,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_78_count_1:0.0000025482,200724_20-08522_HIV11-02415_FL24_S18_L000_read_85_count_1:0.0042825950):0.0000028536):0.0000018930,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_16_count_2:0.0042962990,200724_20-08522_HIV11-02415_FL24_S18_L000_read_89_count_1:0.0042971265):0.0000023064,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_25_count_2:0.0000020363,200724_20-08522_HIV11-02415_FL24_S18_L000_read_66_count_1:0.0042804521):0.0042915317):0.0000028915):0.0000025330,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_9_count_4:0.0000025482,200724_20-08522_HIV11-02415_FL24_S18_L000_read_63_count_1:0.0000028446):0.0000020582,200724_20-08522_HIV11-02415_FL24_S18_L000_read_57_count_1:0.0042884381):0.0042890733,((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_24_count_2:0.0000025482,200724_20-08522_HIV11-02415_FL24_S18_L000_read_87_count_1:0.0085953279):0.0042789131,200724_20-08522_HIV11-02415_FL24_S18_L000_read_34_count_1:0.0000020753):0.0042775790,200724_20-08522_HIV11-02415_FL24_S18_L000_read_73_count_1:0.0042785266):0.0000026415,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_44_count_1:0.0042747678,200724_20-08522_HIV11-02415_FL24_S18_L000_read_121_count_1:0.0000026495):0.0042898528):0.0000028866):0.0000020662):0.0000025482,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_6_count_5:0.0000020216,((((((((((((((((((((((((((((((((((((((((((((((((((200709_20-07994_HIV07-01067_FL21_S1_L000_read_1_count_431:0.0000025482,(((((((((((((((200709_20-07994_HIV07-01067_FL21_S1_L000_read_7_count_2:0.0043884064,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_26_count_1:0.0043970273,200709_20-07994_HIV07-01067_FL21_S1_L000_read_58_count_1:0.0000010226):0.0000010227):0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_75_count_1:0.0043896960):0.0000019796,200709_20-07994_HIV07-01067_FL21_S1_L000_read_107_count_1:0.0000025482):0.0000018402,200709_20-07994_HIV07-01067_FL21_S1_L000_read_89_count_1:0.0043990145):0.0000029991,((200709_20-07994_HIV07-01067_FL21_S1_L000_read_71_count_1:0.0000025444,200709_20-07994_HIV07-01067_FL21_S1_L000_read_94_count_1:0.0044274856):0.0000026262,200709_20-07994_HIV07-01067_FL21_S1_L000_read_95_count_1:0.0090528522):0.0044066581):0.0000021409,200709_20-07994_HIV07-01067_FL21_S1_L000_read_70_count_1:0.0043850365):0.0000019064,200709_20-07994_HIV07-01067_FL21_S1_L000_read_41_count_1:0.0089087690):0.0000020617,200709_20-07994_HIV07-01067_FL21_S1_L000_read_50_count_1:0.0043959924):0.0000010227,200709_20-07994_HIV07-01067_FL21_S1_L000_read_56_count_1:0.0088080195):0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_104_count_1:0.0043857279):0.0000024344,200709_20-07994_HIV07-01067_FL21_S1_L000_read_43_count_1:0.0043900528):0.0000018528,200709_20-07994_HIV07-01067_FL21_S1_L000_read_49_count_1:0.0000025482):0.0000020350,200709_20-07994_HIV07-01067_FL21_S1_L000_read_69_count_1:0.0043850633):0.0000020937,((200709_20-07994_HIV07-01067_FL21_S1_L000_read_16_count_1:0.0000027156,200709_20-07994_HIV07-01067_FL21_S1_L000_read_38_count_1:0.0043774480):0.0000020809,200709_20-07994_HIV07-01067_FL21_S1_L000_read_33_count_1:0.0043948417):0.0043888420):0.0000019617,200709_20-07994_HIV07-01067_FL21_S1_L000_read_32_count_1:0.0044185728):0.0000020554):0.0000020474,200709_20-07994_HIV07-01067_FL21_S1_L000_read_4_count_3:0.0043897158):0.0000020389,200709_20-07994_HIV07-01067_FL21_S1_L000_read_99_count_1:0.0043850713):0.0000022679,200709_20-07994_HIV07-01067_FL21_S1_L000_read_62_count_1:0.0043815188):0.0000022972,200709_20-07994_HIV07-01067_FL21_S1_L000_read_19_count_1:0.0044435201):0.0000021914,200709_20-07994_HIV07-01067_FL21_S1_L000_read_109_count_1:0.0043902045):0.0000010227,200709_20-07994_HIV07-01067_FL21_S1_L000_read_92_count_1:0.0044275286):0.0000024979,200709_20-07994_HIV07-01067_FL21_S1_L000_read_37_count_1:0.0043905356):0.0000025546,200709_20-07994_HIV07-01067_FL21_S1_L000_read_73_count_1:0.0044211218):0.0000026759,200709_20-07994_HIV07-01067_FL21_S1_L000_read_63_count_1:0.0044210806):0.0000019061,200709_20-07994_HIV07-01067_FL21_S1_L000_read_86_count_1:0.0044118305):0.0000020853,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_39_count_1:0.0000025482,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_68_count_1:0.0043946481,200709_20-07994_HIV07-01067_FL21_S1_L000_read_81_count_1:0.0000028981):0.0000026657):0.0043933754):0.0000027212,200709_20-07994_HIV07-01067_FL21_S1_L000_read_35_count_1:0.0043897595):0.0000025205,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_67_count_1:0.0000020790,200709_20-07994_HIV07-01067_FL21_S1_L000_read_85_count_1:0.0043844592):0.0043901904):0.0000021082,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_57_count_1:0.0000020880,200709_20-07994_HIV07-01067_FL21_S1_L000_read_66_count_1:0.0088722274):0.0043981305):0.0000021260,200709_20-07994_HIV07-01067_FL21_S1_L000_read_42_count_1:0.0000010226):0.0000028271,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_44_count_1:0.0000020031,200709_20-07994_HIV07-01067_FL21_S1_L000_read_82_count_1:0.0043910754):0.0043960653):0.0000021007,200709_20-07994_HIV07-01067_FL21_S1_L000_read_25_count_1:0.0044979184):0.0000020749,200709_20-07994_HIV07-01067_FL21_S1_L000_read_45_count_1:0.0044385992):0.0000027819,200709_20-07994_HIV07-01067_FL21_S1_L000_read_101_count_1:0.0043851030):0.0000020560,200709_20-07994_HIV07-01067_FL21_S1_L000_read_24_count_1:0.0043952816):0.0000018780,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_47_count_1:0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_74_count_1:0.0043814290):0.0043904839):0.0000029161,200709_20-07994_HIV07-01067_FL21_S1_L000_read_108_count_1:0.0043903555):0.0000027185,200709_20-07994_HIV07-01067_FL21_S1_L000_read_34_count_1:0.0043973540):0.0000018518,200709_20-07994_HIV07-01067_FL21_S1_L000_read_76_count_1:0.0043963007):0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_61_count_1:0.0043903607):0.0000020419,200709_20-07994_HIV07-01067_FL21_S1_L000_read_48_count_1:0.0088061778):0.0000020307,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_11_count_2:0.0000020198,200709_20-07994_HIV07-01067_FL21_S1_L000_read_12_count_1:0.0044016728):0.0043871446):0.0000020105,200709_20-07994_HIV07-01067_FL21_S1_L000_read_53_count_1:0.0043861942):0.0000025482,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_8_count_2:0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_23_count_1:0.0087908921):0.0043836650):0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_77_count_1:0.0043851136):0.0000020902,200709_20-07994_HIV07-01067_FL21_S1_L000_read_97_count_1:0.0043851233):0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_102_count_1:0.0043960715):0.0000020259,200709_20-07994_HIV07-01067_FL21_S1_L000_read_78_count_1:0.0043851454):0.0000018753,200709_20-07994_HIV07-01067_FL21_S1_L000_read_22_count_1:0.0043954099):0.0000021089,200709_20-07994_HIV07-01067_FL21_S1_L000_read_87_count_1:0.0043931870):0.0000025379,200709_20-07994_HIV07-01067_FL21_S1_L000_read_9_count_2:0.0043894938):0.0000023160,200709_20-07994_HIV07-01067_FL21_S1_L000_read_5_count_2:0.0043953262):0.0000020733,200709_20-07994_HIV07-01067_FL21_S1_L000_read_72_count_1:0.0043892004):0.0000019093,200709_20-07994_HIV07-01067_FL21_S1_L000_read_110_count_1:0.0043817049):0.0000021231,((200709_20-07994_HIV07-01067_FL21_S1_L000_read_14_count_1:0.0000020959,200709_20-07994_HIV07-01067_FL21_S1_L000_read_79_count_1:0.0044005582):0.0000025419,200709_20-07994_HIV07-01067_FL21_S1_L000_read_91_count_1:0.0044312676):0.0043991261):0.0000020390,200709_20-07994_HIV07-01067_FL21_S1_L000_read_88_count_1:0.0043971351):0.0000020153,(((200709_20-07994_HIV07-01067_FL21_S1_L000_read_2_count_78:0.0000025482,(((200709_20-07994_HIV07-01067_FL21_S1_L000_read_21_count_1:0.0043876475,((200709_20-07994_HIV07-01067_FL21_S1_L000_read_55_count_1:0.0043858066,200709_20-07994_HIV07-01067_FL21_S1_L000_read_90_count_1:0.0043767129):0.0000025482,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_103_count_1:0.0044113963,200709_20-07994_HIV07-01067_FL21_S1_L000_read_105_count_1:0.0043840357):0.0000022034):0.0000020444):0.0000025415,((200709_20-07994_HIV07-01067_FL21_S1_L000_read_28_count_1:0.0043876447,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_52_count_1:0.0043802986,200709_20-07994_HIV07-01067_FL21_S1_L000_read_93_count_1:0.0088056875):0.0000025482):0.0000020961,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_40_count_1:0.0044652146,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_46_count_1:0.0043922893,200709_20-07994_HIV07-01067_FL21_S1_L000_read_83_count_1:0.0043842698):0.0000025482):0.0000026421):0.0000020021):0.0000010227,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_65_count_1:0.0000025482,200709_20-07994_HIV07-01067_FL21_S1_L000_read_106_count_1:0.0043803171):0.0000020085):0.0000019061):0.0000025416,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_6_count_2:0.0044802404,200709_20-07994_HIV07-01067_FL21_S1_L000_read_80_count_1:0.0043952572):0.0000020036):0.0000021275,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_84_count_1:0.0043952459,200709_20-07994_HIV07-01067_FL21_S1_L000_read_96_count_1:0.0043620814):0.0000020371):0.0044171895):0.0000025482,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_27_count_1:0.0043345817,200709_20-07994_HIV07-01067_FL21_S1_L000_read_60_count_1:0.0044049438):0.0043817464):0.0000028435,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_13_count_1:0.0000022421,200709_20-07994_HIV07-01067_FL21_S1_L000_read_18_count_1:0.0043575809):0.0043778169):0.0000023175,200709_20-07994_HIV07-01067_FL21_S1_L000_read_100_count_1:0.0043845501):0.0000020674,200709_20-07994_HIV07-01067_FL21_S1_L000_read_54_count_1:0.0043884579):0.0000010227,200709_20-07994_HIV07-01067_FL21_S1_L000_read_20_count_1:0.0043954506):0.0000020734,((((((200709_20-07994_HIV07-01067_FL21_S1_L000_read_3_count_6:0.0000020900,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_17_count_1:0.0044334838,200709_20-07994_HIV07-01067_FL21_S1_L000_read_59_count_1:0.0000020904):0.0044324495):0.0043993813,((200709_20-07994_HIV07-01067_FL21_S1_L000_read_10_count_2:0.0000020774,200709_20-07994_HIV07-01067_FL21_S1_L000_read_31_count_1:0.0044445141):0.0044153093,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_30_count_1:0.0088636892,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_98_count_1:0.0000020769,(((((((((((200703_20-07825_HIV09-00618_FL18_S6_L000_read_1_count_360:0.0000025482,(((((((((((((((((((((((((((((((((((((200703_20-07825_HIV09-00618_FL18_S6_L000_read_2_count_3:0.0042823182,(((((200703_20-07825_HIV09-00618_FL18_S6_L000_read_7_count_1:0.0000020601,200703_20-07825_HIV09-00618_FL18_S6_L000_read_42_count_1:0.0000020510):0.0050808754,200703_20-07825_HIV09-00618_FL18_S6_L000_read_33_count_1:0.0043068050):0.0000022451,200703_20-07825_HIV09-00618_FL18_S6_L000_read_58_count_1:0.0043273513):0.0000022516,200703_20-07825_HIV09-00618_FL18_S6_L000_read_56_count_1:0.0042888291):0.0000020677,200703_20-07825_HIV09-00618_FL18_S6_L000_read_54_count_1:0.0043124631):0.0000028709):0.0000022358,200703_20-07825_HIV09-00618_FL18_S6_L000_read_57_count_1:0.0043592091):0.0000022205,200703_20-07825_HIV09-00618_FL18_S6_L000_read_20_count_1:0.0043024191):0.0000025482,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_10_count_1:0.0042742903,200703_20-07825_HIV09-00618_FL18_S6_L000_read_16_count_1:0.0000025482):0.0000025269):0.0000024011,200703_20-07825_HIV09-00618_FL18_S6_L000_read_32_count_1:0.0042834004):0.0000021482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_46_count_1:0.0043129137):0.0000023383,200703_20-07825_HIV09-00618_FL18_S6_L000_read_48_count_1:0.0042825757):0.0000022198,200703_20-07825_HIV09-00618_FL18_S6_L000_read_39_count_1:0.0042822961):0.0000025481,200703_20-07825_HIV09-00618_FL18_S6_L000_read_44_count_1:0.0042825445):0.0000019953,200703_20-07825_HIV09-00618_FL18_S6_L000_read_30_count_1:0.0042819821):0.0000020765,200703_20-07825_HIV09-00618_FL18_S6_L000_read_29_count_1:0.0085994814):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_50_count_1:0.0042767768):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_34_count_1:0.0042781239):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_40_count_1:0.0042832191):0.0000010227,200703_20-07825_HIV09-00618_FL18_S6_L000_read_28_count_1:0.0042857675):0.0000023686,200703_20-07825_HIV09-00618_FL18_S6_L000_read_26_count_1:0.0042825177):0.0000016534,200703_20-07825_HIV09-00618_FL18_S6_L000_read_13_count_1:0.0086582452):0.0000018322,200703_20-07825_HIV09-00618_FL18_S6_L000_read_19_count_1:0.0042780857):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_6_count_2:0.0042808889):0.0000023492,200703_20-07825_HIV09-00618_FL18_S6_L000_read_12_count_1:0.0042816002):0.0000010227,200703_20-07825_HIV09-00618_FL18_S6_L000_read_9_count_1:0.0042815905):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_17_count_1:0.0042790977):0.0000010227,200703_20-07825_HIV09-00618_FL18_S6_L000_read_18_count_1:0.0042726534):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_15_count_1:0.0042718046):0.0000025482,200703_20-07825_HIV09-00618_FL18_S6_L000_read_53_count_1:0.0042746905):0.0000024472,200703_20-07825_HIV09-00618_FL18_S6_L000_read_11_count_1:0.0042746911):0.0000021337,200703_20-07825_HIV09-00618_FL18_S6_L000_read_38_count_1:0.0042747624):0.0000021287,200703_20-07825_HIV09-00618_FL18_S6_L000_read_24_count_1:0.0042766470):0.0000019763,200703_20-07825_HIV09-00618_FL18_S6_L000_read_14_count_1:0.0042815582):0.0000010227,200703_20-07825_HIV09-00618_FL18_S6_L000_read_4_count_2:0.0042921907):0.0000019775,200703_20-07825_HIV09-00618_FL18_S6_L000_read_25_count_1:0.0042780200):0.0000021602,200703_20-07825_HIV09-00618_FL18_S6_L000_read_35_count_1:0.0042780150):0.0000024265,200703_20-07825_HIV09-00618_FL18_S6_L000_read_55_count_1:0.0042808055):0.0000025482,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_5_count_2:0.0000020244,200703_20-07825_HIV09-00618_FL18_S6_L000_read_23_count_1:0.0043218576):0.0042912820):0.0000010227,200703_20-07825_HIV09-00618_FL18_S6_L000_read_45_count_1:0.0043073128):0.0000028266,200703_20-07825_HIV09-00618_FL18_S6_L000_read_36_count_1:0.0042714463):0.0000020691,200703_20-07825_HIV09-00618_FL18_S6_L000_read_21_count_1:0.0042779846):0.0000020037):0.0000019638,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_8_count_1:0.0042791505,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_31_count_1:0.0042989022,200703_20-07825_HIV09-00618_FL18_S6_L000_read_37_count_1:0.0000020117):0.0042808486):0.0000020012):0.0000028598,200703_20-07825_HIV09-00618_FL18_S6_L000_read_41_count_1:0.0042654953):0.0000024323,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_22_count_1:0.0000020485,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_27_count_1:0.0042775140,200703_20-07825_HIV09-00618_FL18_S6_L000_read_47_count_1:0.0000025482):0.0000022253):0.0042809010):0.0000020538,200703_20-07825_HIV09-00618_FL18_S6_L000_read_51_count_1:0.0042606231):0.0000022663,(200703_20-07825_HIV09-00618_FL18_S6_L000_read_3_count_2:0.0000021041,200814_20-09728_HIV09-02843_FL30_S2_L000_read_36_count_1:0.0348704266):0.0266020877):0.0000020347,200703_20-07825_HIV09-00618_FL18_S6_L000_read_43_count_1:0.0043077242):0.0051182543,200703_20-07825_HIV09-00618_FL18_S6_L000_read_52_count_1:0.0043446719):0.0000029805,200703_20-07825_HIV09-00618_FL18_S6_L000_read_49_count_1:0.0000025482):0.0051651306,((((((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_1_count_185:0.0000025482,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_8_count_13:0.0043080182,200814_20-09728_HIV09-02843_FL30_S2_L000_read_20_count_2:0.0043080426):0.0000027155):0.0000021926,(((((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_2_count_28:0.0000025482,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_26_count_1:0.0043039658,200814_20-09728_HIV09-02843_FL30_S2_L000_read_63_count_1:0.0043031356):0.0000020639,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_39_count_1:0.0042995781,200814_20-09728_HIV09-02843_FL30_S2_L000_read_59_count_1:0.0042995830):0.0000020461):0.0000022471):0.0000026376,200814_20-09728_HIV09-02843_FL30_S2_L000_read_70_count_1:0.0000025482):0.0000025119,200814_20-09728_HIV09-02843_FL30_S2_L000_read_60_count_1:0.0043105402):0.0043123116,200814_20-09728_HIV09-02843_FL30_S2_L000_read_19_count_2:0.0043214024):0.0000024132,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_65_count_1:0.0043353767,200814_20-09728_HIV09-02843_FL30_S2_L000_read_71_count_1:0.0043194692):0.0000023185):0.0000022479,(((((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_4_count_21:0.0000025482,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_24_count_1:0.0043510093,200814_20-09728_HIV09-02843_FL30_S2_L000_read_49_count_1:0.0043367078):0.0000029606):0.0000019842,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_47_count_1:0.0043423598,200814_20-09728_HIV09-02843_FL30_S2_L000_read_74_count_1:0.0088648734):0.0000029976):0.0000028832,200814_20-09728_HIV09-02843_FL30_S2_L000_read_77_count_1:0.0043381640):0.0000020575,200814_20-09728_HIV09-02843_FL30_S2_L000_read_58_count_1:0.0087135655):0.0043297893,200814_20-09728_HIV09-02843_FL30_S2_L000_read_21_count_2:0.0043240637):0.0000024595,200814_20-09728_HIV09-02843_FL30_S2_L000_read_51_count_1:0.0043195057):0.0000020057,(((200814_20-09728_HIV09-02843_FL30_S2_L000_read_10_count_9:0.0043124337,200814_20-09728_HIV09-02843_FL30_S2_L000_read_15_count_4:0.0043230818):0.0000023339,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_18_count_3:0.0000025482,200814_20-09728_HIV09-02843_FL30_S2_L000_read_38_count_1:0.0042693945):0.0042909394,200814_20-09728_HIV09-02843_FL30_S2_L000_read_33_count_1:0.0043141320):0.0000025449):0.0000029720,(((200814_20-09728_HIV09-02843_FL30_S2_L000_read_11_count_9:0.0000025482,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_30_count_1:0.0043278659,200814_20-09728_HIV09-02843_FL30_S2_L000_read_34_count_1:0.0043287290):0.0000026039):0.0000024635,(((200814_20-09728_HIV09-02843_FL30_S2_L000_read_13_count_7:0.0000025482,200814_20-09728_HIV09-02843_FL30_S2_L000_read_42_count_1:0.0043561783):0.0000026255,200814_20-09728_HIV09-02843_FL30_S2_L000_read_37_count_1:0.0131477146):0.0087269755,200814_20-09728_HIV09-02843_FL30_S2_L000_read_67_count_1:0.0043284681):0.0000020200):0.0043231483,200814_20-09728_HIV09-02843_FL30_S2_L000_read_76_count_1:0.0043234625):0.0000020756):0.0000020764):0.0000010741):0.0000020012,((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_3_count_24:0.0000029972,((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_7_count_15:0.0000028455,200814_20-09728_HIV09-02843_FL30_S2_L000_read_32_count_1:0.0043347300):0.0000020438,200814_20-09728_HIV09-02843_FL30_S2_L000_read_78_count_1:0.0225827383):0.0043097059,200814_20-09728_HIV09-02843_FL30_S2_L000_read_72_count_1:0.0042814362):0.0000028427,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_27_count_1:0.0000028478,200814_20-09728_HIV09-02843_FL30_S2_L000_read_57_count_1:0.0087468268):0.0042957842):0.0000020352):0.0000024662,200814_20-09728_HIV09-02843_FL30_S2_L000_read_31_count_1:0.0042828154):0.0043032773,200814_20-09728_HIV09-02843_FL30_S2_L000_read_12_count_8:0.0043193239):0.0000020109,(((200814_20-09728_HIV09-02843_FL30_S2_L000_read_16_count_4:0.0000029532,200814_20-09728_HIV09-02843_FL30_S2_L000_read_40_count_1:0.0043016297):0.0042954580,200814_20-09728_HIV09-02843_FL30_S2_L000_read_52_count_1:0.0130651328):0.0000020025,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_56_count_1:0.0176003108,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_61_count_1:0.0043706109,200814_20-09728_HIV09-02843_FL30_S2_L000_read_62_count_1:0.0044472356):0.0000022238):0.0043348223,200814_20-09728_HIV09-02843_FL30_S2_L000_read_64_count_1:0.0086941364):0.0000021792):0.0000019649):0.0000023818):0.0000013337):0.0000020343,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_22_count_2:0.0043133257,200814_20-09728_HIV09-02843_FL30_S2_L000_read_25_count_1:0.0043123261):0.0000026598,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_45_count_1:0.0043138767,200814_20-09728_HIV09-02843_FL30_S2_L000_read_54_count_1:0.0043209330):0.0000018342):0.0000019469):0.0000022925,(((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_5_count_15:0.0000025482,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_29_count_1:0.0042998215,200814_20-09728_HIV09-02843_FL30_S2_L000_read_46_count_1:0.0043107749):0.0000024507,(200814_20-09728_HIV09-02843_FL30_S2_L000_read_48_count_1:0.0042928501,200814_20-09728_HIV09-02843_FL30_S2_L000_read_69_count_1:0.0086231072):0.0000027225):0.0000021133):0.0000022117,200814_20-09728_HIV09-02843_FL30_S2_L000_read_50_count_1:0.0043009877):0.0043056770,200814_20-09728_HIV09-02843_FL30_S2_L000_read_23_count_1:0.0043142806):0.0000020770,200814_20-09728_HIV09-02843_FL30_S2_L000_read_66_count_1:0.0043145268):0.0000028987,(((200814_20-09728_HIV09-02843_FL30_S2_L000_read_14_count_5:0.0000023335,200814_20-09728_HIV09-02843_FL30_S2_L000_read_55_count_1:0.0043653934):0.0043227980,200814_20-09728_HIV09-02843_FL30_S2_L000_read_75_count_1:0.0043103706):0.0000020078,200814_20-09728_HIV09-02843_FL30_S2_L000_read_35_count_1:0.0043145028):0.0000026457):0.0000025405):0.0000021361,((((200814_20-09728_HIV09-02843_FL30_S2_L000_read_6_count_15:0.0000028290,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_28_count_1:0.0000029983,200814_20-09728_HIV09-02843_FL30_S2_L000_read_43_count_1:0.0042966678):0.0042927885,200814_20-09728_HIV09-02843_FL30_S2_L000_read_68_count_1:0.0042688776):0.0000020491):0.0000020371,((200814_20-09728_HIV09-02843_FL30_S2_L000_read_17_count_4:0.0000020024,200814_20-09728_HIV09-02843_FL30_S2_L000_read_73_count_1:0.0043186901):0.0042865365,200814_20-09728_HIV09-02843_FL30_S2_L000_read_44_count_1:0.0000025482):0.0000024541):0.0042917640,200814_20-09728_HIV09-02843_FL30_S2_L000_read_41_count_1:0.0086848178):0.0000023793,200814_20-09728_HIV09-02843_FL30_S2_L000_read_53_count_1:0.0000025482):0.0000018615):0.0000029525,200814_20-09728_HIV09-02843_FL30_S2_L000_read_79_count_1:0.0086514829):0.0043101431,200814_20-09728_HIV09-02843_FL30_S2_L000_read_9_count_11:0.0000020940):0.0034940813,C.BW.00.00BW07621.AF443088:0.0465254244):0.0141016273):0.0000023407,B.FR.83.HXB2_LAI_IIIB_BRU.K03455:0.0000026498):0.0051550828):0.0051904007):0.0000022569):0.0000024049):0.0000022623,200709_20-07994_HIV07-01067_FL21_S1_L000_read_36_count_1:0.0043957522):0.0000020237,200709_20-07994_HIV07-01067_FL21_S1_L000_read_64_count_1:0.0043829634):0.0000026632,200709_20-07994_HIV07-01067_FL21_S1_L000_read_29_count_1:0.0043774261):0.0000025482,(200709_20-07994_HIV07-01067_FL21_S1_L000_read_51_count_1:0.0000020610,(((((((((200724_20-08518_HIV10-02405_FL24_S14_L000_read_1_count_108:0.0000025482,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_31_count_1:0.0044075281,200724_20-08518_HIV10-02405_FL24_S14_L000_read_53_count_1:0.0044459545):0.0000019908,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_77_count_1:0.0044182763,200724_20-08518_HIV10-02405_FL24_S14_L000_read_92_count_1:0.0044112882):0.0000022140):0.0000018495):0.0000019468,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_61_count_1:0.0044157915,200724_20-08518_HIV10-02405_FL24_S14_L000_read_81_count_1:0.0044266220):0.0000019590):0.0000021273,((((((((200724_20-08518_HIV10-02405_FL24_S14_L000_read_5_count_7:0.0000025482,200724_20-08518_HIV10-02405_FL24_S14_L000_read_80_count_1:0.0000025482):0.0000020362,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_13_count_3:0.0043767619,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_29_count_1:0.0043865536,200724_20-08518_HIV10-02405_FL24_S14_L000_read_36_count_1:0.0000025482):0.0000020769,200724_20-08518_HIV10-02405_FL24_S14_L000_read_90_count_1:0.0044003609):0.0043761154):0.0000020190):0.0000020777,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_14_count_3:0.0043947636,200724_20-08518_HIV10-02405_FL24_S14_L000_read_87_count_1:0.0043627091):0.0000021033):0.0043718211,200724_20-08518_HIV10-02405_FL24_S14_L000_read_49_count_1:0.0000023186):0.0043913815,200724_20-08518_HIV10-02405_FL24_S14_L000_read_10_count_4:0.0044281497):0.0000029683,200724_20-08518_HIV10-02405_FL24_S14_L000_read_6_count_6:0.0000022600):0.0044061347,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_8_count_5:0.0000025482,200724_20-08518_HIV10-02405_FL24_S14_L000_read_40_count_1:0.0044662451):0.0000020248,200724_20-08518_HIV10-02405_FL24_S14_L000_read_48_count_1:0.0044510355):0.0044163024):0.0000029941,(((200724_20-08518_HIV10-02405_FL24_S14_L000_read_15_count_2:0.0044273333,200724_20-08518_HIV10-02405_FL24_S14_L000_read_71_count_1:0.0000020379):0.0044056528,200724_20-08518_HIV10-02405_FL24_S14_L000_read_75_count_1:0.0044033322):0.0000019780,200724_20-08518_HIV10-02405_FL24_S14_L000_read_57_count_1:0.0044466640):0.0000020277):0.0000019163):0.0000018559,(((((((200724_20-08518_HIV10-02405_FL24_S14_L000_read_2_count_37:0.0000025482,(((((200724_20-08518_HIV10-02405_FL24_S14_L000_read_7_count_5:0.0044294650,200724_20-08518_HIV10-02405_FL24_S14_L000_read_23_count_2:0.0000025619):0.0043927334,200724_20-08518_HIV10-02405_FL24_S14_L000_read_91_count_1:0.0000024045):0.0043797667,200724_20-08518_HIV10-02405_FL24_S14_L000_read_30_count_1:0.0043812227):0.0000020363,(((200724_20-08518_HIV10-02405_FL24_S14_L000_read_21_count_2:0.0000025482,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_72_count_1:0.0087927108,200724_20-08518_HIV10-02405_FL24_S14_L000_read_84_count_1:0.0087721843):0.0000023007):0.0000020053,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_46_count_1:0.0043649399,200724_20-08518_HIV10-02405_FL24_S14_L000_read_88_count_1:0.0044353637):0.0043831251):0.0043791528,200724_20-08518_HIV10-02405_FL24_S14_L000_read_69_count_1:0.0088536946):0.0000020282):0.0000020379,((((((200724_20-08518_HIV10-02405_FL24_S14_L000_read_9_count_4:0.0000025482,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_22_count_2:0.0000025649,200724_20-08518_HIV10-02405_FL24_S14_L000_read_42_count_1:0.0045237690):0.0044859534,200724_20-08518_HIV10-02405_FL24_S14_L000_read_68_count_1:0.0044540739):0.0000020293):0.0000020615,200724_20-08518_HIV10-02405_FL24_S14_L000_read_17_count_2:0.0044612818):0.0000020649,200724_20-08518_HIV10-02405_FL24_S14_L000_read_45_count_1:0.0044511301):0.0044481836,200724_20-08518_HIV10-02405_FL24_S14_L000_read_33_count_1:0.0000023627):0.0044073344,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_12_count_4:0.0043845515,200724_20-08518_HIV10-02405_FL24_S14_L000_read_58_count_1:0.0000020959):0.0043747194):0.0000020219,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_20_count_2:0.0044167019,200724_20-08518_HIV10-02405_FL24_S14_L000_read_37_count_1:0.0000021073):0.0043901838,(((200724_20-08518_HIV10-02405_FL24_S14_L000_read_27_count_1:0.0044213758,200724_20-08518_HIV10-02405_FL24_S14_L000_read_62_count_1:0.0000021945):0.0043845993,200724_20-08518_HIV10-02405_FL24_S14_L000_read_63_count_1:0.0000021087):0.0043747366,200724_20-08518_HIV10-02405_FL24_S14_L000_read_55_count_1:0.0043761321):0.0000029129):0.0000020202):0.0000029528):0.0000020122):0.0000019111,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_65_count_1:0.0043809253,200724_20-08518_HIV10-02405_FL24_S14_L000_read_89_count_1:0.0043690816):0.0000020637):0.0000020560,200724_20-08518_HIV10-02405_FL24_S14_L000_read_73_count_1:0.0043871229):0.0000020431,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_39_count_1:0.0087751271,200724_20-08518_HIV10-02405_FL24_S14_L000_read_79_count_1:0.0000029458):0.0043761522):0.0044013434,200724_20-08518_HIV10-02405_FL24_S14_L000_read_43_count_1:0.0044068906):0.0000029383,200724_20-08518_HIV10-02405_FL24_S14_L000_read_66_count_1:0.0044154547):0.0000020914,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_4_count_9:0.0000024346,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_38_count_1:0.0044521600,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_41_count_1:0.0089322261,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_64_count_1:0.0044418419,200724_20-08518_HIV10-02405_FL24_S14_L000_read_93_count_1:0.0044732363):0.0044232124):0.0000022968):0.0000020761):0.0044168319,200724_20-08518_HIV10-02405_FL24_S14_L000_read_44_count_1:0.0044154558):0.0000020814):0.0000020132):0.0000020979,((((200724_20-08518_HIV10-02405_FL24_S14_L000_read_18_count_2:0.0044032139,200724_20-08518_HIV10-02405_FL24_S14_L000_read_28_count_1:0.0043997264):0.0000026629,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_19_count_2:0.0000021485,200724_20-08518_HIV10-02405_FL24_S14_L000_read_70_count_1:0.0088252349):0.0044078447):0.0000020401,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_35_count_1:0.0000026002,200724_20-08518_HIV10-02405_FL24_S14_L000_read_82_count_1:0.0088753022):0.0044182176,200724_20-08518_HIV10-02405_FL24_S14_L000_read_94_count_1:0.0044032206):0.0000020141):0.0000020633,(((200724_20-08518_HIV10-02405_FL24_S14_L000_read_24_count_2:0.0000020330,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_51_count_1:0.0044223331,200724_20-08518_HIV10-02405_FL24_S14_L000_read_52_count_1:0.0043867263):0.0000029774):0.0044064412,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_47_count_1:0.0044080599,200724_20-08518_HIV10-02405_FL24_S14_L000_read_76_count_1:0.0043879300):0.0000023417):0.0000022774,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_59_count_1:0.0044138610,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_74_count_1:0.0044065580,200724_20-08518_HIV10-02405_FL24_S14_L000_read_86_count_1:0.0044069421):0.0000022507):0.0000027387):0.0000019400):0.0000018968):0.0000019678,200724_20-08518_HIV10-02405_FL24_S14_L000_read_34_count_1:0.0000025482):0.0000027556,200724_20-08518_HIV10-02405_FL24_S14_L000_read_26_count_1:0.0044082888):0.0044115671,(((200724_20-08518_HIV10-02405_FL24_S14_L000_read_3_count_19:0.0000025482,(((200724_20-08518_HIV10-02405_FL24_S14_L000_read_11_count_4:0.0044546438,200724_20-08518_HIV10-02405_FL24_S14_L000_read_25_count_1:0.0044704768):0.0000021112,((200724_20-08518_HIV10-02405_FL24_S14_L000_read_54_count_1:0.0000027963,200724_20-08518_HIV10-02405_FL24_S14_L000_read_56_count_1:0.0044397866):0.0044639416,200724_20-08518_HIV10-02405_FL24_S14_L000_read_85_count_1:0.0044681045):0.0000020661):0.0000019297,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_32_count_1:0.0045097241,200724_20-08518_HIV10-02405_FL24_S14_L000_read_50_count_1:0.0044642642):0.0000020260):0.0000024793):0.0000018555,200724_20-08518_HIV10-02405_FL24_S14_L000_read_60_count_1:0.0000025482):0.0000025308,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_67_count_1:0.0044607463,200724_20-08518_HIV10-02405_FL24_S14_L000_read_83_count_1:0.0044675954):0.0000024559):0.0000021662):0.0045184490,(200724_20-08518_HIV10-02405_FL24_S14_L000_read_16_count_2:0.0000025512,200724_20-08518_HIV10-02405_FL24_S14_L000_read_78_count_1:0.0044489359):0.0000028138):0.0270482236):0.0043650492):0.0000020645):0.0044105647,200709_20-07994_HIV07-01067_FL21_S1_L000_read_15_count_1:0.0045354328):0.0131462881):0.0042838066,200724_20-08522_HIV11-02415_FL24_S18_L000_read_49_count_1:0.0042891009):0.0000024005,200724_20-08522_HIV11-02415_FL24_S18_L000_read_111_count_1:0.0000025482):0.0000024048):0.0000018876,((((((((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_3_count_22:0.0000025482,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_42_count_1:0.0043634681,200724_20-08522_HIV11-02415_FL24_S18_L000_read_113_count_1:0.0086800538):0.0000018951,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_54_count_1:0.0043217744,200724_20-08522_HIV11-02415_FL24_S18_L000_read_95_count_1:0.0042871243):0.0000025482):0.0000019680,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_64_count_1:0.0043061147,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_65_count_1:0.0086621275,200724_20-08522_HIV11-02415_FL24_S18_L000_read_115_count_1:0.0043335519):0.0000020786):0.0000023293,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_97_count_1:0.0042956454,200724_20-08522_HIV11-02415_FL24_S18_L000_read_129_count_1:0.0043040325):0.0000026669):0.0000018926):0.0000022819):0.0000025482,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_32_count_1:0.0043777914,200724_20-08522_HIV11-02415_FL24_S18_L000_read_84_count_1:0.0043213259):0.0000020873,200724_20-08522_HIV11-02415_FL24_S18_L000_read_125_count_1:0.0043201562):0.0043103818):0.0042989462,200724_20-08522_HIV11-02415_FL24_S18_L000_read_69_count_1:0.0042855946):0.0000020620,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_10_count_4:0.0000020596,200724_20-08522_HIV11-02415_FL24_S18_L000_read_81_count_1:0.0043112288):0.0043051993,200724_20-08522_HIV11-02415_FL24_S18_L000_read_15_count_3:0.0043169291):0.0000026835):0.0000025164,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_39_count_1:0.0043242452,200724_20-08522_HIV11-02415_FL24_S18_L000_read_99_count_1:0.0042443977):0.0043223145,200724_20-08522_HIV11-02415_FL24_S18_L000_read_98_count_1:0.0042887823):0.0000020343):0.0000020049,((((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_4_count_15:0.0000025482,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_33_count_1:0.0043105205,200724_20-08522_HIV11-02415_FL24_S18_L000_read_96_count_1:0.0043000609):0.0000020787):0.0000020251,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_21_count_2:0.0000020860,200724_20-08522_HIV11-02415_FL24_S18_L000_read_45_count_1:0.0089177122):0.0043285386,200724_20-08522_HIV11-02415_FL24_S18_L000_read_60_count_1:0.0086442688):0.0000020059):0.0000020932,200724_20-08522_HIV11-02415_FL24_S18_L000_read_86_count_1:0.0043020885):0.0042980284,200724_20-08522_HIV11-02415_FL24_S18_L000_read_27_count_2:0.0042859993):0.0000028645,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_56_count_1:0.0043657846,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_94_count_1:0.0173977935,200724_20-08522_HIV11-02415_FL24_S18_L000_read_112_count_1:0.0042161367):0.0043764646):0.0000020791):0.0000028214,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_7_count_5:0.0000021607,200724_20-08522_HIV11-02415_FL24_S18_L000_read_83_count_1:0.0043926250):0.0043140308,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_13_count_3:0.0000020674,200724_20-08522_HIV11-02415_FL24_S18_L000_read_75_count_1:0.0087695854):0.0043285820,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_117_count_1:0.0043100077,200724_20-08522_HIV11-02415_FL24_S18_L000_read_127_count_1:0.0000025482):0.0000029211):0.0042979945):0.0000020503,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_30_count_2:0.0042878173,200724_20-08522_HIV11-02415_FL24_S18_L000_read_68_count_1:0.0086317586):0.0000029570):0.0000026972):0.0000020639):0.0000023660,(((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_12_count_3:0.0000029392,200724_20-08522_HIV11-02415_FL24_S18_L000_read_74_count_1:0.0086228287):0.0042923304,200724_20-08522_HIV11-02415_FL24_S18_L000_read_71_count_1:0.0042899053):0.0000020492,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_55_count_1:0.0042858903,200724_20-08522_HIV11-02415_FL24_S18_L000_read_107_count_1:0.0086214328):0.0000020590):0.0000026429,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_23_count_2:0.0085916266,200724_20-08522_HIV11-02415_FL24_S18_L000_read_114_count_1:0.0086196302):0.0000020918,200724_20-08522_HIV11-02415_FL24_S18_L000_read_93_count_1:0.0043110873):0.0000022562,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_67_count_1:0.0000029800,200724_20-08522_HIV11-02415_FL24_S18_L000_read_100_count_1:0.0042716400):0.0042887918,200724_20-08522_HIV11-02415_FL24_S18_L000_read_109_count_1:0.0042966099):0.0000020834,200724_20-08522_HIV11-02415_FL24_S18_L000_read_79_count_1:0.0042890186):0.0000023817):0.0000021373):0.0000020215,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_19_count_2:0.0042834647,200724_20-08522_HIV11-02415_FL24_S18_L000_read_70_count_1:0.0131071171):0.0000027440,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_59_count_1:0.0042953197,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_123_count_1:0.0043526754,200724_20-08522_HIV11-02415_FL24_S18_L000_read_128_count_1:0.0000020740):0.0042947455):0.0000029965):0.0000020099):0.0000020635):0.0000022274,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_35_count_1:0.0042954454,200724_20-08522_HIV11-02415_FL24_S18_L000_read_53_count_1:0.0042890247):0.0000023141):0.0000021251,(((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_5_count_6:0.0000022233,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_28_count_2:0.0043028900,200724_20-08522_HIV11-02415_FL24_S18_L000_read_40_count_1:0.0131291681):0.0000026579):0.0043089627,200724_20-08522_HIV11-02415_FL24_S18_L000_read_77_count_1:0.0042978708):0.0000020545,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_14_count_3:0.0042950675,200724_20-08522_HIV11-02415_FL24_S18_L000_read_124_count_1:0.0043226314):0.0000023053,200724_20-08522_HIV11-02415_FL24_S18_L000_read_62_count_1:0.0042963328):0.0000024271):0.0000019935,((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_8_count_4:0.0000020045,200724_20-08522_HIV11-02415_FL24_S18_L000_read_36_count_1:0.0086721456):0.0042982309,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_18_count_2:0.0000025221,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_47_count_1:0.0086570852,200724_20-08522_HIV11-02415_FL24_S18_L000_read_122_count_1:0.0043436229):0.0000023465):0.0042896370):0.0000027130,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_48_count_1:0.0042886432,200724_20-08522_HIV11-02415_FL24_S18_L000_read_61_count_1:0.0042891534):0.0000024912):0.0000025016,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_26_count_2:0.0000023548,200724_20-08522_HIV11-02415_FL24_S18_L000_read_80_count_1:0.0134427006):0.0042884159):0.0000023305):0.0000020373,200724_20-08522_HIV11-02415_FL24_S18_L000_read_72_count_1:0.0000025482):0.0000019083):0.0000020717,((((200724_20-08522_HIV11-02415_FL24_S18_L000_read_11_count_3:0.0042901955,200724_20-08522_HIV11-02415_FL24_S18_L000_read_106_count_1:0.0042894568):0.0000021604,(((200724_20-08522_HIV11-02415_FL24_S18_L000_read_22_count_2:0.0042963937,200724_20-08522_HIV11-02415_FL24_S18_L000_read_41_count_1:0.0042918583):0.0000027376,200724_20-08522_HIV11-02415_FL24_S18_L000_read_92_count_1:0.0043133642):0.0000019033,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_50_count_1:0.0042814867,200724_20-08522_HIV11-02415_FL24_S18_L000_read_110_count_1:0.0042918746):0.0000025898,200724_20-08522_HIV11-02415_FL24_S18_L000_read_119_count_1:0.0042966211):0.0000021977):0.0000018300):0.0000019089,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_43_count_1:0.0042890057,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_82_count_1:0.0087047863,200724_20-08522_HIV11-02415_FL24_S18_L000_read_126_count_1:0.0042850819):0.0000022386,200724_20-08522_HIV11-02415_FL24_S18_L000_read_104_count_1:0.0043254484):0.0000023729):0.0000019941,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_46_count_1:0.0043276272,200724_20-08522_HIV11-02415_FL24_S18_L000_read_51_count_1:0.0042887701):0.0000018751,(200724_20-08522_HIV11-02415_FL24_S18_L000_read_131_count_1:0.0042834945,200724_20-08522_HIV11-02415_FL24_S18_L000_read_132_count_1:0.0086170271):0.0000022389):0.0000021024):0.0000018704):0.0000026724,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_52_count_1:0.0042858690,200724_20-08522_HIV11-02415_FL24_S18_L000_read_101_count_1:0.0042901463):0.0000025482,((200724_20-08522_HIV11-02415_FL24_S18_L000_read_90_count_1:0.0042991413,200724_20-08522_HIV11-02415_FL24_S18_L000_read_118_count_1:0.0042783941):0.0000026186,200724_20-08522_HIV11-02415_FL24_S18_L000_read_91_count_1:0.0043132831):0.0000021105):0.0000020835):0.0000024209):0.0000018277);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t IQTREE_bestTree.InWindow_4660_to_4910.treefile -m "GTR{0.614925,1.48817,0.259207,0.100272,1.86388}+F{0.449956,0.134358,0.211841,0.203845}+R6{0.134551,0.421848,0.208263,0.432401,0.225287,0.685929,0.354541,1.18077,0.0722179,3.28838,0.00514021,8.27655}" --length 274
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s AlignedReadsInWindow_PositionsExcised_4660_to_4910.fasta --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s AlignedReadsInWindow_PositionsExcised_4660_to_4910.fasta --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Sun Jul 23 04:25:59 2023
+Total CPU time used: 892.004 seconds (0h:14m:52s)
+Total wall-clock time used: 236.227 seconds (0h:3m:56s)
+

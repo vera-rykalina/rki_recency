@@ -1,0 +1,660 @@
+IQ-TREE multicore version 2.2.2.7 COVID-edition for Linux 64-bit built Jun  7 2023
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    hpc-node03 (AVX2, FMA3, 1007 GB RAM)
+Command: iqtree -s AlignedReadsInWindow_PositionsExcised_4750_to_5000.fasta -pre IQTREE_bestTree.InWindow_4750_to_5000 -m GTR+F+R6 -nt 4
+Seed:    232230 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sun Jul 23 04:25:13 2023
+Kernel:  AVX+FMA - 4 threads (4 CPU cores detected)
+
+Reading alignment file AlignedReadsInWindow_PositionsExcised_4750_to_5000.fasta ... Fasta format detected
+Reading fasta file: done in 0.00349353 secs using 46.54% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00104693 secs using 556.8% CPU
+Alignment has 304 sequences with 272 columns, 183 distinct patterns
+71 parsimony-informative, 94 singleton sites, 107 constant sites
+                                                            Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.00800194 secs using 286.8% CPU
+   1  200724_20-08522_HIV11-02415_FL24_S18_L000_read_1_count_270    9.93%    passed     97.68%
+   2  200724_20-08522_HIV11-02415_FL24_S18_L000_read_2_count_34     9.93%    passed     97.00%
+   3  200724_20-08522_HIV11-02415_FL24_S18_L000_read_3_count_9      9.93%    passed     93.34%
+   4  200724_20-08522_HIV11-02415_FL24_S18_L000_read_4_count_8      9.93%    passed     99.30%
+   5  200724_20-08522_HIV11-02415_FL24_S18_L000_read_5_count_4      9.93%    passed     97.58%
+   6  200724_20-08522_HIV11-02415_FL24_S18_L000_read_6_count_4      9.93%    passed     97.58%
+   7  200724_20-08522_HIV11-02415_FL24_S18_L000_read_7_count_3      9.93%    passed     97.44%
+   8  200724_20-08522_HIV11-02415_FL24_S18_L000_read_8_count_2      9.93%    passed     98.54%
+   9  200724_20-08522_HIV11-02415_FL24_S18_L000_read_9_count_2      9.93%    passed     97.00%
+  10  200724_20-08522_HIV11-02415_FL24_S18_L000_read_10_count_2     9.93%    passed     97.44%
+  11  200724_20-08522_HIV11-02415_FL24_S18_L000_read_11_count_2     9.93%    passed     93.34%
+  12  200724_20-08522_HIV11-02415_FL24_S18_L000_read_12_count_2     9.93%    passed     97.58%
+  13  200724_20-08522_HIV11-02415_FL24_S18_L000_read_13_count_2     9.93%    passed     94.11%
+  14  200724_20-08522_HIV11-02415_FL24_S18_L000_read_14_count_2     9.93%    passed     99.30%
+  15  200724_20-08522_HIV11-02415_FL24_S18_L000_read_15_count_2     9.93%    passed     99.45%
+  16  200724_20-08522_HIV11-02415_FL24_S18_L000_read_16_count_2     9.93%    passed     97.58%
+  17  200724_20-08522_HIV11-02415_FL24_S18_L000_read_17_count_1     9.93%    passed     99.45%
+  18  200724_20-08522_HIV11-02415_FL24_S18_L000_read_18_count_1     9.93%    passed     99.45%
+  19  200724_20-08522_HIV11-02415_FL24_S18_L000_read_19_count_1     9.93%    passed     97.24%
+  20  200724_20-08522_HIV11-02415_FL24_S18_L000_read_20_count_1     9.93%    passed     96.71%
+  21  200724_20-08522_HIV11-02415_FL24_S18_L000_read_21_count_1     9.93%    passed     99.45%
+  22  200724_20-08522_HIV11-02415_FL24_S18_L000_read_22_count_1    10.29%    passed     96.68%
+  23  200724_20-08522_HIV11-02415_FL24_S18_L000_read_23_count_1    10.29%    passed     97.33%
+  24  200724_20-08522_HIV11-02415_FL24_S18_L000_read_24_count_1     9.93%    passed     97.44%
+  25  200724_20-08522_HIV11-02415_FL24_S18_L000_read_25_count_1     9.93%    passed     94.11%
+  26  200724_20-08522_HIV11-02415_FL24_S18_L000_read_26_count_1     9.93%    passed     96.71%
+  27  200724_20-08522_HIV11-02415_FL24_S18_L000_read_27_count_1     9.93%    passed     96.80%
+  28  200724_20-08522_HIV11-02415_FL24_S18_L000_read_28_count_1     9.93%    passed     93.34%
+  29  200724_20-08522_HIV11-02415_FL24_S18_L000_read_29_count_1     9.93%    passed     97.58%
+  30  200724_20-08522_HIV11-02415_FL24_S18_L000_read_30_count_1     9.93%    passed     87.31%
+  31  200724_20-08522_HIV11-02415_FL24_S18_L000_read_31_count_1     9.93%    passed     97.58%
+  32  200724_20-08522_HIV11-02415_FL24_S18_L000_read_32_count_1     9.93%    passed     97.00%
+  33  200724_20-08522_HIV11-02415_FL24_S18_L000_read_33_count_1     9.56%    passed     97.83%
+  34  200724_20-08522_HIV11-02415_FL24_S18_L000_read_34_count_1     9.93%    passed     93.34%
+  35  200724_20-08522_HIV11-02415_FL24_S18_L000_read_35_count_1     9.93%    passed     99.34%
+  36  200724_20-08522_HIV11-02415_FL24_S18_L000_read_36_count_1     9.93%    passed     93.34%
+  37  200724_20-08522_HIV11-02415_FL24_S18_L000_read_37_count_1     9.93%    passed     97.44%
+  38  200724_20-08522_HIV11-02415_FL24_S18_L000_read_38_count_1     9.93%    passed     91.30%
+  39  200724_20-08522_HIV11-02415_FL24_S18_L000_read_39_count_1     9.93%    passed     95.91%
+  40  200724_20-08522_HIV11-02415_FL24_S18_L000_read_40_count_1     9.93%    passed     97.44%
+  41  200724_20-08522_HIV11-02415_FL24_S18_L000_read_41_count_1     9.93%    passed     99.30%
+  42  200724_20-08522_HIV11-02415_FL24_S18_L000_read_42_count_1     9.93%    passed     94.11%
+  43  200724_20-08522_HIV11-02415_FL24_S18_L000_read_43_count_1     9.93%    passed     93.34%
+  44  200724_20-08522_HIV11-02415_FL24_S18_L000_read_44_count_1     9.93%    passed     85.91%
+  45  200724_20-08522_HIV11-02415_FL24_S18_L000_read_45_count_1     9.93%    passed     99.45%
+  46  200724_20-08522_HIV11-02415_FL24_S18_L000_read_46_count_1     9.93%    passed     97.00%
+  47  200724_20-08522_HIV11-02415_FL24_S18_L000_read_47_count_1     9.93%    passed     95.27%
+  48  200724_20-08522_HIV11-02415_FL24_S18_L000_read_48_count_1     9.56%    passed     97.91%
+  49  200724_20-08522_HIV11-02415_FL24_S18_L000_read_49_count_1     9.93%    passed     98.65%
+  50  200724_20-08522_HIV11-02415_FL24_S18_L000_read_50_count_1     9.93%    passed     93.42%
+  51  200724_20-08522_HIV11-02415_FL24_S18_L000_read_51_count_1     9.93%    passed     97.58%
+  52  200724_20-08522_HIV11-02415_FL24_S18_L000_read_52_count_1     9.93%    passed     97.44%
+  53  200724_20-08522_HIV11-02415_FL24_S18_L000_read_53_count_1     9.93%    passed     97.00%
+  54  200724_20-08522_HIV11-02415_FL24_S18_L000_read_54_count_1     9.93%    passed     97.68%
+  55  200724_20-08522_HIV11-02415_FL24_S18_L000_read_55_count_1     9.93%    passed     98.98%
+  56  200724_20-08522_HIV11-02415_FL24_S18_L000_read_56_count_1     9.93%    passed     97.44%
+  57  200724_20-08522_HIV11-02415_FL24_S18_L000_read_57_count_1     9.93%    passed     97.24%
+  58  200724_20-08522_HIV11-02415_FL24_S18_L000_read_58_count_1     9.93%    passed     99.45%
+  59  200724_20-08522_HIV11-02415_FL24_S18_L000_read_59_count_1     9.93%    passed     95.91%
+  60  200724_20-08522_HIV11-02415_FL24_S18_L000_read_60_count_1     9.93%    passed     94.11%
+  61  200724_20-08522_HIV11-02415_FL24_S18_L000_read_61_count_1     9.93%    passed     97.44%
+  62  200724_20-08522_HIV11-02415_FL24_S18_L000_read_62_count_1     9.93%    passed     97.00%
+  63  200724_20-08522_HIV11-02415_FL24_S18_L000_read_63_count_1     9.93%    passed     99.45%
+  64  200724_20-08522_HIV11-02415_FL24_S18_L000_read_64_count_1     9.93%    passed     97.24%
+  65  200724_20-08522_HIV11-02415_FL24_S18_L000_read_65_count_1     9.93%    passed     95.27%
+  66  200724_20-08522_HIV11-02415_FL24_S18_L000_read_66_count_1    17.65%    passed     90.23%
+  67  200724_20-08522_HIV11-02415_FL24_S18_L000_read_67_count_1     9.93%    passed     97.68%
+  68  200724_20-08522_HIV11-02415_FL24_S18_L000_read_68_count_1     9.93%    passed     96.71%
+  69  200724_20-08522_HIV11-02415_FL24_S18_L000_read_69_count_1     9.93%    passed     96.80%
+  70  200724_20-08522_HIV11-02415_FL24_S18_L000_read_70_count_1     9.93%    passed     97.00%
+  71  200724_20-08522_HIV11-02415_FL24_S18_L000_read_71_count_1     9.93%    passed     93.04%
+  72  200724_20-08522_HIV11-02415_FL24_S18_L000_read_72_count_1     9.93%    passed     92.49%
+  73  200724_20-08522_HIV11-02415_FL24_S18_L000_read_73_count_1     9.93%    passed     97.44%
+  74  200724_20-08522_HIV11-02415_FL24_S18_L000_read_74_count_1     9.93%    passed     97.44%
+  75  200724_20-08522_HIV11-02415_FL24_S18_L000_read_75_count_1     9.93%    passed     93.34%
+  76  200724_20-08522_HIV11-02415_FL24_S18_L000_read_76_count_1     9.93%    passed     93.04%
+  77  200724_20-08522_HIV11-02415_FL24_S18_L000_read_77_count_1     9.93%    passed     94.11%
+  78  200724_20-08522_HIV11-02415_FL24_S18_L000_read_78_count_1     9.93%    passed     98.98%
+  79  200724_20-08522_HIV11-02415_FL24_S18_L000_read_79_count_1     9.93%    passed     95.27%
+  80  200724_20-08522_HIV11-02415_FL24_S18_L000_read_80_count_1     9.93%    passed     93.57%
+  81  200724_20-08522_HIV11-02415_FL24_S18_L000_read_81_count_1     9.93%    passed     96.71%
+  82  200724_20-08522_HIV11-02415_FL24_S18_L000_read_82_count_1     9.93%    passed     93.34%
+  83  200724_20-08522_HIV11-02415_FL24_S18_L000_read_83_count_1     9.93%    passed     98.98%
+  84  200724_20-08522_HIV11-02415_FL24_S18_L000_read_84_count_1     9.93%    passed     93.34%
+  85  200724_20-08522_HIV11-02415_FL24_S18_L000_read_85_count_1     9.93%    passed     99.45%
+  86  200724_20-08522_HIV11-02415_FL24_S18_L000_read_86_count_1     9.93%    passed     97.44%
+  87  200724_20-08522_HIV11-02415_FL24_S18_L000_read_87_count_1     9.93%    passed     99.45%
+  88  200724_20-08522_HIV11-02415_FL24_S18_L000_read_88_count_1     9.93%    passed     93.34%
+  89  200724_20-08522_HIV11-02415_FL24_S18_L000_read_89_count_1     9.93%    passed     92.09%
+  90  200724_20-08522_HIV11-02415_FL24_S18_L000_read_90_count_1     9.93%    passed     96.71%
+  91  200724_20-08522_HIV11-02415_FL24_S18_L000_read_91_count_1     9.93%    passed     93.42%
+  92  200724_20-08522_HIV11-02415_FL24_S18_L000_read_92_count_1     9.93%    passed     96.71%
+  93  200724_20-08522_HIV11-02415_FL24_S18_L000_read_93_count_1     9.93%    passed     99.30%
+  94  200724_20-08522_HIV11-02415_FL24_S18_L000_read_94_count_1     9.56%    passed     97.91%
+  95  200724_20-08522_HIV11-02415_FL24_S18_L000_read_95_count_1     9.93%    passed     96.80%
+  96  200709_20-07994_HIV07-01067_FL21_S1_L000_read_1_count_348     9.93%    passed     98.98%
+  97  200709_20-07994_HIV07-01067_FL21_S1_L000_read_2_count_62      9.93%    passed     98.24%
+  98  200709_20-07994_HIV07-01067_FL21_S1_L000_read_3_count_56      9.93%    passed     99.76%
+  99  200709_20-07994_HIV07-01067_FL21_S1_L000_read_4_count_3       9.93%    passed     98.99%
+ 100  200709_20-07994_HIV07-01067_FL21_S1_L000_read_5_count_2       9.93%    passed     99.27%
+ 101  200709_20-07994_HIV07-01067_FL21_S1_L000_read_6_count_2       9.93%    passed     99.27%
+ 102  200709_20-07994_HIV07-01067_FL21_S1_L000_read_7_count_2       9.93%    passed     99.27%
+ 103  200709_20-07994_HIV07-01067_FL21_S1_L000_read_8_count_2       9.93%    passed     99.33%
+ 104  200709_20-07994_HIV07-01067_FL21_S1_L000_read_9_count_2       9.93%    passed     97.85%
+ 105  200709_20-07994_HIV07-01067_FL21_S1_L000_read_10_count_1      9.93%    passed     93.49%
+ 106  200709_20-07994_HIV07-01067_FL21_S1_L000_read_11_count_1      9.93%    passed     98.86%
+ 107  200709_20-07994_HIV07-01067_FL21_S1_L000_read_12_count_1      9.93%    passed     98.24%
+ 108  200709_20-07994_HIV07-01067_FL21_S1_L000_read_13_count_1      9.93%    passed     97.85%
+ 109  200709_20-07994_HIV07-01067_FL21_S1_L000_read_14_count_1      9.93%    passed     99.27%
+ 110  200709_20-07994_HIV07-01067_FL21_S1_L000_read_15_count_1      1.47%    passed     93.66%
+ 111  200709_20-07994_HIV07-01067_FL21_S1_L000_read_16_count_1      9.93%    passed     96.04%
+ 112  200709_20-07994_HIV07-01067_FL21_S1_L000_read_17_count_1      9.93%    passed     96.04%
+ 113  200709_20-07994_HIV07-01067_FL21_S1_L000_read_18_count_1      9.93%    passed     99.80%
+ 114  200709_20-07994_HIV07-01067_FL21_S1_L000_read_19_count_1      9.93%    passed     98.32%
+ 115  200709_20-07994_HIV07-01067_FL21_S1_L000_read_20_count_1      9.93%    passed     96.49%
+ 116  200709_20-07994_HIV07-01067_FL21_S1_L000_read_21_count_1      9.93%    passed     99.39%
+ 117  200709_20-07994_HIV07-01067_FL21_S1_L000_read_22_count_1     10.29%    passed     98.41%
+ 118  200709_20-07994_HIV07-01067_FL21_S1_L000_read_23_count_1     10.29%    passed     98.72%
+ 119  200709_20-07994_HIV07-01067_FL21_S1_L000_read_24_count_1      9.93%    passed     98.86%
+ 120  200709_20-07994_HIV07-01067_FL21_S1_L000_read_25_count_1      9.93%    passed     98.91%
+ 121  200709_20-07994_HIV07-01067_FL21_S1_L000_read_26_count_1      9.93%    passed     99.27%
+ 122  200709_20-07994_HIV07-01067_FL21_S1_L000_read_27_count_1      9.93%    passed     98.24%
+ 123  200709_20-07994_HIV07-01067_FL21_S1_L000_read_28_count_1      9.93%    passed     98.24%
+ 124  200709_20-07994_HIV07-01067_FL21_S1_L000_read_29_count_1      9.93%    passed     99.15%
+ 125  200709_20-07994_HIV07-01067_FL21_S1_L000_read_30_count_1      9.93%    passed     96.14%
+ 126  200709_20-07994_HIV07-01067_FL21_S1_L000_read_31_count_1      9.93%    passed     97.85%
+ 127  200709_20-07994_HIV07-01067_FL21_S1_L000_read_32_count_1      9.93%    passed     99.84%
+ 128  200709_20-07994_HIV07-01067_FL21_S1_L000_read_33_count_1      9.93%    passed     99.27%
+ 129  200709_20-07994_HIV07-01067_FL21_S1_L000_read_34_count_1      9.93%    passed     98.81%
+ 130  200709_20-07994_HIV07-01067_FL21_S1_L000_read_35_count_1      9.93%    passed     99.27%
+ 131  200709_20-07994_HIV07-01067_FL21_S1_L000_read_36_count_1      9.93%    passed     99.27%
+ 132  200709_20-07994_HIV07-01067_FL21_S1_L000_read_37_count_1      9.93%    passed     99.76%
+ 133  200709_20-07994_HIV07-01067_FL21_S1_L000_read_38_count_1      9.93%    passed     98.24%
+ 134  200709_20-07994_HIV07-01067_FL21_S1_L000_read_39_count_1      9.93%    passed     98.98%
+ 135  200709_20-07994_HIV07-01067_FL21_S1_L000_read_40_count_1      9.93%    passed     99.27%
+ 136  200709_20-07994_HIV07-01067_FL21_S1_L000_read_41_count_1      9.93%    passed     96.65%
+ 137  200709_20-07994_HIV07-01067_FL21_S1_L000_read_42_count_1      9.56%    passed     98.59%
+ 138  200709_20-07994_HIV07-01067_FL21_S1_L000_read_43_count_1      9.93%    passed     99.27%
+ 139  200709_20-07994_HIV07-01067_FL21_S1_L000_read_44_count_1      9.93%    passed     99.76%
+ 140  200709_20-07994_HIV07-01067_FL21_S1_L000_read_45_count_1      9.93%    passed     99.27%
+ 141  200709_20-07994_HIV07-01067_FL21_S1_L000_read_46_count_1      9.93%    passed     99.97%
+ 142  200709_20-07994_HIV07-01067_FL21_S1_L000_read_47_count_1      9.93%    passed     99.97%
+ 143  200709_20-07994_HIV07-01067_FL21_S1_L000_read_48_count_1      9.93%    passed     97.85%
+ 144  200709_20-07994_HIV07-01067_FL21_S1_L000_read_49_count_1      9.93%    passed     98.24%
+ 145  200709_20-07994_HIV07-01067_FL21_S1_L000_read_50_count_1      9.93%    passed     99.15%
+ 146  200709_20-07994_HIV07-01067_FL21_S1_L000_read_51_count_1      9.93%    passed     99.27%
+ 147  200709_20-07994_HIV07-01067_FL21_S1_L000_read_52_count_1      9.93%    passed     99.27%
+ 148  200709_20-07994_HIV07-01067_FL21_S1_L000_read_53_count_1      9.93%    passed     98.91%
+ 149  200709_20-07994_HIV07-01067_FL21_S1_L000_read_54_count_1      9.93%    passed     99.84%
+ 150  200709_20-07994_HIV07-01067_FL21_S1_L000_read_55_count_1      9.93%    passed     99.94%
+ 151  200709_20-07994_HIV07-01067_FL21_S1_L000_read_56_count_1      9.93%    passed     99.84%
+ 152  200709_20-07994_HIV07-01067_FL21_S1_L000_read_57_count_1     10.29%    passed     98.22%
+ 153  200709_20-07994_HIV07-01067_FL21_S1_L000_read_58_count_1      9.93%    passed     97.41%
+ 154  200709_20-07994_HIV07-01067_FL21_S1_L000_read_59_count_1      9.93%    passed     99.15%
+ 155  200709_20-07994_HIV07-01067_FL21_S1_L000_read_60_count_1      9.93%    passed     98.86%
+ 156  200709_20-07994_HIV07-01067_FL21_S1_L000_read_61_count_1      9.93%    passed     96.65%
+ 157  200709_20-07994_HIV07-01067_FL21_S1_L000_read_62_count_1      9.93%    passed     99.39%
+ 158  200709_20-07994_HIV07-01067_FL21_S1_L000_read_63_count_1      9.93%    passed     99.80%
+ 159  200709_20-07994_HIV07-01067_FL21_S1_L000_read_64_count_1     10.29%    passed     98.22%
+ 160  200709_20-07994_HIV07-01067_FL21_S1_L000_read_65_count_1      9.93%    passed     98.98%
+ 161  200709_20-07994_HIV07-01067_FL21_S1_L000_read_66_count_1      9.93%    passed     98.32%
+ 162  200709_20-07994_HIV07-01067_FL21_S1_L000_read_67_count_1      9.93%    passed     99.39%
+ 163  200709_20-07994_HIV07-01067_FL21_S1_L000_read_68_count_1      9.93%    passed     99.84%
+ 164  200709_20-07994_HIV07-01067_FL21_S1_L000_read_69_count_1      9.93%    passed     99.84%
+ 165  200709_20-07994_HIV07-01067_FL21_S1_L000_read_70_count_1      9.93%    passed     99.15%
+ 166  200709_20-07994_HIV07-01067_FL21_S1_L000_read_71_count_1      9.93%    passed     97.85%
+ 167  200709_20-07994_HIV07-01067_FL21_S1_L000_read_72_count_1      9.93%    passed     99.27%
+ 168  200709_20-07994_HIV07-01067_FL21_S1_L000_read_73_count_1      9.93%    passed     98.86%
+ 169  200709_20-07994_HIV07-01067_FL21_S1_L000_read_74_count_1      9.93%    passed     99.84%
+ 170  200709_20-07994_HIV07-01067_FL21_S1_L000_read_75_count_1      9.93%    passed     99.27%
+ 171  200709_20-07994_HIV07-01067_FL21_S1_L000_read_76_count_1      9.93%    passed     98.86%
+ 172  200709_20-07994_HIV07-01067_FL21_S1_L000_read_77_count_1      9.93%    passed     99.97%
+ 173  200709_20-07994_HIV07-01067_FL21_S1_L000_read_78_count_1     15.44%    passed     87.34%
+ 174  200709_20-07994_HIV07-01067_FL21_S1_L000_read_79_count_1      9.93%    passed     99.39%
+ 175  200709_20-07994_HIV07-01067_FL21_S1_L000_read_80_count_1      9.93%    passed     99.27%
+ 176  200703_20-07825_HIV09-00618_FL18_S6_L000_read_1_count_212     9.93%    passed     99.61%
+ 177  200703_20-07825_HIV09-00618_FL18_S6_L000_read_2_count_4       9.93%    passed     99.96%
+ 178  200703_20-07825_HIV09-00618_FL18_S6_L000_read_3_count_1       9.93%    passed     98.33%
+ 179  200703_20-07825_HIV09-00618_FL18_S6_L000_read_4_count_1       9.93%    passed     98.83%
+ 180  200703_20-07825_HIV09-00618_FL18_S6_L000_read_5_count_1       9.93%    passed     98.33%
+ 181  200703_20-07825_HIV09-00618_FL18_S6_L000_read_6_count_1       9.93%    passed     98.41%
+ 182  200703_20-07825_HIV09-00618_FL18_S6_L000_read_7_count_1       9.93%    passed     98.33%
+ 183  200703_20-07825_HIV09-00618_FL18_S6_L000_read_8_count_1       9.93%    passed     98.76%
+ 184  200703_20-07825_HIV09-00618_FL18_S6_L000_read_9_count_1       9.93%    passed     90.14%
+ 185  200703_20-07825_HIV09-00618_FL18_S6_L000_read_10_count_1     10.29%    passed     99.18%
+ 186  200703_20-07825_HIV09-00618_FL18_S6_L000_read_11_count_1      9.93%    passed     99.80%
+ 187  200703_20-07825_HIV09-00618_FL18_S6_L000_read_12_count_1      9.93%    passed     98.33%
+ 188  200703_20-07825_HIV09-00618_FL18_S6_L000_read_13_count_1      9.93%    passed     99.80%
+ 189  200703_20-07825_HIV09-00618_FL18_S6_L000_read_14_count_1     10.29%    passed     99.85%
+ 190  200703_20-07825_HIV09-00618_FL18_S6_L000_read_15_count_1      9.93%    passed     99.66%
+ 191  200703_20-07825_HIV09-00618_FL18_S6_L000_read_16_count_1      9.93%    passed     99.33%
+ 192  200703_20-07825_HIV09-00618_FL18_S6_L000_read_17_count_1      9.56%    passed     99.84%
+ 193  200703_20-07825_HIV09-00618_FL18_S6_L000_read_18_count_1      9.93%    passed     98.76%
+ 194  200703_20-07825_HIV09-00618_FL18_S6_L000_read_19_count_1      9.93%    passed     98.90%
+ 195  200703_20-07825_HIV09-00618_FL18_S6_L000_read_20_count_1      9.93%    passed     98.33%
+ 196  200703_20-07825_HIV09-00618_FL18_S6_L000_read_21_count_1      9.93%    passed     98.83%
+ 197  200703_20-07825_HIV09-00618_FL18_S6_L000_read_22_count_1      9.93%    passed     96.46%
+ 198  200703_20-07825_HIV09-00618_FL18_S6_L000_read_23_count_1      9.93%    passed     99.33%
+ 199  200703_20-07825_HIV09-00618_FL18_S6_L000_read_24_count_1      9.93%    passed     98.76%
+ 200  200703_20-07825_HIV09-00618_FL18_S6_L000_read_25_count_1      9.93%    passed     99.96%
+ 201  200703_20-07825_HIV09-00618_FL18_S6_L000_read_26_count_1      9.93%    passed     98.76%
+ 202  200703_20-07825_HIV09-00618_FL18_S6_L000_read_27_count_1      9.93%    passed     98.69%
+ 203  200703_20-07825_HIV09-00618_FL18_S6_L000_read_28_count_1      9.93%    passed     98.33%
+ 204  200703_20-07825_HIV09-00618_FL18_S6_L000_read_29_count_1      9.93%    passed     99.66%
+ 205  200703_20-07825_HIV09-00618_FL18_S6_L000_read_30_count_1      9.93%    passed     96.85%
+ 206  200703_20-07825_HIV09-00618_FL18_S6_L000_read_31_count_1      9.93%    passed     98.98%
+ 207  200703_20-07825_HIV09-00618_FL18_S6_L000_read_32_count_1     13.24%    passed     94.66%
+ 208  200703_20-07825_HIV09-00618_FL18_S6_L000_read_33_count_1      9.93%    passed     98.33%
+ 209  200814_20-09728_HIV09-02843_FL30_S2_L000_read_1_count_210     9.93%    passed     90.01%
+ 210  200814_20-09728_HIV09-02843_FL30_S2_L000_read_2_count_8       9.93%    passed     90.68%
+ 211  200814_20-09728_HIV09-02843_FL30_S2_L000_read_3_count_7       9.93%    passed     88.10%
+ 212  200814_20-09728_HIV09-02843_FL30_S2_L000_read_4_count_5       9.93%    passed     96.49%
+ 213  200814_20-09728_HIV09-02843_FL30_S2_L000_read_5_count_4       9.93%    passed     90.01%
+ 214  200814_20-09728_HIV09-02843_FL30_S2_L000_read_6_count_4       9.93%    passed     95.94%
+ 215  200814_20-09728_HIV09-02843_FL30_S2_L000_read_7_count_4       9.93%    passed     93.26%
+ 216  200814_20-09728_HIV09-02843_FL30_S2_L000_read_8_count_3       9.93%    passed     95.94%
+ 217  200814_20-09728_HIV09-02843_FL30_S2_L000_read_9_count_1       9.93%    passed     92.55%
+ 218  200814_20-09728_HIV09-02843_FL30_S2_L000_read_10_count_1      9.93%    passed     91.15%
+ 219  200814_20-09728_HIV09-02843_FL30_S2_L000_read_11_count_1      9.93%    passed     95.94%
+ 220  200814_20-09728_HIV09-02843_FL30_S2_L000_read_12_count_1      9.93%    passed     95.94%
+ 221  200814_20-09728_HIV09-02843_FL30_S2_L000_read_13_count_1      9.93%    passed     94.66%
+ 222  200814_20-09728_HIV09-02843_FL30_S2_L000_read_14_count_1      9.93%    passed     93.26%
+ 223  200814_20-09728_HIV09-02843_FL30_S2_L000_read_15_count_1      9.93%    passed     95.94%
+ 224  200814_20-09728_HIV09-02843_FL30_S2_L000_read_16_count_1      9.93%    passed     87.06%
+ 225  200814_20-09728_HIV09-02843_FL30_S2_L000_read_17_count_1      9.93%    passed     90.68%
+ 226  200814_20-09728_HIV09-02843_FL30_S2_L000_read_18_count_1      9.93%    passed     92.55%
+ 227  200814_20-09728_HIV09-02843_FL30_S2_L000_read_19_count_1      9.93%    passed     95.94%
+ 228  200814_20-09728_HIV09-02843_FL30_S2_L000_read_20_count_1      9.93%    passed     91.15%
+ 229  200814_20-09728_HIV09-02843_FL30_S2_L000_read_21_count_1      9.93%    passed     88.10%
+ 230  200814_20-09728_HIV09-02843_FL30_S2_L000_read_22_count_1      9.93%    passed     81.73%
+ 231  200814_20-09728_HIV09-02843_FL30_S2_L000_read_23_count_1      9.93%    passed     92.55%
+ 232  200814_20-09728_HIV09-02843_FL30_S2_L000_read_24_count_1      9.93%    passed     90.68%
+ 233  200814_20-09728_HIV09-02843_FL30_S2_L000_read_25_count_1      9.93%    passed     81.02%
+ 234  200814_20-09728_HIV09-02843_FL30_S2_L000_read_26_count_1      9.93%    passed     84.80%
+ 235  200814_20-09728_HIV09-02843_FL30_S2_L000_read_27_count_1      9.93%    passed     90.68%
+ 236  200814_20-09728_HIV09-02843_FL30_S2_L000_read_28_count_1      9.93%    passed     90.68%
+ 237  200814_20-09728_HIV09-02843_FL30_S2_L000_read_29_count_1      9.93%    passed     85.91%
+ 238  200814_20-09728_HIV09-02843_FL30_S2_L000_read_30_count_1     10.29%    passed     92.50%
+ 239  200814_20-09728_HIV09-02843_FL30_S2_L000_read_31_count_1      9.93%    passed     95.94%
+ 240  200814_20-09728_HIV09-02843_FL30_S2_L000_read_32_count_1      9.93%    passed     88.10%
+ 241  200814_20-09728_HIV09-02843_FL30_S2_L000_read_33_count_1      9.93%    passed     90.68%
+ 242  200814_20-09728_HIV09-02843_FL30_S2_L000_read_34_count_1      9.93%    passed     91.15%
+ 243  200814_20-09728_HIV09-02843_FL30_S2_L000_read_35_count_1      9.93%    passed     90.68%
+ 244  200814_20-09728_HIV09-02843_FL30_S2_L000_read_36_count_1      9.93%    passed     87.06%
+ 245  200814_20-09728_HIV09-02843_FL30_S2_L000_read_37_count_1      9.93%    passed     88.10%
+ 246  200814_20-09728_HIV09-02843_FL30_S2_L000_read_38_count_1      9.93%    passed     92.55%
+ 247  200814_20-09728_HIV09-02843_FL30_S2_L000_read_39_count_1      9.93%    passed     88.10%
+ 248  200814_20-09728_HIV09-02843_FL30_S2_L000_read_40_count_1      9.93%    passed     90.68%
+ 249  200814_20-09728_HIV09-02843_FL30_S2_L000_read_41_count_1      9.93%    passed     87.06%
+ 250  200814_20-09728_HIV09-02843_FL30_S2_L000_read_42_count_1      9.93%    passed     84.80%
+ 251  200724_20-08518_HIV10-02405_FL24_S14_L000_read_1_count_122    9.93%    passed     98.71%
+ 252  200724_20-08518_HIV10-02405_FL24_S14_L000_read_2_count_9      9.93%    passed     97.12%
+ 253  200724_20-08518_HIV10-02405_FL24_S14_L000_read_3_count_6      9.93%    passed     97.77%
+ 254  200724_20-08518_HIV10-02405_FL24_S14_L000_read_4_count_5      9.93%    passed     97.77%
+ 255  200724_20-08518_HIV10-02405_FL24_S14_L000_read_5_count_4      9.93%    passed     97.12%
+ 256  200724_20-08518_HIV10-02405_FL24_S14_L000_read_6_count_3      9.93%    passed     97.77%
+ 257  200724_20-08518_HIV10-02405_FL24_S14_L000_read_7_count_3      9.93%    passed     99.77%
+ 258  200724_20-08518_HIV10-02405_FL24_S14_L000_read_8_count_2      9.93%    passed     98.75%
+ 259  200724_20-08518_HIV10-02405_FL24_S14_L000_read_9_count_2      9.93%    passed     99.35%
+ 260  200724_20-08518_HIV10-02405_FL24_S14_L000_read_10_count_2     9.93%    passed     98.83%
+ 261  200724_20-08518_HIV10-02405_FL24_S14_L000_read_11_count_2     9.93%    passed     99.17%
+ 262  200724_20-08518_HIV10-02405_FL24_S14_L000_read_12_count_1     9.93%    passed     98.83%
+ 263  200724_20-08518_HIV10-02405_FL24_S14_L000_read_13_count_1     9.93%    passed     99.77%
+ 264  200724_20-08518_HIV10-02405_FL24_S14_L000_read_14_count_1     9.93%    passed     96.14%
+ 265  200724_20-08518_HIV10-02405_FL24_S14_L000_read_15_count_1     9.93%    passed     97.77%
+ 266  200724_20-08518_HIV10-02405_FL24_S14_L000_read_16_count_1     9.93%    passed     91.87%
+ 267  200724_20-08518_HIV10-02405_FL24_S14_L000_read_17_count_1     9.93%    passed     98.83%
+ 268  200724_20-08518_HIV10-02405_FL24_S14_L000_read_18_count_1     9.93%    passed     98.83%
+ 269  200724_20-08518_HIV10-02405_FL24_S14_L000_read_19_count_1     9.93%    passed     98.75%
+ 270  200724_20-08518_HIV10-02405_FL24_S14_L000_read_20_count_1     9.93%    passed     98.83%
+ 271  200724_20-08518_HIV10-02405_FL24_S14_L000_read_21_count_1     9.93%    passed     99.68%
+ 272  200724_20-08518_HIV10-02405_FL24_S14_L000_read_22_count_1     9.93%    passed     98.83%
+ 273  200724_20-08518_HIV10-02405_FL24_S14_L000_read_23_count_1     9.93%    passed     97.12%
+ 274  200724_20-08518_HIV10-02405_FL24_S14_L000_read_24_count_1     9.93%    passed     96.65%
+ 275  200724_20-08518_HIV10-02405_FL24_S14_L000_read_25_count_1     9.93%    passed     97.12%
+ 276  200724_20-08518_HIV10-02405_FL24_S14_L000_read_26_count_1     9.56%    passed     98.43%
+ 277  200724_20-08518_HIV10-02405_FL24_S14_L000_read_27_count_1     9.93%    passed     97.77%
+ 278  200724_20-08518_HIV10-02405_FL24_S14_L000_read_28_count_1     9.93%    passed     98.83%
+ 279  200724_20-08518_HIV10-02405_FL24_S14_L000_read_29_count_1    10.29%    passed     97.14%
+ 280  200724_20-08518_HIV10-02405_FL24_S14_L000_read_30_count_1     9.93%    passed     93.84%
+ 281  200724_20-08518_HIV10-02405_FL24_S14_L000_read_31_count_1     9.93%    passed     96.65%
+ 282  200724_20-08518_HIV10-02405_FL24_S14_L000_read_32_count_1    10.29%    passed     99.06%
+ 283  200724_20-08518_HIV10-02405_FL24_S14_L000_read_33_count_1     9.93%    passed     96.76%
+ 284  200724_20-08518_HIV10-02405_FL24_S14_L000_read_34_count_1     9.93%    passed     99.35%
+ 285  200724_20-08518_HIV10-02405_FL24_S14_L000_read_35_count_1     9.93%    passed     97.27%
+ 286  200724_20-08518_HIV10-02405_FL24_S14_L000_read_36_count_1     9.93%    passed     97.77%
+ 287  200724_20-08518_HIV10-02405_FL24_S14_L000_read_37_count_1     9.93%    passed     96.65%
+ 288  200724_20-08518_HIV10-02405_FL24_S14_L000_read_38_count_1     9.93%    passed     99.17%
+ 289  200724_20-08518_HIV10-02405_FL24_S14_L000_read_39_count_1    10.29%    passed     99.19%
+ 290  200724_20-08518_HIV10-02405_FL24_S14_L000_read_40_count_1     9.93%    passed     99.17%
+ 291  200724_20-08518_HIV10-02405_FL24_S14_L000_read_41_count_1     9.93%    passed     98.83%
+ 292  200724_20-08518_HIV10-02405_FL24_S14_L000_read_42_count_1     9.93%    passed     97.77%
+ 293  200724_20-08518_HIV10-02405_FL24_S14_L000_read_43_count_1    10.29%    passed     99.19%
+ 294  200724_20-08518_HIV10-02405_FL24_S14_L000_read_44_count_1     9.93%    passed     99.35%
+ 295  200724_20-08518_HIV10-02405_FL24_S14_L000_read_45_count_1     9.93%    passed     98.60%
+ 296  200724_20-08518_HIV10-02405_FL24_S14_L000_read_46_count_1     9.93%    passed     96.96%
+ 297  200724_20-08518_HIV10-02405_FL24_S14_L000_read_47_count_1     9.93%    passed     97.77%
+ 298  200724_20-08518_HIV10-02405_FL24_S14_L000_read_48_count_1     9.93%    passed     99.35%
+ 299  200724_20-08518_HIV10-02405_FL24_S14_L000_read_49_count_1     9.93%    passed     96.65%
+ 300  200724_20-08518_HIV10-02405_FL24_S14_L000_read_50_count_1     9.93%    passed     98.71%
+ 301  200724_20-08518_HIV10-02405_FL24_S14_L000_read_51_count_1     9.93%    passed     98.83%
+ 302  200724_20-08518_HIV10-02405_FL24_S14_L000_read_52_count_1     9.93%    passed     98.71%
+ 303  B.FR.83.HXB2_LAI_IIIB_BRU.K03455                              9.93%    passed     99.30%
+ 304  C.BW.00.00BW07621.AF443088                                    9.93%    passed     98.83%
+****  TOTAL                                                         9.96%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+Checking for duplicate sequences: done in 0.000551888 secs using 241% CPU
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.021 seconds
+
+NOTE: 11 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -2869.956
+2. Current log-likelihood: -2812.281
+3. Current log-likelihood: -2811.560
+4. Current log-likelihood: -2810.997
+5. Current log-likelihood: -2810.404
+6. Current log-likelihood: -2809.832
+7. Current log-likelihood: -2809.465
+8. Current log-likelihood: -2809.339
+Optimal log-likelihood: -2809.315
+Rate parameters:  A-C: 0.73065  A-G: 1.06652  A-T: 0.40750  C-G: 0.25074  C-T: 2.13067  G-T: 1.00000
+Base frequencies:  A: 0.428  C: 0.145  G: 0.236  T: 0.192
+Site proportion and rates:  (0.160,0.184) (0.160,0.450) (0.196,1.034) (0.230,1.230) (0.234,1.303) (0.021,5.190)
+Parameters optimization took 8 rounds (2.431 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.219227 secs using 399.4% CPU
+Computing ML distances took 0.225971 sec (of wall-clock time) 0.895018 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.0027876 secs using 44.09% CPU
+Constructing RapidNJ tree: done in 0.542795 secs using 113.2% CPU
+Computing RapidNJ tree took 0.545722 sec (of wall-clock time) 0.616085 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -2797.321
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 2.156 second
+Computing log-likelihood of 98 initial trees ... 2.114 seconds
+Current best score: -2795.412
+
+Do NNI search on 20 best initial trees
+Optimizing NNI: done in 0.256051 secs using 381.2% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -2793.410
+Optimizing NNI: done in 0.442838 secs using 367% CPU
+Optimizing NNI: done in 0.16118 secs using 383.5% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 3: -2789.148
+Optimizing NNI: done in 0.179726 secs using 398.2% CPU
+Optimizing NNI: done in 0.222155 secs using 398.9% CPU
+Optimizing NNI: done in 0.293432 secs using 356.3% CPU
+Optimizing NNI: done in 0.258051 secs using 375.7% CPU
+Optimizing NNI: done in 0.20094 secs using 378.6% CPU
+Optimizing NNI: done in 0.2367 secs using 395.7% CPU
+Optimizing NNI: done in 0.224099 secs using 396.3% CPU
+Iteration 10 / LogL: -2799.201 / Time: 0h:0m:11s
+Optimizing NNI: done in 0.125447 secs using 399.7% CPU
+Optimizing NNI: done in 0.228361 secs using 394.3% CPU
+Optimizing NNI: done in 0.346268 secs using 356.7% CPU
+Optimizing NNI: done in 0.206901 secs using 383.3% CPU
+Optimizing NNI: done in 0.257054 secs using 391.9% CPU
+Optimizing NNI: done in 0.29447 secs using 396.1% CPU
+Optimizing NNI: done in 0.175959 secs using 393.3% CPU
+Optimizing NNI: done in 0.225468 secs using 387.5% CPU
+Optimizing NNI: done in 0.342389 secs using 361.3% CPU
+Optimizing NNI: done in 0.266491 secs using 385.3% CPU
+Iteration 20 / LogL: -2801.584 / Time: 0h:0m:14s
+Finish initializing candidate tree set (20)
+Current best tree score: -2789.148 / CPU time: 10.985
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Optimizing NNI: done in 0.239115 secs using 397.8% CPU
+Optimizing NNI: done in 0.311674 secs using 395.2% CPU
+Optimizing NNI: done in 0.577246 secs using 394.5% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 23: -2787.028
+Optimizing NNI: done in 0.383329 secs using 393.2% CPU
+Optimizing NNI: done in 0.444427 secs using 396.1% CPU
+Optimizing NNI: done in 0.29173 secs using 389% CPU
+Optimizing NNI: done in 0.352931 secs using 394.1% CPU
+Optimizing NNI: done in 0.62605 secs using 392% CPU
+Optimizing NNI: done in 0.428755 secs using 392.1% CPU
+Optimizing NNI: done in 0.489773 secs using 394% CPU
+Iteration 30 / LogL: -2787.576 / Time: 0h:0m:19s (0h:1m:0s left)
+Optimizing NNI: done in 0.282132 secs using 393.2% CPU
+Optimizing NNI: done in 0.486702 secs using 367.3% CPU
+Optimizing NNI: done in 0.398241 secs using 391.7% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 33: -2786.195
+Optimizing NNI: done in 0.351315 secs using 393.9% CPU
+Optimizing NNI: done in 0.197738 secs using 389.5% CPU
+Optimizing NNI: done in 0.394061 secs using 394.4% CPU
+Optimizing NNI: done in 0.347111 secs using 393.3% CPU
+Optimizing NNI: done in 0.331109 secs using 394.5% CPU
+Optimizing NNI: done in 0.287446 secs using 396.4% CPU
+Optimizing NNI: done in 0.393955 secs using 394.2% CPU
+Iteration 40 / LogL: -2810.934 / Time: 0h:0m:23s (0h:0m:55s left)
+Optimizing NNI: done in 0.371189 secs using 395% CPU
+Optimizing NNI: done in 0.352735 secs using 394.9% CPU
+Optimizing NNI: done in 0.274422 secs using 394.4% CPU
+Optimizing NNI: done in 0.520206 secs using 394.4% CPU
+Optimizing NNI: done in 0.490304 secs using 366.7% CPU
+Optimizing NNI: done in 0.246925 secs using 394.9% CPU
+Optimizing NNI: done in 0.354175 secs using 394.4% CPU
+Optimizing NNI: done in 0.326527 secs using 395% CPU
+Optimizing NNI: done in 0.286619 secs using 391.7% CPU
+Optimizing NNI: done in 0.285601 secs using 394.1% CPU
+BETTER TREE FOUND at iteration 50: -2786.194
+Iteration 50 / LogL: -2786.194 / Time: 0h:0m:26s (0h:0m:54s left)
+Optimizing NNI: done in 0.296834 secs using 395.1% CPU
+Optimizing NNI: done in 0.334408 secs using 398.3% CPU
+Optimizing NNI: done in 0.544911 secs using 392.9% CPU
+Optimizing NNI: done in 0.404235 secs using 390% CPU
+Optimizing NNI: done in 0.356951 secs using 397% CPU
+Optimizing NNI: done in 0.246974 secs using 396% CPU
+Optimizing NNI: done in 0.340405 secs using 396.1% CPU
+Optimizing NNI: done in 0.335335 secs using 395.4% CPU
+Optimizing NNI: done in 0.352324 secs using 398.2% CPU
+Optimizing NNI: done in 0.552661 secs using 368.5% CPU
+Iteration 60 / LogL: -2808.926 / Time: 0h:0m:30s (0h:0m:46s left)
+Optimizing NNI: done in 0.286247 secs using 397% CPU
+Optimizing NNI: done in 0.345741 secs using 388.1% CPU
+Optimizing NNI: done in 0.344785 secs using 391.2% CPU
+Optimizing NNI: done in 0.386212 secs using 393.1% CPU
+Optimizing NNI: done in 0.382684 secs using 392.4% CPU
+Optimizing NNI: done in 0.265148 secs using 394.2% CPU
+Optimizing NNI: done in 0.335688 secs using 395.5% CPU
+Optimizing NNI: done in 0.340897 secs using 396.9% CPU
+Optimizing NNI: done in 0.344917 secs using 393.8% CPU
+Optimizing NNI: done in 0.304287 secs using 394.5% CPU
+Iteration 70 / LogL: -2796.767 / Time: 0h:0m:34s (0h:0m:39s left)
+Optimizing NNI: done in 0.245833 secs using 399.1% CPU
+Optimizing NNI: done in 0.28876 secs using 396.5% CPU
+Optimizing NNI: done in 0.346657 secs using 395.2% CPU
+Optimizing NNI: done in 0.293554 secs using 395% CPU
+Optimizing NNI: done in 0.462507 secs using 361.2% CPU
+Optimizing NNI: done in 0.32975 secs using 390.9% CPU
+Optimizing NNI: done in 0.284321 secs using 396.9% CPU
+Optimizing NNI: done in 0.348899 secs using 389.9% CPU
+Optimizing NNI: done in 0.348172 secs using 395.8% CPU
+Optimizing NNI: done in 0.239639 secs using 396.3% CPU
+Iteration 80 / LogL: -2791.052 / Time: 0h:0m:37s (0h:0m:33s left)
+Optimizing NNI: done in 0.460936 secs using 394.2% CPU
+Optimizing NNI: done in 0.517323 secs using 397.1% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 82: -2785.749
+Optimizing NNI: done in 0.282907 secs using 395.3% CPU
+Optimizing NNI: done in 0.312497 secs using 394.4% CPU
+Optimizing NNI: done in 0.342085 secs using 392.3% CPU
+Optimizing NNI: done in 0.401336 secs using 395% CPU
+Optimizing NNI: done in 0.263032 secs using 399.6% CPU
+Optimizing NNI: done in 0.30129 secs using 392.1% CPU
+Optimizing NNI: done in 0.42949 secs using 365.9% CPU
+Optimizing NNI: done in 0.372417 secs using 389.8% CPU
+Iteration 90 / LogL: -2786.475 / Time: 0h:0m:41s (0h:0m:43s left)
+Optimizing NNI: done in 0.345209 secs using 390.8% CPU
+Optimizing NNI: done in 0.362894 secs using 395.9% CPU
+Optimizing NNI: done in 0.385167 secs using 393.4% CPU
+Optimizing NNI: done in 0.442274 secs using 393% CPU
+Optimizing NNI: done in 0.40465 secs using 396.5% CPU
+Optimizing NNI: done in 0.24877 secs using 396.9% CPU
+Optimizing NNI: done in 0.378253 secs using 391.4% CPU
+Optimizing NNI: done in 0.343305 secs using 395.9% CPU
+Optimizing NNI: done in 0.31216 secs using 394.7% CPU
+Optimizing NNI: done in 0.340244 secs using 388.5% CPU
+Iteration 100 / LogL: -2791.917 / Time: 0h:0m:45s (0h:0m:37s left)
+Optimizing NNI: done in 0.322331 secs using 393.6% CPU
+Optimizing NNI: done in 0.301011 secs using 395% CPU
+Optimizing NNI: done in 0.322606 secs using 395.1% CPU
+Optimizing NNI: done in 0.418399 secs using 378% CPU
+Optimizing NNI: done in 0.283196 secs using 395% CPU
+Optimizing NNI: done in 0.288736 secs using 396.5% CPU
+Optimizing NNI: done in 0.323678 secs using 394.1% CPU
+Optimizing NNI: done in 0.36536 secs using 396.7% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 108: -2785.467
+Optimizing NNI: done in 0.439873 secs using 395.5% CPU
+Optimizing NNI: done in 0.244422 secs using 399.5% CPU
+Iteration 110 / LogL: -2785.468 / Time: 0h:0m:49s (0h:0m:44s left)
+Optimizing NNI: done in 0.384811 secs using 395.5% CPU
+Optimizing NNI: done in 0.340832 secs using 390.2% CPU
+Optimizing NNI: done in 0.335305 secs using 396.4% CPU
+Optimizing NNI: done in 0.281603 secs using 393.6% CPU
+Optimizing NNI: done in 0.396944 secs using 399.3% CPU
+Optimizing NNI: done in 0.283003 secs using 396.9% CPU
+Optimizing NNI: done in 0.395744 secs using 395.1% CPU
+Optimizing NNI: done in 0.392231 secs using 365.5% CPU
+Optimizing NNI: done in 0.378205 secs using 389.7% CPU
+Optimizing NNI: done in 0.336045 secs using 392.5% CPU
+Iteration 120 / LogL: -2785.712 / Time: 0h:0m:53s (0h:0m:39s left)
+Optimizing NNI: done in 0.242595 secs using 392.5% CPU
+Optimizing NNI: done in 0.371461 secs using 392.9% CPU
+Optimizing NNI: done in 0.353029 secs using 398.7% CPU
+Optimizing NNI: done in 0.341643 secs using 393.9% CPU
+Optimizing NNI: done in 0.29797 secs using 392.7% CPU
+Optimizing NNI: done in 0.292092 secs using 393.2% CPU
+Optimizing NNI: done in 0.247741 secs using 396.8% CPU
+Optimizing NNI: done in 0.325743 secs using 387.4% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 128: -2785.342
+Optimizing NNI: done in 0.305125 secs using 393.6% CPU
+Optimizing NNI: done in 0.290227 secs using 396.4% CPU
+Iteration 130 / LogL: -2788.665 / Time: 0h:0m:56s (0h:0m:42s left)
+Optimizing NNI: done in 0.306649 secs using 393.5% CPU
+Optimizing NNI: done in 0.420312 secs using 394.9% CPU
+Optimizing NNI: done in 0.423343 secs using 362.6% CPU
+Optimizing NNI: done in 0.361778 secs using 390% CPU
+Optimizing NNI: done in 0.302228 secs using 395.2% CPU
+Optimizing NNI: done in 0.28346 secs using 395.2% CPU
+Optimizing NNI: done in 0.361403 secs using 390% CPU
+Optimizing NNI: done in 0.233014 secs using 396.5% CPU
+Optimizing NNI: done in 0.291125 secs using 396.7% CPU
+Optimizing NNI: done in 0.298891 secs using 394.7% CPU
+Iteration 140 / LogL: -2790.608 / Time: 0h:1m:0s (0h:0m:37s left)
+Optimizing NNI: done in 0.290677 secs using 398.6% CPU
+Optimizing NNI: done in 0.30066 secs using 395% CPU
+Optimizing NNI: done in 0.357949 secs using 396.6% CPU
+Optimizing NNI: done in 0.450121 secs using 394.1% CPU
+Optimizing NNI: done in 0.372733 secs using 395.6% CPU
+Optimizing NNI: done in 0.391298 secs using 393.6% CPU
+Optimizing NNI: done in 0.301204 secs using 395.1% CPU
+Optimizing NNI: done in 0.290079 secs using 398.6% CPU
+Optimizing NNI: done in 0.431063 secs using 357.9% CPU
+Optimizing NNI: done in 0.285974 secs using 393.7% CPU
+Iteration 150 / LogL: -2786.115 / Time: 0h:1m:3s (0h:0m:33s left)
+Optimizing NNI: done in 0.351573 secs using 395.8% CPU
+Optimizing NNI: done in 0.272928 secs using 397.5% CPU
+Optimizing NNI: done in 0.254636 secs using 394.6% CPU
+Optimizing NNI: done in 0.303514 secs using 399.2% CPU
+Optimizing NNI: done in 0.354978 secs using 393% CPU
+Optimizing NNI: done in 0.24216 secs using 395.8% CPU
+Optimizing NNI: done in 0.356092 secs using 391% CPU
+Optimizing NNI: done in 0.354875 secs using 395.3% CPU
+Optimizing NNI: done in 0.245844 secs using 396% CPU
+Optimizing NNI: done in 0.293207 secs using 396% CPU
+Iteration 160 / LogL: -2785.479 / Time: 0h:1m:6s (0h:0m:28s left)
+Optimizing NNI: done in 0.307416 secs using 398.7% CPU
+Optimizing NNI: done in 0.322569 secs using 392.7% CPU
+Optimizing NNI: done in 0.287411 secs using 394.7% CPU
+Optimizing NNI: done in 0.248928 secs using 393.5% CPU
+Optimizing NNI: done in 0.450779 secs using 368.6% CPU
+Optimizing NNI: done in 0.387734 secs using 384.2% CPU
+Optimizing NNI: done in 0.36705 secs using 393.9% CPU
+Optimizing NNI: done in 0.356909 secs using 395.1% CPU
+Optimizing NNI: done in 0.30337 secs using 391.4% CPU
+Optimizing NNI: done in 0.353205 secs using 395.7% CPU
+Iteration 170 / LogL: -2785.478 / Time: 0h:1m:10s (0h:0m:24s left)
+Optimizing NNI: done in 0.280952 secs using 393.3% CPU
+Optimizing NNI: done in 0.355827 secs using 399% CPU
+Optimizing NNI: done in 0.382409 secs using 391.8% CPU
+Optimizing NNI: done in 0.29943 secs using 399.2% CPU
+Optimizing NNI: done in 0.327137 secs using 391% CPU
+Optimizing NNI: done in 0.339807 secs using 390% CPU
+Optimizing NNI: done in 0.288746 secs using 390.8% CPU
+Optimizing NNI: done in 0.33908 secs using 398.5% CPU
+Optimizing NNI: done in 0.247322 secs using 392.8% CPU
+Optimizing NNI: done in 0.298666 secs using 393.4% CPU
+Iteration 180 / LogL: -2795.949 / Time: 0h:1m:13s (0h:0m:19s left)
+Optimizing NNI: done in 0.48186 secs using 365.7% CPU
+Optimizing NNI: done in 0.485369 secs using 392.1% CPU
+Optimizing NNI: done in 0.299825 secs using 398.9% CPU
+Optimizing NNI: done in 0.329598 secs using 392.5% CPU
+Optimizing NNI: done in 0.465501 secs using 394.7% CPU
+Optimizing NNI: done in 0.289721 secs using 397.6% CPU
+Optimizing NNI: done in 0.309823 secs using 395.6% CPU
+Optimizing NNI: done in 0.349705 secs using 391.7% CPU
+Optimizing NNI: done in 0.35885 secs using 390.6% CPU
+Optimizing NNI: done in 0.488908 secs using 392.9% CPU
+Iteration 190 / LogL: -2789.762 / Time: 0h:1m:17s (0h:0m:15s left)
+Optimizing NNI: done in 0.350689 secs using 392% CPU
+Optimizing NNI: done in 0.423155 secs using 393.8% CPU
+Optimizing NNI: done in 0.298699 secs using 398.1% CPU
+Optimizing NNI: done in 0.43257 secs using 396.7% CPU
+Optimizing NNI: done in 0.55447 secs using 364.9% CPU
+Optimizing NNI: done in 0.409268 secs using 393.3% CPU
+Optimizing NNI: done in 0.285557 secs using 400.6% CPU
+Optimizing NNI: done in 0.356967 secs using 394.7% CPU
+Optimizing NNI: done in 0.413707 secs using 393.9% CPU
+Optimizing NNI: done in 0.329752 secs using 397.8% CPU
+Iteration 200 / LogL: -2816.482 / Time: 0h:1m:21s (0h:0m:11s left)
+Optimizing NNI: done in 0.29714 secs using 397% CPU
+Optimizing NNI: done in 0.354609 secs using 395.4% CPU
+Optimizing NNI: done in 0.299427 secs using 393.9% CPU
+Optimizing NNI: done in 0.241975 secs using 399.7% CPU
+Optimizing NNI: done in 0.243472 secs using 390.8% CPU
+Optimizing NNI: done in 0.274373 secs using 391.6% CPU
+Optimizing NNI: done in 0.285968 secs using 389.6% CPU
+Optimizing NNI: done in 0.330285 secs using 395.5% CPU
+Optimizing NNI: done in 0.529309 secs using 389.4% CPU
+Optimizing NNI: done in 0.49934 secs using 365% CPU
+Iteration 210 / LogL: -2798.565 / Time: 0h:1m:25s (0h:0m:7s left)
+Optimizing NNI: done in 0.366188 secs using 393.7% CPU
+Optimizing NNI: done in 0.382162 secs using 397.9% CPU
+Optimizing NNI: done in 0.281265 secs using 394.4% CPU
+Optimizing NNI: done in 0.414445 secs using 399.5% CPU
+Optimizing NNI: done in 0.438732 secs using 391.8% CPU
+Optimizing NNI: done in 0.508219 secs using 391.2% CPU
+Optimizing NNI: done in 0.246488 secs using 394.4% CPU
+Optimizing NNI: done in 0.462576 secs using 390.6% CPU
+Optimizing NNI: done in 0.352074 secs using 397.7% CPU
+Optimizing NNI: done in 0.395448 secs using 398.4% CPU
+Iteration 220 / LogL: -2790.909 / Time: 0h:1m:29s (0h:0m:3s left)
+Optimizing NNI: done in 0.376193 secs using 396.6% CPU
+Optimizing NNI: done in 0.301003 secs using 393.7% CPU
+Optimizing NNI: done in 0.559372 secs using 372% CPU
+Optimizing NNI: done in 0.411147 secs using 392.3% CPU
+Optimizing NNI: done in 0.313585 secs using 393.4% CPU
+Optimizing NNI: done in 0.248038 secs using 396.7% CPU
+Optimizing NNI: done in 0.324467 secs using 394.7% CPU
+Optimizing NNI: done in 0.229819 secs using 395.5% CPU
+Optimizing NNI: done in 0.331058 secs using 388.3% CPU
+TREE SEARCH COMPLETED AFTER 229 ITERATIONS / Time: 0h:1m:32s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -2785.342
+Optimal log-likelihood: -2785.340
+Rate parameters:  A-C: 0.86389  A-G: 1.09590  A-T: 0.35030  C-G: 0.29303  C-T: 2.45026  G-T: 1.00000
+Base frequencies:  A: 0.428  C: 0.145  G: 0.236  T: 0.192
+Site proportion and rates:  (0.183,0.300) (0.184,0.367) (0.182,1.054) (0.218,1.359) (0.224,1.389) (0.010,8.090)
+Parameters optimization took 1 rounds (0.253 sec)
+BEST SCORE FOUND : -2785.340
+Total tree length: 1.442
+
+Total number of iterations: 229
+CPU time used for tree search: 338.315 sec (0h:5m:38s)
+Wall-clock time used for tree search: 89.102 sec (0h:1m:29s)
+Total CPU time used: 350.907 sec (0h:5m:50s)
+Total wall-clock time used: 92.771 sec (0h:1m:32s)
+
+Analysis results written to: 
+  IQ-TREE report:                IQTREE_bestTree.InWindow_4750_to_5000.iqtree
+  Maximum-likelihood tree:       IQTREE_bestTree.InWindow_4750_to_5000.treefile
+  Likelihood distances:          IQTREE_bestTree.InWindow_4750_to_5000.mldist
+  Screen log file:               IQTREE_bestTree.InWindow_4750_to_5000.log
+
+Date and Time: Sun Jul 23 04:26:46 2023
