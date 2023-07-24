@@ -32,9 +32,9 @@ pip3 install --ignore-installed pyfastaq
 ```
 
 ## Usage
-Populate RawData/ folder with **SID.fastq.gz** files.
+Populate **RawData** folder with **SID.fastq.gz** files.
 
-Change directory to the **Pipeline/**: 
+Change directory to the **Pipeline**: 
 ```sh
 cd Pipeline/
 ```
