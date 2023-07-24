@@ -13,3 +13,5 @@ devtools::install on the phyloscannerR directory
 
 - Compare IVA with SPADES
 
+- Double check MAF associated sctipts
+
