@@ -39,17 +39,21 @@ Change directory to the Pipeline/:
 cd Pipeline/
 ```
 
-Create a nextflow environment, using nextflow.yml file and activate it:
+Create a nextflow environment, using nextflow.yml file:
 
 ```sh
-conda env create -n nextflow --file nextflow.yml
+conda env create -n nextflow -f Environmet/nextflow.yml
+```
+
+Activate the *nextflow* environment:
+```sh
 conda activate nextflow
 ```
 
 Run the pipeline: 
 
 ```sh
-nextflow /Scripts/shiver_phyloscanner_tsi_pipeline.nf --outdir Results -c Script/rki_profile.config -profile rki_slurm,rki_mamba
+nextflow run /Scripts/shiver_phyloscanner_tsi_pipeline.nf --outdir Results -c Script/rki_profile.config -profile rki_slurm,rki_mamba
 ```
 
 ## Flowchart
