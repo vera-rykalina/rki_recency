@@ -15,11 +15,11 @@ The pipeline includes the following tools:
 ## Installation
 Make sure that R with phyloscannerR package and pyfastaq installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
 
-Make sure that you downloaded Kraken2 database and change the path to it in shiver_phyloscanner_tsi_pipeline.nf, if you wish to get Kraker2 reports.
+Download Kraken2 database and change the path accordingly in the shiver_phyloscanner_tsi_pipeline.nf if Kraken2 reports are desired.
 
 >params.krakendb = "/scratch/databases/kraken2_20230314/"
 
-The db used in the pipeline is PlusPFP (3 March, 2023) is stored on HPC. 
+The database used by the pipeline is PlusPFP (3 March, 2023) which is stored within HPC resources. 
 
 Alternativelly, one can install all the tools manually, using .yml recipes (see Environment folder). If so, pyfastaq can be install within shiver's environment:
 
