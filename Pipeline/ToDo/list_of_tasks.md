@@ -15,3 +15,5 @@ devtools::install on the phyloscannerR directory
 
 - Double check MAF associated sctipts
 
+- Optimise HPC resources for all process if needed
+
