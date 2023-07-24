@@ -1,6 +1,6 @@
 # List of tasks and ideas to be tested
 
-- Try fresh installation of phyloscanerR to see if it works:
+- Try a fresh installation of phyloscannerR to see if it works:
 devtools::install on the phyloscannerR directory
 
 - Try to install R, phyloscannerR and all its dependencies, using conda
@@ -9,4 +9,7 @@ devtools::install on the phyloscannerR directory
 
 - Clarify if --x-iqtree is an option now
 
-- Create custom HIV_DistanceNormalisationOverGenome.csv and compare with an available file
+- Create custom HIV_DistanceNormalisationOverGenome.csv and compare it with an available file
+
+- Compare IVA with SPADES
+
