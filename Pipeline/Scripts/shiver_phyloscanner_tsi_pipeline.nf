@@ -11,7 +11,7 @@ projectDir = "/home/rykalinav/scratch/rki_recency/Pipeline"
 // -c Script/rki_profile.config \
 // -profile rki_slurm,rki_mamba \
 // --outdir Results \
-// -with-report HTML/test.$(date +%T).report.html
+// -with-report HTML/report_$(date +%T).html
 // # use this paramete to build a flowchart
 // -with-dag pipeline_flowchart.png (pipeline_flowchart.mmd)
 // # use this parameter for an empty test run
