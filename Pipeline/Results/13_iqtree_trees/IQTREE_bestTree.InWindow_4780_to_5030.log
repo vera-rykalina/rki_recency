@@ -3,1074 +3,1279 @@ Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
 Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
 
 Host:    hpc-node03 (AVX2, FMA3, 1007 GB RAM)
-Command: iqtree -s AlignedReadsInWindow_PositionsExcised_4780_to_5030.fasta -pre IQTREE_bestTree.InWindow_4780_to_5030 -m GTR+F+R6 -nt 4
-Seed:    392557 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Sun Jul 23 04:27:08 2023
-Kernel:  AVX+FMA - 4 threads (4 CPU cores detected)
+Command: iqtree -s AlignedReadsInWindow_PositionsExcised_4780_to_5030.fasta -pre IQTREE_bestTree.InWindow_4780_to_5030 -m GTR+F+R6 -nt 2
+Seed:    448461 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Tue Jul 25 12:14:14 2023
+Kernel:  AVX+FMA - 2 threads (2 CPU cores detected)
 
 Reading alignment file AlignedReadsInWindow_PositionsExcised_4780_to_5030.fasta ... Fasta format detected
-Reading fasta file: done in 0.00250528 secs using 73.33% CPU
+Reading fasta file: done in 0.00212323 secs using 81.57% CPU
 Alignment most likely contains DNA/RNA sequences
-Constructing alignment: done in 0.00100352 secs using 244.8% CPU
+Constructing alignment: done in 0.000966368 secs using 99.75% CPU
 Alignment has 270 sequences with 268 columns, 167 distinct patterns
 68 parsimony-informative, 89 singleton sites, 111 constant sites
                                                             Gap/Ambiguity  Composition  p-value
-Analyzing sequences: done in 0.014564 secs using 296.7% CPU
-   1  200724_20-08522_HIV11-02415_FL24_S18_L000_read_1_count_159    9.70%    passed     97.35%
-   2  200724_20-08522_HIV11-02415_FL24_S18_L000_read_2_count_29     9.70%    passed     97.42%
-   3  200724_20-08522_HIV11-02415_FL24_S18_L000_read_3_count_21     9.70%    passed     96.72%
-   4  200724_20-08522_HIV11-02415_FL24_S18_L000_read_4_count_6      9.70%    passed     96.72%
-   5  200724_20-08522_HIV11-02415_FL24_S18_L000_read_5_count_6      9.70%    passed     92.29%
-   6  200724_20-08522_HIV11-02415_FL24_S18_L000_read_6_count_6      9.70%    passed     96.72%
-   7  200724_20-08522_HIV11-02415_FL24_S18_L000_read_7_count_5      9.70%    passed     99.19%
-   8  200724_20-08522_HIV11-02415_FL24_S18_L000_read_8_count_5      9.70%    passed     97.42%
-   9  200724_20-08522_HIV11-02415_FL24_S18_L000_read_9_count_3      9.70%    passed     97.42%
-  10  200724_20-08522_HIV11-02415_FL24_S18_L000_read_10_count_2     9.70%    passed     96.72%
-  11  200724_20-08522_HIV11-02415_FL24_S18_L000_read_11_count_2     9.70%    passed     96.82%
-  12  200724_20-08522_HIV11-02415_FL24_S18_L000_read_12_count_2     9.70%    passed     97.07%
-  13  200724_20-08522_HIV11-02415_FL24_S18_L000_read_13_count_1     9.70%    passed     89.81%
-  14  200724_20-08522_HIV11-02415_FL24_S18_L000_read_14_count_1     9.70%    passed     92.29%
-  15  200724_20-08522_HIV11-02415_FL24_S18_L000_read_15_count_1     9.70%    passed     83.81%
-  16  200724_20-08522_HIV11-02415_FL24_S18_L000_read_16_count_1     9.70%    passed     97.07%
-  17  200724_20-08522_HIV11-02415_FL24_S18_L000_read_17_count_1     9.70%    passed     97.07%
-  18  200724_20-08522_HIV11-02415_FL24_S18_L000_read_18_count_1     9.70%    passed     97.07%
-  19  200724_20-08522_HIV11-02415_FL24_S18_L000_read_19_count_1     9.70%    passed     97.11%
-  20  200724_20-08522_HIV11-02415_FL24_S18_L000_read_20_count_1     9.70%    passed     96.14%
-  21  200724_20-08522_HIV11-02415_FL24_S18_L000_read_21_count_1     9.70%    passed     96.18%
-  22  200724_20-08522_HIV11-02415_FL24_S18_L000_read_22_count_1     9.70%    passed     95.03%
-  23  200724_20-08522_HIV11-02415_FL24_S18_L000_read_23_count_1     9.70%    passed     97.11%
-  24  200724_20-08522_HIV11-02415_FL24_S18_L000_read_24_count_1     9.70%    passed     96.72%
-  25  200724_20-08522_HIV11-02415_FL24_S18_L000_read_25_count_1     9.70%    passed     92.97%
-  26  200724_20-08522_HIV11-02415_FL24_S18_L000_read_26_count_1     9.70%    passed     91.93%
-  27  200724_20-08522_HIV11-02415_FL24_S18_L000_read_27_count_1     9.70%    passed     95.03%
-  28  200724_20-08522_HIV11-02415_FL24_S18_L000_read_28_count_1     9.70%    passed     97.07%
-  29  200724_20-08522_HIV11-02415_FL24_S18_L000_read_29_count_1     9.70%    passed     96.72%
-  30  200724_20-08522_HIV11-02415_FL24_S18_L000_read_30_count_1     9.70%    passed     97.07%
-  31  200724_20-08522_HIV11-02415_FL24_S18_L000_read_31_count_1     9.70%    passed     97.07%
-  32  200724_20-08522_HIV11-02415_FL24_S18_L000_read_32_count_1     9.70%    passed     95.03%
-  33  200724_20-08522_HIV11-02415_FL24_S18_L000_read_33_count_1     9.70%    passed     92.29%
-  34  200724_20-08522_HIV11-02415_FL24_S18_L000_read_34_count_1     9.70%    passed     98.46%
-  35  200724_20-08522_HIV11-02415_FL24_S18_L000_read_35_count_1     9.70%    passed     97.07%
-  36  200724_20-08522_HIV11-02415_FL24_S18_L000_read_36_count_1     9.70%    passed     99.02%
-  37  200724_20-08522_HIV11-02415_FL24_S18_L000_read_37_count_1     9.70%    passed     97.07%
-  38  200724_20-08522_HIV11-02415_FL24_S18_L000_read_38_count_1     9.70%    passed     99.45%
-  39  200724_20-08522_HIV11-02415_FL24_S18_L000_read_39_count_1     9.70%    passed     97.07%
-  40  200724_20-08522_HIV11-02415_FL24_S18_L000_read_40_count_1     9.70%    passed     95.03%
-  41  200724_20-08522_HIV11-02415_FL24_S18_L000_read_41_count_1     9.70%    passed     99.45%
-  42  200724_20-08522_HIV11-02415_FL24_S18_L000_read_42_count_1     9.70%    passed     97.07%
-  43  200724_20-08522_HIV11-02415_FL24_S18_L000_read_43_count_1     9.70%    passed     99.02%
-  44  200724_20-08522_HIV11-02415_FL24_S18_L000_read_44_count_1     9.70%    passed     91.44%
-  45  200724_20-08522_HIV11-02415_FL24_S18_L000_read_45_count_1     9.70%    passed     95.21%
-  46  200724_20-08522_HIV11-02415_FL24_S18_L000_read_46_count_1     9.70%    passed     93.35%
-  47  200724_20-08522_HIV11-02415_FL24_S18_L000_read_47_count_1     9.70%    passed     92.29%
-  48  200724_20-08522_HIV11-02415_FL24_S18_L000_read_48_count_1     9.70%    passed     93.06%
-  49  200724_20-08522_HIV11-02415_FL24_S18_L000_read_49_count_1     9.70%    passed     98.72%
-  50  200724_20-08522_HIV11-02415_FL24_S18_L000_read_50_count_1     9.70%    passed     88.65%
-  51  200724_20-08522_HIV11-02415_FL24_S18_L000_read_51_count_1     9.70%    passed     97.42%
-  52  200724_20-08522_HIV11-02415_FL24_S18_L000_read_52_count_1     9.70%    passed     96.72%
-  53  200724_20-08522_HIV11-02415_FL24_S18_L000_read_53_count_1     9.70%    passed     93.35%
-  54  200724_20-08522_HIV11-02415_FL24_S18_L000_read_54_count_1     9.70%    passed     95.21%
-  55  200724_20-08522_HIV11-02415_FL24_S18_L000_read_55_count_1     9.70%    passed     92.29%
-  56  200724_20-08522_HIV11-02415_FL24_S18_L000_read_56_count_1     9.33%    passed     99.31%
-  57  200724_20-08522_HIV11-02415_FL24_S18_L000_read_57_count_1     9.70%    passed     97.35%
-  58  200724_20-08522_HIV11-02415_FL24_S18_L000_read_58_count_1     9.70%    passed     95.40%
-  59  200724_20-08522_HIV11-02415_FL24_S18_L000_read_59_count_1     9.70%    passed     91.93%
-  60  200724_20-08522_HIV11-02415_FL24_S18_L000_read_60_count_1     9.70%    passed     99.45%
-  61  200724_20-08522_HIV11-02415_FL24_S18_L000_read_61_count_1     9.70%    passed     92.29%
-  62  200724_20-08522_HIV11-02415_FL24_S18_L000_read_62_count_1     9.70%    passed     92.97%
-  63  200724_20-08522_HIV11-02415_FL24_S18_L000_read_63_count_1     9.70%    passed     96.18%
-  64  200724_20-08522_HIV11-02415_FL24_S18_L000_read_64_count_1     9.70%    passed     93.35%
-  65  200724_20-08522_HIV11-02415_FL24_S18_L000_read_65_count_1     9.70%    passed     99.45%
-  66  200724_20-08522_HIV11-02415_FL24_S18_L000_read_66_count_1     9.70%    passed     95.21%
-  67  200724_20-08522_HIV11-02415_FL24_S18_L000_read_67_count_1     9.70%    passed     96.72%
-  68  200724_20-08522_HIV11-02415_FL24_S18_L000_read_68_count_1     9.70%    passed     95.03%
-  69  200724_20-08522_HIV11-02415_FL24_S18_L000_read_69_count_1     9.70%    passed     97.07%
-  70  200724_20-08522_HIV11-02415_FL24_S18_L000_read_70_count_1     9.70%    passed     96.72%
-  71  200724_20-08522_HIV11-02415_FL24_S18_L000_read_71_count_1     9.70%    passed     97.42%
-  72  200724_20-08522_HIV11-02415_FL24_S18_L000_read_72_count_1     9.70%    passed     96.72%
-  73  200724_20-08522_HIV11-02415_FL24_S18_L000_read_73_count_1     9.33%    passed     97.49%
-  74  200724_20-08522_HIV11-02415_FL24_S18_L000_read_74_count_1     9.70%    passed     97.11%
-  75  200724_20-08522_HIV11-02415_FL24_S18_L000_read_75_count_1     9.70%    passed     96.14%
-  76  200724_20-08522_HIV11-02415_FL24_S18_L000_read_76_count_1     9.70%    passed     99.45%
-  77  200724_20-08522_HIV11-02415_FL24_S18_L000_read_77_count_1     9.70%    passed     96.18%
-  78  200724_20-08522_HIV11-02415_FL24_S18_L000_read_78_count_1     9.70%    passed     93.35%
-  79  200724_20-08522_HIV11-02415_FL24_S18_L000_read_79_count_1     9.70%    passed     92.29%
-  80  200724_20-08522_HIV11-02415_FL24_S18_L000_read_80_count_1     9.70%    passed     97.42%
-  81  200724_20-08522_HIV11-02415_FL24_S18_L000_read_81_count_1     9.70%    passed     96.18%
-  82  200724_20-08522_HIV11-02415_FL24_S18_L000_read_82_count_1     9.70%    passed     97.42%
-  83  200724_20-08522_HIV11-02415_FL24_S18_L000_read_83_count_1     9.70%    passed     92.29%
-  84  200724_20-08522_HIV11-02415_FL24_S18_L000_read_84_count_1     9.70%    passed     97.07%
-  85  200709_20-07994_HIV07-01067_FL21_S1_L000_read_1_count_165     9.70%    passed     98.92%
-  86  200709_20-07994_HIV07-01067_FL21_S1_L000_read_2_count_113     9.70%    passed     95.67%
-  87  200709_20-07994_HIV07-01067_FL21_S1_L000_read_3_count_29      9.70%    passed     98.21%
-  88  200709_20-07994_HIV07-01067_FL21_S1_L000_read_4_count_17      9.70%    passed     93.77%
-  89  200709_20-07994_HIV07-01067_FL21_S1_L000_read_5_count_13      9.70%    passed     99.80%
-  90  200709_20-07994_HIV07-01067_FL21_S1_L000_read_6_count_2       9.70%    passed     99.18%
-  91  200709_20-07994_HIV07-01067_FL21_S1_L000_read_7_count_2       9.70%    passed     99.11%
-  92  200709_20-07994_HIV07-01067_FL21_S1_L000_read_8_count_2       9.70%    passed     98.21%
-  93  200709_20-07994_HIV07-01067_FL21_S1_L000_read_9_count_1       9.70%    passed     96.07%
-  94  200709_20-07994_HIV07-01067_FL21_S1_L000_read_10_count_1      9.70%    passed     97.84%
-  95  200709_20-07994_HIV07-01067_FL21_S1_L000_read_11_count_1     10.07%    passed     94.95%
-  96  200709_20-07994_HIV07-01067_FL21_S1_L000_read_12_count_1      9.70%    passed     99.66%
-  97  200709_20-07994_HIV07-01067_FL21_S1_L000_read_13_count_1      9.70%    passed     97.84%
-  98  200709_20-07994_HIV07-01067_FL21_S1_L000_read_14_count_1      9.70%    passed     96.97%
-  99  200709_20-07994_HIV07-01067_FL21_S1_L000_read_15_count_1      9.70%    passed     94.21%
- 100  200709_20-07994_HIV07-01067_FL21_S1_L000_read_16_count_1      9.70%    passed     96.26%
- 101  200709_20-07994_HIV07-01067_FL21_S1_L000_read_17_count_1      9.70%    passed     90.30%
- 102  200709_20-07994_HIV07-01067_FL21_S1_L000_read_18_count_1      9.70%    passed     98.21%
- 103  200709_20-07994_HIV07-01067_FL21_S1_L000_read_19_count_1     10.07%    passed     98.87%
- 104  200709_20-07994_HIV07-01067_FL21_S1_L000_read_20_count_1      9.70%    passed     96.26%
- 105  200709_20-07994_HIV07-01067_FL21_S1_L000_read_21_count_1      9.70%    passed     94.21%
- 106  200709_20-07994_HIV07-01067_FL21_S1_L000_read_22_count_1      9.70%    passed     99.26%
- 107  200709_20-07994_HIV07-01067_FL21_S1_L000_read_23_count_1      9.70%    passed     95.63%
- 108  200709_20-07994_HIV07-01067_FL21_S1_L000_read_24_count_1      9.70%    passed     96.07%
- 109  200709_20-07994_HIV07-01067_FL21_S1_L000_read_25_count_1      9.70%    passed     93.77%
- 110  200709_20-07994_HIV07-01067_FL21_S1_L000_read_26_count_1      9.70%    passed     96.07%
- 111  200709_20-07994_HIV07-01067_FL21_S1_L000_read_27_count_1      9.70%    passed     96.26%
- 112  200709_20-07994_HIV07-01067_FL21_S1_L000_read_28_count_1      9.70%    passed     99.18%
- 113  200709_20-07994_HIV07-01067_FL21_S1_L000_read_29_count_1      9.70%    passed     97.84%
- 114  200709_20-07994_HIV07-01067_FL21_S1_L000_read_30_count_1      9.70%    passed     93.77%
- 115  200709_20-07994_HIV07-01067_FL21_S1_L000_read_31_count_1      9.70%    passed     98.25%
- 116  200709_20-07994_HIV07-01067_FL21_S1_L000_read_32_count_1      9.70%    passed     99.80%
- 117  200709_20-07994_HIV07-01067_FL21_S1_L000_read_33_count_1      9.70%    passed     94.21%
- 118  200709_20-07994_HIV07-01067_FL21_S1_L000_read_34_count_1      9.70%    passed     99.18%
- 119  200709_20-07994_HIV07-01067_FL21_S1_L000_read_35_count_1      9.70%    passed     99.18%
- 120  200709_20-07994_HIV07-01067_FL21_S1_L000_read_36_count_1      9.70%    passed     93.82%
- 121  200709_20-07994_HIV07-01067_FL21_S1_L000_read_37_count_1     10.07%    passed     99.15%
- 122  200709_20-07994_HIV07-01067_FL21_S1_L000_read_38_count_1      9.70%    passed     96.26%
- 123  200709_20-07994_HIV07-01067_FL21_S1_L000_read_39_count_1      9.70%    passed     98.72%
- 124  200709_20-07994_HIV07-01067_FL21_S1_L000_read_40_count_1      9.33%    passed     95.13%
- 125  200709_20-07994_HIV07-01067_FL21_S1_L000_read_41_count_1      9.70%    passed     96.07%
- 126  200709_20-07994_HIV07-01067_FL21_S1_L000_read_42_count_1     10.07%    passed     93.75%
- 127  200709_20-07994_HIV07-01067_FL21_S1_L000_read_43_count_1      9.70%    passed     96.07%
- 128  200709_20-07994_HIV07-01067_FL21_S1_L000_read_44_count_1      9.70%    passed     98.72%
- 129  200709_20-07994_HIV07-01067_FL21_S1_L000_read_45_count_1      1.12%    passed     93.58%
- 130  200709_20-07994_HIV07-01067_FL21_S1_L000_read_46_count_1      9.70%    passed     98.92%
- 131  200709_20-07994_HIV07-01067_FL21_S1_L000_read_47_count_1      9.70%    passed     98.90%
- 132  200709_20-07994_HIV07-01067_FL21_S1_L000_read_48_count_1      9.70%    passed     89.14%
- 133  200709_20-07994_HIV07-01067_FL21_S1_L000_read_49_count_1      9.70%    passed     99.18%
- 134  200709_20-07994_HIV07-01067_FL21_S1_L000_read_50_count_1      9.70%    passed     99.83%
- 135  200709_20-07994_HIV07-01067_FL21_S1_L000_read_51_count_1      9.70%    passed     97.84%
- 136  200709_20-07994_HIV07-01067_FL21_S1_L000_read_52_count_1      9.70%    passed     98.21%
- 137  200709_20-07994_HIV07-01067_FL21_S1_L000_read_53_count_1      9.70%    passed     96.97%
- 138  200709_20-07994_HIV07-01067_FL21_S1_L000_read_54_count_1      9.70%    passed     97.33%
- 139  200709_20-07994_HIV07-01067_FL21_S1_L000_read_55_count_1      9.70%    passed     96.07%
- 140  200709_20-07994_HIV07-01067_FL21_S1_L000_read_56_count_1      9.70%    passed     99.18%
- 141  200709_20-07994_HIV07-01067_FL21_S1_L000_read_57_count_1      9.70%    passed     99.18%
- 142  200709_20-07994_HIV07-01067_FL21_S1_L000_read_58_count_1      9.70%    passed     96.07%
- 143  200709_20-07994_HIV07-01067_FL21_S1_L000_read_59_count_1      9.70%    passed     98.92%
- 144  200709_20-07994_HIV07-01067_FL21_S1_L000_read_60_count_1      9.70%    passed     97.84%
- 145  200709_20-07994_HIV07-01067_FL21_S1_L000_read_61_count_1      9.70%    passed     98.21%
- 146  200709_20-07994_HIV07-01067_FL21_S1_L000_read_62_count_1     15.30%    passed     84.17%
- 147  200709_20-07994_HIV07-01067_FL21_S1_L000_read_63_count_1      9.70%    passed     95.67%
- 148  200709_20-07994_HIV07-01067_FL21_S1_L000_read_64_count_1      9.70%    passed     98.72%
- 149  200709_20-07994_HIV07-01067_FL21_S1_L000_read_65_count_1      9.70%    passed     96.26%
- 150  200709_20-07994_HIV07-01067_FL21_S1_L000_read_66_count_1      9.70%    passed     96.07%
- 151  200709_20-07994_HIV07-01067_FL21_S1_L000_read_67_count_1      9.70%    passed     98.92%
- 152  200703_20-07825_HIV09-00618_FL18_S6_L000_read_1_count_174     9.70%    passed     99.59%
- 153  200703_20-07825_HIV09-00618_FL18_S6_L000_read_2_count_2       9.70%    passed     99.96%
- 154  200703_20-07825_HIV09-00618_FL18_S6_L000_read_3_count_2       9.70%    passed     99.96%
- 155  200703_20-07825_HIV09-00618_FL18_S6_L000_read_4_count_1       9.70%    passed     98.30%
- 156  200703_20-07825_HIV09-00618_FL18_S6_L000_read_5_count_1       9.70%    passed     98.81%
- 157  200703_20-07825_HIV09-00618_FL18_S6_L000_read_6_count_1       9.70%    passed     99.75%
- 158  200703_20-07825_HIV09-00618_FL18_S6_L000_read_7_count_1       9.70%    passed     98.56%
- 159  200703_20-07825_HIV09-00618_FL18_S6_L000_read_8_count_1      10.07%    passed     99.86%
- 160  200703_20-07825_HIV09-00618_FL18_S6_L000_read_9_count_1       9.70%    passed     98.81%
- 161  200703_20-07825_HIV09-00618_FL18_S6_L000_read_10_count_1      9.70%    passed     98.30%
- 162  200703_20-07825_HIV09-00618_FL18_S6_L000_read_11_count_1      9.70%    passed     95.17%
- 163  200703_20-07825_HIV09-00618_FL18_S6_L000_read_12_count_1      9.70%    passed     98.30%
- 164  200703_20-07825_HIV09-00618_FL18_S6_L000_read_13_count_1      9.70%    passed     98.51%
- 165  200703_20-07825_HIV09-00618_FL18_S6_L000_read_14_count_1      9.70%    passed     99.75%
- 166  200703_20-07825_HIV09-00618_FL18_S6_L000_read_15_count_1      9.70%    passed     99.34%
- 167  200703_20-07825_HIV09-00618_FL18_S6_L000_read_16_count_1      9.70%    passed     99.96%
- 168  200703_20-07825_HIV09-00618_FL18_S6_L000_read_17_count_1      9.70%    passed     98.75%
- 169  200703_20-07825_HIV09-00618_FL18_S6_L000_read_18_count_1      9.70%    passed     98.30%
- 170  200703_20-07825_HIV09-00618_FL18_S6_L000_read_19_count_1      9.70%    passed     98.56%
- 171  200703_20-07825_HIV09-00618_FL18_S6_L000_read_20_count_1      9.70%    passed     98.30%
- 172  200703_20-07825_HIV09-00618_FL18_S6_L000_read_21_count_1      9.70%    passed     99.68%
- 173  200703_20-07825_HIV09-00618_FL18_S6_L000_read_22_count_1      9.70%    passed     98.90%
- 174  200703_20-07825_HIV09-00618_FL18_S6_L000_read_23_count_1      9.70%    passed     99.55%
- 175  200703_20-07825_HIV09-00618_FL18_S6_L000_read_24_count_1      9.70%    passed     98.56%
- 176  200703_20-07825_HIV09-00618_FL18_S6_L000_read_25_count_1      9.70%    passed     98.51%
- 177  200703_20-07825_HIV09-00618_FL18_S6_L000_read_26_count_1      9.70%    passed     98.30%
- 178  200703_20-07825_HIV09-00618_FL18_S6_L000_read_27_count_1      9.70%    passed     99.34%
- 179  200814_20-09728_HIV09-02843_FL30_S2_L000_read_1_count_163     9.70%    passed     95.46%
- 180  200814_20-09728_HIV09-02843_FL30_S2_L000_read_2_count_8       9.70%    passed     96.07%
- 181  200814_20-09728_HIV09-02843_FL30_S2_L000_read_3_count_5       9.70%    passed     93.76%
- 182  200814_20-09728_HIV09-02843_FL30_S2_L000_read_4_count_4       9.70%    passed     96.07%
- 183  200814_20-09728_HIV09-02843_FL30_S2_L000_read_5_count_4       9.70%    passed     97.45%
- 184  200814_20-09728_HIV09-02843_FL30_S2_L000_read_6_count_4       9.70%    passed     99.18%
- 185  200814_20-09728_HIV09-02843_FL30_S2_L000_read_7_count_3       9.70%    passed     96.07%
- 186  200814_20-09728_HIV09-02843_FL30_S2_L000_read_8_count_3       9.70%    passed     98.77%
- 187  200814_20-09728_HIV09-02843_FL30_S2_L000_read_9_count_2       9.70%    passed     98.77%
- 188  200814_20-09728_HIV09-02843_FL30_S2_L000_read_10_count_2      9.70%    passed     98.77%
- 189  200814_20-09728_HIV09-02843_FL30_S2_L000_read_11_count_2      9.70%    passed     95.46%
- 190  200814_20-09728_HIV09-02843_FL30_S2_L000_read_12_count_2      9.70%    passed     95.51%
- 191  200814_20-09728_HIV09-02843_FL30_S2_L000_read_13_count_1      9.70%    passed     95.67%
- 192  200814_20-09728_HIV09-02843_FL30_S2_L000_read_14_count_1      9.70%    passed     99.75%
- 193  200814_20-09728_HIV09-02843_FL30_S2_L000_read_15_count_1      9.70%    passed     93.82%
- 194  200814_20-09728_HIV09-02843_FL30_S2_L000_read_16_count_1      9.70%    passed     93.82%
- 195  200814_20-09728_HIV09-02843_FL30_S2_L000_read_17_count_1      9.70%    passed     95.51%
- 196  200814_20-09728_HIV09-02843_FL30_S2_L000_read_18_count_1      9.70%    passed     95.46%
- 197  200814_20-09728_HIV09-02843_FL30_S2_L000_read_19_count_1      9.70%    passed     93.77%
- 198  200814_20-09728_HIV09-02843_FL30_S2_L000_read_20_count_1      9.70%    passed     99.18%
- 199  200814_20-09728_HIV09-02843_FL30_S2_L000_read_21_count_1      9.70%    passed     98.77%
- 200  200814_20-09728_HIV09-02843_FL30_S2_L000_read_22_count_1      9.70%    passed     92.75%
- 201  200814_20-09728_HIV09-02843_FL30_S2_L000_read_23_count_1      9.70%    passed     98.77%
- 202  200814_20-09728_HIV09-02843_FL30_S2_L000_read_24_count_1      9.70%    passed     96.07%
- 203  200814_20-09728_HIV09-02843_FL30_S2_L000_read_25_count_1      9.70%    passed     98.77%
- 204  200814_20-09728_HIV09-02843_FL30_S2_L000_read_26_count_1      9.70%    passed     95.51%
- 205  200814_20-09728_HIV09-02843_FL30_S2_L000_read_27_count_1      9.70%    passed     96.97%
- 206  200814_20-09728_HIV09-02843_FL30_S2_L000_read_28_count_1      9.70%    passed     97.45%
- 207  200814_20-09728_HIV09-02843_FL30_S2_L000_read_29_count_1      9.70%    passed     93.76%
- 208  200814_20-09728_HIV09-02843_FL30_S2_L000_read_30_count_1      9.70%    passed     98.77%
- 209  200814_20-09728_HIV09-02843_FL30_S2_L000_read_31_count_1      9.70%    passed     95.51%
- 210  200814_20-09728_HIV09-02843_FL30_S2_L000_read_32_count_1      9.70%    passed     95.51%
- 211  200814_20-09728_HIV09-02843_FL30_S2_L000_read_33_count_1      9.70%    passed     96.07%
- 212  200814_20-09728_HIV09-02843_FL30_S2_L000_read_34_count_1      9.70%    passed     96.73%
- 213  200814_20-09728_HIV09-02843_FL30_S2_L000_read_35_count_1      9.70%    passed     90.78%
- 214  200814_20-09728_HIV09-02843_FL30_S2_L000_read_36_count_1      9.70%    passed     97.45%
- 215  200814_20-09728_HIV09-02843_FL30_S2_L000_read_37_count_1      9.70%    passed     88.89%
- 216  200814_20-09728_HIV09-02843_FL30_S2_L000_read_38_count_1      9.70%    passed     99.75%
- 217  200814_20-09728_HIV09-02843_FL30_S2_L000_read_39_count_1      9.70%    passed     96.98%
- 218  200814_20-09728_HIV09-02843_FL30_S2_L000_read_40_count_1      9.70%    passed     93.76%
- 219  200814_20-09728_HIV09-02843_FL30_S2_L000_read_41_count_1      9.70%    passed     96.07%
- 220  200814_20-09728_HIV09-02843_FL30_S2_L000_read_42_count_1      9.70%    passed     96.73%
- 221  200724_20-08518_HIV10-02405_FL24_S14_L000_read_1_count_84     9.70%    passed     99.67%
- 222  200724_20-08518_HIV10-02405_FL24_S14_L000_read_2_count_12     9.70%    passed     99.25%
- 223  200724_20-08518_HIV10-02405_FL24_S14_L000_read_3_count_9      9.70%    passed     98.91%
- 224  200724_20-08518_HIV10-02405_FL24_S14_L000_read_4_count_4      9.70%    passed     99.96%
- 225  200724_20-08518_HIV10-02405_FL24_S14_L000_read_5_count_4      9.70%    passed     99.25%
- 226  200724_20-08518_HIV10-02405_FL24_S14_L000_read_6_count_3      9.70%    passed     97.98%
- 227  200724_20-08518_HIV10-02405_FL24_S14_L000_read_7_count_2      9.70%    passed     98.91%
- 228  200724_20-08518_HIV10-02405_FL24_S14_L000_read_8_count_2      9.70%    passed     99.96%
- 229  200724_20-08518_HIV10-02405_FL24_S14_L000_read_9_count_2      9.70%    passed     98.91%
- 230  200724_20-08518_HIV10-02405_FL24_S14_L000_read_10_count_1     9.70%    passed     98.38%
- 231  200724_20-08518_HIV10-02405_FL24_S14_L000_read_11_count_1     9.70%    passed     97.98%
- 232  200724_20-08518_HIV10-02405_FL24_S14_L000_read_12_count_1     9.70%    passed     96.62%
- 233  200724_20-08518_HIV10-02405_FL24_S14_L000_read_13_count_1     9.70%    passed     99.54%
- 234  200724_20-08518_HIV10-02405_FL24_S14_L000_read_14_count_1     9.70%    passed     98.46%
- 235  200724_20-08518_HIV10-02405_FL24_S14_L000_read_15_count_1     9.70%    passed     98.46%
- 236  200724_20-08518_HIV10-02405_FL24_S14_L000_read_16_count_1     9.70%    passed     99.83%
- 237  200724_20-08518_HIV10-02405_FL24_S14_L000_read_17_count_1    10.07%    passed     99.54%
- 238  200724_20-08518_HIV10-02405_FL24_S14_L000_read_18_count_1     9.70%    passed     98.46%
- 239  200724_20-08518_HIV10-02405_FL24_S14_L000_read_19_count_1     9.70%    passed     99.54%
- 240  200724_20-08518_HIV10-02405_FL24_S14_L000_read_20_count_1     9.33%    passed     99.43%
- 241  200724_20-08518_HIV10-02405_FL24_S14_L000_read_21_count_1    10.07%    passed     99.82%
- 242  200724_20-08518_HIV10-02405_FL24_S14_L000_read_22_count_1     9.70%    passed     95.30%
- 243  200724_20-08518_HIV10-02405_FL24_S14_L000_read_23_count_1     9.70%    passed     99.26%
- 244  200724_20-08518_HIV10-02405_FL24_S14_L000_read_24_count_1     9.70%    passed     97.98%
- 245  200724_20-08518_HIV10-02405_FL24_S14_L000_read_25_count_1     9.70%    passed     86.79%
- 246  200724_20-08518_HIV10-02405_FL24_S14_L000_read_26_count_1     9.70%    passed     99.09%
- 247  200724_20-08518_HIV10-02405_FL24_S14_L000_read_27_count_1     9.70%    passed     99.83%
- 248  200724_20-08518_HIV10-02405_FL24_S14_L000_read_28_count_1     9.70%    passed     99.66%
- 249  200724_20-08518_HIV10-02405_FL24_S14_L000_read_29_count_1     9.70%    passed     99.25%
- 250  200724_20-08518_HIV10-02405_FL24_S14_L000_read_30_count_1     9.70%    passed     98.38%
- 251  200724_20-08518_HIV10-02405_FL24_S14_L000_read_31_count_1     9.70%    passed     99.23%
- 252  200724_20-08518_HIV10-02405_FL24_S14_L000_read_32_count_1     9.70%    passed     99.83%
- 253  200724_20-08518_HIV10-02405_FL24_S14_L000_read_33_count_1     9.70%    passed     99.25%
- 254  200724_20-08518_HIV10-02405_FL24_S14_L000_read_34_count_1     9.70%    passed     99.83%
- 255  200724_20-08518_HIV10-02405_FL24_S14_L000_read_35_count_1     9.70%    passed     99.25%
- 256  200724_20-08518_HIV10-02405_FL24_S14_L000_read_36_count_1     9.70%    passed     98.30%
- 257  200724_20-08518_HIV10-02405_FL24_S14_L000_read_37_count_1     9.70%    passed     99.83%
- 258  200724_20-08518_HIV10-02405_FL24_S14_L000_read_38_count_1     9.70%    passed     98.46%
- 259  200724_20-08518_HIV10-02405_FL24_S14_L000_read_39_count_1     9.70%    passed     99.67%
- 260  200724_20-08518_HIV10-02405_FL24_S14_L000_read_40_count_1     9.70%    passed     98.38%
- 261  200724_20-08518_HIV10-02405_FL24_S14_L000_read_41_count_1    10.07%    passed     99.82%
- 262  200724_20-08518_HIV10-02405_FL24_S14_L000_read_42_count_1     9.70%    passed     99.54%
- 263  200724_20-08518_HIV10-02405_FL24_S14_L000_read_43_count_1    10.07%    passed     99.82%
- 264  200724_20-08518_HIV10-02405_FL24_S14_L000_read_44_count_1     9.70%    passed     99.83%
- 265  200724_20-08518_HIV10-02405_FL24_S14_L000_read_45_count_1     9.70%    passed     98.46%
- 266  200724_20-08518_HIV10-02405_FL24_S14_L000_read_46_count_1     9.70%    passed     98.38%
- 267  200724_20-08518_HIV10-02405_FL24_S14_L000_read_47_count_1     9.70%    passed     99.67%
- 268  200724_20-08518_HIV10-02405_FL24_S14_L000_read_48_count_1     9.70%    passed     99.54%
+Analyzing sequences: done in 0.000114625 secs using 1817% CPU
+   1  200724_20-08518_HIV10-02405_FL24_S14_L000_read_1_count_84     9.70%    passed     99.67%
+   2  200724_20-08518_HIV10-02405_FL24_S14_L000_read_2_count_12     9.70%    passed     99.25%
+   3  200724_20-08518_HIV10-02405_FL24_S14_L000_read_3_count_9      9.70%    passed     98.91%
+   4  200724_20-08518_HIV10-02405_FL24_S14_L000_read_4_count_4      9.70%    passed     99.96%
+   5  200724_20-08518_HIV10-02405_FL24_S14_L000_read_5_count_4      9.70%    passed     99.25%
+   6  200724_20-08518_HIV10-02405_FL24_S14_L000_read_6_count_3      9.70%    passed     97.98%
+   7  200724_20-08518_HIV10-02405_FL24_S14_L000_read_7_count_2      9.70%    passed     98.91%
+   8  200724_20-08518_HIV10-02405_FL24_S14_L000_read_8_count_2      9.70%    passed     99.96%
+   9  200724_20-08518_HIV10-02405_FL24_S14_L000_read_9_count_2      9.70%    passed     98.91%
+  10  200724_20-08518_HIV10-02405_FL24_S14_L000_read_10_count_1     9.70%    passed     98.38%
+  11  200724_20-08518_HIV10-02405_FL24_S14_L000_read_11_count_1     9.70%    passed     97.98%
+  12  200724_20-08518_HIV10-02405_FL24_S14_L000_read_12_count_1     9.70%    passed     96.62%
+  13  200724_20-08518_HIV10-02405_FL24_S14_L000_read_13_count_1     9.70%    passed     99.54%
+  14  200724_20-08518_HIV10-02405_FL24_S14_L000_read_14_count_1     9.70%    passed     98.46%
+  15  200724_20-08518_HIV10-02405_FL24_S14_L000_read_15_count_1     9.70%    passed     98.46%
+  16  200724_20-08518_HIV10-02405_FL24_S14_L000_read_16_count_1     9.70%    passed     99.83%
+  17  200724_20-08518_HIV10-02405_FL24_S14_L000_read_17_count_1    10.07%    passed     99.54%
+  18  200724_20-08518_HIV10-02405_FL24_S14_L000_read_18_count_1     9.70%    passed     98.46%
+  19  200724_20-08518_HIV10-02405_FL24_S14_L000_read_19_count_1     9.70%    passed     99.54%
+  20  200724_20-08518_HIV10-02405_FL24_S14_L000_read_20_count_1     9.33%    passed     99.43%
+  21  200724_20-08518_HIV10-02405_FL24_S14_L000_read_21_count_1    10.07%    passed     99.82%
+  22  200724_20-08518_HIV10-02405_FL24_S14_L000_read_22_count_1     9.70%    passed     95.30%
+  23  200724_20-08518_HIV10-02405_FL24_S14_L000_read_23_count_1     9.70%    passed     99.26%
+  24  200724_20-08518_HIV10-02405_FL24_S14_L000_read_24_count_1     9.70%    passed     97.98%
+  25  200724_20-08518_HIV10-02405_FL24_S14_L000_read_25_count_1     9.70%    passed     86.79%
+  26  200724_20-08518_HIV10-02405_FL24_S14_L000_read_26_count_1     9.70%    passed     99.09%
+  27  200724_20-08518_HIV10-02405_FL24_S14_L000_read_27_count_1     9.70%    passed     99.83%
+  28  200724_20-08518_HIV10-02405_FL24_S14_L000_read_28_count_1     9.70%    passed     99.66%
+  29  200724_20-08518_HIV10-02405_FL24_S14_L000_read_29_count_1     9.70%    passed     99.25%
+  30  200724_20-08518_HIV10-02405_FL24_S14_L000_read_30_count_1     9.70%    passed     98.38%
+  31  200724_20-08518_HIV10-02405_FL24_S14_L000_read_31_count_1     9.70%    passed     99.23%
+  32  200724_20-08518_HIV10-02405_FL24_S14_L000_read_32_count_1     9.70%    passed     99.83%
+  33  200724_20-08518_HIV10-02405_FL24_S14_L000_read_33_count_1     9.70%    passed     99.25%
+  34  200724_20-08518_HIV10-02405_FL24_S14_L000_read_34_count_1     9.70%    passed     99.83%
+  35  200724_20-08518_HIV10-02405_FL24_S14_L000_read_35_count_1     9.70%    passed     99.25%
+  36  200724_20-08518_HIV10-02405_FL24_S14_L000_read_36_count_1     9.70%    passed     98.30%
+  37  200724_20-08518_HIV10-02405_FL24_S14_L000_read_37_count_1     9.70%    passed     99.83%
+  38  200724_20-08518_HIV10-02405_FL24_S14_L000_read_38_count_1     9.70%    passed     98.46%
+  39  200724_20-08518_HIV10-02405_FL24_S14_L000_read_39_count_1     9.70%    passed     99.67%
+  40  200724_20-08518_HIV10-02405_FL24_S14_L000_read_40_count_1     9.70%    passed     98.38%
+  41  200724_20-08518_HIV10-02405_FL24_S14_L000_read_41_count_1    10.07%    passed     99.82%
+  42  200724_20-08518_HIV10-02405_FL24_S14_L000_read_42_count_1     9.70%    passed     99.54%
+  43  200724_20-08518_HIV10-02405_FL24_S14_L000_read_43_count_1    10.07%    passed     99.82%
+  44  200724_20-08518_HIV10-02405_FL24_S14_L000_read_44_count_1     9.70%    passed     99.83%
+  45  200724_20-08518_HIV10-02405_FL24_S14_L000_read_45_count_1     9.70%    passed     98.46%
+  46  200724_20-08518_HIV10-02405_FL24_S14_L000_read_46_count_1     9.70%    passed     98.38%
+  47  200724_20-08518_HIV10-02405_FL24_S14_L000_read_47_count_1     9.70%    passed     99.67%
+  48  200724_20-08518_HIV10-02405_FL24_S14_L000_read_48_count_1     9.70%    passed     99.54%
+  49  200709_20-07994_HIV07-01067_FL21_S1_L000_read_1_count_165     9.70%    passed     98.92%
+  50  200709_20-07994_HIV07-01067_FL21_S1_L000_read_2_count_113     9.70%    passed     95.67%
+  51  200709_20-07994_HIV07-01067_FL21_S1_L000_read_3_count_29      9.70%    passed     98.21%
+  52  200709_20-07994_HIV07-01067_FL21_S1_L000_read_4_count_17      9.70%    passed     93.77%
+  53  200709_20-07994_HIV07-01067_FL21_S1_L000_read_5_count_13      9.70%    passed     99.80%
+  54  200709_20-07994_HIV07-01067_FL21_S1_L000_read_6_count_2       9.70%    passed     99.18%
+  55  200709_20-07994_HIV07-01067_FL21_S1_L000_read_7_count_2       9.70%    passed     99.11%
+  56  200709_20-07994_HIV07-01067_FL21_S1_L000_read_8_count_2       9.70%    passed     98.21%
+  57  200709_20-07994_HIV07-01067_FL21_S1_L000_read_9_count_1       9.70%    passed     96.07%
+  58  200709_20-07994_HIV07-01067_FL21_S1_L000_read_10_count_1      9.70%    passed     97.84%
+  59  200709_20-07994_HIV07-01067_FL21_S1_L000_read_11_count_1     10.07%    passed     94.95%
+  60  200709_20-07994_HIV07-01067_FL21_S1_L000_read_12_count_1      9.70%    passed     99.66%
+  61  200709_20-07994_HIV07-01067_FL21_S1_L000_read_13_count_1      9.70%    passed     97.84%
+  62  200709_20-07994_HIV07-01067_FL21_S1_L000_read_14_count_1      9.70%    passed     96.97%
+  63  200709_20-07994_HIV07-01067_FL21_S1_L000_read_15_count_1      9.70%    passed     94.21%
+  64  200709_20-07994_HIV07-01067_FL21_S1_L000_read_16_count_1      9.70%    passed     96.26%
+  65  200709_20-07994_HIV07-01067_FL21_S1_L000_read_17_count_1      9.70%    passed     90.30%
+  66  200709_20-07994_HIV07-01067_FL21_S1_L000_read_18_count_1      9.70%    passed     98.21%
+  67  200709_20-07994_HIV07-01067_FL21_S1_L000_read_19_count_1     10.07%    passed     98.87%
+  68  200709_20-07994_HIV07-01067_FL21_S1_L000_read_20_count_1      9.70%    passed     96.26%
+  69  200709_20-07994_HIV07-01067_FL21_S1_L000_read_21_count_1      9.70%    passed     94.21%
+  70  200709_20-07994_HIV07-01067_FL21_S1_L000_read_22_count_1      9.70%    passed     99.26%
+  71  200709_20-07994_HIV07-01067_FL21_S1_L000_read_23_count_1      9.70%    passed     95.63%
+  72  200709_20-07994_HIV07-01067_FL21_S1_L000_read_24_count_1      9.70%    passed     96.07%
+  73  200709_20-07994_HIV07-01067_FL21_S1_L000_read_25_count_1      9.70%    passed     93.77%
+  74  200709_20-07994_HIV07-01067_FL21_S1_L000_read_26_count_1      9.70%    passed     96.07%
+  75  200709_20-07994_HIV07-01067_FL21_S1_L000_read_27_count_1      9.70%    passed     96.26%
+  76  200709_20-07994_HIV07-01067_FL21_S1_L000_read_28_count_1      9.70%    passed     99.18%
+  77  200709_20-07994_HIV07-01067_FL21_S1_L000_read_29_count_1      9.70%    passed     97.84%
+  78  200709_20-07994_HIV07-01067_FL21_S1_L000_read_30_count_1      9.70%    passed     93.77%
+  79  200709_20-07994_HIV07-01067_FL21_S1_L000_read_31_count_1      9.70%    passed     98.25%
+  80  200709_20-07994_HIV07-01067_FL21_S1_L000_read_32_count_1      9.70%    passed     99.80%
+  81  200709_20-07994_HIV07-01067_FL21_S1_L000_read_33_count_1      9.70%    passed     94.21%
+  82  200709_20-07994_HIV07-01067_FL21_S1_L000_read_34_count_1      9.70%    passed     99.18%
+  83  200709_20-07994_HIV07-01067_FL21_S1_L000_read_35_count_1      9.70%    passed     99.18%
+  84  200709_20-07994_HIV07-01067_FL21_S1_L000_read_36_count_1      9.70%    passed     93.82%
+  85  200709_20-07994_HIV07-01067_FL21_S1_L000_read_37_count_1     10.07%    passed     99.15%
+  86  200709_20-07994_HIV07-01067_FL21_S1_L000_read_38_count_1      9.70%    passed     96.26%
+  87  200709_20-07994_HIV07-01067_FL21_S1_L000_read_39_count_1      9.70%    passed     98.72%
+  88  200709_20-07994_HIV07-01067_FL21_S1_L000_read_40_count_1      9.33%    passed     95.13%
+  89  200709_20-07994_HIV07-01067_FL21_S1_L000_read_41_count_1      9.70%    passed     96.07%
+  90  200709_20-07994_HIV07-01067_FL21_S1_L000_read_42_count_1     10.07%    passed     93.75%
+  91  200709_20-07994_HIV07-01067_FL21_S1_L000_read_43_count_1      9.70%    passed     96.07%
+  92  200709_20-07994_HIV07-01067_FL21_S1_L000_read_44_count_1      9.70%    passed     98.72%
+  93  200709_20-07994_HIV07-01067_FL21_S1_L000_read_45_count_1      1.12%    passed     93.58%
+  94  200709_20-07994_HIV07-01067_FL21_S1_L000_read_46_count_1      9.70%    passed     98.92%
+  95  200709_20-07994_HIV07-01067_FL21_S1_L000_read_47_count_1      9.70%    passed     98.90%
+  96  200709_20-07994_HIV07-01067_FL21_S1_L000_read_48_count_1      9.70%    passed     89.14%
+  97  200709_20-07994_HIV07-01067_FL21_S1_L000_read_49_count_1      9.70%    passed     99.18%
+  98  200709_20-07994_HIV07-01067_FL21_S1_L000_read_50_count_1      9.70%    passed     99.83%
+  99  200709_20-07994_HIV07-01067_FL21_S1_L000_read_51_count_1      9.70%    passed     97.84%
+ 100  200709_20-07994_HIV07-01067_FL21_S1_L000_read_52_count_1      9.70%    passed     98.21%
+ 101  200709_20-07994_HIV07-01067_FL21_S1_L000_read_53_count_1      9.70%    passed     96.97%
+ 102  200709_20-07994_HIV07-01067_FL21_S1_L000_read_54_count_1      9.70%    passed     97.33%
+ 103  200709_20-07994_HIV07-01067_FL21_S1_L000_read_55_count_1      9.70%    passed     96.07%
+ 104  200709_20-07994_HIV07-01067_FL21_S1_L000_read_56_count_1      9.70%    passed     99.18%
+ 105  200709_20-07994_HIV07-01067_FL21_S1_L000_read_57_count_1      9.70%    passed     99.18%
+ 106  200709_20-07994_HIV07-01067_FL21_S1_L000_read_58_count_1      9.70%    passed     96.07%
+ 107  200709_20-07994_HIV07-01067_FL21_S1_L000_read_59_count_1      9.70%    passed     98.92%
+ 108  200709_20-07994_HIV07-01067_FL21_S1_L000_read_60_count_1      9.70%    passed     97.84%
+ 109  200709_20-07994_HIV07-01067_FL21_S1_L000_read_61_count_1      9.70%    passed     98.21%
+ 110  200709_20-07994_HIV07-01067_FL21_S1_L000_read_62_count_1     15.30%    passed     84.17%
+ 111  200709_20-07994_HIV07-01067_FL21_S1_L000_read_63_count_1      9.70%    passed     95.67%
+ 112  200709_20-07994_HIV07-01067_FL21_S1_L000_read_64_count_1      9.70%    passed     98.72%
+ 113  200709_20-07994_HIV07-01067_FL21_S1_L000_read_65_count_1      9.70%    passed     96.26%
+ 114  200709_20-07994_HIV07-01067_FL21_S1_L000_read_66_count_1      9.70%    passed     96.07%
+ 115  200709_20-07994_HIV07-01067_FL21_S1_L000_read_67_count_1      9.70%    passed     98.92%
+ 116  200703_20-07825_HIV09-00618_FL18_S6_L000_read_1_count_174     9.70%    passed     99.59%
+ 117  200703_20-07825_HIV09-00618_FL18_S6_L000_read_2_count_2       9.70%    passed     99.96%
+ 118  200703_20-07825_HIV09-00618_FL18_S6_L000_read_3_count_2       9.70%    passed     99.96%
+ 119  200703_20-07825_HIV09-00618_FL18_S6_L000_read_4_count_1       9.70%    passed     98.30%
+ 120  200703_20-07825_HIV09-00618_FL18_S6_L000_read_5_count_1       9.70%    passed     98.81%
+ 121  200703_20-07825_HIV09-00618_FL18_S6_L000_read_6_count_1       9.70%    passed     99.75%
+ 122  200703_20-07825_HIV09-00618_FL18_S6_L000_read_7_count_1       9.70%    passed     98.56%
+ 123  200703_20-07825_HIV09-00618_FL18_S6_L000_read_8_count_1      10.07%    passed     99.86%
+ 124  200703_20-07825_HIV09-00618_FL18_S6_L000_read_9_count_1       9.70%    passed     98.81%
+ 125  200703_20-07825_HIV09-00618_FL18_S6_L000_read_10_count_1      9.70%    passed     98.30%
+ 126  200703_20-07825_HIV09-00618_FL18_S6_L000_read_11_count_1      9.70%    passed     95.17%
+ 127  200703_20-07825_HIV09-00618_FL18_S6_L000_read_12_count_1      9.70%    passed     98.30%
+ 128  200703_20-07825_HIV09-00618_FL18_S6_L000_read_13_count_1      9.70%    passed     98.51%
+ 129  200703_20-07825_HIV09-00618_FL18_S6_L000_read_14_count_1      9.70%    passed     99.75%
+ 130  200703_20-07825_HIV09-00618_FL18_S6_L000_read_15_count_1      9.70%    passed     99.34%
+ 131  200703_20-07825_HIV09-00618_FL18_S6_L000_read_16_count_1      9.70%    passed     99.96%
+ 132  200703_20-07825_HIV09-00618_FL18_S6_L000_read_17_count_1      9.70%    passed     98.75%
+ 133  200703_20-07825_HIV09-00618_FL18_S6_L000_read_18_count_1      9.70%    passed     98.30%
+ 134  200703_20-07825_HIV09-00618_FL18_S6_L000_read_19_count_1      9.70%    passed     98.56%
+ 135  200703_20-07825_HIV09-00618_FL18_S6_L000_read_20_count_1      9.70%    passed     98.30%
+ 136  200703_20-07825_HIV09-00618_FL18_S6_L000_read_21_count_1      9.70%    passed     99.68%
+ 137  200703_20-07825_HIV09-00618_FL18_S6_L000_read_22_count_1      9.70%    passed     98.90%
+ 138  200703_20-07825_HIV09-00618_FL18_S6_L000_read_23_count_1      9.70%    passed     99.55%
+ 139  200703_20-07825_HIV09-00618_FL18_S6_L000_read_24_count_1      9.70%    passed     98.56%
+ 140  200703_20-07825_HIV09-00618_FL18_S6_L000_read_25_count_1      9.70%    passed     98.51%
+ 141  200703_20-07825_HIV09-00618_FL18_S6_L000_read_26_count_1      9.70%    passed     98.30%
+ 142  200703_20-07825_HIV09-00618_FL18_S6_L000_read_27_count_1      9.70%    passed     99.34%
+ 143  200814_20-09728_HIV09-02843_FL30_S2_L000_read_1_count_163     9.70%    passed     95.46%
+ 144  200814_20-09728_HIV09-02843_FL30_S2_L000_read_2_count_8       9.70%    passed     96.07%
+ 145  200814_20-09728_HIV09-02843_FL30_S2_L000_read_3_count_5       9.70%    passed     93.76%
+ 146  200814_20-09728_HIV09-02843_FL30_S2_L000_read_4_count_4       9.70%    passed     96.07%
+ 147  200814_20-09728_HIV09-02843_FL30_S2_L000_read_5_count_4       9.70%    passed     97.45%
+ 148  200814_20-09728_HIV09-02843_FL30_S2_L000_read_6_count_4       9.70%    passed     99.18%
+ 149  200814_20-09728_HIV09-02843_FL30_S2_L000_read_7_count_3       9.70%    passed     96.07%
+ 150  200814_20-09728_HIV09-02843_FL30_S2_L000_read_8_count_3       9.70%    passed     98.77%
+ 151  200814_20-09728_HIV09-02843_FL30_S2_L000_read_9_count_2       9.70%    passed     98.77%
+ 152  200814_20-09728_HIV09-02843_FL30_S2_L000_read_10_count_2      9.70%    passed     98.77%
+ 153  200814_20-09728_HIV09-02843_FL30_S2_L000_read_11_count_2      9.70%    passed     95.46%
+ 154  200814_20-09728_HIV09-02843_FL30_S2_L000_read_12_count_2      9.70%    passed     95.51%
+ 155  200814_20-09728_HIV09-02843_FL30_S2_L000_read_13_count_1      9.70%    passed     95.67%
+ 156  200814_20-09728_HIV09-02843_FL30_S2_L000_read_14_count_1      9.70%    passed     99.75%
+ 157  200814_20-09728_HIV09-02843_FL30_S2_L000_read_15_count_1      9.70%    passed     93.82%
+ 158  200814_20-09728_HIV09-02843_FL30_S2_L000_read_16_count_1      9.70%    passed     93.82%
+ 159  200814_20-09728_HIV09-02843_FL30_S2_L000_read_17_count_1      9.70%    passed     95.51%
+ 160  200814_20-09728_HIV09-02843_FL30_S2_L000_read_18_count_1      9.70%    passed     95.46%
+ 161  200814_20-09728_HIV09-02843_FL30_S2_L000_read_19_count_1      9.70%    passed     93.77%
+ 162  200814_20-09728_HIV09-02843_FL30_S2_L000_read_20_count_1      9.70%    passed     99.18%
+ 163  200814_20-09728_HIV09-02843_FL30_S2_L000_read_21_count_1      9.70%    passed     98.77%
+ 164  200814_20-09728_HIV09-02843_FL30_S2_L000_read_22_count_1      9.70%    passed     92.75%
+ 165  200814_20-09728_HIV09-02843_FL30_S2_L000_read_23_count_1      9.70%    passed     98.77%
+ 166  200814_20-09728_HIV09-02843_FL30_S2_L000_read_24_count_1      9.70%    passed     96.07%
+ 167  200814_20-09728_HIV09-02843_FL30_S2_L000_read_25_count_1      9.70%    passed     98.77%
+ 168  200814_20-09728_HIV09-02843_FL30_S2_L000_read_26_count_1      9.70%    passed     95.51%
+ 169  200814_20-09728_HIV09-02843_FL30_S2_L000_read_27_count_1      9.70%    passed     96.97%
+ 170  200814_20-09728_HIV09-02843_FL30_S2_L000_read_28_count_1      9.70%    passed     97.45%
+ 171  200814_20-09728_HIV09-02843_FL30_S2_L000_read_29_count_1      9.70%    passed     93.76%
+ 172  200814_20-09728_HIV09-02843_FL30_S2_L000_read_30_count_1      9.70%    passed     98.77%
+ 173  200814_20-09728_HIV09-02843_FL30_S2_L000_read_31_count_1      9.70%    passed     95.51%
+ 174  200814_20-09728_HIV09-02843_FL30_S2_L000_read_32_count_1      9.70%    passed     95.51%
+ 175  200814_20-09728_HIV09-02843_FL30_S2_L000_read_33_count_1      9.70%    passed     96.07%
+ 176  200814_20-09728_HIV09-02843_FL30_S2_L000_read_34_count_1      9.70%    passed     96.73%
+ 177  200814_20-09728_HIV09-02843_FL30_S2_L000_read_35_count_1      9.70%    passed     90.78%
+ 178  200814_20-09728_HIV09-02843_FL30_S2_L000_read_36_count_1      9.70%    passed     97.45%
+ 179  200814_20-09728_HIV09-02843_FL30_S2_L000_read_37_count_1      9.70%    passed     88.89%
+ 180  200814_20-09728_HIV09-02843_FL30_S2_L000_read_38_count_1      9.70%    passed     99.75%
+ 181  200814_20-09728_HIV09-02843_FL30_S2_L000_read_39_count_1      9.70%    passed     96.98%
+ 182  200814_20-09728_HIV09-02843_FL30_S2_L000_read_40_count_1      9.70%    passed     93.76%
+ 183  200814_20-09728_HIV09-02843_FL30_S2_L000_read_41_count_1      9.70%    passed     96.07%
+ 184  200814_20-09728_HIV09-02843_FL30_S2_L000_read_42_count_1      9.70%    passed     96.73%
+ 185  200724_20-08522_HIV11-02415_FL24_S18_L000_read_1_count_159    9.70%    passed     97.35%
+ 186  200724_20-08522_HIV11-02415_FL24_S18_L000_read_2_count_29     9.70%    passed     97.42%
+ 187  200724_20-08522_HIV11-02415_FL24_S18_L000_read_3_count_21     9.70%    passed     96.72%
+ 188  200724_20-08522_HIV11-02415_FL24_S18_L000_read_4_count_6      9.70%    passed     96.72%
+ 189  200724_20-08522_HIV11-02415_FL24_S18_L000_read_5_count_6      9.70%    passed     92.29%
+ 190  200724_20-08522_HIV11-02415_FL24_S18_L000_read_6_count_6      9.70%    passed     96.72%
+ 191  200724_20-08522_HIV11-02415_FL24_S18_L000_read_7_count_5      9.70%    passed     99.19%
+ 192  200724_20-08522_HIV11-02415_FL24_S18_L000_read_8_count_5      9.70%    passed     97.42%
+ 193  200724_20-08522_HIV11-02415_FL24_S18_L000_read_9_count_3      9.70%    passed     97.42%
+ 194  200724_20-08522_HIV11-02415_FL24_S18_L000_read_10_count_2     9.70%    passed     96.72%
+ 195  200724_20-08522_HIV11-02415_FL24_S18_L000_read_11_count_2     9.70%    passed     96.82%
+ 196  200724_20-08522_HIV11-02415_FL24_S18_L000_read_12_count_2     9.70%    passed     97.07%
+ 197  200724_20-08522_HIV11-02415_FL24_S18_L000_read_13_count_1     9.70%    passed     89.81%
+ 198  200724_20-08522_HIV11-02415_FL24_S18_L000_read_14_count_1     9.70%    passed     92.29%
+ 199  200724_20-08522_HIV11-02415_FL24_S18_L000_read_15_count_1     9.70%    passed     83.81%
+ 200  200724_20-08522_HIV11-02415_FL24_S18_L000_read_16_count_1     9.70%    passed     97.07%
+ 201  200724_20-08522_HIV11-02415_FL24_S18_L000_read_17_count_1     9.70%    passed     97.07%
+ 202  200724_20-08522_HIV11-02415_FL24_S18_L000_read_18_count_1     9.70%    passed     97.07%
+ 203  200724_20-08522_HIV11-02415_FL24_S18_L000_read_19_count_1     9.70%    passed     97.11%
+ 204  200724_20-08522_HIV11-02415_FL24_S18_L000_read_20_count_1     9.70%    passed     96.14%
+ 205  200724_20-08522_HIV11-02415_FL24_S18_L000_read_21_count_1     9.70%    passed     96.18%
+ 206  200724_20-08522_HIV11-02415_FL24_S18_L000_read_22_count_1     9.70%    passed     95.03%
+ 207  200724_20-08522_HIV11-02415_FL24_S18_L000_read_23_count_1     9.70%    passed     97.11%
+ 208  200724_20-08522_HIV11-02415_FL24_S18_L000_read_24_count_1     9.70%    passed     96.72%
+ 209  200724_20-08522_HIV11-02415_FL24_S18_L000_read_25_count_1     9.70%    passed     92.97%
+ 210  200724_20-08522_HIV11-02415_FL24_S18_L000_read_26_count_1     9.70%    passed     91.93%
+ 211  200724_20-08522_HIV11-02415_FL24_S18_L000_read_27_count_1     9.70%    passed     95.03%
+ 212  200724_20-08522_HIV11-02415_FL24_S18_L000_read_28_count_1     9.70%    passed     97.07%
+ 213  200724_20-08522_HIV11-02415_FL24_S18_L000_read_29_count_1     9.70%    passed     96.72%
+ 214  200724_20-08522_HIV11-02415_FL24_S18_L000_read_30_count_1     9.70%    passed     97.07%
+ 215  200724_20-08522_HIV11-02415_FL24_S18_L000_read_31_count_1     9.70%    passed     97.07%
+ 216  200724_20-08522_HIV11-02415_FL24_S18_L000_read_32_count_1     9.70%    passed     95.03%
+ 217  200724_20-08522_HIV11-02415_FL24_S18_L000_read_33_count_1     9.70%    passed     92.29%
+ 218  200724_20-08522_HIV11-02415_FL24_S18_L000_read_34_count_1     9.70%    passed     98.46%
+ 219  200724_20-08522_HIV11-02415_FL24_S18_L000_read_35_count_1     9.70%    passed     97.07%
+ 220  200724_20-08522_HIV11-02415_FL24_S18_L000_read_36_count_1     9.70%    passed     99.02%
+ 221  200724_20-08522_HIV11-02415_FL24_S18_L000_read_37_count_1     9.70%    passed     97.07%
+ 222  200724_20-08522_HIV11-02415_FL24_S18_L000_read_38_count_1     9.70%    passed     99.45%
+ 223  200724_20-08522_HIV11-02415_FL24_S18_L000_read_39_count_1     9.70%    passed     97.07%
+ 224  200724_20-08522_HIV11-02415_FL24_S18_L000_read_40_count_1     9.70%    passed     95.03%
+ 225  200724_20-08522_HIV11-02415_FL24_S18_L000_read_41_count_1     9.70%    passed     99.45%
+ 226  200724_20-08522_HIV11-02415_FL24_S18_L000_read_42_count_1     9.70%    passed     97.07%
+ 227  200724_20-08522_HIV11-02415_FL24_S18_L000_read_43_count_1     9.70%    passed     99.02%
+ 228  200724_20-08522_HIV11-02415_FL24_S18_L000_read_44_count_1     9.70%    passed     91.44%
+ 229  200724_20-08522_HIV11-02415_FL24_S18_L000_read_45_count_1     9.70%    passed     95.21%
+ 230  200724_20-08522_HIV11-02415_FL24_S18_L000_read_46_count_1     9.70%    passed     93.35%
+ 231  200724_20-08522_HIV11-02415_FL24_S18_L000_read_47_count_1     9.70%    passed     92.29%
+ 232  200724_20-08522_HIV11-02415_FL24_S18_L000_read_48_count_1     9.70%    passed     93.06%
+ 233  200724_20-08522_HIV11-02415_FL24_S18_L000_read_49_count_1     9.70%    passed     98.72%
+ 234  200724_20-08522_HIV11-02415_FL24_S18_L000_read_50_count_1     9.70%    passed     88.65%
+ 235  200724_20-08522_HIV11-02415_FL24_S18_L000_read_51_count_1     9.70%    passed     97.42%
+ 236  200724_20-08522_HIV11-02415_FL24_S18_L000_read_52_count_1     9.70%    passed     96.72%
+ 237  200724_20-08522_HIV11-02415_FL24_S18_L000_read_53_count_1     9.70%    passed     93.35%
+ 238  200724_20-08522_HIV11-02415_FL24_S18_L000_read_54_count_1     9.70%    passed     95.21%
+ 239  200724_20-08522_HIV11-02415_FL24_S18_L000_read_55_count_1     9.70%    passed     92.29%
+ 240  200724_20-08522_HIV11-02415_FL24_S18_L000_read_56_count_1     9.33%    passed     99.31%
+ 241  200724_20-08522_HIV11-02415_FL24_S18_L000_read_57_count_1     9.70%    passed     97.35%
+ 242  200724_20-08522_HIV11-02415_FL24_S18_L000_read_58_count_1     9.70%    passed     95.40%
+ 243  200724_20-08522_HIV11-02415_FL24_S18_L000_read_59_count_1     9.70%    passed     91.93%
+ 244  200724_20-08522_HIV11-02415_FL24_S18_L000_read_60_count_1     9.70%    passed     99.45%
+ 245  200724_20-08522_HIV11-02415_FL24_S18_L000_read_61_count_1     9.70%    passed     92.29%
+ 246  200724_20-08522_HIV11-02415_FL24_S18_L000_read_62_count_1     9.70%    passed     92.97%
+ 247  200724_20-08522_HIV11-02415_FL24_S18_L000_read_63_count_1     9.70%    passed     96.18%
+ 248  200724_20-08522_HIV11-02415_FL24_S18_L000_read_64_count_1     9.70%    passed     93.35%
+ 249  200724_20-08522_HIV11-02415_FL24_S18_L000_read_65_count_1     9.70%    passed     99.45%
+ 250  200724_20-08522_HIV11-02415_FL24_S18_L000_read_66_count_1     9.70%    passed     95.21%
+ 251  200724_20-08522_HIV11-02415_FL24_S18_L000_read_67_count_1     9.70%    passed     96.72%
+ 252  200724_20-08522_HIV11-02415_FL24_S18_L000_read_68_count_1     9.70%    passed     95.03%
+ 253  200724_20-08522_HIV11-02415_FL24_S18_L000_read_69_count_1     9.70%    passed     97.07%
+ 254  200724_20-08522_HIV11-02415_FL24_S18_L000_read_70_count_1     9.70%    passed     96.72%
+ 255  200724_20-08522_HIV11-02415_FL24_S18_L000_read_71_count_1     9.70%    passed     97.42%
+ 256  200724_20-08522_HIV11-02415_FL24_S18_L000_read_72_count_1     9.70%    passed     96.72%
+ 257  200724_20-08522_HIV11-02415_FL24_S18_L000_read_73_count_1     9.33%    passed     97.49%
+ 258  200724_20-08522_HIV11-02415_FL24_S18_L000_read_74_count_1     9.70%    passed     97.11%
+ 259  200724_20-08522_HIV11-02415_FL24_S18_L000_read_75_count_1     9.70%    passed     96.14%
+ 260  200724_20-08522_HIV11-02415_FL24_S18_L000_read_76_count_1     9.70%    passed     99.45%
+ 261  200724_20-08522_HIV11-02415_FL24_S18_L000_read_77_count_1     9.70%    passed     96.18%
+ 262  200724_20-08522_HIV11-02415_FL24_S18_L000_read_78_count_1     9.70%    passed     93.35%
+ 263  200724_20-08522_HIV11-02415_FL24_S18_L000_read_79_count_1     9.70%    passed     92.29%
+ 264  200724_20-08522_HIV11-02415_FL24_S18_L000_read_80_count_1     9.70%    passed     97.42%
+ 265  200724_20-08522_HIV11-02415_FL24_S18_L000_read_81_count_1     9.70%    passed     96.18%
+ 266  200724_20-08522_HIV11-02415_FL24_S18_L000_read_82_count_1     9.70%    passed     97.42%
+ 267  200724_20-08522_HIV11-02415_FL24_S18_L000_read_83_count_1     9.70%    passed     92.29%
+ 268  200724_20-08522_HIV11-02415_FL24_S18_L000_read_84_count_1     9.70%    passed     97.07%
  269  B.FR.83.HXB2_LAI_IIIB_BRU.K03455                              9.70%    passed     99.19%
  270  C.BW.00.00BW07621.AF443088                                    9.70%    passed     99.45%
 ****  TOTAL                                                         9.70%  0 sequences failed composition chi2 test (p-value<5%; df=3)
-Checking for duplicate sequences: done in 0.000666262 secs using 178.3% CPU
+Checking for duplicate sequences: done in 0.000474082 secs using 662.1% CPU
 
-Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.018 seconds
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.014 seconds
 
 NOTE: 9 MB RAM (0 GB) is required!
 WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
 Estimate model parameters (epsilon = 0.100)
-1. Initial log-likelihood: -2667.053
-2. Current log-likelihood: -2604.920
-3. Current log-likelihood: -2604.591
-Optimal log-likelihood: -2604.556
-Rate parameters:  A-C: 0.54871  A-G: 0.96112  A-T: 0.38945  C-G: 0.17654  C-T: 2.32633  G-T: 1.00000
+1. Initial log-likelihood: -2665.648
+2. Current log-likelihood: -2603.271
+3. Current log-likelihood: -2602.811
+Optimal log-likelihood: -2602.694
+Rate parameters:  A-C: 0.56529  A-G: 0.97153  A-T: 0.39504  C-G: 0.18462  C-T: 2.41238  G-T: 1.00000
 Base frequencies:  A: 0.445  C: 0.130  G: 0.242  T: 0.182
-Site proportion and rates:  (0.128,0.214) (0.161,0.506) (0.185,0.719) (0.198,0.911) (0.194,1.141) (0.134,2.658)
-Parameters optimization took 3 rounds (0.897 sec)
+Site proportion and rates:  (0.129,0.240) (0.165,0.512) (0.189,0.720) (0.202,0.905) (0.195,1.115) (0.120,2.903)
+Parameters optimization took 3 rounds (1.213 sec)
 Wrote distance file to... 
 Computing ML distances based on estimated model parameters...
-Calculating distance matrix: done in 0.200558 secs using 388.2% CPU
-Computing ML distances took 0.200973 sec (of wall-clock time) 0.778976 sec (of CPU time)
-Setting up auxiliary I and S matrices: done in 0.00895657 secs using 203.7% CPU
-Constructing RapidNJ tree: done in 0.479356 secs using 104.8% CPU
-Computing RapidNJ tree took 0.488430 sec (of wall-clock time) 0.520822 sec (of CPU time)
-Log-likelihood of RapidNJ tree: -2592.148
+Calculating distance matrix: done in 0.343852 secs using 200% CPU
+Computing ML distances took 0.344194 sec (of wall-clock time) 0.687941 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.00153877 secs
+Constructing RapidNJ tree: done in 0.0820522 secs using 123.2% CPU
+Computing RapidNJ tree took 0.083693 sec (of wall-clock time) 0.101824 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -2588.496
 --------------------------------------------------------------------
 |             INITIALIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Generating 98 parsimony trees... 1.905 second
-Computing log-likelihood of 98 initial trees ... 1.745 seconds
-Current best score: -2592.148
+Generating 98 parsimony trees... 1.688 second
+Computing log-likelihood of 98 initial trees ... 1.789 seconds
+Current best score: -2588.496
 
 Do NNI search on 20 best initial trees
-Optimizing NNI: done in 0.175863 secs using 395.7% CPU
+Optimizing NNI: done in 0.209024 secs using 197.6% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 1: -2584.820
-Optimizing NNI: done in 0.106181 secs using 390% CPU
-Optimizing NNI: done in 0.160964 secs using 400.7% CPU
-Optimizing NNI: done in 0.159247 secs using 396.4% CPU
-Optimizing NNI: done in 0.162575 secs using 387.8% CPU
-Optimizing NNI: done in 0.360913 secs using 363.8% CPU
-Optimizing NNI: done in 0.187961 secs using 382.3% CPU
-Optimizing NNI: done in 0.225482 secs using 380.4% CPU
-Optimizing NNI: done in 0.160506 secs using 404% CPU
-Optimizing NNI: done in 0.291817 secs using 386.5% CPU
-Iteration 10 / LogL: -2591.881 / Time: 0h:0m:8s
-Optimizing NNI: done in 0.160607 secs using 391.4% CPU
-Optimizing NNI: done in 0.203387 secs using 397% CPU
-Optimizing NNI: done in 0.287814 secs using 355.8% CPU
-Optimizing NNI: done in 0.19032 secs using 381.3% CPU
-Optimizing NNI: done in 0.178883 secs using 389.2% CPU
-Optimizing NNI: done in 0.162938 secs using 392.1% CPU
-Optimizing NNI: done in 0.162823 secs using 399.7% CPU
-Optimizing NNI: done in 0.285106 secs using 396% CPU
-Optimizing NNI: done in 0.161737 secs using 399.3% CPU
-Optimizing NNI: done in 0.315917 secs using 363.5% CPU
-Iteration 20 / LogL: -2596.374 / Time: 0h:0m:10s
+BETTER TREE FOUND at iteration 1: -2585.038
+Optimizing NNI: done in 0.182934 secs using 200.6% CPU
+Optimizing NNI: done in 0.19171 secs using 198.1% CPU
+Optimizing NNI: done in 0.34022 secs using 196.4% CPU
+Optimizing NNI: done in 0.295411 secs using 196.1% CPU
+Optimizing NNI: done in 0.196872 secs using 197.5% CPU
+Optimizing NNI: done in 0.188944 secs using 199.5% CPU
+Optimizing NNI: done in 0.2671 secs using 200.3% CPU
+Optimizing NNI: done in 0.184319 secs using 197.7% CPU
+Optimizing NNI: done in 0.19347 secs using 201.3% CPU
+Iteration 10 / LogL: -2594.713 / Time: 0h:0m:9s
+Optimizing NNI: done in 0.19185 secs using 195.9% CPU
+Optimizing NNI: done in 0.175848 secs using 193.3% CPU
+Optimizing NNI: done in 0.187838 secs using 191.6% CPU
+Optimizing NNI: done in 0.185537 secs using 194.8% CPU
+Optimizing NNI: done in 0.187564 secs using 191.7% CPU
+Optimizing NNI: done in 0.188614 secs using 193.3% CPU
+Optimizing NNI: done in 0.187131 secs using 198.3% CPU
+Optimizing NNI: done in 0.185356 secs using 199.3% CPU
+Optimizing NNI: done in 0.191996 secs using 200% CPU
+Optimizing NNI: done in 0.286691 secs using 193.5% CPU
+Iteration 20 / LogL: -2598.724 / Time: 0h:0m:11s
 Finish initializing candidate tree set (20)
-Current best tree score: -2584.820 / CPU time: 9.253
+Current best tree score: -2585.038 / CPU time: 9.721
 Number of iterations: 20
 --------------------------------------------------------------------
 |               OPTIMIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Optimizing NNI: done in 0.601681 secs using 395.7% CPU
-Optimizing NNI: done in 0.357336 secs using 394.2% CPU
-Optimizing NNI: done in 0.536597 secs using 366.2% CPU
-Optimizing NNI: done in 0.343483 secs using 383.9% CPU
-Optimizing NNI: done in 0.303424 secs using 393.9% CPU
-Optimizing NNI: done in 0.266813 secs using 394% CPU
-Optimizing NNI: done in 0.382462 secs using 366.4% CPU
-Optimizing NNI: done in 0.422353 secs using 385.7% CPU
-Optimizing NNI: done in 0.483256 secs using 394.7% CPU
-Optimizing NNI: done in 0.439997 secs using 394.5% CPU
-Iteration 30 / LogL: -2599.776 / Time: 0h:0m:15s (0h:0m:37s left)
-Optimizing NNI: done in 0.377349 secs using 395.1% CPU
-Optimizing NNI: done in 0.359792 secs using 395.7% CPU
-Optimizing NNI: done in 0.263336 secs using 391.7% CPU
-Optimizing NNI: done in 0.302664 secs using 395.2% CPU
-Optimizing NNI: done in 0.27699 secs using 396% CPU
+Optimizing NNI: done in 0.419937 secs using 196.2% CPU
+Optimizing NNI: done in 0.351988 secs using 195.1% CPU
+Optimizing NNI: done in 0.33762 secs using 193.6% CPU
+Optimizing NNI: done in 0.401819 secs using 200.2% CPU
+Optimizing NNI: done in 0.368549 secs using 195.5% CPU
+Optimizing NNI: done in 0.284162 secs using 199.9% CPU
+Optimizing NNI: done in 0.475417 secs using 197.6% CPU
+Optimizing NNI: done in 0.257968 secs using 196.1% CPU
+Optimizing NNI: done in 0.412412 secs using 199.9% CPU
+Optimizing NNI: done in 0.316113 secs using 197.2% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 35: -2584.016
-Optimizing NNI: done in 0.249964 secs using 389.6% CPU
+BETTER TREE FOUND at iteration 30: -2584.468
+Iteration 30 / LogL: -2584.468 / Time: 0h:0m:15s (0h:0m:53s left)
+Optimizing NNI: done in 0.403743 secs using 191.1% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 36: -2582.955
-Optimizing NNI: done in 0.209529 secs using 400.6% CPU
-Optimizing NNI: done in 0.364758 secs using 396.2% CPU
-Optimizing NNI: done in 0.307087 secs using 393.1% CPU
-Optimizing NNI: done in 0.442235 secs using 365.2% CPU
-Iteration 40 / LogL: -2612.987 / Time: 0h:0m:19s (0h:0m:48s left)
-Optimizing NNI: done in 0.317737 secs using 389.1% CPU
+BETTER TREE FOUND at iteration 31: -2583.643
+Optimizing NNI: done in 0.314471 secs using 198.9% CPU
+Optimizing NNI: done in 0.40241 secs using 196.4% CPU
+Optimizing NNI: done in 0.31588 secs using 193.7% CPU
+Optimizing NNI: done in 0.435794 secs using 194.5% CPU
+Optimizing NNI: done in 0.309265 secs using 200.4% CPU
+Optimizing NNI: done in 0.308735 secs using 195.9% CPU
+Optimizing NNI: done in 0.315731 secs using 198.8% CPU
+Optimizing NNI: done in 0.473347 secs using 195.5% CPU
+Optimizing NNI: done in 0.390165 secs using 196.4% CPU
+Iteration 40 / LogL: -2587.322 / Time: 0h:0m:19s (0h:0m:46s left)
+Optimizing NNI: done in 0.306174 secs using 198% CPU
+Optimizing NNI: done in 0.303703 secs using 197% CPU
+Optimizing NNI: done in 0.309137 secs using 195.7% CPU
+Optimizing NNI: done in 0.328863 secs using 198.1% CPU
+Optimizing NNI: done in 0.362394 secs using 199.3% CPU
+Optimizing NNI: done in 0.368477 secs using 196.6% CPU
+Optimizing NNI: done in 0.254058 secs using 199.2% CPU
+Optimizing NNI: done in 0.294839 secs using 199% CPU
+Optimizing NNI: done in 0.315353 secs using 192.6% CPU
+Optimizing NNI: done in 0.385679 secs using 196.3% CPU
+Iteration 50 / LogL: -2583.646 / Time: 0h:0m:23s (0h:0m:38s left)
+Optimizing NNI: done in 0.327829 secs using 196.4% CPU
+Optimizing NNI: done in 0.320788 secs using 195.9% CPU
+Optimizing NNI: done in 0.347081 secs using 196.8% CPU
+Optimizing NNI: done in 0.363335 secs using 196.9% CPU
+Optimizing NNI: done in 0.347618 secs using 196.6% CPU
+BETTER TREE FOUND at iteration 55: -2583.643
+Optimizing NNI: done in 0.378883 secs using 196.1% CPU
+Optimizing NNI: done in 0.453275 secs using 197.8% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 41: -2582.908
-Optimizing NNI: done in 0.315593 secs using 393.9% CPU
-Optimizing NNI: done in 0.261338 secs using 392.3% CPU
-Optimizing NNI: done in 0.263111 secs using 391.2% CPU
-Optimizing NNI: done in 0.352343 secs using 398.5% CPU
-Optimizing NNI: done in 0.413468 secs using 397.6% CPU
-Optimizing NNI: done in 0.315336 secs using 395.8% CPU
-Optimizing NNI: done in 0.286152 secs using 392.9% CPU
-Optimizing NNI: done in 0.307292 secs using 394.3% CPU
-Optimizing NNI: done in 0.257256 secs using 395.9% CPU
-Iteration 50 / LogL: -2588.993 / Time: 0h:0m:23s (0h:0m:42s left)
-Optimizing NNI: done in 0.214117 secs using 395.2% CPU
-Optimizing NNI: done in 0.301247 secs using 397.4% CPU
-Optimizing NNI: done in 0.300267 secs using 393.2% CPU
-Optimizing NNI: done in 0.380164 secs using 393.6% CPU
-Optimizing NNI: done in 0.307481 secs using 393% CPU
-Optimizing NNI: done in 0.408178 secs using 356.3% CPU
-Optimizing NNI: done in 0.309566 secs using 393.3% CPU
-Optimizing NNI: done in 0.306596 secs using 396.7% CPU
-Optimizing NNI: done in 0.303257 secs using 400.6% CPU
-Optimizing NNI: done in 0.254778 secs using 400.1% CPU
-Iteration 60 / LogL: -2597.746 / Time: 0h:0m:26s (0h:0m:36s left)
-Optimizing NNI: done in 0.376998 secs using 392.4% CPU
-Optimizing NNI: done in 0.300527 secs using 395.5% CPU
-Optimizing NNI: done in 0.339084 secs using 397% CPU
-Optimizing NNI: done in 0.255092 secs using 389.1% CPU
-Optimizing NNI: done in 0.2607 secs using 392.9% CPU
-Optimizing NNI: done in 0.260935 secs using 391.3% CPU
-Optimizing NNI: done in 0.217829 secs using 394.1% CPU
-Optimizing NNI: done in 0.291573 secs using 396.3% CPU
-Optimizing NNI: done in 0.251832 secs using 396.7% CPU
-Optimizing NNI: done in 0.220507 secs using 393.3% CPU
-Iteration 70 / LogL: -2583.626 / Time: 0h:0m:29s (0h:0m:30s left)
-Optimizing NNI: done in 0.266224 secs using 396% CPU
-Optimizing NNI: done in 0.258954 secs using 392% CPU
-Optimizing NNI: done in 0.272344 secs using 391.9% CPU
-Optimizing NNI: done in 0.535111 secs using 368.2% CPU
-Optimizing NNI: done in 0.245327 secs using 395.9% CPU
-Optimizing NNI: done in 0.264351 secs using 391% CPU
-Optimizing NNI: done in 0.298438 secs using 392.2% CPU
-Optimizing NNI: done in 0.3729 secs using 392.8% CPU
-Optimizing NNI: done in 0.304133 secs using 392% CPU
-Optimizing NNI: done in 0.257394 secs using 396.8% CPU
-Iteration 80 / LogL: -2582.909 / Time: 0h:0m:32s (0h:0m:25s left)
-Optimizing NNI: done in 0.264518 secs using 392.8% CPU
-Optimizing NNI: done in 0.252738 secs using 392.8% CPU
-Optimizing NNI: done in 0.259449 secs using 396.4% CPU
-Optimizing NNI: done in 0.35649 secs using 389.9% CPU
-Optimizing NNI: done in 0.342234 secs using 389.9% CPU
-Optimizing NNI: done in 0.257911 secs using 393.1% CPU
-Optimizing NNI: done in 0.263885 secs using 394% CPU
-Optimizing NNI: done in 0.270755 secs using 390.7% CPU
-Optimizing NNI: done in 0.370499 secs using 395.3% CPU
-Optimizing NNI: done in 0.252743 secs using 398.4% CPU
-Iteration 90 / LogL: -2587.708 / Time: 0h:0m:35s (0h:0m:20s left)
-Optimizing NNI: done in 0.4033 secs using 361.5% CPU
-Optimizing NNI: done in 0.256084 secs using 398.3% CPU
-Optimizing NNI: done in 0.27959 secs using 392.7% CPU
-Optimizing NNI: done in 0.214817 secs using 393.6% CPU
-Optimizing NNI: done in 0.401388 secs using 387.5% CPU
-Optimizing NNI: done in 0.440545 secs using 392.4% CPU
-Optimizing NNI: done in 0.331775 secs using 397.1% CPU
-Optimizing NNI: done in 0.352418 secs using 390.1% CPU
-Optimizing NNI: done in 0.30719 secs using 398.2% CPU
-Optimizing NNI: done in 0.301292 secs using 392.9% CPU
-Iteration 100 / LogL: -2590.142 / Time: 0h:0m:38s (0h:0m:16s left)
-Optimizing NNI: done in 0.263715 secs using 394.2% CPU
-Optimizing NNI: done in 0.258373 secs using 395.7% CPU
-Optimizing NNI: done in 0.290723 secs using 390.7% CPU
-Optimizing NNI: done in 0.343825 secs using 394% CPU
-Optimizing NNI: done in 0.308995 secs using 395.6% CPU
-Optimizing NNI: done in 0.291763 secs using 395.4% CPU
-Optimizing NNI: done in 0.416091 secs using 362.6% CPU
+BETTER TREE FOUND at iteration 57: -2583.333
+Optimizing NNI: done in 0.480455 secs using 197.4% CPU
+Optimizing NNI: done in 0.447042 secs using 197.3% CPU
+Optimizing NNI: done in 0.295426 secs using 195.8% CPU
+Iteration 60 / LogL: -2585.152 / Time: 0h:0m:27s (0h:0m:45s left)
+Optimizing NNI: done in 0.377606 secs using 198.5% CPU
+Optimizing NNI: done in 0.307216 secs using 197.3% CPU
+Optimizing NNI: done in 0.37322 secs using 197.5% CPU
+Optimizing NNI: done in 0.316978 secs using 198.4% CPU
+Optimizing NNI: done in 0.357015 secs using 196.4% CPU
+Optimizing NNI: done in 0.252074 secs using 198.4% CPU
+Optimizing NNI: done in 0.34917 secs using 198.5% CPU
+Optimizing NNI: done in 0.355089 secs using 193.5% CPU
+Optimizing NNI: done in 0.38389 secs using 199% CPU
+Optimizing NNI: done in 0.263283 secs using 198.7% CPU
+Iteration 70 / LogL: -2584.966 / Time: 0h:0m:31s (0h:0m:39s left)
+Optimizing NNI: done in 0.358173 secs using 199% CPU
+Optimizing NNI: done in 0.349524 secs using 198.1% CPU
+Optimizing NNI: done in 0.249632 secs using 197.7% CPU
+Optimizing NNI: done in 0.330559 secs using 196.8% CPU
+Optimizing NNI: done in 0.317989 secs using 200.3% CPU
+Optimizing NNI: done in 0.453223 secs using 197.1% CPU
+Optimizing NNI: done in 0.316896 secs using 198.5% CPU
+Optimizing NNI: done in 0.380848 secs using 199.6% CPU
+Optimizing NNI: done in 0.297651 secs using 196.7% CPU
+Optimizing NNI: done in 0.49214 secs using 196.6% CPU
+Iteration 80 / LogL: -2584.088 / Time: 0h:0m:34s (0h:0m:33s left)
+Optimizing NNI: done in 0.3878 secs using 199% CPU
+Optimizing NNI: done in 0.322977 secs using 197.8% CPU
+Optimizing NNI: done in 0.317244 secs using 198.3% CPU
+Optimizing NNI: done in 0.436859 secs using 196.1% CPU
+Optimizing NNI: done in 0.40568 secs using 194.4% CPU
+Optimizing NNI: done in 0.382764 secs using 198.2% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 107: -2582.050
-Optimizing NNI: done in 0.259516 secs using 389.9% CPU
-Optimizing NNI: done in 0.3106 secs using 389.7% CPU
-Optimizing NNI: done in 0.318954 secs using 387.2% CPU
-Iteration 110 / LogL: -2596.494 / Time: 0h:0m:42s (0h:0m:37s left)
-Optimizing NNI: done in 0.25813 secs using 391.8% CPU
-Optimizing NNI: done in 0.308572 secs using 394.8% CPU
-Optimizing NNI: done in 0.252198 secs using 394.1% CPU
-Optimizing NNI: done in 0.252208 secs using 396.6% CPU
-Optimizing NNI: done in 0.212951 secs using 392.1% CPU
-Optimizing NNI: done in 0.300758 secs using 396.1% CPU
-Optimizing NNI: done in 0.397073 secs using 398.2% CPU
-Optimizing NNI: done in 0.357811 secs using 396.7% CPU
-Optimizing NNI: done in 0.204636 secs using 395% CPU
-Optimizing NNI: done in 0.256377 secs using 397.9% CPU
-Iteration 120 / LogL: -2595.594 / Time: 0h:0m:45s (0h:0m:33s left)
-Optimizing NNI: done in 0.214611 secs using 393.1% CPU
-Optimizing NNI: done in 0.311933 secs using 396.2% CPU
-Optimizing NNI: done in 0.220067 secs using 391.8% CPU
-Optimizing NNI: done in 0.31351 secs using 394.7% CPU
-Optimizing NNI: done in 0.411833 secs using 362.3% CPU
-Optimizing NNI: done in 0.352528 secs using 392% CPU
-Optimizing NNI: done in 0.322506 secs using 389.3% CPU
-Optimizing NNI: done in 0.24392 secs using 396% CPU
-Optimizing NNI: done in 0.282874 secs using 394.1% CPU
-Optimizing NNI: done in 0.210453 secs using 394.6% CPU
-Iteration 130 / LogL: -2588.325 / Time: 0h:0m:48s (0h:0m:28s left)
-Optimizing NNI: done in 0.294934 secs using 391.6% CPU
-Optimizing NNI: done in 0.214152 secs using 393.2% CPU
-Optimizing NNI: done in 0.418017 secs using 393.7% CPU
-Optimizing NNI: done in 0.284077 secs using 395.8% CPU
-Optimizing NNI: done in 0.346873 secs using 394.9% CPU
-Optimizing NNI: done in 0.209956 secs using 398.2% CPU
-Optimizing NNI: done in 0.263322 secs using 390.1% CPU
-Optimizing NNI: done in 0.298999 secs using 394.3% CPU
-Optimizing NNI: done in 0.206654 secs using 394.2% CPU
-Optimizing NNI: done in 0.263516 secs using 396% CPU
-Iteration 140 / LogL: -2582.911 / Time: 0h:0m:51s (0h:0m:24s left)
-Optimizing NNI: done in 0.252984 secs using 390.9% CPU
-Optimizing NNI: done in 0.256217 secs using 395% CPU
-Optimizing NNI: done in 0.453981 secs using 363.9% CPU
-Optimizing NNI: done in 0.294714 secs using 397% CPU
-Optimizing NNI: done in 0.264556 secs using 388.8% CPU
-Optimizing NNI: done in 0.306411 secs using 393.2% CPU
-Optimizing NNI: done in 0.213057 secs using 394.8% CPU
-Optimizing NNI: done in 0.198591 secs using 393.5% CPU
-Optimizing NNI: done in 0.366262 secs using 391.1% CPU
-Optimizing NNI: done in 0.287516 secs using 397.7% CPU
-Iteration 150 / LogL: -2584.173 / Time: 0h:0m:54s (0h:0m:20s left)
-Optimizing NNI: done in 0.267264 secs using 394.8% CPU
-Optimizing NNI: done in 0.295654 secs using 393.6% CPU
-Optimizing NNI: done in 0.372487 secs using 392.4% CPU
-Optimizing NNI: done in 0.290151 secs using 386.1% CPU
-Optimizing NNI: done in 0.300442 secs using 397.6% CPU
-Optimizing NNI: done in 0.284368 secs using 389.5% CPU
-Optimizing NNI: done in 0.351083 secs using 390.5% CPU
-Optimizing NNI: done in 0.323076 secs using 389.7% CPU
-Optimizing NNI: done in 0.305136 secs using 397.6% CPU
-Optimizing NNI: done in 0.382428 secs using 360.6% CPU
-Iteration 160 / LogL: -2588.187 / Time: 0h:0m:57s (0h:0m:17s left)
-Optimizing NNI: done in 0.386669 secs using 389.6% CPU
-Optimizing NNI: done in 0.331796 secs using 391.8% CPU
-Optimizing NNI: done in 0.304622 secs using 397.5% CPU
-Optimizing NNI: done in 0.356259 secs using 398.6% CPU
-Optimizing NNI: done in 0.188471 secs using 391.7% CPU
-Optimizing NNI: done in 0.289125 secs using 398.3% CPU
-Optimizing NNI: done in 0.372122 secs using 395.6% CPU
-Optimizing NNI: done in 0.210028 secs using 394.8% CPU
-Optimizing NNI: done in 0.305757 secs using 395.6% CPU
-Optimizing NNI: done in 0.303282 secs using 396.7% CPU
-Iteration 170 / LogL: -2622.061 / Time: 0h:1m:0s (0h:0m:13s left)
-Optimizing NNI: done in 0.265031 secs using 394.3% CPU
-Optimizing NNI: done in 0.21867 secs using 394.6% CPU
-Optimizing NNI: done in 0.261874 secs using 391.2% CPU
-Optimizing NNI: done in 0.276179 secs using 391.1% CPU
-Optimizing NNI: done in 0.203376 secs using 397% CPU
-Optimizing NNI: done in 0.262738 secs using 391.8% CPU
-Optimizing NNI: done in 0.363592 secs using 398.3% CPU
-Optimizing NNI: done in 0.435264 secs using 357% CPU
-Optimizing NNI: done in 0.275869 secs using 391.1% CPU
-Optimizing NNI: done in 0.333427 secs using 395.1% CPU
-Iteration 180 / LogL: -2596.685 / Time: 0h:1m:3s (0h:0m:9s left)
-Optimizing NNI: done in 0.208733 secs using 396.8% CPU
-Optimizing NNI: done in 0.305965 secs using 394.2% CPU
-Optimizing NNI: done in 0.297089 secs using 395.2% CPU
-Optimizing NNI: done in 0.260168 secs using 395.2% CPU
-Optimizing NNI: done in 0.211986 secs using 389.8% CPU
-Optimizing NNI: done in 0.301192 secs using 393.8% CPU
-Optimizing NNI: done in 0.245606 secs using 397% CPU
+BETTER TREE FOUND at iteration 86: -2583.069
+Optimizing NNI: done in 0.348619 secs using 197.1% CPU
+Optimizing NNI: done in 0.307353 secs using 196.3% CPU
+Optimizing NNI: done in 0.384486 secs using 195.7% CPU
+Optimizing NNI: done in 0.375853 secs using 195.8% CPU
+Iteration 90 / LogL: -2586.208 / Time: 0h:0m:38s (0h:0m:41s left)
+Optimizing NNI: done in 0.310678 secs using 194% CPU
+Optimizing NNI: done in 0.308303 secs using 198.5% CPU
+Optimizing NNI: done in 0.468417 secs using 195.6% CPU
+Optimizing NNI: done in 0.376397 secs using 198.8% CPU
+BETTER TREE FOUND at iteration 94: -2583.068
+Optimizing NNI: done in 0.37011 secs using 197.3% CPU
+Optimizing NNI: done in 0.487157 secs using 197.7% CPU
+Optimizing NNI: done in 0.358571 secs using 197.1% CPU
+Optimizing NNI: done in 0.301312 secs using 198.2% CPU
+Optimizing NNI: done in 0.3031 secs using 200.3% CPU
+Optimizing NNI: done in 0.379125 secs using 200.2% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 187: -2580.034
-Optimizing NNI: done in 0.335706 secs using 392.3% CPU
-Optimizing NNI: done in 0.278456 secs using 393% CPU
-Optimizing NNI: done in 0.261652 secs using 396.6% CPU
-Iteration 190 / LogL: -2610.871 / Time: 0h:1m:6s (0h:0m:34s left)
-Optimizing NNI: done in 0.262565 secs using 399.2% CPU
-Optimizing NNI: done in 0.20986 secs using 387.9% CPU
-Optimizing NNI: done in 0.305222 secs using 399.2% CPU
-Optimizing NNI: done in 0.31181 secs using 389.1% CPU
-Optimizing NNI: done in 0.443533 secs using 367% CPU
-Optimizing NNI: done in 0.39409 secs using 386.3% CPU
-Optimizing NNI: done in 0.24126 secs using 396.1% CPU
-Optimizing NNI: done in 0.250466 secs using 389.1% CPU
-Optimizing NNI: done in 0.305712 secs using 394.4% CPU
-Optimizing NNI: done in 0.268095 secs using 393.4% CPU
-Iteration 200 / LogL: -2589.798 / Time: 0h:1m:9s (0h:0m:30s left)
-Optimizing NNI: done in 0.351671 secs using 392.3% CPU
-Optimizing NNI: done in 0.208807 secs using 395% CPU
-Optimizing NNI: done in 0.26158 secs using 395.9% CPU
-Optimizing NNI: done in 0.261032 secs using 397.3% CPU
-Optimizing NNI: done in 0.276635 secs using 392.8% CPU
-Optimizing NNI: done in 0.342161 secs using 396% CPU
-Optimizing NNI: done in 0.257429 secs using 398.5% CPU
-Optimizing NNI: done in 0.305384 secs using 393.4% CPU
-Optimizing NNI: done in 0.30963 secs using 391.5% CPU
-Optimizing NNI: done in 0.277125 secs using 390.2% CPU
-Iteration 210 / LogL: -2582.938 / Time: 0h:1m:12s (0h:0m:26s left)
-Optimizing NNI: done in 0.264709 secs using 394.8% CPU
-Optimizing NNI: done in 0.347615 secs using 389.2% CPU
-Optimizing NNI: done in 0.47938 secs using 365% CPU
-Optimizing NNI: done in 0.334516 secs using 384.9% CPU
-Optimizing NNI: done in 0.332975 secs using 392.2% CPU
-Optimizing NNI: done in 0.312974 secs using 393.9% CPU
-Optimizing NNI: done in 0.444139 secs using 392.8% CPU
-Optimizing NNI: done in 0.299199 secs using 390.1% CPU
-Optimizing NNI: done in 0.306954 secs using 393.2% CPU
-Optimizing NNI: done in 0.258323 secs using 396.3% CPU
-Iteration 220 / LogL: -2589.882 / Time: 0h:1m:16s (0h:0m:23s left)
-Optimizing NNI: done in 0.300316 secs using 392.2% CPU
-Optimizing NNI: done in 0.258491 secs using 398.2% CPU
-Optimizing NNI: done in 0.382968 secs using 397% CPU
-Optimizing NNI: done in 0.376279 secs using 396.4% CPU
-Optimizing NNI: done in 0.257452 secs using 399.1% CPU
-Optimizing NNI: done in 0.285826 secs using 397.3% CPU
-Optimizing NNI: done in 0.305878 secs using 394.2% CPU
-Optimizing NNI: done in 0.352176 secs using 395.3% CPU
-Optimizing NNI: done in 0.614312 secs using 372.5% CPU
-Optimizing NNI: done in 0.31034 secs using 396% CPU
-Iteration 230 / LogL: -2580.364 / Time: 0h:1m:20s (0h:0m:19s left)
-Optimizing NNI: done in 0.309005 secs using 395.1% CPU
-Optimizing NNI: done in 0.255115 secs using 394.8% CPU
-Optimizing NNI: done in 0.263017 secs using 392% CPU
-Optimizing NNI: done in 0.406108 secs using 393.5% CPU
-Optimizing NNI: done in 0.331737 secs using 392% CPU
-Optimizing NNI: done in 0.223353 secs using 397.3% CPU
-Optimizing NNI: done in 0.205156 secs using 391% CPU
-Optimizing NNI: done in 0.250409 secs using 389.1% CPU
-BETTER TREE FOUND at iteration 238: -2580.033
-Optimizing NNI: done in 0.427367 secs using 394.6% CPU
-Optimizing NNI: done in 0.287802 secs using 391.7% CPU
-Iteration 240 / LogL: -2580.191 / Time: 0h:1m:23s (0h:0m:34s left)
-Optimizing NNI: done in 0.323116 secs using 393.7% CPU
-Optimizing NNI: done in 0.252759 secs using 395.5% CPU
-Optimizing NNI: done in 0.340206 secs using 396.3% CPU
-Optimizing NNI: done in 0.200914 secs using 392.7% CPU
-Optimizing NNI: done in 0.286034 secs using 398.8% CPU
-Optimizing NNI: done in 0.424176 secs using 367.5% CPU
-Optimizing NNI: done in 0.428064 secs using 386.2% CPU
-Optimizing NNI: done in 0.362324 secs using 396% CPU
-Optimizing NNI: done in 0.282691 secs using 397.2% CPU
-Optimizing NNI: done in 0.211239 secs using 391.6% CPU
-Iteration 250 / LogL: -2580.033 / Time: 0h:1m:26s (0h:0m:30s left)
-Optimizing NNI: done in 0.303571 secs using 395.2% CPU
-Optimizing NNI: done in 0.30781 secs using 389.8% CPU
-Optimizing NNI: done in 0.26083 secs using 394.1% CPU
-Optimizing NNI: done in 0.338015 secs using 396.9% CPU
-Optimizing NNI: done in 0.335903 secs using 397.7% CPU
-Optimizing NNI: done in 0.334662 secs using 386.9% CPU
-Optimizing NNI: done in 0.258166 secs using 388.2% CPU
-Optimizing NNI: done in 0.273552 secs using 397.2% CPU
-Optimizing NNI: done in 0.315305 secs using 398.1% CPU
-Optimizing NNI: done in 0.256279 secs using 391.6% CPU
-Iteration 260 / LogL: -2586.043 / Time: 0h:1m:29s (0h:0m:26s left)
-Optimizing NNI: done in 0.253894 secs using 391.8% CPU
-Optimizing NNI: done in 0.334111 secs using 399% CPU
-Optimizing NNI: done in 0.410182 secs using 361.3% CPU
-Optimizing NNI: done in 0.284249 secs using 386% CPU
-Optimizing NNI: done in 0.301942 secs using 394.5% CPU
-Optimizing NNI: done in 0.299246 secs using 394.1% CPU
-Optimizing NNI: done in 0.35312 secs using 396.8% CPU
-Optimizing NNI: done in 0.3446 secs using 395.9% CPU
-BETTER TREE FOUND at iteration 268: -2580.032
-Optimizing NNI: done in 0.305251 secs using 389.9% CPU
-Optimizing NNI: done in 0.348173 secs using 396.4% CPU
-Iteration 270 / LogL: -2585.168 / Time: 0h:1m:32s (0h:0m:33s left)
-Optimizing NNI: done in 0.29553 secs using 396.4% CPU
-Optimizing NNI: done in 0.389652 secs using 394.1% CPU
-Optimizing NNI: done in 0.307555 secs using 390% CPU
-Optimizing NNI: done in 0.249683 secs using 390% CPU
-Optimizing NNI: done in 0.311241 secs using 397.2% CPU
-Optimizing NNI: done in 0.295623 secs using 397.3% CPU
-Optimizing NNI: done in 0.343942 secs using 390.9% CPU
-Optimizing NNI: done in 0.371564 secs using 396% CPU
-Optimizing NNI: done in 0.410129 secs using 369.3% CPU
-Optimizing NNI: done in 0.341759 secs using 385.5% CPU
-Iteration 280 / LogL: -2581.533 / Time: 0h:1m:36s (0h:0m:30s left)
-Optimizing NNI: done in 0.25188 secs using 398.7% CPU
-Optimizing NNI: done in 0.287541 secs using 390.7% CPU
-Optimizing NNI: done in 0.291618 secs using 390.8% CPU
-Optimizing NNI: done in 0.42059 secs using 392.9% CPU
-Optimizing NNI: done in 0.315355 secs using 394.1% CPU
-Optimizing NNI: done in 0.376288 secs using 394.6% CPU
-Optimizing NNI: done in 0.343986 secs using 391.8% CPU
-Optimizing NNI: done in 0.43105 secs using 394.5% CPU
-Optimizing NNI: done in 0.295606 secs using 390.5% CPU
-Optimizing NNI: done in 0.292901 secs using 393.6% CPU
-Iteration 290 / LogL: -2595.910 / Time: 0h:1m:39s (0h:0m:26s left)
-Optimizing NNI: done in 0.251997 secs using 393.7% CPU
-Optimizing NNI: done in 0.251454 secs using 397.8% CPU
-Optimizing NNI: done in 0.347586 secs using 397.9% CPU
-Optimizing NNI: done in 0.251419 secs using 395.1% CPU
-Optimizing NNI: done in 0.346427 secs using 395.3% CPU
-Optimizing NNI: done in 0.473653 secs using 364% CPU
-Optimizing NNI: done in 0.428329 secs using 391.7% CPU
-Optimizing NNI: done in 0.301541 secs using 396.3% CPU
-Optimizing NNI: done in 0.263658 secs using 395.9% CPU
-Optimizing NNI: done in 0.297699 secs using 391.6% CPU
-Iteration 300 / LogL: -2582.071 / Time: 0h:1m:43s (0h:0m:23s left)
-Optimizing NNI: done in 0.259915 secs using 396.5% CPU
-Optimizing NNI: done in 0.252458 secs using 390% CPU
-Optimizing NNI: done in 0.340247 secs using 396.2% CPU
-Optimizing NNI: done in 0.202144 secs using 400.3% CPU
-Optimizing NNI: done in 0.259723 secs using 391.1% CPU
-Optimizing NNI: done in 0.299983 secs using 396% CPU
-Optimizing NNI: done in 0.293402 secs using 391.7% CPU
-BETTER TREE FOUND at iteration 307: -2580.032
-Optimizing NNI: done in 0.212476 secs using 386.7% CPU
-Optimizing NNI: done in 0.35171 secs using 395.4% CPU
-BETTER TREE FOUND at iteration 309: -2580.031
-Optimizing NNI: done in 0.255277 secs using 387.9% CPU
-Iteration 310 / LogL: -2580.184 / Time: 0h:1m:45s (0h:0m:33s left)
-Optimizing NNI: done in 0.312081 secs using 391% CPU
-Optimizing NNI: done in 0.259935 secs using 398.5% CPU
-Optimizing NNI: done in 0.40671 secs using 369% CPU
-Optimizing NNI: done in 0.504066 secs using 385.8% CPU
-Optimizing NNI: done in 0.298261 secs using 394% CPU
-Optimizing NNI: done in 0.456854 secs using 393.9% CPU
-Optimizing NNI: done in 0.320215 secs using 392.2% CPU
-Optimizing NNI: done in 0.344536 secs using 389.7% CPU
-Optimizing NNI: done in 0.350629 secs using 393.1% CPU
-Optimizing NNI: done in 0.33067 secs using 393.9% CPU
-Iteration 320 / LogL: -2585.207 / Time: 0h:1m:49s (0h:0m:30s left)
-Optimizing NNI: done in 0.45926 secs using 395.9% CPU
-Optimizing NNI: done in 0.290618 secs using 394.7% CPU
-Optimizing NNI: done in 0.253977 secs using 394.2% CPU
-Optimizing NNI: done in 0.257433 secs using 390.5% CPU
-Optimizing NNI: done in 0.335058 secs using 393% CPU
-BETTER TREE FOUND at iteration 325: -2580.031
-Optimizing NNI: done in 0.342826 secs using 394.9% CPU
-Optimizing NNI: done in 0.258675 secs using 392.2% CPU
-Optimizing NNI: done in 0.356662 secs using 393.8% CPU
+BETTER TREE FOUND at iteration 100: -2582.448
+Iteration 100 / LogL: -2582.448 / Time: 0h:0m:42s (0h:0m:43s left)
+Optimizing NNI: done in 0.453883 secs using 195.1% CPU
+Optimizing NNI: done in 0.340779 secs using 196% CPU
+Optimizing NNI: done in 0.356917 secs using 197.5% CPU
+Optimizing NNI: done in 0.287572 secs using 198.5% CPU
+Optimizing NNI: done in 0.453525 secs using 196.1% CPU
+Optimizing NNI: done in 0.319387 secs using 197.7% CPU
+Optimizing NNI: done in 0.30385 secs using 197.4% CPU
+Optimizing NNI: done in 0.363109 secs using 193.3% CPU
+Optimizing NNI: done in 0.248872 secs using 194.4% CPU
+Optimizing NNI: done in 0.363588 secs using 196.8% CPU
+Iteration 110 / LogL: -2583.100 / Time: 0h:0m:46s (0h:0m:38s left)
+Optimizing NNI: done in 0.308399 secs using 194.7% CPU
+Optimizing NNI: done in 0.320562 secs using 193.6% CPU
+Optimizing NNI: done in 0.359473 secs using 197.9% CPU
+Optimizing NNI: done in 0.443614 secs using 197.4% CPU
+Optimizing NNI: done in 0.363557 secs using 197.8% CPU
+Optimizing NNI: done in 0.315557 secs using 189.7% CPU
+Optimizing NNI: done in 0.316721 secs using 198.5% CPU
+Optimizing NNI: done in 0.405732 secs using 195.6% CPU
+Optimizing NNI: done in 0.360326 secs using 198.3% CPU
+Optimizing NNI: done in 0.319279 secs using 200.2% CPU
+Iteration 120 / LogL: -2583.101 / Time: 0h:0m:50s (0h:0m:33s left)
+Optimizing NNI: done in 0.253348 secs using 197.9% CPU
+Optimizing NNI: done in 0.384542 secs using 199.9% CPU
+Optimizing NNI: done in 0.380507 secs using 196.5% CPU
+Optimizing NNI: done in 0.313947 secs using 195.5% CPU
+Optimizing NNI: done in 0.318381 secs using 195.3% CPU
+Optimizing NNI: done in 0.346836 secs using 199.2% CPU
+Optimizing NNI: done in 0.420193 secs using 196.1% CPU
+BETTER TREE FOUND at iteration 127: -2582.448
+Optimizing NNI: done in 0.373141 secs using 196.5% CPU
+Optimizing NNI: done in 0.307182 secs using 193.7% CPU
+Optimizing NNI: done in 0.51006 secs using 194.9% CPU
+Iteration 130 / LogL: -2583.690 / Time: 0h:0m:53s (0h:0m:40s left)
+Optimizing NNI: done in 0.352643 secs using 197.4% CPU
+Optimizing NNI: done in 0.340782 secs using 198.6% CPU
+Optimizing NNI: done in 0.295675 secs using 197.1% CPU
+Optimizing NNI: done in 0.283236 secs using 194.4% CPU
+Optimizing NNI: done in 0.311228 secs using 195.1% CPU
+Optimizing NNI: done in 0.280084 secs using 198.6% CPU
+Optimizing NNI: done in 0.465521 secs using 198.8% CPU
+Optimizing NNI: done in 0.324348 secs using 199.9% CPU
+Optimizing NNI: done in 0.398168 secs using 194.4% CPU
+Optimizing NNI: done in 0.315605 secs using 194.7% CPU
+Iteration 140 / LogL: -2582.448 / Time: 0h:0m:57s (0h:0m:35s left)
+Optimizing NNI: done in 0.377612 secs using 197.5% CPU
+BETTER TREE FOUND at iteration 141: -2582.447
+Optimizing NNI: done in 0.246403 secs using 195.8% CPU
+Optimizing NNI: done in 0.364419 secs using 198.8% CPU
+Optimizing NNI: done in 0.342457 secs using 195.6% CPU
+Optimizing NNI: done in 0.312027 secs using 198.7% CPU
+Optimizing NNI: done in 0.41768 secs using 199.5% CPU
+BETTER TREE FOUND at iteration 146: -2582.447
+Optimizing NNI: done in 0.325885 secs using 199.4% CPU
+Optimizing NNI: done in 0.392113 secs using 198.7% CPU
+Optimizing NNI: done in 0.353102 secs using 196.3% CPU
+Optimizing NNI: done in 0.331445 secs using 196.6% CPU
+Iteration 150 / LogL: -2584.466 / Time: 0h:1m:1s (0h:0m:39s left)
+Optimizing NNI: done in 0.312477 secs using 198.6% CPU
+Optimizing NNI: done in 0.475853 secs using 199.1% CPU
+Optimizing NNI: done in 0.300856 secs using 195.2% CPU
+Optimizing NNI: done in 0.316919 secs using 198.4% CPU
+Optimizing NNI: done in 0.368314 secs using 198.8% CPU
+Optimizing NNI: done in 0.305323 secs using 196.9% CPU
+BETTER TREE FOUND at iteration 156: -2582.447
+Optimizing NNI: done in 0.39185 secs using 196.9% CPU
+Optimizing NNI: done in 0.508988 secs using 195.1% CPU
+Optimizing NNI: done in 0.324667 secs using 196% CPU
+BETTER TREE FOUND at iteration 159: -2582.446
+Optimizing NNI: done in 0.408518 secs using 198.8% CPU
+Iteration 160 / LogL: -2582.448 / Time: 0h:1m:4s (0h:0m:40s left)
+Optimizing NNI: done in 0.369562 secs using 197.4% CPU
+Optimizing NNI: done in 0.43103 secs using 196.4% CPU
+Optimizing NNI: done in 0.361234 secs using 200.4% CPU
+Optimizing NNI: done in 0.312378 secs using 197.3% CPU
+Optimizing NNI: done in 0.356411 secs using 197.4% CPU
+Optimizing NNI: done in 0.341921 secs using 195.9% CPU
+BETTER TREE FOUND at iteration 166: -2582.445
+Optimizing NNI: done in 0.25713 secs using 197.5% CPU
+Optimizing NNI: done in 0.316852 secs using 195.9% CPU
+Optimizing NNI: done in 0.32618 secs using 197.9% CPU
+Optimizing NNI: done in 0.399613 secs using 194.9% CPU
+Iteration 170 / LogL: -2584.598 / Time: 0h:1m:8s (0h:0m:38s left)
+Optimizing NNI: done in 0.294876 secs using 200% CPU
+Optimizing NNI: done in 0.317376 secs using 196.8% CPU
+Optimizing NNI: done in 0.325979 secs using 196.9% CPU
+Optimizing NNI: done in 0.309838 secs using 195.5% CPU
+Optimizing NNI: done in 0.315168 secs using 195% CPU
+BETTER TREE FOUND at iteration 175: -2582.444
+Optimizing NNI: done in 0.324145 secs using 197.5% CPU
+Optimizing NNI: done in 0.447382 secs using 195.7% CPU
+Optimizing NNI: done in 0.3871 secs using 200.2% CPU
+Optimizing NNI: done in 0.467983 secs using 190.5% CPU
+Optimizing NNI: done in 0.511022 secs using 190.7% CPU
+Iteration 180 / LogL: -2591.972 / Time: 0h:1m:12s (0h:0m:38s left)
+Optimizing NNI: done in 0.397609 secs using 187.5% CPU
+Optimizing NNI: done in 0.515093 secs using 195.3% CPU
+Optimizing NNI: done in 0.434628 secs using 192.9% CPU
+Optimizing NNI: done in 0.3288 secs using 194.8% CPU
+Optimizing NNI: done in 0.465699 secs using 194.2% CPU
+Optimizing NNI: done in 0.369334 secs using 192.9% CPU
+Optimizing NNI: done in 0.478191 secs using 192.7% CPU
+Optimizing NNI: done in 0.387764 secs using 195.9% CPU
+Optimizing NNI: done in 0.331643 secs using 193.8% CPU
+Optimizing NNI: done in 0.336108 secs using 189.2% CPU
+Iteration 190 / LogL: -2582.447 / Time: 0h:1m:16s (0h:0m:34s left)
+Optimizing NNI: done in 0.428596 secs using 196.8% CPU
+Optimizing NNI: done in 0.353659 secs using 190.5% CPU
+Optimizing NNI: done in 0.410327 secs using 192.5% CPU
+Optimizing NNI: done in 0.293557 secs using 182.8% CPU
+Optimizing NNI: done in 0.445463 secs using 187% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 328: -2579.862
-Optimizing NNI: done in 0.253178 secs using 390.8% CPU
-Optimizing NNI: done in 0.299886 secs using 394.1% CPU
-Iteration 330 / LogL: -2586.039 / Time: 0h:1m:53s (0h:0m:33s left)
-Optimizing NNI: done in 0.216718 secs using 390.5% CPU
-Optimizing NNI: done in 0.346076 secs using 396.6% CPU
-Optimizing NNI: done in 0.376435 secs using 396.5% CPU
-Optimizing NNI: done in 0.356529 secs using 397.7% CPU
-Optimizing NNI: done in 0.307667 secs using 393.7% CPU
-Optimizing NNI: done in 0.383263 secs using 393.1% CPU
-Optimizing NNI: done in 0.310937 secs using 393.3% CPU
-Optimizing NNI: done in 0.300933 secs using 396.4% CPU
-Optimizing NNI: done in 0.296721 secs using 393.5% CPU
-Optimizing NNI: done in 0.152802 secs using 397.6% CPU
-Iteration 340 / LogL: -2603.067 / Time: 0h:1m:56s (0h:0m:30s left)
-Optimizing NNI: done in 0.311316 secs using 391.7% CPU
-Optimizing NNI: done in 0.252428 secs using 397.9% CPU
-Optimizing NNI: done in 0.259944 secs using 395.5% CPU
-Optimizing NNI: done in 0.281791 secs using 391.9% CPU
-Optimizing NNI: done in 0.531126 secs using 365.4% CPU
-Optimizing NNI: done in 0.355077 secs using 392.7% CPU
-Optimizing NNI: done in 0.264722 secs using 396% CPU
-Optimizing NNI: done in 0.259472 secs using 392.9% CPU
-Optimizing NNI: done in 0.211891 secs using 394.6% CPU
-Optimizing NNI: done in 0.463097 secs using 395.9% CPU
-Iteration 350 / LogL: -2587.557 / Time: 0h:1m:59s (0h:0m:26s left)
-Optimizing NNI: done in 0.496478 secs using 391.6% CPU
-Optimizing NNI: done in 0.404889 secs using 392.7% CPU
-Optimizing NNI: done in 0.212525 secs using 384.8% CPU
-BETTER TREE FOUND at iteration 353: -2579.862
-Optimizing NNI: done in 0.215886 secs using 390.9% CPU
-Optimizing NNI: done in 0.356637 secs using 397% CPU
-Optimizing NNI: done in 0.318596 secs using 396.3% CPU
-Optimizing NNI: done in 0.260966 secs using 392.4% CPU
-Optimizing NNI: done in 0.264632 secs using 390.1% CPU
-Optimizing NNI: done in 0.307936 secs using 397.5% CPU
-Optimizing NNI: done in 0.209168 secs using 384.9% CPU
-Iteration 360 / LogL: -2588.738 / Time: 0h:2m:2s (0h:0m:31s left)
-Optimizing NNI: done in 0.306135 secs using 398.2% CPU
-Optimizing NNI: done in 0.489321 secs using 376.5% CPU
-Optimizing NNI: done in 0.257914 secs using 391.6% CPU
-Optimizing NNI: done in 0.262919 secs using 398.8% CPU
-Optimizing NNI: done in 0.348313 secs using 394.9% CPU
-Optimizing NNI: done in 0.253949 secs using 394.9% CPU
-Optimizing NNI: done in 0.34016 secs using 394.6% CPU
-Optimizing NNI: done in 0.265014 secs using 391.4% CPU
-Optimizing NNI: done in 0.260528 secs using 394.8% CPU
-Optimizing NNI: done in 0.287121 secs using 396.7% CPU
-Iteration 370 / LogL: -2580.031 / Time: 0h:2m:6s (0h:0m:28s left)
-Optimizing NNI: done in 0.341426 secs using 397.9% CPU
-Optimizing NNI: done in 0.319311 secs using 395.6% CPU
-Optimizing NNI: done in 0.214259 secs using 389.4% CPU
-Optimizing NNI: done in 0.340778 secs using 399% CPU
-Optimizing NNI: done in 0.289801 secs using 395.4% CPU
-Optimizing NNI: done in 0.405771 secs using 393.9% CPU
-Optimizing NNI: done in 0.338559 secs using 392.4% CPU
-Optimizing NNI: done in 0.472929 secs using 373.4% CPU
-Optimizing NNI: done in 0.40955 secs using 385% CPU
-Optimizing NNI: done in 0.297263 secs using 397.1% CPU
-Iteration 380 / LogL: -2581.172 / Time: 0h:2m:9s (0h:0m:24s left)
-Optimizing NNI: done in 0.26218 secs using 394.4% CPU
-Optimizing NNI: done in 0.212268 secs using 394% CPU
-Optimizing NNI: done in 0.289617 secs using 395.5% CPU
-Optimizing NNI: done in 0.264034 secs using 382.8% CPU
-Optimizing NNI: done in 0.302732 secs using 394.6% CPU
-Optimizing NNI: done in 0.464483 secs using 392.3% CPU
-Optimizing NNI: done in 0.358726 secs using 394.4% CPU
-Optimizing NNI: done in 0.369434 secs using 394.5% CPU
-Optimizing NNI: done in 0.316921 secs using 394.8% CPU
-Optimizing NNI: done in 0.313645 secs using 392.5% CPU
-Iteration 390 / LogL: -2600.101 / Time: 0h:2m:13s (0h:0m:21s left)
-Optimizing NNI: done in 0.266533 secs using 398.2% CPU
-BETTER TREE FOUND at iteration 391: -2579.862
-Optimizing NNI: done in 0.298991 secs using 395.7% CPU
-Optimizing NNI: done in 0.298244 secs using 397.3% CPU
-Optimizing NNI: done in 0.205903 secs using 393.3% CPU
-Optimizing NNI: done in 0.422407 secs using 361.6% CPU
-Optimizing NNI: done in 0.382279 secs using 384.1% CPU
-Optimizing NNI: done in 0.336002 secs using 391.7% CPU
-Optimizing NNI: done in 0.216953 secs using 395% CPU
-Optimizing NNI: done in 0.270857 secs using 394.6% CPU
-Optimizing NNI: done in 0.259243 secs using 389.5% CPU
-Iteration 400 / LogL: -2581.876 / Time: 0h:2m:16s (0h:0m:31s left)
-Optimizing NNI: done in 0.352771 secs using 391.9% CPU
-Optimizing NNI: done in 0.266007 secs using 388.7% CPU
-Optimizing NNI: done in 0.33413 secs using 393.8% CPU
-Optimizing NNI: done in 0.270051 secs using 396.5% CPU
-Optimizing NNI: done in 0.297654 secs using 391.6% CPU
-Optimizing NNI: done in 0.300718 secs using 392.6% CPU
-Optimizing NNI: done in 0.26589 secs using 391.1% CPU
-Optimizing NNI: done in 0.318904 secs using 398.5% CPU
-Optimizing NNI: done in 0.369 secs using 389.5% CPU
-Optimizing NNI: done in 0.211358 secs using 398.8% CPU
-Iteration 410 / LogL: -2586.242 / Time: 0h:2m:19s (0h:0m:27s left)
-Optimizing NNI: done in 0.361947 secs using 395.7% CPU
-Optimizing NNI: done in 0.275411 secs using 397% CPU
-Optimizing NNI: done in 0.340134 secs using 354.6% CPU
-Optimizing NNI: done in 0.268684 secs using 400.2% CPU
-Optimizing NNI: done in 0.299162 secs using 399.5% CPU
-Optimizing NNI: done in 0.303743 secs using 392.2% CPU
-Optimizing NNI: done in 0.365196 secs using 395.5% CPU
-Optimizing NNI: done in 0.270157 secs using 400.1% CPU
-Optimizing NNI: done in 0.332552 secs using 398.3% CPU
-Optimizing NNI: done in 0.346973 secs using 394.2% CPU
-Iteration 420 / LogL: -2583.613 / Time: 0h:2m:22s (0h:0m:24s left)
-Optimizing NNI: done in 0.263149 secs using 393.9% CPU
-Optimizing NNI: done in 0.311196 secs using 394.9% CPU
-Optimizing NNI: done in 0.313957 secs using 398.9% CPU
-Optimizing NNI: done in 0.349963 secs using 393.7% CPU
-Optimizing NNI: done in 0.267354 secs using 395.4% CPU
-Optimizing NNI: done in 0.219957 secs using 394.6% CPU
-Optimizing NNI: done in 0.221297 secs using 396.1% CPU
-Optimizing NNI: done in 0.261344 secs using 395.8% CPU
-Optimizing NNI: done in 0.298047 secs using 396.5% CPU
-Optimizing NNI: done in 0.449704 secs using 366.3% CPU
-Iteration 430 / LogL: -2590.123 / Time: 0h:2m:25s (0h:0m:20s left)
-Optimizing NNI: done in 0.348132 secs using 384.4% CPU
-Optimizing NNI: done in 0.35229 secs using 395% CPU
-Optimizing NNI: done in 0.386848 secs using 391.6% CPU
-Optimizing NNI: done in 0.384764 secs using 394.2% CPU
-Optimizing NNI: done in 0.349923 secs using 397.2% CPU
-Optimizing NNI: done in 0.378755 secs using 396.8% CPU
-Optimizing NNI: done in 0.265429 secs using 392.4% CPU
-Optimizing NNI: done in 0.313202 secs using 397.5% CPU
-Optimizing NNI: done in 0.268009 secs using 392.5% CPU
-Optimizing NNI: done in 0.348098 secs using 393% CPU
-Iteration 440 / LogL: -2592.091 / Time: 0h:2m:29s (0h:0m:17s left)
-Optimizing NNI: done in 0.297358 secs using 396.7% CPU
-Optimizing NNI: done in 0.214943 secs using 388.4% CPU
-Optimizing NNI: done in 0.259061 secs using 390.7% CPU
-Optimizing NNI: done in 0.299524 secs using 397.3% CPU
-Optimizing NNI: done in 0.261218 secs using 396.1% CPU
-Optimizing NNI: done in 0.270771 secs using 396.9% CPU
-Optimizing NNI: done in 0.314476 secs using 379.6% CPU
-Optimizing NNI: done in 0.270647 secs using 387.8% CPU
-Optimizing NNI: done in 0.216656 secs using 393.8% CPU
-Optimizing NNI: done in 0.389771 secs using 394.7% CPU
-Iteration 450 / LogL: -2580.347 / Time: 0h:2m:32s (0h:0m:13s left)
-Optimizing NNI: done in 0.303949 secs using 396.1% CPU
-Optimizing NNI: done in 0.303802 secs using 393.7% CPU
-Optimizing NNI: done in 0.265524 secs using 394.8% CPU
-Optimizing NNI: done in 0.206324 secs using 394.7% CPU
-Optimizing NNI: done in 0.371677 secs using 397% CPU
-Optimizing NNI: done in 0.345122 secs using 394.4% CPU
-Optimizing NNI: done in 0.343568 secs using 395.1% CPU
-Optimizing NNI: done in 0.214954 secs using 396.4% CPU
-Optimizing NNI: done in 0.248612 secs using 392.2% CPU
-Optimizing NNI: done in 0.291471 secs using 396.3% CPU
-Iteration 460 / LogL: -2588.447 / Time: 0h:2m:35s (0h:0m:10s left)
-Optimizing NNI: done in 0.29588 secs using 394.5% CPU
-Optimizing NNI: done in 0.394835 secs using 395.1% CPU
-Optimizing NNI: done in 0.305888 secs using 394.2% CPU
-Optimizing NNI: done in 0.398269 secs using 365.1% CPU
-Optimizing NNI: done in 0.275589 secs using 390.5% CPU
-Optimizing NNI: done in 0.210481 secs using 388.6% CPU
-Optimizing NNI: done in 0.303668 secs using 393.1% CPU
-Optimizing NNI: done in 0.29865 secs using 392.5% CPU
-Optimizing NNI: done in 0.545733 secs using 393.1% CPU
-Optimizing NNI: done in 0.22795 secs using 393.6% CPU
-Iteration 470 / LogL: -2602.456 / Time: 0h:2m:38s (0h:0m:7s left)
-Optimizing NNI: done in 0.257591 secs using 388.8% CPU
-Optimizing NNI: done in 0.257756 secs using 394% CPU
-Optimizing NNI: done in 0.313557 secs using 396% CPU
-Optimizing NNI: done in 0.126225 secs using 397.9% CPU
-Optimizing NNI: done in 0.356069 secs using 395.4% CPU
-Optimizing NNI: done in 0.213877 secs using 394.7% CPU
-Optimizing NNI: done in 0.309448 secs using 394.7% CPU
-Optimizing NNI: done in 0.26277 secs using 394.9% CPU
-Optimizing NNI: done in 0.304479 secs using 395.8% CPU
-Optimizing NNI: done in 0.263288 secs using 391.7% CPU
-Iteration 480 / LogL: -2587.890 / Time: 0h:2m:41s (0h:0m:3s left)
-Optimizing NNI: done in 0.304092 secs using 397.3% CPU
-Optimizing NNI: done in 0.448091 secs using 362.3% CPU
-Optimizing NNI: done in 0.282035 secs using 387% CPU
-Optimizing NNI: done in 0.317894 secs using 390.7% CPU
-Optimizing NNI: done in 0.267683 secs using 395.9% CPU
-Optimizing NNI: done in 0.251314 secs using 392.7% CPU
-Optimizing NNI: done in 0.253666 secs using 388.6% CPU
-Optimizing NNI: done in 0.259426 secs using 394.5% CPU
-Optimizing NNI: done in 0.327112 secs using 393.5% CPU
-Optimizing NNI: done in 0.252209 secs using 393.4% CPU
-BETTER TREE FOUND at iteration 490: -2579.862
-Iteration 490 / LogL: -2579.862 / Time: 0h:2m:44s (0h:0m:33s left)
-Optimizing NNI: done in 0.196521 secs using 390.7% CPU
-Optimizing NNI: done in 0.349253 secs using 394.7% CPU
-Optimizing NNI: done in 0.297338 secs using 393.3% CPU
-Optimizing NNI: done in 0.256433 secs using 396.2% CPU
-Optimizing NNI: done in 0.312187 secs using 397.2% CPU
-Optimizing NNI: done in 0.209178 secs using 394.5% CPU
-Optimizing NNI: done in 0.339152 secs using 395.8% CPU
-Optimizing NNI: done in 0.256093 secs using 387.1% CPU
-Optimizing NNI: done in 0.208471 secs using 390.7% CPU
-Optimizing NNI: done in 0.303932 secs using 394.8% CPU
-Iteration 500 / LogL: -2584.084 / Time: 0h:2m:47s (0h:0m:30s left)
-Optimizing NNI: done in 0.39272 secs using 380.1% CPU
-Optimizing NNI: done in 0.209707 secs using 396.6% CPU
-Optimizing NNI: done in 0.207431 secs using 396.6% CPU
-Optimizing NNI: done in 0.298028 secs using 393.3% CPU
-Optimizing NNI: done in 0.34329 secs using 393.6% CPU
-Optimizing NNI: done in 0.306946 secs using 401% CPU
-Optimizing NNI: done in 0.301319 secs using 396% CPU
-Optimizing NNI: done in 0.262459 secs using 391.3% CPU
-Optimizing NNI: done in 0.261176 secs using 395.6% CPU
-Optimizing NNI: done in 0.314882 secs using 385.8% CPU
-Iteration 510 / LogL: -2580.939 / Time: 0h:2m:50s (0h:0m:26s left)
-Optimizing NNI: done in 0.352328 secs using 390.3% CPU
-Optimizing NNI: done in 0.297832 secs using 388.8% CPU
-Optimizing NNI: done in 0.261306 secs using 391.7% CPU
-Optimizing NNI: done in 0.389426 secs using 390.7% CPU
-Optimizing NNI: done in 0.288609 secs using 392.4% CPU
-Optimizing NNI: done in 0.305277 secs using 392.2% CPU
-Optimizing NNI: done in 0.264094 secs using 390.5% CPU
-Optimizing NNI: done in 0.395897 secs using 363.8% CPU
-Optimizing NNI: done in 0.332667 secs using 383.4% CPU
-Optimizing NNI: done in 0.282263 secs using 398% CPU
-Iteration 520 / LogL: -2587.808 / Time: 0h:2m:53s (0h:0m:23s left)
-Optimizing NNI: done in 0.309639 secs using 390.6% CPU
-Optimizing NNI: done in 0.256887 secs using 393.5% CPU
-Optimizing NNI: done in 0.303928 secs using 389.5% CPU
-Optimizing NNI: done in 0.299852 secs using 397.5% CPU
-Optimizing NNI: done in 0.26005 secs using 398% CPU
-Optimizing NNI: done in 0.311212 secs using 397.2% CPU
-Optimizing NNI: done in 0.295133 secs using 390.3% CPU
-Optimizing NNI: done in 0.272833 secs using 390.7% CPU
-Optimizing NNI: done in 0.26805 secs using 389.5% CPU
-Optimizing NNI: done in 0.337484 secs using 394% CPU
-Iteration 530 / LogL: -2580.025 / Time: 0h:2m:56s (0h:0m:20s left)
-Optimizing NNI: done in 0.330903 secs using 391.8% CPU
-Optimizing NNI: done in 0.267293 secs using 394.2% CPU
-Optimizing NNI: done in 0.364297 secs using 390.5% CPU
-Optimizing NNI: done in 0.262572 secs using 400% CPU
-Optimizing NNI: done in 0.266054 secs using 388.7% CPU
-Optimizing NNI: done in 0.392408 secs using 359.5% CPU
-Optimizing NNI: done in 0.268296 secs using 396.9% CPU
-Optimizing NNI: done in 0.326515 secs using 386.7% CPU
+BETTER TREE FOUND at iteration 195: -2581.776
+Optimizing NNI: done in 0.355388 secs using 190% CPU
+Optimizing NNI: done in 0.289738 secs using 190.8% CPU
+Optimizing NNI: done in 0.388017 secs using 196.8% CPU
+Optimizing NNI: done in 0.417621 secs using 191.9% CPU
+Optimizing NNI: done in 0.335381 secs using 195.2% CPU
+Iteration 200 / LogL: -2593.176 / Time: 0h:1m:20s (0h:0m:38s left)
+Optimizing NNI: done in 0.457173 secs using 192.7% CPU
+Optimizing NNI: done in 0.289306 secs using 193.6% CPU
+Optimizing NNI: done in 0.376715 secs using 194.4% CPU
+Optimizing NNI: done in 0.339251 secs using 194.3% CPU
+Optimizing NNI: done in 0.403652 secs using 193.1% CPU
+Optimizing NNI: done in 0.439263 secs using 190.7% CPU
+Optimizing NNI: done in 0.36268 secs using 193.7% CPU
+Optimizing NNI: done in 0.427984 secs using 184% CPU
+Optimizing NNI: done in 0.393 secs using 186.4% CPU
+Optimizing NNI: done in 0.358719 secs using 192.5% CPU
+Iteration 210 / LogL: -2590.548 / Time: 0h:1m:24s (0h:0m:34s left)
+Optimizing NNI: done in 0.485372 secs using 193% CPU
+Optimizing NNI: done in 0.365386 secs using 179.8% CPU
+Optimizing NNI: done in 0.43657 secs using 186% CPU
+Optimizing NNI: done in 0.41455 secs using 185.8% CPU
+Optimizing NNI: done in 0.370985 secs using 188.2% CPU
+Optimizing NNI: done in 0.292772 secs using 192.8% CPU
+Optimizing NNI: done in 0.383078 secs using 197% CPU
+Optimizing NNI: done in 0.376344 secs using 195.5% CPU
+Optimizing NNI: done in 0.318722 secs using 195.4% CPU
+Optimizing NNI: done in 0.454954 secs using 195.8% CPU
+Iteration 220 / LogL: -2617.672 / Time: 0h:1m:28s (0h:0m:30s left)
+Optimizing NNI: done in 0.327415 secs using 197.7% CPU
+Optimizing NNI: done in 0.489838 secs using 197.1% CPU
+BETTER TREE FOUND at iteration 222: -2581.775
+Optimizing NNI: done in 0.446422 secs using 194.1% CPU
+Optimizing NNI: done in 0.26952 secs using 197.9% CPU
+Optimizing NNI: done in 0.498033 secs using 195.6% CPU
+Optimizing NNI: done in 0.38556 secs using 199.6% CPU
+Optimizing NNI: done in 0.464897 secs using 194.4% CPU
+Optimizing NNI: done in 0.280334 secs using 196.8% CPU
+Optimizing NNI: done in 0.648206 secs using 197.5% CPU
+Optimizing NNI: done in 0.326886 secs using 195.5% CPU
+Iteration 230 / LogL: -2594.531 / Time: 0h:1m:33s (0h:0m:37s left)
+Optimizing NNI: done in 0.380282 secs using 197.7% CPU
+Optimizing NNI: done in 0.390123 secs using 196.4% CPU
+Optimizing NNI: done in 0.323829 secs using 198.4% CPU
+Optimizing NNI: done in 0.334464 secs using 192% CPU
+Optimizing NNI: done in 0.273664 secs using 193.5% CPU
+Optimizing NNI: done in 0.333599 secs using 197.9% CPU
+Optimizing NNI: done in 0.365921 secs using 198% CPU
+Optimizing NNI: done in 0.330636 secs using 197.8% CPU
+Optimizing NNI: done in 0.386809 secs using 197.2% CPU
+Optimizing NNI: done in 0.389654 secs using 196.5% CPU
+BETTER TREE FOUND at iteration 240: -2581.774
+Iteration 240 / LogL: -2581.774 / Time: 0h:1m:36s (0h:0m:40s left)
+Optimizing NNI: done in 0.397394 secs using 195.6% CPU
+Optimizing NNI: done in 0.327669 secs using 196.3% CPU
+Optimizing NNI: done in 0.393317 secs using 198.6% CPU
+Optimizing NNI: done in 0.274197 secs using 199.2% CPU
+Optimizing NNI: done in 0.507336 secs using 196% CPU
+Optimizing NNI: done in 0.44053 secs using 193.5% CPU
+Optimizing NNI: done in 0.466159 secs using 195% CPU
+Optimizing NNI: done in 0.37877 secs using 197% CPU
+Optimizing NNI: done in 0.385597 secs using 199.4% CPU
+Optimizing NNI: done in 0.436697 secs using 198% CPU
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 538: -2579.761
-Optimizing NNI: done in 0.311997 secs using 396.1% CPU
-Optimizing NNI: done in 0.247844 secs using 395.3% CPU
-Iteration 540 / LogL: -2579.871 / Time: 0h:3m:0s (0h:0m:32s left)
-Optimizing NNI: done in 0.298868 secs using 397% CPU
-Optimizing NNI: done in 0.325835 secs using 395.9% CPU
-Optimizing NNI: done in 0.373403 secs using 393.5% CPU
-Optimizing NNI: done in 0.400301 secs using 390.8% CPU
-Optimizing NNI: done in 0.286811 secs using 394.8% CPU
-Optimizing NNI: done in 0.370247 secs using 398.1% CPU
-Optimizing NNI: done in 0.343985 secs using 390.7% CPU
-Optimizing NNI: done in 0.259135 secs using 397.3% CPU
-Optimizing NNI: done in 0.264181 secs using 399.5% CPU
-Optimizing NNI: done in 0.258476 secs using 394.4% CPU
-Iteration 550 / LogL: -2587.822 / Time: 0h:3m:3s (0h:0m:29s left)
-Optimizing NNI: done in 0.452486 secs using 371.2% CPU
-Optimizing NNI: done in 0.272552 secs using 387% CPU
-Optimizing NNI: done in 0.342303 secs using 387.5% CPU
-Optimizing NNI: done in 0.26333 secs using 392.9% CPU
-Optimizing NNI: done in 0.381762 secs using 396.6% CPU
-Optimizing NNI: done in 0.29351 secs using 391.6% CPU
-Optimizing NNI: done in 0.252679 secs using 394.7% CPU
-Optimizing NNI: done in 0.20963 secs using 396.6% CPU
-Optimizing NNI: done in 0.347342 secs using 392.4% CPU
-Optimizing NNI: done in 0.341918 secs using 396% CPU
-Iteration 560 / LogL: -2593.005 / Time: 0h:3m:6s (0h:0m:26s left)
-Optimizing NNI: done in 0.302629 secs using 395.2% CPU
-Optimizing NNI: done in 0.30684 secs using 398.9% CPU
-Optimizing NNI: done in 0.213438 secs using 392.1% CPU
-Optimizing NNI: done in 0.263011 secs using 394.2% CPU
-Optimizing NNI: done in 0.204245 secs using 393.3% CPU
-Optimizing NNI: done in 0.306048 secs using 392.7% CPU
-Optimizing NNI: done in 0.2576 secs using 391.1% CPU
-Optimizing NNI: done in 0.287341 secs using 392.3% CPU
-Optimizing NNI: done in 0.452782 secs using 358% CPU
-Optimizing NNI: done in 0.257351 secs using 389.1% CPU
-Iteration 570 / LogL: -2584.510 / Time: 0h:3m:9s (0h:0m:22s left)
-Optimizing NNI: done in 0.266853 secs using 392.2% CPU
-Optimizing NNI: done in 0.252951 secs using 391.9% CPU
-Optimizing NNI: done in 0.390061 secs using 397.1% CPU
-Optimizing NNI: done in 0.294988 secs using 391.4% CPU
-Optimizing NNI: done in 0.292703 secs using 396.5% CPU
-Optimizing NNI: done in 0.417338 secs using 393.6% CPU
-Optimizing NNI: done in 0.347718 secs using 391.3% CPU
-Optimizing NNI: done in 0.212011 secs using 396.2% CPU
-Optimizing NNI: done in 0.304033 secs using 396% CPU
-Optimizing NNI: done in 0.249357 secs using 390.3% CPU
-Iteration 580 / LogL: -2582.725 / Time: 0h:3m:13s (0h:0m:19s left)
-Optimizing NNI: done in 0.28061 secs using 393.4% CPU
-Optimizing NNI: done in 0.309405 secs using 390.9% CPU
-Optimizing NNI: done in 0.242647 secs using 396% CPU
-Optimizing NNI: done in 0.265922 secs using 391.8% CPU
-Optimizing NNI: done in 0.316954 secs using 399.5% CPU
-Optimizing NNI: done in 0.451054 secs using 369.2% CPU
-Optimizing NNI: done in 0.308323 secs using 391.1% CPU
-Optimizing NNI: done in 0.211723 secs using 393.4% CPU
-Optimizing NNI: done in 0.346794 secs using 394.3% CPU
-Optimizing NNI: done in 0.301365 secs using 395.7% CPU
-Iteration 590 / LogL: -2591.135 / Time: 0h:3m:16s (0h:0m:15s left)
-Optimizing NNI: done in 0.478426 secs using 394.6% CPU
-Optimizing NNI: done in 0.288447 secs using 392.7% CPU
-Optimizing NNI: done in 0.319953 secs using 391.9% CPU
-Optimizing NNI: done in 0.217245 secs using 395.5% CPU
-Optimizing NNI: done in 0.26083 secs using 389.9% CPU
-Optimizing NNI: done in 0.30592 secs using 389.3% CPU
-Optimizing NNI: done in 0.298639 secs using 394.7% CPU
-Optimizing NNI: done in 0.356606 secs using 396.1% CPU
-Optimizing NNI: done in 0.403838 secs using 393.1% CPU
-Optimizing NNI: done in 0.390932 secs using 397.3% CPU
-Iteration 600 / LogL: -2579.869 / Time: 0h:3m:19s (0h:0m:12s left)
-Optimizing NNI: done in 0.50528 secs using 372.5% CPU
-Optimizing NNI: done in 0.305106 secs using 381.1% CPU
-Optimizing NNI: done in 0.288361 secs using 395.9% CPU
-Optimizing NNI: done in 0.31999 secs using 395% CPU
-Optimizing NNI: done in 0.417003 secs using 396.3% CPU
-Optimizing NNI: done in 0.308197 secs using 392% CPU
-Optimizing NNI: done in 0.255038 secs using 391.7% CPU
-Optimizing NNI: done in 0.29605 secs using 395.9% CPU
-Optimizing NNI: done in 0.250743 secs using 395.1% CPU
-Optimizing NNI: done in 0.254584 secs using 389.7% CPU
-Iteration 610 / LogL: -2591.864 / Time: 0h:3m:22s (0h:0m:9s left)
-Optimizing NNI: done in 0.297214 secs using 393.7% CPU
-Optimizing NNI: done in 0.305151 secs using 387.1% CPU
-Optimizing NNI: done in 0.210392 secs using 392.8% CPU
-Optimizing NNI: done in 0.257315 secs using 395.3% CPU
-Optimizing NNI: done in 0.285953 secs using 389.4% CPU
-Optimizing NNI: done in 0.256475 secs using 395.2% CPU
-Optimizing NNI: done in 0.303317 secs using 393.8% CPU
-Optimizing NNI: done in 0.253041 secs using 397.2% CPU
-Optimizing NNI: done in 0.509316 secs using 370.2% CPU
-Optimizing NNI: done in 0.290001 secs using 380.6% CPU
-Iteration 620 / LogL: -2603.060 / Time: 0h:3m:26s (0h:0m:5s left)
-Optimizing NNI: done in 0.247204 secs using 392.9% CPU
-Optimizing NNI: done in 0.318952 secs using 385.9% CPU
-Optimizing NNI: done in 0.360379 secs using 389.3% CPU
-Optimizing NNI: done in 0.259141 secs using 391.7% CPU
-Optimizing NNI: done in 0.210384 secs using 395.7% CPU
-Optimizing NNI: done in 0.371884 secs using 396.1% CPU
-Optimizing NNI: done in 0.311132 secs using 389.3% CPU
-Optimizing NNI: done in 0.370227 secs using 397.9% CPU
-Optimizing NNI: done in 0.308326 secs using 395.2% CPU
-Optimizing NNI: done in 0.29823 secs using 392.4% CPU
-Iteration 630 / LogL: -2580.792 / Time: 0h:3m:29s (0h:0m:2s left)
-Optimizing NNI: done in 0.264649 secs using 397.5% CPU
-Optimizing NNI: done in 0.361644 secs using 394.4% CPU
-Optimizing NNI: done in 0.300131 secs using 397.2% CPU
-Optimizing NNI: done in 0.159247 secs using 396.5% CPU
-Optimizing NNI: done in 0.348703 secs using 398.2% CPU
-Optimizing NNI: done in 0.569509 secs using 370.9% CPU
-Optimizing NNI: done in 0.301868 secs using 391.7% CPU
-Optimizing NNI: done in 0.260458 secs using 392.4% CPU
-Optimizing NNI: done in 0.336165 secs using 394.7% CPU
-TREE SEARCH COMPLETED AFTER 639 ITERATIONS / Time: 0h:3m:32s
+BETTER TREE FOUND at iteration 250: -2580.885
+Iteration 250 / LogL: -2580.885 / Time: 0h:1m:41s (0h:0m:40s left)
+Optimizing NNI: done in 0.271094 secs using 194% CPU
+Optimizing NNI: done in 0.348714 secs using 191.8% CPU
+Optimizing NNI: done in 0.448942 secs using 196% CPU
+Optimizing NNI: done in 0.329924 secs using 199.4% CPU
+Optimizing NNI: done in 0.390241 secs using 197.4% CPU
+Optimizing NNI: done in 0.340073 secs using 197.6% CPU
+Optimizing NNI: done in 0.377899 secs using 198.4% CPU
+Optimizing NNI: done in 0.339307 secs using 198.6% CPU
+Optimizing NNI: done in 0.443308 secs using 195.6% CPU
+Optimizing NNI: done in 0.273131 secs using 196.6% CPU
+Iteration 260 / LogL: -2581.765 / Time: 0h:1m:44s (0h:0m:36s left)
+Optimizing NNI: done in 0.387422 secs using 196% CPU
+Optimizing NNI: done in 0.415829 secs using 197% CPU
+Optimizing NNI: done in 0.3193 secs using 189% CPU
+Optimizing NNI: done in 0.425089 secs using 196% CPU
+Optimizing NNI: done in 0.331102 secs using 199% CPU
+Optimizing NNI: done in 0.32075 secs using 194.7% CPU
+Optimizing NNI: done in 0.439249 secs using 198.3% CPU
+Optimizing NNI: done in 0.458817 secs using 197.6% CPU
+Optimizing NNI: done in 0.372601 secs using 195.4% CPU
+Optimizing NNI: done in 0.677597 secs using 197.4% CPU
+Iteration 270 / LogL: -2581.881 / Time: 0h:1m:49s (0h:0m:32s left)
+Optimizing NNI: done in 0.409567 secs using 196.7% CPU
+Optimizing NNI: done in 0.375429 secs using 196.9% CPU
+Optimizing NNI: done in 0.330922 secs using 194.2% CPU
+Optimizing NNI: done in 0.397221 secs using 191.6% CPU
+Optimizing NNI: done in 0.344543 secs using 192.8% CPU
+Optimizing NNI: done in 0.314885 secs using 196.5% CPU
+Optimizing NNI: done in 0.404887 secs using 188.8% CPU
+BETTER TREE FOUND at iteration 277: -2580.885
+Optimizing NNI: done in 0.575732 secs using 189.6% CPU
+Optimizing NNI: done in 0.43107 secs using 194.6% CPU
+Optimizing NNI: done in 0.401042 secs using 185.6% CPU
+Iteration 280 / LogL: -2584.908 / Time: 0h:1m:53s (0h:0m:39s left)
+Optimizing NNI: done in 0.524545 secs using 193.8% CPU
+Optimizing NNI: done in 0.439861 secs using 185.2% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 282: -2580.669
+Optimizing NNI: done in 0.299369 secs using 194.8% CPU
+Optimizing NNI: done in 0.347422 secs using 199% CPU
+Optimizing NNI: done in 0.43919 secs using 196.4% CPU
+Optimizing NNI: done in 0.452033 secs using 197.1% CPU
+BETTER TREE FOUND at iteration 286: -2580.669
+Optimizing NNI: done in 0.42673 secs using 194.6% CPU
+Optimizing NNI: done in 0.351911 secs using 199.9% CPU
+Optimizing NNI: done in 0.310574 secs using 195.3% CPU
+BETTER TREE FOUND at iteration 289: -2580.669
+Optimizing NNI: done in 0.495199 secs using 194.4% CPU
+Iteration 290 / LogL: -2581.865 / Time: 0h:1m:57s (0h:0m:40s left)
+Optimizing NNI: done in 0.298891 secs using 189.3% CPU
+Optimizing NNI: done in 0.4864 secs using 187.9% CPU
+Optimizing NNI: done in 0.401001 secs using 186.7% CPU
+Optimizing NNI: done in 0.35555 secs using 195.5% CPU
+Optimizing NNI: done in 0.386234 secs using 187.9% CPU
+BETTER TREE FOUND at iteration 295: -2580.668
+Optimizing NNI: done in 0.414518 secs using 191.6% CPU
+Optimizing NNI: done in 0.385816 secs using 198.2% CPU
+Optimizing NNI: done in 0.386658 secs using 195.1% CPU
+Optimizing NNI: done in 0.38417 secs using 193.4% CPU
+Optimizing NNI: done in 0.413564 secs using 191.9% CPU
+Iteration 300 / LogL: -2587.142 / Time: 0h:2m:1s (0h:0m:38s left)
+Optimizing NNI: done in 0.593622 secs using 188.9% CPU
+Optimizing NNI: done in 0.510571 secs using 192.4% CPU
+BETTER TREE FOUND at iteration 302: -2580.668
+Optimizing NNI: done in 0.274229 secs using 199.2% CPU
+Optimizing NNI: done in 0.384596 secs using 196.7% CPU
+Optimizing NNI: done in 0.336176 secs using 189.1% CPU
+Optimizing NNI: done in 0.320804 secs using 194.7% CPU
+Optimizing NNI: done in 0.449645 secs using 195.1% CPU
+Optimizing NNI: done in 0.295832 secs using 194.3% CPU
+Optimizing NNI: done in 0.452069 secs using 193.7% CPU
+Optimizing NNI: done in 0.583537 secs using 193.1% CPU
+Iteration 310 / LogL: -2587.443 / Time: 0h:2m:6s (0h:0m:37s left)
+Optimizing NNI: done in 0.381809 secs using 188% CPU
+Optimizing NNI: done in 0.459521 secs using 195.7% CPU
+Optimizing NNI: done in 0.382193 secs using 197.3% CPU
+Optimizing NNI: done in 0.34296 secs using 195.6% CPU
+Optimizing NNI: done in 0.276021 secs using 197.1% CPU
+Optimizing NNI: done in 0.332305 secs using 196.3% CPU
+Optimizing NNI: done in 0.418805 secs using 194.5% CPU
+Optimizing NNI: done in 0.507947 secs using 192.7% CPU
+Optimizing NNI: done in 0.363891 secs using 196.8% CPU
+Optimizing NNI: done in 0.454661 secs using 193.2% CPU
+Iteration 320 / LogL: -2587.875 / Time: 0h:2m:10s (0h:0m:33s left)
+Optimizing NNI: done in 0.335084 secs using 198.9% CPU
+Optimizing NNI: done in 0.38364 secs using 195.7% CPU
+Optimizing NNI: done in 0.336881 secs using 197.4% CPU
+Optimizing NNI: done in 0.267852 secs using 195.3% CPU
+BETTER TREE FOUND at iteration 324: -2580.668
+Optimizing NNI: done in 0.431788 secs using 197.2% CPU
+Optimizing NNI: done in 0.331761 secs using 198.8% CPU
+Optimizing NNI: done in 0.381394 secs using 196.5% CPU
+Optimizing NNI: done in 0.339046 secs using 193.1% CPU
+Optimizing NNI: done in 0.336406 secs using 193.9% CPU
+Optimizing NNI: done in 0.328075 secs using 197.5% CPU
+Iteration 330 / LogL: -2580.670 / Time: 0h:2m:13s (0h:0m:38s left)
+Optimizing NNI: done in 0.393245 secs using 199.7% CPU
+Optimizing NNI: done in 0.329006 secs using 198.2% CPU
+Optimizing NNI: done in 0.314334 secs using 199.2% CPU
+Optimizing NNI: done in 0.362755 secs using 195.9% CPU
+Optimizing NNI: done in 0.264638 secs using 195.2% CPU
+Optimizing NNI: done in 0.424873 secs using 196% CPU
+Optimizing NNI: done in 0.263487 secs using 198.7% CPU
+Optimizing NNI: done in 0.440943 secs using 197.1% CPU
+Optimizing NNI: done in 0.368679 secs using 196.6% CPU
+Optimizing NNI: done in 0.519408 secs using 195.4% CPU
+Iteration 340 / LogL: -2604.858 / Time: 0h:2m:17s (0h:0m:34s left)
+Optimizing NNI: done in 0.268236 secs using 197.9% CPU
+Optimizing NNI: done in 0.420069 secs using 197.1% CPU
+Optimizing NNI: done in 0.27004 secs using 197.5% CPU
+BETTER TREE FOUND at iteration 343: -2580.668
+Optimizing NNI: done in 0.328948 secs using 197.3% CPU
+Optimizing NNI: done in 0.447587 secs using 197.4% CPU
+Optimizing NNI: done in 0.264617 secs using 196.7% CPU
+Optimizing NNI: done in 0.368548 secs using 196.6% CPU
+Optimizing NNI: done in 0.438482 secs using 198.5% CPU
+Optimizing NNI: done in 0.433009 secs using 196.1% CPU
+Optimizing NNI: done in 0.407179 secs using 195.1% CPU
+Iteration 350 / LogL: -2582.003 / Time: 0h:2m:21s (0h:0m:37s left)
+Optimizing NNI: done in 0.341213 secs using 193.5% CPU
+Optimizing NNI: done in 0.315033 secs using 193.9% CPU
+Optimizing NNI: done in 0.327027 secs using 196.2% CPU
+Optimizing NNI: done in 0.379051 secs using 196.7% CPU
+Optimizing NNI: done in 0.494962 secs using 196.2% CPU
+Optimizing NNI: done in 0.387965 secs using 196.9% CPU
+Optimizing NNI: done in 0.331328 secs using 193% CPU
+Optimizing NNI: done in 0.43215 secs using 199% CPU
+Optimizing NNI: done in 0.343384 secs using 197.8% CPU
+Optimizing NNI: done in 0.401794 secs using 189.5% CPU
+Iteration 360 / LogL: -2580.669 / Time: 0h:2m:25s (0h:0m:33s left)
+Optimizing NNI: done in 0.33211 secs using 193.9% CPU
+Optimizing NNI: done in 0.331493 secs using 200% CPU
+Optimizing NNI: done in 0.452638 secs using 195.4% CPU
+Optimizing NNI: done in 0.391491 secs using 196% CPU
+Optimizing NNI: done in 0.54392 secs using 196.3% CPU
+Optimizing NNI: done in 0.34358 secs using 193.1% CPU
+Optimizing NNI: done in 0.440148 secs using 195.4% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 367: -2580.300
+Optimizing NNI: done in 0.339065 secs using 194.1% CPU
+Optimizing NNI: done in 0.338541 secs using 194.5% CPU
+Optimizing NNI: done in 0.321823 secs using 194.5% CPU
+Iteration 370 / LogL: -2584.526 / Time: 0h:2m:29s (0h:0m:39s left)
+Optimizing NNI: done in 0.33253 secs using 196% CPU
+Optimizing NNI: done in 0.394769 secs using 196.2% CPU
+Optimizing NNI: done in 0.365983 secs using 196% CPU
+Optimizing NNI: done in 0.538213 secs using 188.4% CPU
+Optimizing NNI: done in 0.332732 secs using 195% CPU
+Optimizing NNI: done in 0.440361 secs using 195.4% CPU
+Optimizing NNI: done in 0.48653 secs using 194.4% CPU
+Optimizing NNI: done in 0.523926 secs using 187.7% CPU
+Optimizing NNI: done in 0.28488 secs using 193.9% CPU
+Optimizing NNI: done in 0.377223 secs using 198.6% CPU
+Iteration 380 / LogL: -2580.300 / Time: 0h:2m:33s (0h:0m:35s left)
+Optimizing NNI: done in 0.36457 secs using 191% CPU
+Optimizing NNI: done in 0.421088 secs using 191% CPU
+Optimizing NNI: done in 0.37881 secs using 198% CPU
+Optimizing NNI: done in 0.333706 secs using 191.9% CPU
+Optimizing NNI: done in 0.356521 secs using 195.1% CPU
+Optimizing NNI: done in 0.38725 secs using 197% CPU
+Optimizing NNI: done in 0.342625 secs using 194.5% CPU
+Optimizing NNI: done in 0.454222 secs using 197.6% CPU
+Optimizing NNI: done in 0.337467 secs using 200.6% CPU
+Optimizing NNI: done in 0.255673 secs using 197% CPU
+Iteration 390 / LogL: -2580.699 / Time: 0h:2m:37s (0h:0m:31s left)
+Optimizing NNI: done in 0.34844 secs using 195% CPU
+Optimizing NNI: done in 0.331082 secs using 196.6% CPU
+Optimizing NNI: done in 0.340042 secs using 199.7% CPU
+Optimizing NNI: done in 0.339464 secs using 188.3% CPU
+Optimizing NNI: done in 0.483889 secs using 197.5% CPU
+Optimizing NNI: done in 0.194228 secs using 200.3% CPU
+Optimizing NNI: done in 0.352204 secs using 192.6% CPU
+Optimizing NNI: done in 0.522375 secs using 192.5% CPU
+Optimizing NNI: done in 0.542922 secs using 191.9% CPU
+Optimizing NNI: done in 0.363078 secs using 185.8% CPU
+Iteration 400 / LogL: -2586.345 / Time: 0h:2m:41s (0h:0m:27s left)
+Optimizing NNI: done in 0.350704 secs using 194.6% CPU
+Optimizing NNI: done in 0.307514 secs using 189.5% CPU
+Optimizing NNI: done in 0.294935 secs using 189.4% CPU
+Optimizing NNI: done in 0.422088 secs using 193.7% CPU
+Optimizing NNI: done in 0.347692 secs using 189.4% CPU
+Optimizing NNI: done in 0.343698 secs using 194.2% CPU
+Optimizing NNI: done in 0.42268 secs using 187.8% CPU
+Optimizing NNI: done in 0.355255 secs using 195.6% CPU
+Optimizing NNI: done in 0.53628 secs using 188% CPU
+Optimizing NNI: done in 0.476269 secs using 194.7% CPU
+Iteration 410 / LogL: -2586.256 / Time: 0h:2m:45s (0h:0m:23s left)
+Optimizing NNI: done in 0.559571 secs using 186.4% CPU
+Optimizing NNI: done in 0.424666 secs using 183.7% CPU
+Optimizing NNI: done in 0.473589 secs using 196.3% CPU
+Optimizing NNI: done in 0.281916 secs using 197.6% CPU
+Optimizing NNI: done in 0.407795 secs using 197.9% CPU
+Optimizing NNI: done in 0.412844 secs using 193.9% CPU
+Optimizing NNI: done in 0.360921 secs using 193.1% CPU
+Optimizing NNI: done in 0.34598 secs using 194.8% CPU
+Optimizing NNI: done in 0.326801 secs using 191.7% CPU
+Optimizing NNI: done in 0.432931 secs using 196.1% CPU
+Iteration 420 / LogL: -2585.639 / Time: 0h:2m:49s (0h:0m:19s left)
+Optimizing NNI: done in 0.37762 secs using 197.4% CPU
+Optimizing NNI: done in 0.346937 secs using 195.6% CPU
+Optimizing NNI: done in 0.406144 secs using 191.6% CPU
+Optimizing NNI: done in 0.418026 secs using 191.8% CPU
+Optimizing NNI: done in 0.366181 secs using 191.8% CPU
+Optimizing NNI: done in 0.359933 secs using 194.2% CPU
+Optimizing NNI: done in 0.356199 secs using 195.4% CPU
+Optimizing NNI: done in 0.275123 secs using 197.4% CPU
+Optimizing NNI: done in 0.339323 secs using 195.5% CPU
+BETTER TREE FOUND at iteration 429: -2580.300
+Optimizing NNI: done in 0.418207 secs using 199.5% CPU
+Iteration 430 / LogL: -2622.418 / Time: 0h:2m:53s (0h:0m:40s left)
+Optimizing NNI: done in 0.275519 secs using 195.7% CPU
+Optimizing NNI: done in 0.526057 secs using 191.8% CPU
+Optimizing NNI: done in 0.356309 secs using 196.4% CPU
+BETTER TREE FOUND at iteration 433: -2580.299
+Optimizing NNI: done in 0.395199 secs using 196.1% CPU
+Optimizing NNI: done in 0.419362 secs using 196.2% CPU
+Optimizing NNI: done in 0.438574 secs using 196.6% CPU
+Optimizing NNI: done in 0.369314 secs using 198.6% CPU
+Optimizing NNI: done in 0.393658 secs using 199.6% CPU
+Optimizing NNI: done in 0.37099 secs using 197.1% CPU
+Optimizing NNI: done in 0.328063 secs using 193.9% CPU
+Iteration 440 / LogL: -2588.896 / Time: 0h:2m:57s (0h:0m:37s left)
+Optimizing NNI: done in 0.439142 secs using 196.5% CPU
+Optimizing NNI: done in 0.500535 secs using 198.3% CPU
+Optimizing NNI: done in 0.277585 secs using 194.8% CPU
+Optimizing NNI: done in 0.359121 secs using 195.7% CPU
+Optimizing NNI: done in 0.39602 secs using 197.8% CPU
+Optimizing NNI: done in 0.273216 secs using 196.6% CPU
+Optimizing NNI: done in 0.3701 secs using 197.3% CPU
+BETTER TREE FOUND at iteration 447: -2580.299
+Optimizing NNI: done in 0.3119 secs using 197.5% CPU
+Optimizing NNI: done in 0.552924 secs using 194.7% CPU
+Optimizing NNI: done in 0.41298 secs using 196.9% CPU
+Iteration 450 / LogL: -2580.301 / Time: 0h:3m:1s (0h:0m:39s left)
+Optimizing NNI: done in 0.334858 secs using 196.8% CPU
+Optimizing NNI: done in 0.370454 secs using 196.1% CPU
+Optimizing NNI: done in 0.27567 secs using 194.3% CPU
+Optimizing NNI: done in 0.417007 secs using 194% CPU
+Optimizing NNI: done in 0.342425 secs using 198.1% CPU
+Optimizing NNI: done in 0.337357 secs using 196% CPU
+Optimizing NNI: done in 0.336929 secs using 199.7% CPU
+Optimizing NNI: done in 0.33728 secs using 196.1% CPU
+Optimizing NNI: done in 0.508817 secs using 197.4% CPU
+Optimizing NNI: done in 0.314975 secs using 197.8% CPU
+Iteration 460 / LogL: -2584.332 / Time: 0h:3m:5s (0h:0m:35s left)
+Optimizing NNI: done in 0.489683 secs using 198.7% CPU
+Optimizing NNI: done in 0.278496 secs using 197.7% CPU
+Optimizing NNI: done in 0.41261 secs using 198.6% CPU
+Optimizing NNI: done in 0.334923 secs using 194.4% CPU
+Optimizing NNI: done in 0.322083 secs using 196.9% CPU
+Optimizing NNI: done in 0.344788 secs using 196.3% CPU
+Optimizing NNI: done in 0.330774 secs using 195.5% CPU
+Optimizing NNI: done in 0.416466 secs using 194.1% CPU
+Optimizing NNI: done in 0.335648 secs using 197.7% CPU
+Optimizing NNI: done in 0.380046 secs using 195.8% CPU
+Iteration 470 / LogL: -2585.722 / Time: 0h:3m:9s (0h:0m:31s left)
+Optimizing NNI: done in 0.413237 secs using 197.7% CPU
+Optimizing NNI: done in 0.333385 secs using 193.6% CPU
+Optimizing NNI: done in 0.486077 secs using 198.7% CPU
+Optimizing NNI: done in 0.366775 secs using 192.6% CPU
+Optimizing NNI: done in 0.470274 secs using 194.4% CPU
+Optimizing NNI: done in 0.284181 secs using 198.3% CPU
+Optimizing NNI: done in 0.297703 secs using 198.1% CPU
+Optimizing NNI: done in 0.338427 secs using 196.9% CPU
+Optimizing NNI: done in 0.34336 secs using 194.3% CPU
+Optimizing NNI: done in 0.473116 secs using 194.7% CPU
+Iteration 480 / LogL: -2592.324 / Time: 0h:3m:13s (0h:0m:27s left)
+Optimizing NNI: done in 0.476943 secs using 199.5% CPU
+Optimizing NNI: done in 0.306976 secs using 196.4% CPU
+Optimizing NNI: done in 0.412101 secs using 193.9% CPU
+Optimizing NNI: done in 0.327408 secs using 191.6% CPU
+Optimizing NNI: done in 0.396409 secs using 192.8% CPU
+Optimizing NNI: done in 0.336501 secs using 196.3% CPU
+Optimizing NNI: done in 0.427925 secs using 194.4% CPU
+BETTER TREE FOUND at iteration 487: -2580.299
+Optimizing NNI: done in 0.309213 secs using 199.2% CPU
+Optimizing NNI: done in 0.253227 secs using 196.4% CPU
+Optimizing NNI: done in 0.379473 secs using 200.1% CPU
+Iteration 490 / LogL: -2580.301 / Time: 0h:3m:16s (0h:0m:39s left)
+Optimizing NNI: done in 0.405701 secs using 190.7% CPU
+Optimizing NNI: done in 0.363751 secs using 195.6% CPU
+Optimizing NNI: done in 0.456559 secs using 195.5% CPU
+Optimizing NNI: done in 0.342444 secs using 194.6% CPU
+Optimizing NNI: done in 0.442061 secs using 195.9% CPU
+Optimizing NNI: done in 0.329579 secs using 197% CPU
+Optimizing NNI: done in 0.264462 secs using 196.4% CPU
+Optimizing NNI: done in 0.441373 secs using 197.9% CPU
+Optimizing NNI: done in 0.410889 secs using 189.5% CPU
+Optimizing NNI: done in 0.324379 secs using 196.2% CPU
+Iteration 500 / LogL: -2586.003 / Time: 0h:3m:20s (0h:0m:35s left)
+Optimizing NNI: done in 0.413719 secs using 195.7% CPU
+Optimizing NNI: done in 0.413294 secs using 190% CPU
+Optimizing NNI: done in 0.320216 secs using 198.7% CPU
+Optimizing NNI: done in 0.398004 secs using 198.3% CPU
+Optimizing NNI: done in 0.367682 secs using 185.8% CPU
+Optimizing NNI: done in 0.472657 secs using 193.8% CPU
+Optimizing NNI: done in 0.411061 secs using 188.5% CPU
+Optimizing NNI: done in 0.420755 secs using 184.5% CPU
+Optimizing NNI: done in 0.329211 secs using 191.1% CPU
+Optimizing NNI: done in 0.377689 secs using 182.5% CPU
+Iteration 510 / LogL: -2582.008 / Time: 0h:3m:24s (0h:0m:31s left)
+Optimizing NNI: done in 0.388519 secs using 190.5% CPU
+Optimizing NNI: done in 0.352367 secs using 194.2% CPU
+Optimizing NNI: done in 0.380367 secs using 179.7% CPU
+Optimizing NNI: done in 0.363856 secs using 185.6% CPU
+Optimizing NNI: done in 0.619144 secs using 187.1% CPU
+Optimizing NNI: done in 0.61486 secs using 194.9% CPU
+Optimizing NNI: done in 0.398886 secs using 188.2% CPU
+Optimizing NNI: done in 0.340164 secs using 194.1% CPU
+Optimizing NNI: done in 0.345092 secs using 193.8% CPU
+Optimizing NNI: done in 0.466987 secs using 195.1% CPU
+Iteration 520 / LogL: -2587.659 / Time: 0h:3m:29s (0h:0m:27s left)
+Optimizing NNI: done in 0.277051 secs using 196.7% CPU
+Optimizing NNI: done in 0.3466 secs using 195.8% CPU
+Optimizing NNI: done in 0.277008 secs using 196.7% CPU
+Optimizing NNI: done in 0.369679 secs using 195% CPU
+Optimizing NNI: done in 0.529419 secs using 196.7% CPU
+Optimizing NNI: done in 0.320577 secs using 192.3% CPU
+Optimizing NNI: done in 0.405402 secs using 195.7% CPU
+Optimizing NNI: done in 0.444497 secs using 197.2% CPU
+Optimizing NNI: done in 0.263477 secs using 192.3% CPU
+Optimizing NNI: done in 0.263168 secs using 195.7% CPU
+Iteration 530 / LogL: -2596.403 / Time: 0h:3m:33s (0h:0m:22s left)
+Optimizing NNI: done in 0.496345 secs using 198.3% CPU
+Optimizing NNI: done in 0.373741 secs using 197.4% CPU
+Optimizing NNI: done in 0.454493 secs using 196.8% CPU
+Optimizing NNI: done in 0.36467 secs using 197.6% CPU
+Optimizing NNI: done in 0.412404 secs using 196.7% CPU
+BETTER TREE FOUND at iteration 535: -2580.299
+Optimizing NNI: done in 0.425821 secs using 198.6% CPU
+Optimizing NNI: done in 0.37914 secs using 197.1% CPU
+Optimizing NNI: done in 0.373912 secs using 198.4% CPU
+BETTER TREE FOUND at iteration 538: -2580.298
+Optimizing NNI: done in 0.358411 secs using 200.2% CPU
+Optimizing NNI: done in 0.358985 secs using 198% CPU
+Iteration 540 / LogL: -2580.428 / Time: 0h:3m:37s (0h:0m:39s left)
+Optimizing NNI: done in 0.435471 secs using 199.1% CPU
+Optimizing NNI: done in 0.44946 secs using 198.6% CPU
+Optimizing NNI: done in 0.452474 secs using 196.4% CPU
+Optimizing NNI: done in 0.365378 secs using 199.6% CPU
+Optimizing NNI: done in 0.379435 secs using 194.5% CPU
+Optimizing NNI: done in 0.514531 secs using 197.9% CPU
+Optimizing NNI: done in 0.40212 secs using 197.5% CPU
+Optimizing NNI: done in 0.309288 secs using 195.7% CPU
+Optimizing NNI: done in 0.369976 secs using 195.1% CPU
+Optimizing NNI: done in 0.329091 secs using 191.1% CPU
+Iteration 550 / LogL: -2580.302 / Time: 0h:3m:41s (0h:0m:35s left)
+Optimizing NNI: done in 0.458417 secs using 197.7% CPU
+Optimizing NNI: done in 0.396384 secs using 196.9% CPU
+Optimizing NNI: done in 0.316018 secs using 197.4% CPU
+Optimizing NNI: done in 0.347363 secs using 196.7% CPU
+Optimizing NNI: done in 0.404658 secs using 195.9% CPU
+Optimizing NNI: done in 0.397603 secs using 195.5% CPU
+Optimizing NNI: done in 0.328142 secs using 199.9% CPU
+Optimizing NNI: done in 0.415353 secs using 197.1% CPU
+Optimizing NNI: done in 0.514972 secs using 197.9% CPU
+Optimizing NNI: done in 0.311842 secs using 194.9% CPU
+Iteration 560 / LogL: -2592.401 / Time: 0h:3m:45s (0h:0m:31s left)
+Optimizing NNI: done in 0.2764 secs using 198.1% CPU
+Optimizing NNI: done in 0.376687 secs using 198.7% CPU
+Optimizing NNI: done in 0.325296 secs using 198.2% CPU
+Optimizing NNI: done in 0.386876 secs using 198.2% CPU
+Optimizing NNI: done in 0.334146 secs using 199.2% CPU
+Optimizing NNI: done in 0.386757 secs using 196.2% CPU
+Optimizing NNI: done in 0.270835 secs using 196% CPU
+Optimizing NNI: done in 0.331636 secs using 200% CPU
+Optimizing NNI: done in 0.314814 secs using 197.8% CPU
+Optimizing NNI: done in 0.267699 secs using 200.1% CPU
+Iteration 570 / LogL: -2580.301 / Time: 0h:3m:48s (0h:0m:27s left)
+Optimizing NNI: done in 0.36262 secs using 197.1% CPU
+Optimizing NNI: done in 0.40473 secs using 197.6% CPU
+Optimizing NNI: done in 0.337183 secs using 197.3% CPU
+Optimizing NNI: done in 0.338268 secs using 194.5% CPU
+Optimizing NNI: done in 0.378906 secs using 196.1% CPU
+Optimizing NNI: done in 0.356526 secs using 192% CPU
+Optimizing NNI: done in 0.332019 secs using 198.8% CPU
+Optimizing NNI: done in 0.378181 secs using 195.2% CPU
+Optimizing NNI: done in 0.389065 secs using 196.4% CPU
+Optimizing NNI: done in 0.322726 secs using 200.4% CPU
+Iteration 580 / LogL: -2580.298 / Time: 0h:3m:52s (0h:0m:23s left)
+Optimizing NNI: done in 0.271016 secs using 197.2% CPU
+Optimizing NNI: done in 0.334883 secs using 197.6% CPU
+Optimizing NNI: done in 0.379342 secs using 198.1% CPU
+Optimizing NNI: done in 0.509672 secs using 197.3% CPU
+Optimizing NNI: done in 0.376108 secs using 193.3% CPU
+Optimizing NNI: done in 0.469086 secs using 198.9% CPU
+Optimizing NNI: done in 0.392803 secs using 197.8% CPU
+Optimizing NNI: done in 0.379613 secs using 196.8% CPU
+Optimizing NNI: done in 0.35761 secs using 197% CPU
+Optimizing NNI: done in 0.40493 secs using 195.8% CPU
+Iteration 590 / LogL: -2595.819 / Time: 0h:3m:56s (0h:0m:19s left)
+Optimizing NNI: done in 0.313472 secs using 197% CPU
+Optimizing NNI: done in 0.439187 secs using 198.4% CPU
+Optimizing NNI: done in 0.332556 secs using 196.2% CPU
+Optimizing NNI: done in 0.389532 secs using 195.5% CPU
+Optimizing NNI: done in 0.396395 secs using 195.8% CPU
+Optimizing NNI: done in 0.31807 secs using 199.3% CPU
+BETTER TREE FOUND at iteration 596: -2580.298
+Optimizing NNI: done in 0.333701 secs using 197.1% CPU
+Optimizing NNI: done in 0.388487 secs using 195.7% CPU
+Optimizing NNI: done in 0.383991 secs using 199% CPU
+Optimizing NNI: done in 0.411899 secs using 196.8% CPU
+Iteration 600 / LogL: -2580.299 / Time: 0h:4m:0s (0h:0m:38s left)
+Optimizing NNI: done in 0.399634 secs using 196.1% CPU
+Optimizing NNI: done in 0.265034 secs using 200.8% CPU
+Optimizing NNI: done in 0.319759 secs using 197.6% CPU
+Optimizing NNI: done in 0.472921 secs using 195.6% CPU
+Optimizing NNI: done in 0.36538 secs using 195.2% CPU
+Optimizing NNI: done in 0.572582 secs using 195.6% CPU
+Optimizing NNI: done in 0.371426 secs using 199.1% CPU
+Optimizing NNI: done in 0.430773 secs using 197.5% CPU
+Optimizing NNI: done in 0.470714 secs using 199.4% CPU
+Optimizing NNI: done in 0.375384 secs using 197.9% CPU
+Iteration 610 / LogL: -2587.925 / Time: 0h:4m:4s (0h:0m:34s left)
+Optimizing NNI: done in 0.383 secs using 199% CPU
+Optimizing NNI: done in 0.59036 secs using 198.2% CPU
+Optimizing NNI: done in 0.475673 secs using 197.6% CPU
+Optimizing NNI: done in 0.426146 secs using 197.6% CPU
+Optimizing NNI: done in 0.311379 secs using 196.3% CPU
+Optimizing NNI: done in 0.309288 secs using 196.9% CPU
+Optimizing NNI: done in 0.256009 secs using 196.9% CPU
+Optimizing NNI: done in 0.24719 secs using 197.1% CPU
+Optimizing NNI: done in 0.316446 secs using 198.5% CPU
+Optimizing NNI: done in 0.336099 secs using 198.4% CPU
+Iteration 620 / LogL: -2580.428 / Time: 0h:4m:8s (0h:0m:30s left)
+Optimizing NNI: done in 0.402975 secs using 194.3% CPU
+Optimizing NNI: done in 0.319531 secs using 197.6% CPU
+Optimizing NNI: done in 0.259484 secs using 197.1% CPU
+Optimizing NNI: done in 0.262896 secs using 198.9% CPU
+Optimizing NNI: done in 0.411656 secs using 197.2% CPU
+Optimizing NNI: done in 0.308188 secs using 197.3% CPU
+Optimizing NNI: done in 0.378059 secs using 193.1% CPU
+Optimizing NNI: done in 0.434584 secs using 199.4% CPU
+Optimizing NNI: done in 0.307653 secs using 198.8% CPU
+Optimizing NNI: done in 0.369148 secs using 192.1% CPU
+Iteration 630 / LogL: -2581.341 / Time: 0h:4m:11s (0h:0m:26s left)
+Optimizing NNI: done in 0.519397 secs using 196.1% CPU
+Optimizing NNI: done in 0.235161 secs using 195.2% CPU
+Optimizing NNI: done in 0.484628 secs using 196.6% CPU
+Optimizing NNI: done in 0.43024 secs using 195.5% CPU
+Optimizing NNI: done in 0.31928 secs using 199.9% CPU
+Optimizing NNI: done in 0.366428 secs using 196.8% CPU
+Optimizing NNI: done in 0.254677 secs using 200.2% CPU
+Optimizing NNI: done in 0.442196 secs using 198.6% CPU
+Optimizing NNI: done in 0.257597 secs using 199.4% CPU
+Optimizing NNI: done in 0.349319 secs using 198.1% CPU
+Iteration 640 / LogL: -2589.862 / Time: 0h:4m:15s (0h:0m:22s left)
+Optimizing NNI: done in 0.367501 secs using 198% CPU
+Optimizing NNI: done in 0.295107 secs using 196.2% CPU
+Optimizing NNI: done in 0.358765 secs using 197% CPU
+Optimizing NNI: done in 0.324707 secs using 196.1% CPU
+Optimizing NNI: done in 0.374209 secs using 198.4% CPU
+Optimizing NNI: done in 0.295482 secs using 197.5% CPU
+Optimizing NNI: done in 0.376294 secs using 195.7% CPU
+Optimizing NNI: done in 0.254083 secs using 197.2% CPU
+Optimizing NNI: done in 0.388726 secs using 197.7% CPU
+Optimizing NNI: done in 0.379084 secs using 198.9% CPU
+Iteration 650 / LogL: -2580.543 / Time: 0h:4m:19s (0h:0m:18s left)
+Optimizing NNI: done in 0.40293 secs using 199% CPU
+Optimizing NNI: done in 0.422569 secs using 195.4% CPU
+Optimizing NNI: done in 0.338045 secs using 197.9% CPU
+Optimizing NNI: done in 0.296529 secs using 195.8% CPU
+BETTER TREE FOUND at iteration 654: -2580.297
+Optimizing NNI: done in 0.432534 secs using 196% CPU
+Optimizing NNI: done in 0.34835 secs using 196.5% CPU
+Optimizing NNI: done in 0.349638 secs using 200.6% CPU
+Optimizing NNI: done in 0.251788 secs using 192.2% CPU
+Optimizing NNI: done in 0.406991 secs using 196.3% CPU
+Optimizing NNI: done in 0.32085 secs using 196% CPU
+Iteration 660 / LogL: -2592.996 / Time: 0h:4m:22s (0h:0m:37s left)
+Optimizing NNI: done in 0.370376 secs using 198.3% CPU
+Optimizing NNI: done in 0.341807 secs using 197.1% CPU
+Optimizing NNI: done in 0.293815 secs using 193.5% CPU
+Optimizing NNI: done in 0.436877 secs using 197% CPU
+Optimizing NNI: done in 0.474583 secs using 196.1% CPU
+Optimizing NNI: done in 0.322976 secs using 198.6% CPU
+Optimizing NNI: done in 0.261979 secs using 196.2% CPU
+Optimizing NNI: done in 0.376953 secs using 198.5% CPU
+Optimizing NNI: done in 0.362506 secs using 197.1% CPU
+Optimizing NNI: done in 0.342187 secs using 197.7% CPU
+Iteration 670 / LogL: -2586.402 / Time: 0h:4m:26s (0h:0m:33s left)
+Optimizing NNI: done in 0.338621 secs using 200.3% CPU
+Optimizing NNI: done in 0.316846 secs using 198.4% CPU
+Optimizing NNI: done in 0.299742 secs using 198.7% CPU
+Optimizing NNI: done in 0.406932 secs using 195.3% CPU
+Optimizing NNI: done in 0.35072 secs using 193.5% CPU
+Optimizing NNI: done in 0.281565 secs using 196.6% CPU
+Optimizing NNI: done in 0.350555 secs using 199% CPU
+Optimizing NNI: done in 0.369271 secs using 197.2% CPU
+Optimizing NNI: done in 0.252061 secs using 192.1% CPU
+Optimizing NNI: done in 0.31177 secs using 199.9% CPU
+Iteration 680 / LogL: -2589.974 / Time: 0h:4m:30s (0h:0m:29s left)
+Optimizing NNI: done in 0.450025 secs using 197.6% CPU
+Optimizing NNI: done in 0.451525 secs using 197.4% CPU
+Optimizing NNI: done in 0.406608 secs using 196.2% CPU
+BETTER TREE FOUND at iteration 683: -2580.297
+Optimizing NNI: done in 0.319545 secs using 200% CPU
+Optimizing NNI: done in 0.254016 secs using 195.9% CPU
+Optimizing NNI: done in 0.397835 secs using 195.5% CPU
+Optimizing NNI: done in 0.366241 secs using 197.2% CPU
+Optimizing NNI: done in 0.314577 secs using 194.1% CPU
+Optimizing NNI: done in 0.359556 secs using 200.1% CPU
+Optimizing NNI: done in 0.362104 secs using 197.2% CPU
+Iteration 690 / LogL: -2581.128 / Time: 0h:4m:33s (0h:0m:36s left)
+Optimizing NNI: done in 0.313507 secs using 199.1% CPU
+Optimizing NNI: done in 0.248928 secs using 194.7% CPU
+Optimizing NNI: done in 0.329899 secs using 197.8% CPU
+Optimizing NNI: done in 0.347779 secs using 198.9% CPU
+Optimizing NNI: done in 0.319015 secs using 199% CPU
+Optimizing NNI: done in 0.292306 secs using 199.8% CPU
+Optimizing NNI: done in 0.515275 secs using 198.4% CPU
+Optimizing NNI: done in 0.510608 secs using 196.2% CPU
+Optimizing NNI: done in 0.309743 secs using 198.1% CPU
+Optimizing NNI: done in 0.591267 secs using 196.1% CPU
+Iteration 700 / LogL: -2580.298 / Time: 0h:4m:37s (0h:0m:32s left)
+Optimizing NNI: done in 0.243437 secs using 190.4% CPU
+BETTER TREE FOUND at iteration 701: -2580.297
+Optimizing NNI: done in 0.332712 secs using 196.2% CPU
+Optimizing NNI: done in 0.247621 secs using 195.3% CPU
+Optimizing NNI: done in 0.310364 secs using 195.4% CPU
+Optimizing NNI: done in 0.443977 secs using 195.5% CPU
+Optimizing NNI: done in 0.403684 secs using 197.1% CPU
+Optimizing NNI: done in 0.37056 secs using 197.1% CPU
+Optimizing NNI: done in 0.353219 secs using 199.4% CPU
+Optimizing NNI: done in 0.332834 secs using 194.9% CPU
+Optimizing NNI: done in 0.310696 secs using 199.2% CPU
+Iteration 710 / LogL: -2580.299 / Time: 0h:4m:41s (0h:0m:36s left)
+Optimizing NNI: done in 0.447954 secs using 198.2% CPU
+Optimizing NNI: done in 0.308696 secs using 198.5% CPU
+Optimizing NNI: done in 0.305855 secs using 195.4% CPU
+Optimizing NNI: done in 0.300516 secs using 197.2% CPU
+Optimizing NNI: done in 0.344478 secs using 195.1% CPU
+Optimizing NNI: done in 0.246956 secs using 193.4% CPU
+Optimizing NNI: done in 0.330242 secs using 196.6% CPU
+Optimizing NNI: done in 0.390886 secs using 197.2% CPU
+Optimizing NNI: done in 0.362749 secs using 197% CPU
+Optimizing NNI: done in 0.240434 secs using 195.8% CPU
+Iteration 720 / LogL: -2586.414 / Time: 0h:4m:44s (0h:0m:32s left)
+Optimizing NNI: done in 0.309919 secs using 195.5% CPU
+Optimizing NNI: done in 0.346469 secs using 195.6% CPU
+Optimizing NNI: done in 0.246195 secs using 194.3% CPU
+Optimizing NNI: done in 0.2417 secs using 197.6% CPU
+Optimizing NNI: done in 0.363934 secs using 196.7% CPU
+Optimizing NNI: done in 0.351302 secs using 197.8% CPU
+Optimizing NNI: done in 0.514491 secs using 198.6% CPU
+Optimizing NNI: done in 0.281659 secs using 199.2% CPU
+Optimizing NNI: done in 0.295129 secs using 198.9% CPU
+Optimizing NNI: done in 0.307214 secs using 196.4% CPU
+Iteration 730 / LogL: -2582.856 / Time: 0h:4m:48s (0h:0m:28s left)
+Optimizing NNI: done in 0.470415 secs using 191.8% CPU
+Optimizing NNI: done in 0.297837 secs using 196.2% CPU
+Optimizing NNI: done in 0.309091 secs using 198.3% CPU
+Optimizing NNI: done in 0.30426 secs using 198.1% CPU
+Optimizing NNI: done in 0.367548 secs using 197.9% CPU
+Optimizing NNI: done in 0.308446 secs using 197.3% CPU
+Optimizing NNI: done in 0.308528 secs using 197.2% CPU
+Optimizing NNI: done in 0.306197 secs using 200.6% CPU
+Optimizing NNI: done in 0.242822 secs using 197.2% CPU
+Optimizing NNI: done in 0.354518 secs using 197% CPU
+Iteration 740 / LogL: -2580.298 / Time: 0h:4m:51s (0h:0m:24s left)
+Optimizing NNI: done in 0.406391 secs using 196.1% CPU
+Optimizing NNI: done in 0.300965 secs using 195.7% CPU
+Optimizing NNI: done in 0.290095 secs using 198.8% CPU
+Optimizing NNI: done in 0.342977 secs using 199% CPU
+Optimizing NNI: done in 0.463621 secs using 197.5% CPU
+Optimizing NNI: done in 0.290105 secs using 197.9% CPU
+Optimizing NNI: done in 0.237432 secs using 196% CPU
+Optimizing NNI: done in 0.344697 secs using 198.6% CPU
+Optimizing NNI: done in 0.402581 secs using 195.2% CPU
+Optimizing NNI: done in 0.301913 secs using 199.4% CPU
+Iteration 750 / LogL: -2585.001 / Time: 0h:4m:54s (0h:0m:20s left)
+Optimizing NNI: done in 0.304195 secs using 196% CPU
+Optimizing NNI: done in 0.305965 secs using 196.7% CPU
+Optimizing NNI: done in 0.304337 secs using 199.9% CPU
+Optimizing NNI: done in 0.293199 secs using 194.1% CPU
+Optimizing NNI: done in 0.310662 secs using 197.9% CPU
+Optimizing NNI: done in 0.332055 secs using 198.8% CPU
+Optimizing NNI: done in 0.403876 secs using 197.1% CPU
+Optimizing NNI: done in 0.328058 secs using 197.5% CPU
+Optimizing NNI: done in 0.299188 secs using 192.2% CPU
+Optimizing NNI: done in 0.295852 secs using 197.4% CPU
+Iteration 760 / LogL: -2596.402 / Time: 0h:4m:58s (0h:0m:16s left)
+Optimizing NNI: done in 0.394839 secs using 197.3% CPU
+Optimizing NNI: done in 0.278248 secs using 190.5% CPU
+Optimizing NNI: done in 0.307611 secs using 195.9% CPU
+Optimizing NNI: done in 0.326371 secs using 195.2% CPU
+Optimizing NNI: done in 0.35478 secs using 199.2% CPU
+Optimizing NNI: done in 0.295306 secs using 198.9% CPU
+Optimizing NNI: done in 0.332214 secs using 198.7% CPU
+Optimizing NNI: done in 0.305753 secs using 196.8% CPU
+Optimizing NNI: done in 0.307254 secs using 193.7% CPU
+Optimizing NNI: done in 0.334041 secs using 194.6% CPU
+Iteration 770 / LogL: -2582.006 / Time: 0h:5m:1s (0h:0m:12s left)
+Optimizing NNI: done in 0.369638 secs using 195.1% CPU
+Optimizing NNI: done in 0.359418 secs using 194.6% CPU
+Optimizing NNI: done in 0.378839 secs using 192.9% CPU
+Optimizing NNI: done in 0.415021 secs using 195.4% CPU
+Optimizing NNI: done in 0.353365 secs using 194.8% CPU
+Optimizing NNI: done in 0.309593 secs using 199.5% CPU
+Optimizing NNI: done in 0.310817 secs using 197.8% CPU
+Optimizing NNI: done in 0.348489 secs using 193.7% CPU
+Optimizing NNI: done in 0.310224 secs using 198% CPU
+Optimizing NNI: done in 0.419214 secs using 198.1% CPU
+Iteration 780 / LogL: -2581.126 / Time: 0h:5m:5s (0h:0m:8s left)
+Optimizing NNI: done in 0.384838 secs using 197.6% CPU
+Optimizing NNI: done in 0.374796 secs using 198.2% CPU
+Optimizing NNI: done in 0.314705 secs using 197.9% CPU
+Optimizing NNI: done in 0.353642 secs using 198.2% CPU
+Optimizing NNI: done in 0.388695 secs using 196.7% CPU
+Optimizing NNI: done in 0.355555 secs using 195.6% CPU
+Optimizing NNI: done in 0.373491 secs using 200.6% CPU
+Optimizing NNI: done in 0.336916 secs using 198.5% CPU
+Optimizing NNI: done in 0.286947 secs using 193.4% CPU
+Optimizing NNI: done in 0.426174 secs using 197.6% CPU
+Iteration 790 / LogL: -2584.330 / Time: 0h:5m:8s (0h:0m:4s left)
+Optimizing NNI: done in 0.444653 secs using 194.4% CPU
+Optimizing NNI: done in 0.307916 secs using 200% CPU
+Optimizing NNI: done in 0.242715 secs using 197.1% CPU
+Optimizing NNI: done in 0.254088 secs using 196.1% CPU
+Optimizing NNI: done in 0.322665 secs using 194.2% CPU
+Optimizing NNI: done in 0.363924 secs using 196.7% CPU
+Optimizing NNI: done in 0.24922 secs using 193.1% CPU
+Optimizing NNI: done in 0.248078 secs using 193.5% CPU
+Optimizing NNI: done in 0.397124 secs using 196.6% CPU
+Optimizing NNI: done in 0.381828 secs using 196.4% CPU
+Iteration 800 / LogL: -2585.403 / Time: 0h:5m:12s (0h:0m:0s left)
+Optimizing NNI: done in 0.38582 secs using 198.3% CPU
+Optimizing NNI: done in 0.301943 secs using 195.4% CPU
+TREE SEARCH COMPLETED AFTER 802 ITERATIONS / Time: 0h:5m:13s
 
 --------------------------------------------------------------------
 |                    FINALIZING TREE SEARCH                        |
 --------------------------------------------------------------------
 Performs final model parameters optimization
 Estimate model parameters (epsilon = 0.010)
-1. Initial log-likelihood: -2579.761
-Optimal log-likelihood: -2579.756
-Rate parameters:  A-C: 0.57086  A-G: 0.89118  A-T: 0.32115  C-G: 0.11474  C-T: 2.45942  G-T: 1.00000
+1. Initial log-likelihood: -2580.297
+2. Current log-likelihood: -2580.280
+Optimal log-likelihood: -2580.272
+Rate parameters:  A-C: 0.54663  A-G: 0.87300  A-T: 0.30258  C-G: 0.11121  C-T: 2.37738  G-T: 1.00000
 Base frequencies:  A: 0.445  C: 0.130  G: 0.242  T: 0.182
-Site proportion and rates:  (0.155,0.336) (0.187,0.423) (0.196,0.658) (0.208,1.186) (0.214,1.452) (0.040,4.576)
-Parameters optimization took 1 rounds (0.235 sec)
-BEST SCORE FOUND : -2579.756
-Total tree length: 1.381
+Site proportion and rates:  (0.155,0.382) (0.188,0.439) (0.195,0.609) (0.200,1.108) (0.202,1.425) (0.060,3.816)
+Parameters optimization took 2 rounds (0.527 sec)
+BEST SCORE FOUND : -2580.272
+Total tree length: 1.376
 
-Total number of iterations: 639
-CPU time used for tree search: 811.398 sec (0h:13m:31s)
-Wall-clock time used for tree search: 210.527 sec (0h:3m:30s)
-Total CPU time used: 817.610 sec (0h:13m:37s)
-Total wall-clock time used: 212.512 sec (0h:3m:32s)
+Total number of iterations: 802
+CPU time used for tree search: 605.253 sec (0h:10m:5s)
+Wall-clock time used for tree search: 311.268 sec (0h:5m:11s)
+Total CPU time used: 609.729 sec (0h:10m:9s)
+Total wall-clock time used: 313.582 sec (0h:5m:13s)
 
 Analysis results written to: 
   IQ-TREE report:                IQTREE_bestTree.InWindow_4780_to_5030.iqtree
@@ -1078,4 +1283,4 @@ Analysis results written to:
   Likelihood distances:          IQTREE_bestTree.InWindow_4780_to_5030.mldist
   Screen log file:               IQTREE_bestTree.InWindow_4780_to_5030.log
 
-Date and Time: Sun Jul 23 04:30:41 2023
+Date and Time: Tue Jul 25 12:19:28 2023
