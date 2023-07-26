@@ -20,3 +20,5 @@ devtools::install on the phyloscannerR directory
 - Clarify excluded windows: 9470,9720,9480,9730,9490,9740 from windows250_VR_norms_oneline.txt (Tanya)
 
 - Clarify the option --read-names-2. It does not exists anymore! (Tanya)
+
+- Clafiry the differences in testpatstats.csv: Prop.gp.1 - Prop.gp.215 (Tanya)
