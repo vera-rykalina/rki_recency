@@ -37,7 +37,7 @@ params.windows_oneline = "${projectDir}/PhyloscannerExtra/windows250_VR_norms_on
 params.hiv_distance_normalisation = "${projectDir}/PhyloscannerExtra/HIV_DistanceNormalisationOverGenome.csv"
 params.k = 15
 
-// Parameters for PhyloTSI
+// Parameters for HIV-PhyloTSI
 params.model = "${projectDir}/Scripts/bin/Model"
 
 params.outdir = null
