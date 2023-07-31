@@ -277,7 +277,7 @@ process MAP {
     tuple val(id), path(kallistoRef), path(read1), path(read2), path(contigs), path(shiverRef), path(blast)
   
   output:
-    tuple val("${id}"), path("${id}*ref.fasta"), path("${id}_MinCov*.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
+    tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*MinCov*.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
     def wRef = shiverRef instanceof Path
