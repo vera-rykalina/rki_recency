@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
 
 # Import libraries
-import pandas as pd
-import sys
 import argparse
+import pandas as pd
+from textwrap import wrap 
 
 
 
 def join_fasta(args):
     file_in_prrt = open(args.prrt)
     file_in_int = open(args.int)
-    file_out = open(args.output, "w")
-    scount = None
+    scount = ""
     before_prrt_region = ""
     prrt_region = ""
     between_prrt_int_region = ""
     int_region = ""
     after_int_region = ""
     ref = ""
-    for position in range(1, 9719):
+    for position in range(1, 9720):
         if position < 2277:
              before_prrt_region =  before_prrt_region + "N"
         elif position >= 2277 and position < 3507:
@@ -39,10 +38,6 @@ def join_fasta(args):
                         int_region = int_region.strip("\n")
         else:
             after_int_region =  after_int_region + "N"
-            
-
-
-    
                  
     file_in_prrt.close()
     file_in_int.close()
@@ -50,19 +45,21 @@ def join_fasta(args):
     print(len(ref)) 
     print(len(prrt_region))
     print(len(int_region))
-    file_out.write(scount + "_prrt" + "_int")
-    file_out.write("\n")
-    file_out.write(ref)
+    file_out = open(args.output, "w")
+    file_out.writelines(scount + "_prrt" + "_int", )
+    file_out.writelines("\n")
+    file_out.write("\n".join(wrap(ref, 60)))
     file_out.write("\n")
     file_out.close()
  
 
 
 def main():
-    parser=argparse.ArgumentParser(description = "Merge PRRT and INT relative to position in HXB2")
-    parser.add_argument("-p", help="PRRT fasta input file", dest = "prrt", type = str, required=True)
-    parser.add_argument("-i", help="INT fasta input file", dest="int", type = str, required=True)
-    parser.add_argument("-o", help ="fastq output filename", dest = "output", type = str, required=True)
+    parser=argparse.ArgumentParser(description = "Merge PRRT and INT consensus sequences relative to positions in HXB2")
+    parser.add_argument("-p", "--prrt", help="PRRT fasta input file", dest = "prrt", type = str, required=True)
+    parser.add_argument("-i", "--int", help="INT fasta input file", dest="int", type = str, required=True)
+    parser.add_argument("-o", "--output", help ="output file", dest = "output", type = str, required=True)
+    parser.add_argument("-v", "--verbose", help="verbose", dest="verbose", action='store_true')
     parser.set_defaults(func = join_fasta)
     args=parser.parse_args()
     args.func(args)
