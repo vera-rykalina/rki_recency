@@ -24,11 +24,12 @@ params.krakendb = "/scratch/databases/kraken2_20230314/"
 // Parameters for shiver
 params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
+params.sk_primers = "${projectDir}/DataShiverInit/primers_sk.fasta"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
-params.config_CO20 = "${projectDir}/Scripts/bin/config_CO20.sh"
 params.remove_whitespace = "${projectDir}/Scripts/bin/tools/RemoveTrailingWhitespace.py"
-
+params.config_CO20 = "${projectDir}/Scripts/bin/config_CO20.sh"
+params.config = "${projectDir}/Scripts/bin/config.sh"
 
 params.outdir = null
 if (!params.outdir) {
@@ -104,10 +105,10 @@ process INITIALISATION {
   """
   shiver_init.sh \
     InitDir \
-    ${params.config_CO20} \
+    ${params.config} \
     ${params.alignment} \
     ${params.illumina_adapters} \
-    ${params.gal_primers}
+    ${params.sk_primers}
   """  
 }
 
@@ -222,7 +223,7 @@ process IVA_CONTIGS {
       -f ${reads[0]} \
       -r ${reads[1]} \
       --threads 16 \
-      --pcr_primers ${params.gal_primers} \
+      --pcr_primers ${params.sk_primers} \
       --adapters ${params.illumina_adapters} \
       --trimmomatic ${params.trimmomatic} \
       ${id}
@@ -251,7 +252,7 @@ process ALIGN_CONTIGS {
     """
     shiver_align_contigs.sh \
       ${initdir} \
-      ${params.config_CO20} \
+      ${params.config} \
       ${contigs} \
       ${id}
 
@@ -285,7 +286,7 @@ process MAP {
     """
     shiver_map_reads.sh \
         ${initdir} \
-        ${params.config_CO20} \
+        ${params.config} \
         ${contigs} \
         ${id} \
         ${blast} \
@@ -303,7 +304,7 @@ process MAP {
 
     shiver_map_reads.sh \
         ${initdir} \
-        ${params.config_CO20} \
+        ${params.config} \
         ${id}_contigs.fasta \
         ${id} \
         ${id}.blast\
