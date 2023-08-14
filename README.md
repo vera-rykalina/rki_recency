@@ -13,7 +13,7 @@ The pipeline includes the following tools:
 - HIV-phyloTSI (T. Golubchik)
 
 ## Installation
-Make sure that R with the phyloscannerR package and pyfastaq installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
+Make sure that R with the phyloscannerR package and the python pyfastaq package are  installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
 
 Download Kraken2 database and change the path accordingly in the shiver_phyloscanner_tsi_pipeline.nf if Kraken2 reports are desired.
 
