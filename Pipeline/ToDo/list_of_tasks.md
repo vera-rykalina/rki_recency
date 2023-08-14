@@ -22,3 +22,5 @@ devtools::install on the phyloscannerR directory
 - Clarify the option --read-names-2. It does not exists anymore! (Tanya)
 
 - Clafiry the differences in testpatstats.csv: Prop.gp.1 - Prop.gp.215 (Tanya)
+
+- Check on 4refs_HXB2_ABCD.fasta vs 2refs_HXB2_C.BW.fasta for --alignment-of-other-refs. Should I expect any dramatic difference?
