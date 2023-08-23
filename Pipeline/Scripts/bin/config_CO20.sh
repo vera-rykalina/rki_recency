@@ -180,10 +180,10 @@ mpileupOptions='--no-BAQ --min-BQ 5 --max-depth 1000000'
 
 # Parameters for calling the consensus base at each position:
 # The minimum coverage (number of reads) to call a base instead of a '?'
-MinCov1=15
+MinCov1=100
 # The minimum coverage to use upper case for the base (to signal increased
 # confidence)
-MinCov2=30
+MinCov2=1000
 # The minimum fraction of reads at a position before we call that base (or those
 # bases, when one base alone does not reach that threshold fraction; e.g. say
 # you have 60% A, 30% C and 10% G: if you set this fraction to 0.6 or lower we
@@ -200,7 +200,7 @@ MinBaseFrac=0.8
 # the reads due to true biological variation as well sequencing error. We
 # suggest you use this only if you understand duplication in your sequencing
 # data... 
-deduplicate=true
+deduplicate=false
 # Desired command (note that MarkDuplicatesWithMateCigar exists, which may be
 # better, however it still seems to have beta status; also note that you can
 # include options in this command, such as a non-default
