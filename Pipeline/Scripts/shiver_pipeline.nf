@@ -7,10 +7,10 @@ projectDir = "/home/rykalinav/scratch/rki_recency/Pipeline"
 // ********************** NEXTFLOW RUN **************************
 // Activate nextflow environment
 // cd to Pipeline folder and then type:
-// nextflow run /Scripts/shiver_phyloscanner_tsi_pipeline.nf \
-// -c Script/rki_profile.config \
+// nextflow run /Scripts/shiver_pipeline.nf \
+// -c Scripts/rki_profile.config \
 // -profile rki_slurm,rki_mamba \
-// --outdir Results \
+// --outdir ConsensusComparison \
 // -with-report HTML/report_$(date +%T).html
 // # use this paramete to build a flowchart
 // -with-dag pipeline_flowchart.png (pipeline_flowchart.mmd)
@@ -105,10 +105,10 @@ process INITIALISATION {
   """
   shiver_init.sh \
     InitDir \
-    ${params.config} \
+    ${params.config_CO20} \
     ${params.alignment} \
     ${params.illumina_adapters} \
-    ${params.sk_primers}
+    ${params.gal_primers}
   """  
 }
 
@@ -223,7 +223,7 @@ process IVA_CONTIGS {
       -f ${reads[0]} \
       -r ${reads[1]} \
       --threads 16 \
-      --pcr_primers ${params.sk_primers} \
+      --pcr_primers ${params.gal_primers} \
       --adapters ${params.illumina_adapters} \
       --trimmomatic ${params.trimmomatic} \
       ${id}
@@ -252,7 +252,7 @@ process ALIGN_CONTIGS {
     """
     shiver_align_contigs.sh \
       ${initdir} \
-      ${params.config} \
+      ${params.config_CO20} \
       ${contigs} \
       ${id}
 
@@ -286,7 +286,7 @@ process MAP {
     """
     shiver_map_reads.sh \
         ${initdir} \
-        ${params.config} \
+        ${params.config_CO20} \
         ${contigs} \
         ${id} \
         ${blast} \
@@ -294,7 +294,6 @@ process MAP {
         ${read1} \
         ${read2}
     rm temp_* 
-    rm *PreDedup.bam
     
     """ 
     } else {
@@ -304,7 +303,7 @@ process MAP {
 
     shiver_map_reads.sh \
         ${initdir} \
-        ${params.config} \
+        ${params.config_CO20} \
         ${id}_contigs.fasta \
         ${id} \
         ${id}.blast\
@@ -312,7 +311,6 @@ process MAP {
         ${read1} \
         ${read2}
     rm temp_* 
-    rm *PreDedup.bam
      """
   }
 }
