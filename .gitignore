@@ -6,4 +6,4 @@ Pipeline/work/
 Pipeline/Test/
 Pipeline/conda
 Pipeline/RawData/*.gz
-Pipeline/ToD/.command.log
+Pipeline/ToDo/.command.log
