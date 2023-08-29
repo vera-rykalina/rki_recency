@@ -64,7 +64,7 @@ process KRAKEN2_CLASSIFY {
 
     label "kraken2"
     conda "${projectDir}/Environments/kraken2.yml"
-    publishDir "${params.outdir}/00_kraken_report/${id}", pattern: "*.txt"
+    publishDir "${params.outdir}/00_kraken_report/${id}", pattern: "*.txt", mode: "copy", overwrite: true
 
     // SLURM cluster options
     // cpus 10,  memory "150 GB", time "4h"
