@@ -91,11 +91,6 @@ process KRAKEN2_CLASSIFY {
                 --report ${id}.kraken.report.txt \
                 ${reads[0]} ${reads[1]}
         """
-
-    stub:
-        """
-            touch ${id}.classified.R_{1,2}.fastq ${id}.kraken.out.txt ${id}.kraken.report.txt
-        """
 }
 
 // SHIVER PART (including IVA and KALLISTO)
