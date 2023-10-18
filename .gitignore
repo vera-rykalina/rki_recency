@@ -7,3 +7,4 @@ Pipeline/Test/
 Pipeline/conda
 Pipeline/RawData/*.gz
 Pipeline/ToDo/.command.log
+Pipeline/HTML/*
