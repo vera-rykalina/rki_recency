@@ -552,7 +552,7 @@ workflow {
   ch_wRef = ALIGN_CONTIGS(ch_initdir.InitDir, ch_iva_contigs)
   // Combine according to a key that is the first value of every first element, which is a list
   ch_map_args = ch_bestRef.combine(ch_fastq_id_header, by:0).combine(ch_iva_contigs, by:0).combine(ch_wRef, by:0)
-  ch_map_out = MAP(ch_initdir.InitDir, ch_map_args).view()
+  ch_map_out = MAP(ch_initdir.InitDir, ch_map_args)
   // ********************************************MAF*****************************************************
   ch_maf_out = MAF(ch_map_out)
   ch_hxb2_maf = ch_ref_hxb2.combine(ch_maf_out.collect())
