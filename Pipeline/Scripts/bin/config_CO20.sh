@@ -192,7 +192,7 @@ MinCov2=1000
 # negative value, we always call the single most common base regardless of its
 # fraction, unless two or more bases are equally (most) common, then we call the
 # ambiguity code for those bases.
-MinBaseFrac=0.8
+MinBaseFrac=0.81
 
 # Shall we remove read pairs marked as duplicates? i.e. using picard, for each
 # set of pairs sharing the same mapped coordinates (start & end of each mate),
