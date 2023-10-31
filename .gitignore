@@ -8,3 +8,5 @@ Pipeline/conda
 Pipeline/RawData/*.gz
 Pipeline/ToDo/.command.log
 Pipeline/HTML/*
+Pipeline/Results
+Pipeline/PRRT_INT_FASTA/
