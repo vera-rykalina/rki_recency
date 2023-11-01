@@ -5,5 +5,5 @@ channels:
   - pypi
   - defaults
 dependencies:
-  - nextflow
+  - nextflow = 23.04.1
   - graphviz
