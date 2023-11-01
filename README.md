@@ -42,7 +42,7 @@ cd Pipeline/
 Create a nextflow environment, using **nextflow.yml** file:
 
 ```sh
-conda env create -n nextflow -f Environmet/nextflow.yml
+conda env create -n nextflow -f Environmets/nextflow.yml
 ```
 
 Activate the *nextflow* environment:
