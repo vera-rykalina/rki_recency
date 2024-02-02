@@ -20,7 +20,7 @@ for infilename in sys.argv[1:]:
 for df_ in dfs[0:]:
     df = df.merge(df_, on="pos", how="left")
 
-# Remove a sinity check column
+# Remove a sanity check column
 df.drop(["HXB2 base"], axis=1, inplace=True)
 
 # Fill empty cells with zeros (a need of this step should be double ckecked!!!)
