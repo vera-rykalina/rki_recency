@@ -24,7 +24,7 @@ for df_ in dfs[0:]:
 df.drop(["HXB2 base"], axis=1, inplace=True)
 
 # Fill empty cells with zeros (a need of this step should be double ckecked!!!)
-df.fillna(0, inplace = True,  downcast="infer")      
+#df.fillna(0, inplace = True,  downcast="infer")      
 
 # Set index to "pos" columns
 df = df.set_index("pos")
