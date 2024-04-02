@@ -33,9 +33,13 @@ df.sort_values(by=["Scount"], inplace = True)
 
 # Convert years to months
 df["RF_pred_linear"] = df["RF_pred_linear"].apply(lambda x: x*12)
+df["RF_pred_min_linear"] = df["RF_pred_min_linear"].apply(lambda x: x*12)
+df["RF_pred_max_linear"] = df["RF_pred_max_linear"].apply(lambda x: x*12)
 
 # Round "RF_pred_linear" values
 df["RF_pred_linear"] = df["RF_pred_linear"].apply(lambda x: round(x, 3))
+df["RF_pred_min_linear"] = df["RF_pred_min_linear"].apply(lambda x: round(x, 3))
+df["RF_pred_max_linear"] = df["RF_pred_max_linear"].apply(lambda x: round(x, 3))
 
 # Create a clean csv file
 df.to_csv("phylo_tsi_prettified.csv", sep=",", header = True, index = False, encoding="utf-8")
