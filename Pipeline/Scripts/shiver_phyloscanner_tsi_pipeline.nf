@@ -1,8 +1,7 @@
 nextflow.enable.dsl = 2
 
 // Change is required! Specify your projectDir here
-projectDir = "/home/rykalinav/scratch/rki_recency/Pipeline"
-
+projectDir = "/scratch/rykalinav/rki_recency/Pipeline"
 
 // ********************** NEXTFLOW RUN **************************
 // Activate nextflow environment
@@ -215,7 +214,8 @@ process IVA_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
   publishDir "${params.outdir}/05_iva_contigs", mode: "copy", overwrite: true
-  
+  errorStrategy "retry"
+
   input:
     tuple val(id), path(reads)
 
@@ -513,7 +513,8 @@ process PHYLO_TSI {
       -d ${params.model} \
       -p ${patstat} \
       -m ${maf} \
-      -o phylo_tsi.csv
+      -o phylo_tsi.csv \
+      --amplicons True
     """ 
 }
 
