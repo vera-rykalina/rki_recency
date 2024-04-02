@@ -59,7 +59,7 @@ barplot.set_xticks(range(0, int(df["RF_pred_linear"].max() + 7), 6))
 
 # Add labels and title
 ax.set(xlabel = "TSI (months)", 
-       title = "Estimation of Time since Infection using PhyloTSI Model\n(full-length paired-end sequencing)\n")
+       title = "Estimation of Time since Infection using HIV-phyloTSI Model\n(full-length paired-end sequencing)\n")
 
 # Add some extra white space
 fig.tight_layout(pad=1)
