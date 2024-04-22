@@ -231,7 +231,7 @@ process IVA_CONTIGS {
       --pcr_primers ${params.gal_primers} \
       --adapters ${params.illumina_adapters} \
       --trimmomatic ${params.trimmomatic} \
-      ${id}
+      ${id} || mkdir -p ${id} && touch ${id}/contigs.fasta
 
 
     mv ${id}/contigs.fasta ${id}/${id}_contigs.fasta
@@ -252,8 +252,7 @@ process ALIGN_CONTIGS {
     tuple val("${id}"), path("${id}_wRefs.fasta"), path("${id}.blast")
 
   script:
-    def ivacontig = contigs instanceof Path
-    if ( ivacontig ) {
+    if ( contigs.size() > 0 ) {
     """
     shiver_align_contigs.sh \
       ${initdir} \
@@ -268,6 +267,8 @@ process ALIGN_CONTIGS {
   } else {
     """
      printf "There is no contig for sample with ID: ${id}"
+     touch ${id}.blast
+     touch ${id}_wRefs.fasta
     """
   }
 }
@@ -286,8 +287,7 @@ process MAP {
     tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
-    def wRef = shiverRef instanceof Path
-    if ( wRef ) {
+    if ( shiverRef.size() > 0 ) {
     """
     shiver_map_reads.sh \
         ${initdir} \
@@ -369,7 +369,7 @@ process JOIN_MAFS {
 
 process BAM_REF_ID_CSV {
   publishDir "${params.outdir}/10_ref_bam_id", mode: "copy", overwrite: true
-  debug true
+  //debug true
 
   input:
     tuple val(id), path(ref), path(bam), path(bai), path(basefreqs)
@@ -412,7 +412,6 @@ process MAKE_TREES {
 
  script:
  // remove 9470,9720,9480,9730,9490,9740 from windows
- // --read-names-2 (Does not exists! - not used by me in the command; ask Tanya)
  """
   phyloscanner_make_trees.py \
        ${bam_ref_id_csv} \
@@ -443,9 +442,8 @@ process IQTREE {
 
  output:
   path "*.treefile", emit: treefile
-  path "*.iqtree", emit: iqtree
   path "*.log", emit: iqtreelog
-
+  //path "*.iqtree", emit: iqtree
  script:
  """
   iqtree \
@@ -469,8 +467,8 @@ process TREE_ANALYSIS {
    path "*patStats.csv", emit: patstat_csv
    path "*blacklistReport.csv", emit: blacklist_csv
    path "*patStats.pdf", emit: patstat_pdf
-   path "*.nex", emit: nex
-   path "*.rda", emit: rda
+   //path "*.rda", emit: rda   
+   //path "*.nex", emit: nex
 
  script:
  """
@@ -536,6 +534,28 @@ process PRETTIFY_AND_PLOT {
     """ 
 }
 
+process MAPPING_NOTES {
+  //publishDir "${params.outdir}/15_phylo_tsi", mode: "copy", overwrite: true
+  debug true
+
+  input:
+    tuple val(id), path(kallistoRef), path(read1), path(read2), path(contigs), path(shiverRef), path(blast)
+    
+  output:
+    path "${id}_mapping_notes.csv"
+  
+  script:
+    if (contigs.size() > 0) {
+    """
+    echo ${id},"Mapped with IVA contigs" > ${id}_mapping_notes.csv
+    """ 
+  } else {
+     """
+    bestref=\$(grep "^>" ${kallistoRef} | sed 's/>//g') 
+    echo ${id},"Mapped with reference: \${bestref}" > ${id}_mapping_notes.csv
+    """
+  }
+}
 // **************************************INPUT CHANNELS***************************************************
 ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
 ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
@@ -571,6 +591,9 @@ workflow {
   ch_analysed_trees = TREE_ANALYSIS(ch_iqtree.treefile.collect())
   ch_phylo_tsi = PHYLO_TSI(ch_analysed_trees.patstat_csv, ch_joined_maf)
   ch_prettified_tsi = PRETTIFY_AND_PLOT(ch_phylo_tsi)
+   // Mapping notes
+  ch_mapping_notes = MAPPING_NOTES(ch_map_args)
+  ch_mapping_notes_all = ch_mapping_notes.collectFile(name: "mapping_report.csv", storeDir: "${projectDir}/${params.outdir}/15_phylo_tsi")
 }
 
 // ***********************************************Extras*************************************************
