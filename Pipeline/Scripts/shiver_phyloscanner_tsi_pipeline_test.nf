@@ -555,7 +555,7 @@ process MAPPING_NOTES {
     """ 
   } else {
      """
-    bestref=\$(grep "^>" ${kallistoRef} | sed 's/>//') 
+    bestref=\$(grep "^>" ${kallistoRef} | sed 's/>//g') 
     echo ${id},"Mapped with reference: \${bestref}" > ${id}_mapping_notes.csv
     """
   }
