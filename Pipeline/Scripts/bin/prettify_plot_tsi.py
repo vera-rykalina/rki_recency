@@ -23,7 +23,8 @@ name1 = infilename.rsplit("/")[-1] # gives a file name.csv
 df = df.filter(regex = "^host|^RF_", axis = 1)
 
 # Create "Scount" columns bases on "host.id" (extract our internal ID)
-df["Scount"] = df["host.id"].str.extract("^\w{6,}_\w{2,}-\w{5,}_HIV(\d{2}-\d{5})_\w{2}\w{1,}_\w{2,}_\w{4,}", expand = True)
+#df["Scount"] = df["host.id"].str.extract("^\w{6,}_\w{2,}-\w{5,}_HIV(\d{2}-\d{5})_\w{2}\w{1,}_\w{2,}_\w{4,}", expand = True)
+df["Scount"] = df["host.id"].str.extract("\w+HIV(\d{2}-\d{5})_\w+", expand = True)
 
 # Swap columns to have "Scount" first
 df = df.iloc[:, [-1, 0] + list(range(1, df.shape[1] - 1 ))]
