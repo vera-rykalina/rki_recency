@@ -100,7 +100,7 @@ process INITIALISATION {
   """
   shiver_init.sh \
     InitDir \
-    ${params.config_CO20} \
+    ${params.config} \
     ${params.alignment} \
     ${params.illumina_adapters} \
     ${params.gal_primers}
@@ -205,7 +205,8 @@ process IVA_CONTIGS {
   //conda "/home/beast2/anaconda3/envs/iva"
   conda "${projectDir}/Environments/iva.yml"
   publishDir "${params.outdir}/05_iva_contigs", mode: "copy", overwrite: true
-  
+  errorStrategy "retry"
+
   input:
     tuple val(id), path(reads)
 
@@ -221,7 +222,7 @@ process IVA_CONTIGS {
       --pcr_primers ${params.gal_primers} \
       --adapters ${params.illumina_adapters} \
       --trimmomatic ${params.trimmomatic} \
-      ${id}
+      ${id} || mkdir -p ${id} && touch ${id}/contigs.fasta
 
 
     mv ${id}/contigs.fasta ${id}/${id}_contigs.fasta
@@ -242,12 +243,11 @@ process ALIGN_CONTIGS {
     tuple val("${id}"), path("${id}_wRefs.fasta"), path("${id}.blast")
 
   script:
-    def ivacontig = contigs instanceof Path
-    if ( ivacontig ) {
+    if ( contigs.size() > 0 ) {
     """
     shiver_align_contigs.sh \
       ${initdir} \
-      ${params.config_CO20} \
+      ${params.config} \
       ${contigs} \
       ${id}
 
@@ -258,6 +258,8 @@ process ALIGN_CONTIGS {
   } else {
     """
      printf "There is no contig for sample with ID: ${id}"
+     touch ${id}.blast
+     touch ${id}_wRefs.fasta
     """
   }
 }
@@ -273,15 +275,14 @@ process MAP {
     tuple val(id), path(kallistoRef), path(read1), path(read2), path(contigs), path(shiverRef), path(blast)
   
   output:
-    tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*MinCov*.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
+    tuple val("${id}"), path("${id}*ref.fasta"), path("${id}*.bam"), path("${id}*.bam.bai"), path("${id}*WithHXB2.csv")
     
   script:
-    def wRef = shiverRef instanceof Path
-    if ( wRef ) {
+    if ( shiverRef.size() > 0 ) {
     """
     shiver_map_reads.sh \
         ${initdir} \
-        ${params.config_CO20} \
+        ${params.config} \
         ${contigs} \
         ${id} \
         ${blast} \
@@ -289,6 +290,7 @@ process MAP {
         ${read1} \
         ${read2}
     rm temp_* 
+    rm *PreDedup.bam
     
     """ 
     } else {
@@ -298,7 +300,7 @@ process MAP {
 
     shiver_map_reads.sh \
         ${initdir} \
-        ${params.config_CO20} \
+        ${params.config} \
         ${id}_contigs.fasta \
         ${id} \
         ${id}.blast\
@@ -306,15 +308,16 @@ process MAP {
         ${read1} \
         ${read2}
     rm temp_* 
+    rm *PreDedup.bam
      """
   }
 }
-
 
 // **************************************INPUT CHANNELS***************************************************
 ch_fastq_pairs = Channel.fromFilePairs("${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true)
 
 workflow {
+
   // ****************************************KRAKEN2******************************************************
   ch_kraken2_report = KRAKEN2_CLASSIFY(ch_fastq_pairs, params.krakendb)
   // *************************************SHIVER PART*****************************************************
@@ -328,6 +331,6 @@ workflow {
   ch_wRef = ALIGN_CONTIGS(ch_initdir.InitDir, ch_iva_contigs)
   // Combine according to a key that is the first value of every first element, which is a list
   ch_map_args = ch_bestRef.combine(ch_fastq_id_header, by:0).combine(ch_iva_contigs, by:0).combine(ch_wRef, by:0)
-  ch_map_out = MAP(ch_initdir.InitDir, ch_map_args).view()
-  
+  ch_map_out = MAP(ch_initdir.InitDir, ch_map_args)
+    
 }
