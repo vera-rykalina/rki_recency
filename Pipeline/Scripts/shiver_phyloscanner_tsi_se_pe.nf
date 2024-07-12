@@ -28,28 +28,44 @@ log.info """
          """
 
 // error codes
+params.profile = null
 if (params.profile) {
     exit 1, "--profile is WRONG use -profile" }
 
-// warnings
-def folder = new File(params.output)
-if ( folder.exists() ) { 
-    println ""
-    println "\033[0;33mWARNING: Output folder already exists. Results might be overwritten! You can adjust the output folder via [--output]\033[0m"
+params.outdir = null
+if (!params.outdir) {
+  println "outdir: $params.outdir"
+  error "Missing output directory!"
 }
+
 
 Set modes = ['paired', 'single']
 if ( ! (params.mode in modes) ) {
     exit 1, "Unknown mode. Choose from " + modes
 }
 
+process FASTQC {
+  conda "${projectDir}/Environments/fastqc.yml"
+  publishDir "${params.outdir}/01_raw_fastqc", mode: "copy", overwrite: true
+  debug true
 
+  input:
+    tuple val(id), path(reads)
+  output:
+    path "${id}*_fastqc.html", emit: html
+    path "${id}*_fastqc.zip",  emit: zipped
+  script:
+    """
+    fastqc ${reads}
+    """
+
+}
 
 process FASTP {
   label "fastp"
   conda "${projectDir}/Environments/fastp.yml"
-  publishDir "${params.outdir}/01_trimmed", mode: "copy", overwrite: true
-
+  publishDir "${params.outdir}/02_trimmed", mode: "copy", overwrite: true
+  debug true
 
   input:
     tuple val(id), path(reads)
@@ -66,13 +82,15 @@ process FASTP {
         --in1 ${reads[0]} \
         --out1 ${id}.fastp.R1.fastq.gz \
         ${set_paired_reads} \
+        --adapter_fasta ${params.illumina_adapters} \
         --json ${id}.fastp.json \
         --html ${id}.fastp.html \
-        --adapter_fasta ${params.illumina_adapters} \
         --low_complexity_filter \
         --overrepresentation_analysis \
-        --thread $task.cpus \
-        ${params.fastp_additional_parameters}
+        --qualified_quality_phred 20 \
+        --length_required 50 \
+        --thread ${task.cpus}
+
     """
 }
 
@@ -80,11 +98,19 @@ process FASTP {
 // **************************************INPUT CHANNELS***************************************************
 ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
 
-
 if (params.mode == 'paired') {
         ch_input_fastq = Channel
-        .fromFilePairs( "${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true ).view()
+        .fromFilePairs( "${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true )
 } else { ch_input_fastq = Channel
         .fromPath( "${projectDir}/RawData/*.fastq.gz", checkIfExists: true )
         .map { file -> [file.simpleName, [file]]}
+        .view()
+}
+
+
+
+workflow {
+    ch_raw_reads = FASTQC ( ch_input_fastq )
+    //ch_fastp = FASTP( ch_input_fastq)
+
 }
