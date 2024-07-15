@@ -450,7 +450,7 @@ process IQTREE {
      -s ${fasta} \
      -pre IQTREE_bestTree.InWindow_${fasta.getSimpleName().split("Excised_")[1]} \
      -m GTR+F+R6 \
-     -nt 2 \
+     -nt ${task.cpus} \ 
      --seed 0
  """ 
 }
