@@ -9,7 +9,9 @@ params.krakendb = "/scratch/databases/kraken2_20230314/"
 
 // Parameters for shiver
 params.trimmomatic = "${projectDir}/Scripts/bin/trimmomatic-0.36.jar"
+params.alientrimmer = "${projectDir}/Scripts/bin/AlienTrimmer.jar"
 params.gal_primers = "${projectDir}/DataShiverInit/primers_GallEtAl2012.fasta"
+params.alien = "${projectDir}/DataShiverInit/alien.fa"
 params.illumina_adapters = "${projectDir}/DataShiverInit/adapters_Illumina.fasta"
 params.alignment = "${projectDir}/DataShiverInit/HIV1_COM_2012_genome_DNA_NoGaplessCols.fasta"
 params.config = "${projectDir}/Scripts/bin/config.sh"
@@ -44,47 +46,55 @@ if ( ! (params.mode in modes) ) {
     exit 1, "Unknown mode. Choose from " + modes
 }
 
-process FASTQC {
+
+process RAW_FASTQC {
   conda "${projectDir}/Environments/fastqc.yml"
-  publishDir "${params.outdir}/01_raw_fastqc", mode: "copy", overwrite: true
-  debug true
+  publishDir "${params.outdir}/01_raw_fastqc/${id}", mode: "copy", overwrite: true
+ // debug true
 
   input:
     tuple val(id), path(reads)
   output:
     path "${id}*_fastqc.html", emit: html
-    path "${id}*_fastqc.zip",  emit: zipped
+    path "${id}*_fastqc.zip",  emit: zip
   script:
+    
     """
-    fastqc ${reads}
+    [ -f *R1*.fastq.gz ] && mv *R1*.fastq.gz ${id}_raw_R1.fastq.gz
+    [ -f *R2*.fastq.gz ] && mv *R2*.fastq.gz ${id}_raw_R2.fastq.gz
+    
+    fastqc *.fastq.gz
+  
     """
-
+  
 }
+
 
 process FASTP {
   label "fastp"
   conda "${projectDir}/Environments/fastp.yml"
-  publishDir "${params.outdir}/02_trimmed", mode: "copy", overwrite: true
-  debug true
+  publishDir "${params.outdir}/02_fastp_trimmed/${id}", mode: "copy", overwrite: true
+  //debug true
 
   input:
     tuple val(id), path(reads)
 
   output:
-    tuple val(id), path("${id}.fastp.R{1,2}.fastq.gz"), emit: reads
-    tuple val(id), path("${id}.fastp.json"),            emit: json
-    tuple val(id), path("${id}.fastp.html"),            emit: html
+    tuple val(id), path("${id}_fastp.R{1,2}.fastq.gz"), emit: reads
+    tuple val(id), path("${id}_fastp.json"),            emit: json
+    tuple val(id), path("${id}_fastp.html"),            emit: html
 
  script:
-    set_paired_reads = params.mode == 'single' ? '' : "--in2 ${reads[1]} --out2 ${id}.fastp.R2.fastq.gz --unpaired1 ${id}.SE.R1.fastq.gz --unpaired2 ${id}.SE.R2.fastq.gz"
+    set_paired_reads = params.mode == 'single' ? '' : "--in2 ${reads[1]} --out2 ${id}_fastp.R2.fastq.gz --unpaired1 ${id}.SE.R1.fastq.gz --unpaired2 ${id}.SE.R2.fastq.gz"
     """
+    
     fastp \
         --in1 ${reads[0]} \
-        --out1 ${id}.fastp.R1.fastq.gz \
+        --out1 ${id}_fastp.R1.fastq.gz \
         ${set_paired_reads} \
         --adapter_fasta ${params.illumina_adapters} \
-        --json ${id}.fastp.json \
-        --html ${id}.fastp.html \
+        --json ${id}_fastp.json \
+        --html ${id}_fastp.html \
         --low_complexity_filter \
         --overrepresentation_analysis \
         --qualified_quality_phred 20 \
@@ -94,23 +104,111 @@ process FASTP {
     """
 }
 
+process TRIMMED_FASTQC {
+  conda "${projectDir}/Environments/fastqc.yml"
+  publishDir "${params.outdir}/03_trimmed_fastqc/${id}", mode: "copy", overwrite: true
+ // debug true
+
+  input:
+    tuple val(id), path(reads)
+  output:
+    path "${id}*_fastqc.html", emit: html
+    path "${id}*_fastqc.zip",  emit: zip
+ 
+  script:
+    
+    """
+    fastqc ${reads}
+
+    """
+}
+
+process MULTIQC {
+  conda "${projectDir}/Environments/multiqc.yml"
+  publishDir "${params.outdir}/04_multiqc", mode: "copy", overwrite: true
+  debug true
+  
+  input:
+    path report_files
+
+  output:
+    path "multiqc_report.html", emit: report
+ 
+  script:
+  """
+  multiqc .
+  """
+}
+
+
+process ALIENTRIMMER {
+  conda "${projectDir}/Environments/multiqc.yml"
+  publishDir "${params.outdir}/05_primer_trimmed/${id}", mode: "copy", overwrite: true
+  debug true
+  
+  input:
+     tuple val(id), path(reads)
+  
+  output:
+    tuple val(id), path("${id}_primer_trimmed.{1,2}.fastq.gz"), emit: reads
+    tuple val(id), path("${id}_primer_trimmed.S.fastq.gz"), emit: singletons
+
+
+  script:
+
+  set_paired_reads = params.mode == 'single' ? '' : "-2 ${reads[1]} --out2 ${id}_fastp.R2.fastq.gz"
+  if (params.mode == "paired"){
+  """
+  java -jar ${params.alientrimmer} \
+       -1 ${reads[0]} \
+       -2 ${reads[1]} \
+       -a ${params.gal_primers} \
+       -o ${id}_primer_trimmed \
+       -k 14 \
+       -z
+  """
+  } else if (params.mode == "single") {
+    """
+      java -jar ${params.alientrimmer} \
+           -i ${reads[0]} \
+           -a ${params.gal_primers} \
+           -o ${id}_primer_trimmed \
+           -k 15 \
+           -z
+    """
+  }
+
+}
 
 // **************************************INPUT CHANNELS***************************************************
 ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
 
+params.workdirpath = "${projectDir}/RawData/"
+
 if (params.mode == 'paired') {
         ch_input_fastq = Channel
         .fromFilePairs( "${projectDir}/RawData/*_R{1,2}*.fastq.gz", checkIfExists: true )
+        .map {tuple ( it[0].split("HIV")[1].split("_")[0], [it[1][0], it[1][1]])}
+        
 } else { ch_input_fastq = Channel
         .fromPath( "${projectDir}/RawData/*.fastq.gz", checkIfExists: true )
         .map { file -> [file.simpleName, [file]]}
-        .view()
+        .map {tuple ( it[0].split("HIV")[1].split("_")[0], it[1][0])}.view()
 }
 
 
 
 workflow {
-    ch_raw_reads = FASTQC ( ch_input_fastq )
-    //ch_fastp = FASTP( ch_input_fastq)
+    ch_raw_fastqc = RAW_FASTQC ( ch_input_fastq )
+    ch_fastp_trimmed = FASTP ( ch_input_fastq )
+    ch_trimmed_fastqc = TRIMMED_FASTQC ( ch_fastp_trimmed.reads) 
+    ch_multiqc = MULTIQC ( ch_raw_fastqc.zip.concat(ch_trimmed_fastqc.zip).collect() )
+    ch_primer_trimmed = ALIENTRIMMER ( ch_fastp_trimmed.reads)
+    //all_reports = ch_fastp.html.map { id, file -> file}.concat(ch_fastqc.zipped).collect().view()
+    //ch_multiqc = MULTIQC ( ch_fastp.html.map { id, file -> file}.concat(ch_fastqc.html).collect() )
 
 }
+
+
+// fastaq primer trimming
+//fastaq sequence_trim 07-00462_fastp.R1.fastq.gz 07-00462_fastp.R2.fastq.gz 07-00462_fastp_trimmed.R1.fastq.gz \
