@@ -60,8 +60,8 @@ process RAW_FASTQC {
   script:
     
     """
-    [ -f *R1*.fastq.gz ] && mv *R1*.fastq.gz ${id}_raw_R1.fastq.gz
-    [ -f *R2*.fastq.gz ] && mv *R2*.fastq.gz ${id}_raw_R2.fastq.gz
+    [ -f *R1*.fastq.gz ] && mv *R1*.fastq.gz ${id}_raw.R1.fastq.gz
+    [ -f *R2*.fastq.gz ] && mv *R2*.fastq.gz ${id}_raw.R2.fastq.gz
     
     fastqc *.fastq.gz
   
@@ -104,7 +104,7 @@ process FASTP {
     """
 }
 
-process TRIMMED_FASTQC {
+process FASTP_FASTQC {
   conda "${projectDir}/Environments/fastqc.yml"
   publishDir "${params.outdir}/03_trimmed_fastqc/${id}", mode: "copy", overwrite: true
  // debug true
@@ -119,13 +119,70 @@ process TRIMMED_FASTQC {
     
     """
     fastqc ${reads}
+    """
+}
 
+
+process ALIENTRIMMER {
+  conda "${projectDir}/Environments/multiqc.yml"
+  publishDir "${params.outdir}/04_primer_trimmed/${id}", mode: "copy", overwrite: true
+  debug true
+  
+  input:
+     tuple val(id), path(reads)
+  
+  output:
+    tuple val(id), path("${id}_alientrimmer.R.{1,2}.fastq.gz"), emit: reads
+    tuple val(id), path("${id}_alientrimmer.R.S.fastq.gz"), emit: singletons
+
+
+  script:
+
+  if (params.mode == "paired"){
+  """
+  java -jar ${params.alientrimmer} \
+       -1 ${reads[0]} \
+       -2 ${reads[1]} \
+       -a ${params.gal_primers} \
+       -o ${id}_alientrimmer.R \
+       -k 9 \
+       -z
+  """
+  } else if (params.mode == "single") {
+    """
+      java -jar ${params.alientrimmer} \
+           -i ${reads[0]} \
+           -a ${params.gal_primers} \
+           -o ${id}_alientrimmer.R \
+           -k 15 \
+           -z
+    """
+  }
+
+}
+
+
+process ALIENTRIMMER_FASTQC {
+  conda "${projectDir}/Environments/fastqc.yml"
+  publishDir "${params.outdir}/05_alientrimmed_fastqc/${id}", mode: "copy", overwrite: true
+ // debug true
+
+  input:
+    tuple val(id), path(reads)
+  output:
+    path "${id}*_fastqc.html", emit: html
+    path "${id}*_fastqc.zip",  emit: zip
+ 
+  script:
+    
+    """
+    fastqc ${reads}
     """
 }
 
 process MULTIQC {
   conda "${projectDir}/Environments/multiqc.yml"
-  publishDir "${params.outdir}/04_multiqc", mode: "copy", overwrite: true
+  publishDir "${params.outdir}/06_multiqc", mode: "copy", overwrite: true
   debug true
   
   input:
@@ -141,44 +198,6 @@ process MULTIQC {
 }
 
 
-process ALIENTRIMMER {
-  conda "${projectDir}/Environments/multiqc.yml"
-  publishDir "${params.outdir}/05_primer_trimmed/${id}", mode: "copy", overwrite: true
-  debug true
-  
-  input:
-     tuple val(id), path(reads)
-  
-  output:
-    tuple val(id), path("${id}_primer_trimmed.{1,2}.fastq.gz"), emit: reads
-    tuple val(id), path("${id}_primer_trimmed.S.fastq.gz"), emit: singletons
-
-
-  script:
-
-  set_paired_reads = params.mode == 'single' ? '' : "-2 ${reads[1]} --out2 ${id}_fastp.R2.fastq.gz"
-  if (params.mode == "paired"){
-  """
-  java -jar ${params.alientrimmer} \
-       -1 ${reads[0]} \
-       -2 ${reads[1]} \
-       -a ${params.gal_primers} \
-       -o ${id}_primer_trimmed \
-       -k 14 \
-       -z
-  """
-  } else if (params.mode == "single") {
-    """
-      java -jar ${params.alientrimmer} \
-           -i ${reads[0]} \
-           -a ${params.gal_primers} \
-           -o ${id}_primer_trimmed \
-           -k 15 \
-           -z
-    """
-  }
-
-}
 
 // **************************************INPUT CHANNELS***************************************************
 ch_ref_hxb2 = Channel.fromPath("${projectDir}/References/HXB2_refdata.csv", checkIfExists: true)
@@ -201,14 +220,16 @@ if (params.mode == 'paired') {
 workflow {
     ch_raw_fastqc = RAW_FASTQC ( ch_input_fastq )
     ch_fastp_trimmed = FASTP ( ch_input_fastq )
-    ch_trimmed_fastqc = TRIMMED_FASTQC ( ch_fastp_trimmed.reads) 
-    ch_multiqc = MULTIQC ( ch_raw_fastqc.zip.concat(ch_trimmed_fastqc.zip).collect() )
+    ch_fastp_fastqc = FASTP_FASTQC ( ch_fastp_trimmed.reads) 
     ch_primer_trimmed = ALIENTRIMMER ( ch_fastp_trimmed.reads)
-    //all_reports = ch_fastp.html.map { id, file -> file}.concat(ch_fastqc.zipped).collect().view()
-    //ch_multiqc = MULTIQC ( ch_fastp.html.map { id, file -> file}.concat(ch_fastqc.html).collect() )
+    ch_alientrimmer_fastqc = ALIENTRIMMER_FASTQC ( ch_primer_trimmed.reads) 
+    ch_multiqc = MULTIQC ( ch_raw_fastqc.zip.concat(ch_fastp_fastqc.zip).concat(ch_alientrimmer_fastqc.zip).collect() )
+
+    
 
 }
 
 
 // fastaq primer trimming
 //fastaq sequence_trim 07-00462_fastp.R1.fastq.gz 07-00462_fastp.R2.fastq.gz 07-00462_fastp_trimmed.R1.fastq.gz \
+//07-00462_fastp_trimmed.R2.fastq.gz../../../DataShiverInit/primers_GallEtAl2012.fasta --revcomp
