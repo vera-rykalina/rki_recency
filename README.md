@@ -13,7 +13,7 @@ The pipeline includes the following tools:
 - HIV-phyloTSI (T. Golubchik)
 
 ## Installation
-Make sure that R with the phyloscannerR package and the python pyfastaq package are  installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
+Make sure that R with the phyloscannerR package and the python pyfastaq package are installed globally. All other software tools with their dependencies get installed automatically via conda directives. 
 
 Download Kraken2 database and change the path accordingly in the shiver_phyloscanner_tsi_pipeline.nf if Kraken2 reports are desired.
 
@@ -21,15 +21,23 @@ Download Kraken2 database and change the path accordingly in the shiver_phylosca
 
 The [database](https://benlangmead.github.io/aws-indexes/k2) used by the pipeline is PlusPFP (3 March, 2023) which is stored within HPC resources. 
 
-Alternativelly, one can install all the tools manually, using .yml recipes (see Environments folder). If so, pyfastaq can be installed within a shiver's environment:
-
-```sh
-conda activate shiver
-```
+Installation of fastaq
 
 ```sh
 pip3 install --ignore-installed pyfastaq
 ```
+
+Installation of phylostanncerR (as recommended by developers):
+- change directory to the 'phyloscannerR' subdirectory of the main phyloscanner code directory, e.g. cd ~/phyloscanner/phyloscannerR/ 
+- start an an interactive R session by running R
+- inside the interactive R session, run:
+
+install.packages("devtools")
+install.packages("BiocManager")
+library(devtools)
+BiocManager::install("ggtree")
+BiocManager::install("RBGL")
+install("../phyloscannerR", dependencies = T)
 
 ## Usage
 Populate **RawData** folder with **SID.fastq.gz** files.
